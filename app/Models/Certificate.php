@@ -37,6 +37,10 @@ class Certificate extends Model
             ->where('name_file', '!=', 'customer_signature');
     }
 
+    public function notes(){
+        return $this->hasMany(CertificateNote::class,'certificate_id');
+    }
+    
     public function customerSignature()
     {
         return $this->morphOne(File::class, 'file', 'model_type', 'model_id', 'id')

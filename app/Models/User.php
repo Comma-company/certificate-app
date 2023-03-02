@@ -70,7 +70,7 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany(BusinessType::class, 'user_business_type', 'user_id', 'business_type_id');
     }
 
-   
+
     public function country()
     {
         return $this->belongsTo(Country::class, 'country_id');
@@ -130,10 +130,10 @@ class User extends Authenticatable implements MustVerifyEmail
        return $this->belongsToMany(Form::class,'forms_users')->withPivot('tax_id','price');
     }
 
-    public function certificateForm()
+    public function certificate()
     {
-        $cert = $this->hasMany(FormData::class, 'user_id');
-        return $cert->where('type','certificate');
+       return $this->hasMany(Certificate::class, 'user_id');
+       
     }
 
     public function getUrlAttribute(): string

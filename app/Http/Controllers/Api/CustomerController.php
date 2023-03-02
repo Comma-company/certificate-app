@@ -48,8 +48,6 @@ class CustomerController extends Controller
             'city' => 'required',
             'postal_code' => 'required',
             'country_id' => 'required',
-            // 'email' => 'required|email',
-            //  'phone' => 'required',
             'type_id' => ['required', 'exists:customer_types,id'],
             'tax_id' => ['required', 'exists:tax_settings,id'],
         ]);
@@ -89,9 +87,9 @@ class CustomerController extends Controller
                         'country_id' => $request->billing_country_id,
                         'city' => $request->billing_city,
                         'postal_code' => $request->billing_postal_code,
-                        'credit_limit' => $request->billing_credit_limit,
-                        'payment_term_id' => $request->billing_payment_term_id,
-                        'send_statement' => $request->billing_send_statement,
+                        'credit_limit' => $request->credit_limit,
+                        'payment_term_id' => $request->payment_term_id,
+                        'send_statement' => $request->send_statement,
                     ]
                 );
             } else {
@@ -101,9 +99,9 @@ class CustomerController extends Controller
                     'country_id' => $request->country_id,
                     'city' => $request->city,
                     'postal_code' => $request->postal_code,
-                    'credit_limit' => $request->billing_credit_limit,
-                    'payment_term_id' => $request->billing_payment_term_id,
-                    'send_statement' => $request->billing_send_statement,
+                    'credit_limit' => $request->credit_limit,
+                    'payment_term_id' => $request->payment_term_id,
+                    'send_statement' => $request->send_statement,
                 ]);
             }
             //create client contact

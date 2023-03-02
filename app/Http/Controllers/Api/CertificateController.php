@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Models\Form;
 use App\Models\User;
 use App\Models\Certificate;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
@@ -19,7 +21,7 @@ class CertificateController extends Controller
 
         ])
             ->select('id', 'customer_id', 'form_id', 'created_at', 'status_id')
-            ->with(['status', 'customer', 'form'])
+            ->with(['status', 'customer', 'notes', 'form'])
             ->latest()
             ->get();
 
@@ -33,7 +35,7 @@ class CertificateController extends Controller
         ])
             ->select('id', 'customer_id', 'status_id', 'form_id', 'created_at')
             ->where('status_id', 4)
-            ->with(['status', 'customer', 'form'])
+            ->with(['status', 'customer', 'notes', 'form'])
             ->latest()
             ->get();
 
@@ -84,12 +86,11 @@ class CertificateController extends Controller
             'data' => ['required']
         ]);
 
-        /* $data = FormData::create($request->all()); */
+
         $data = new Certificate();
         $data->user_id = authUser('sanctum')->id;
         $data->form_id = $request->form_id;
         $data->customer_id = $request->customer_id;
-        $data->service_id = $request->service_id;
         $data->status_id = $request->status_id;
         $data->data = $request->data;
         $data->save();
@@ -124,34 +125,6 @@ class CertificateController extends Controller
 
         if (View::exists($page_path)) {
 
-            /*
-            $customer = $data->customer()->first();
-            $gaz_safety_data =  data_get($data->data, 'gaz_safety_data');
-            $final_result = data_get($data->data, 'gaz_safety_data.*.final_result');
-            if ($final_result) {
-                $final_result_no =   Arr::where($final_result, function ($value, $key) {
-                    return strtoupper($value) == strtoupper('no');
-                });
-
-                $final_result_yes =   Arr::where($final_result, function ($value, $key) {
-                    return strtoupper($value) == strtoupper('yes');
-                });
-            }
-
-            $user_id = Auth::guard('sanctum')->user()->id;
-            $user = User::where('id', $user_id)->first();
-            $html =  View::make($page_path, [
-                'form_data' => $data,
-                'data' => $data->data,
-                'customer' => $customer,
-                'job' => new Job(),
-                'gaz_safety_data' => $gaz_safety_data,
-                //  'final_result' => $final_result,
-                //'final_result_no' => $final_result_no,
-              //  'final_result_yes' => $final_result_yes,
-                'user' => $user,
-            ])->render(); */
-
             $body = [
                 "form_data" => $data,
                 // 'html_content' => $html
@@ -163,6 +136,58 @@ class CertificateController extends Controller
     }
 
 
+    public function storeNote($id, Request $request)
+    {
+        $request->validate([
+            'title' => ['required'],
+            'body' => ['required'],
+        ]);
+        $user = authUser('sanctum');
+        $certificate =  Certificate::where('user_id', $user->id)->findOrFail($id);
+        DB::beginTransaction();
+        try {
+            $note = $certificate->notes()->create([
+                'user_id' => $user->id,
+                'title' => $request->title,
+                'body' => $request->body,
+            ]);
+            $files_name = [];
+            if ($request->note_files) {
+                foreach ($request->note_files as $key =>  $file) {
+                    //dd($file);
+                    $file_name = strtotime(now()) . '_' . Str::random(6).'.'.$file->extension();
+                    $files_name[$key]['name'] = $file_name;
+
+                    if ($file->extension() == 'jpeg' || $file->extension() == 'jpg' || $file->extension() == 'png') {
+                        $image = uploadImageAs($file, $file_name, 'image');
+                        $file = $note->files()->create($image);
+
+                        $files_name[$key]['id'] = $file->id;
+                        $files_name[$key]['url'] = $file->url;
+                        $files_name[$key]['type'] = 'image';
+                    } elseif ($file->extension() == 'mp4' || $file->extension() == 'vlc') {
+
+                        $image = uploadImageAs($file, $file_name, 'video');
+                        $file = $note->files()->create($image);
+                        $files_name[$key]['id'] = $file->id;
+                        $files_name[$key]['url'] = $file->url;
+                        $files_name[$key]['type'] = 'video';
+                    }
+                }
+            }
+
+            $body = [
+                "note" => $note,
+                "files" => $files_name
+            ];
+            DB::commit();
+            return responseJson(true, 'success created', $body);
+
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            throw $th;
+        }
+    }
 
     public function update($id, Request $request)
     {
@@ -210,7 +235,7 @@ class CertificateController extends Controller
             'customer_id' => $request->customer_id,
             'id' => $request->id,
         ])
-            ->with(['status', 'form', 'customer', 'customer.sites', 'customer.contacts', 'customer.country', 'customer.billing.paymentTerm'])
+            ->with(['status', 'notes.files', 'form', 'customer', 'customer.sites', 'customer.contacts', 'customer.country', 'customer.billing.paymentTerm'])
             ->first();
 
         if ($data) {
@@ -231,7 +256,7 @@ class CertificateController extends Controller
 
             if (View::exists($page_path)) {
 
-                $job = $data->job()->with('customer')->first();
+
                 $gaz_safety_data =  data_get($data->data, 'gaz_safety_data');
                 $final_result = data_get($data->data, 'gaz_safety_data.*.final_result');
 
@@ -245,21 +270,21 @@ class CertificateController extends Controller
 
 
                 $user = User::where('id', $user_id)->first();
-                $html = View::make($page_path, [
+                 $html = View::make($page_path, [
                     'form_data' => $data,
                     'data' => $data->data,
                     'gaz_safety_data' => $gaz_safety_data,
-                    /* 'final_result' => $final_result,
+                   /*  'final_result' => $final_result,
                     'final_result_no' => $final_result_no,
-                    'final_result_yes' => $final_result_yes, */
+                    'final_result_yes' => $final_result_yes,*/
                     'user' => $user,
                 ])->render();
 
-                $form_data = collect($data)->except(['service_id', 'job_id']);
+                $form_data = collect($data);
                 $form_data->all();
                 $body = [
                     "form_data" => $form_data,
-                    'html_content' => $html
+                    // 'html_content' => $html
                 ];
                 return responseJson(true, 'success selected', $body);
             } else {
@@ -270,7 +295,7 @@ class CertificateController extends Controller
         }
     }
 
-    public function updateStatus($id,Request $request)
+    public function updateStatus($id, Request $request)
     {
         $request->validate([
             'status_id' => ['sometimes',  'exists:statuses,id']

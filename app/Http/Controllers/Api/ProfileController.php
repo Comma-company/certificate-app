@@ -23,8 +23,7 @@ class ProfileController extends Controller
         $user = User::select('id','first_name','last_name','email','phone','image')
         ->where('id',$user_id)
         ->with('userEmail')
-        ->withCount('jobs')
-        ->withCount('certificateForm')
+        ->withCount('certificate')
         ->first();
         return responseJson(true,'user details',$user);
     }
