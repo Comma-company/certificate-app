@@ -33,6 +33,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
 Route::post('/email/verification-notification', [AuthController::class, 'ResendingVerificationEmail'])->middleware('auth:sanctum');
 Route::post('/register', [RegisterController::class, 'store']);
+
 Route::delete('user/delete', [ProfileController::class, 'destroy']);
 
 
@@ -45,7 +46,8 @@ Route::get('/business-type', [BusinessTypeController::class, 'index']);
 Route::get('/status', [StatusController::class, 'index']);
 
 Route::middleware(['auth:sanctum'])->group(function () {
-    Route::get('/countries', [CountryController::class, 'index'])->middleware('auth:sanctum');
+    Route::post('complete-register', [RegisterController::class, 'completeRegister']);
+    Route::get('countries', [CountryController::class, 'index'])->middleware('auth:sanctum');
     //
     Route::get('payment-terms', [PaymentTermController::class, 'index'])->middleware('auth:sanctum');
 
@@ -90,7 +92,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('complete', [CertificateController::class, 'completeCertificate'])->middleware('auth:sanctum');
         Route::get('uncompleted', [CertificateController::class, 'uncompletedCertificate'])->middleware('auth:sanctum');
         Route::get('count', [CertificateController::class, 'certificateCount'])->middleware('auth:sanctum');
-        Route::get('customer-certificate', [CertificateController::class, 'customerCertificate'])->middleware('auth:sanctum');
+        Route::get('{id}/view', [CertificateController::class, 'view'])->middleware('auth:sanctum');
         Route::post('create', [CertificateController::class, 'store'])->middleware('auth:sanctum');
         Route::post('{id}/notes/create', [CertificateController::class, 'storeNote'])->middleware('auth:sanctum');
         Route::post('{id}/update', [CertificateController::class, 'update'])->middleware('auth:sanctum');

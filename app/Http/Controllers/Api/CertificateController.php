@@ -226,14 +226,13 @@ class CertificateController extends Controller
 
 
 
-    public function customerCertificate(Request $request)
+    public function view($id,Request $request)
     {
         $user_id = Auth::guard('sanctum')->user()->id;
 
         $data =  Certificate::where([
             'user_id' => $user_id,
-            'customer_id' => $request->customer_id,
-            'id' => $request->id,
+            'id' => $id,
         ])
             ->with(['status', 'notes.files', 'form', 'customer', 'customer.sites', 'customer.contacts', 'customer.country', 'customer.billing.paymentTerm'])
             ->first();
