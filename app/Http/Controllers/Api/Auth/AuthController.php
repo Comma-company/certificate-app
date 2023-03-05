@@ -47,6 +47,8 @@ class AuthController extends Controller
 
         if (count($user->forms) == 0) {
            $data['isProfileComplete'] = false;
+        }else{
+            $data['isProfileComplete'] = true;
         }
 
         return responseJson(true, 'login Success', $data, 200);
