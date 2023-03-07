@@ -12,7 +12,7 @@ class Site extends Model
     protected $fillable = ['name','address','street_num','city','country_id','customer_id','postal_code','user_id','lng','lat'];
 
 
-    public function country()
+    public function country() 
     {
         return $this->belongsTo(Country::class, 'country_id');
     }

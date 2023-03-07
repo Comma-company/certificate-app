@@ -29,15 +29,30 @@ class ProfileController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * update user address.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function updateAddress(Request $request)
     {
-        //
+        /*'registered_address','number_street_name','city',
+        'postal_code','country_id',
+        */
+
+        $user = authUser('sanctum');
+
+        $user->update([
+            'registered_address' => $request->registered_address,
+            'number_street_name' => $request->number_street_name,
+            'city' => $request->city,
+            'postal_code' => $request->postal_code,
+            'country_id' => $request->country_id,
+        ]);
+
+        return responseJson(true,'success update address',$user);
     }
+
 
     /**
      * Display the specified resource.
@@ -67,7 +82,7 @@ class ProfileController extends Controller
             'last_name'=>'required',
             'email'=>['required','email',Rule::unique('users')->ignore($user->id)],
             'phone'=>'required',
-            'image' => ['file','mimes:jpeg,jpg,png','max:8192']
+            'image' => ['file','mimes:jpeg,jpg,png','max:8192','nullable']
         ]);
 
         $prev_image = $user->image;
@@ -79,11 +94,12 @@ class ProfileController extends Controller
         'name' => $request->first_name . ' ' . $request->last_name,
         'first_name'=>$request->first_name,
         'last_name'=>$request->last_name,
-        'email'=>$request->email,
+        //'email'=>$request->email,
         'phone'=>$request->phone,
         'image' => $image['file_url'] ?? $prev_image
         ]);
-        return responseJson(true,'user updated','');
+        $user->refresh;
+        return responseJson(true,'user updated',$user);
     }
 
     public function updateImage(Request $request){

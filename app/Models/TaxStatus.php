@@ -12,6 +12,6 @@ class TaxStatus extends Model
 
     public function tax()
     {
-        return $this->belongsTo(TaxSetting::class,'tax_id')->where('user_id',authUser('sanctum')->id);
+        return $this->belongsTo(TaxSetting::class,'tax_id');
     }
 }

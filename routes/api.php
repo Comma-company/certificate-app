@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\StatusController;
 use App\Http\Controllers\Api\ContactController;
 use App\Http\Controllers\Api\CountryController;
 use App\Http\Controllers\Api\ProfileController;
+use App\Http\Controllers\Api\SettingController;
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\SignatureController;
@@ -58,6 +59,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('customers/create', [CustomerController::class, 'store'])->name('customers.store');
 
     Route::post('site-contact/create', [SiteContactController::class, 'store']);
+    Route::put('site-contact/{site_id}/update', [SiteContactController::class, 'update']);
 
     Route::post('contact/{customer_id}', [ContactController::class, 'store']);
     Route::post('contact/create', [ContactController::class, 'store']);
@@ -77,13 +79,15 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::put('profile/update', [ProfileController::class, 'update'])->middleware('auth:sanctum');
     Route::post('profile/update-image', [ProfileController::class, 'updateImage'])->middleware('auth:sanctum');
     Route::put('profile/update-password', [ProfileController::class, 'updatePassword'])->middleware('auth:sanctum');
-
+    Route::put('profile/change-address', [ProfileController::class, 'updateAddress']);
     //signature
     Route::apiResource('signature', SignatureController::class)->middleware('auth:sanctum');
 
     //settings
     Route::prefix('setting')->group(function () {
         Route::get('tax-setting', [TaxSettingController::class, 'index']);
+        Route::put('tax-setting/{id}/change-default', [TaxSettingController::class, 'changeDefault']);
+
     });
 
     //

@@ -200,7 +200,6 @@ class CertificateController extends Controller
         $user = authUser('sanctum');
         $data =  Certificate::where('user_id', $user->id)->findOrFail($id);
         $data->status_id = $request->status_id;
-        $data->type = 'certificate';
         $data->data = $request->data;
         $data->save();
 
