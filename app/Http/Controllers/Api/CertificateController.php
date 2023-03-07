@@ -34,7 +34,7 @@ class CertificateController extends Controller
             'user_id' => authUser('sanctum')->id,
         ])
             ->select('id', 'customer_id', 'status_id', 'form_id', 'created_at')
-            ->where('status_id', 4)
+            ->where('status_id', 3)
             ->with(['status', 'customer', 'notes', 'form'])
             ->latest()
             ->get();
@@ -47,7 +47,7 @@ class CertificateController extends Controller
     {
         $data =  Certificate::where('user_id', authUser('sanctum')->id)
             ->select('id', 'customer_id', 'form_id', 'status_id', 'created_at')
-            ->where('status_id', '!=', 4)
+            ->where('status_id', '!=', 3)
             ->with(['status', 'customer', 'form'])
             ->latest()
             ->get();
@@ -61,12 +61,12 @@ class CertificateController extends Controller
 
         $count_complete_cert = Certificate::where('user_id', authUser('sanctum')->id)
             ->select('id', 'customer_id', 'status_id', 'form_id', 'created_at')
-            ->where('status_id', 4)
+            ->where('status_id', 3)
             ->count();
 
         $count_uncompleted_cert =  Certificate::where('user_id', authUser('sanctum')->id)
             ->select('id', 'customer_id', 'form_id', 'status_id', 'created_at')
-            ->where('status_id', '!=', 4)
+            ->where('status_id', '!=', 3)
             ->count();
 
         $data = [
