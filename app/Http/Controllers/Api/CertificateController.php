@@ -34,7 +34,7 @@ class CertificateController extends Controller
             'user_id' => authUser('sanctum')->id,
         ])
             ->select('id', 'customer_id', 'status_id', 'form_id', 'created_at')
-            ->where('status_id', 3)
+            ->where('status_id', 3  )
             ->with(['status', 'customer', 'notes', 'form'])
             ->latest()
             ->get();

@@ -100,7 +100,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::post('create', [CertificateController::class, 'store'])->middleware('auth:sanctum');
         Route::post('{id}/notes/create', [CertificateController::class, 'storeNote'])->middleware('auth:sanctum');
         Route::post('{id}/update', [CertificateController::class, 'update'])->middleware('auth:sanctum');
-        Route::post('{id}/update-status', [CertificateFormController::class, 'updateStatus'])->middleware('auth:sanctum');
+        Route::post('{id}/update-status', [CertificateController::class, 'updateStatus'])->middleware('auth:sanctum');
 
         //Route::get('form-data/invoice', [FormDataController::class, 'invoice'])->middleware('auth:sanctum');
     });
