@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\FileableTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Certificate extends Model
 {
-    use HasFactory;
+    use HasFactory,FileableTrait;
 
     protected $fillable = ['form_id', 'data', 'customer_id','user_id','tax_id', 'status_id'];
 
@@ -40,7 +41,7 @@ class Certificate extends Model
     public function notes(){
         return $this->hasMany(CertificateNote::class,'certificate_id');
     }
-    
+
     public function customerSignature()
     {
         return $this->morphOne(File::class, 'file', 'model_type', 'model_id', 'id')
