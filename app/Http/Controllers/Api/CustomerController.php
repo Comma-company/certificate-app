@@ -27,8 +27,10 @@ class CustomerController extends Controller
             ->when($request->type, function ($query, $value) {
                 $query->where('type', 'LIKE', "%$value%");
             })
+            ->with('customerType')
             ->latest()
             ->get();
+          //  $data = new CustomerResource($customers);
         return responseJson(true, 'successfully', $customers);
     }
 
