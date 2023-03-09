@@ -76,6 +76,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     //profile
 
     Route::get('profile', [ProfileController::class, 'index'])->middleware('auth:sanctum');
+    Route::get('profile/other-data', [ProfileController::class, 'otherData'])->middleware('auth:sanctum');
     Route::put('profile/update', [ProfileController::class, 'update'])->middleware('auth:sanctum');
     Route::post('profile/update-image', [ProfileController::class, 'updateImage'])->middleware('auth:sanctum');
     Route::put('profile/update-password', [ProfileController::class, 'updatePassword'])->middleware('auth:sanctum');

@@ -47,6 +47,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'type'
     ];
 
+    public $appends = ['image_profile_url'];
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -133,13 +135,13 @@ class User extends Authenticatable implements MustVerifyEmail
     public function certificate()
     {
        return $this->hasMany(Certificate::class, 'user_id');
-       
+
     }
 
     public function getUrlAttribute(): string
     {
 
-        if (count($this->files) > 0) {
+        if ($this->files) {
             return $this->files()->first()->url;
         } else {
             return false;

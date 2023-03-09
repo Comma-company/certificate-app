@@ -20,12 +20,46 @@ class ProfileController extends Controller
     public function index()
     {
         $user_id = Auth::guard('sanctum')->user()->id;
-        $user = User::select('id','first_name','last_name','email','phone','image')
-        ->where('id',$user_id)
-        ->with('userEmail')
-        ->withCount('certificate')
-        ->first();
-        return responseJson(true,'user details',$user);
+        $user = User::select('id', 'first_name', 'last_name', 'email', 'phone', 'image', 'registered_address')
+            ->where('id', $user_id)
+            ->with('userEmail')
+            ->withCount('certificate')
+            ->first();
+        return responseJson(true, 'user details', $user);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function otherData()
+    {
+        $user_id = Auth::guard('sanctum')->user()->id;
+
+        $user = User::select(
+            'id',
+            'first_name',
+            'last_name',
+            'email',
+            'phone',
+            'image',
+            'registered_address',
+            'trading_name',
+            'company_name',
+            'registration_number',
+            'registered_address',
+            'number_street_name',
+            'city',
+            'postal_code',
+            'country_id',
+            'vat_number',
+            'has_vat',
+        )
+            ->where('id', $user_id)
+            ->with('country')
+            ->first();
+        return responseJson(true, 'user details', $user);
     }
 
     /**
@@ -50,7 +84,7 @@ class ProfileController extends Controller
             'country_id' => $request->country_id,
         ]);
 
-        return responseJson(true,'success update address',$user);
+        return responseJson(true, 'success update address', $user);
     }
 
 
@@ -75,14 +109,14 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $user_id = Auth::guard('sanctum')->user()->id;
-        $user = User::where('id',$user_id)->first();
+        $user = User::where('id', $user_id)->first();
 
         $request->validate([
-            'first_name'=>'required',
-            'last_name'=>'required',
-            'email'=>['required','email',Rule::unique('users')->ignore($user->id)],
-            'phone'=>'required',
-            'image' => ['file','mimes:jpeg,jpg,png','max:8192','nullable']
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => ['required', 'email', Rule::unique('users')->ignore($user->id)],
+            'phone' => 'required',
+            'image' => ['file', 'mimes:jpeg,jpg,png', 'max:8192', 'nullable']
         ]);
 
         $prev_image = $user->image;
@@ -91,23 +125,24 @@ class ProfileController extends Controller
             //file_url
         }
         $user->update([
-        'name' => $request->first_name . ' ' . $request->last_name,
-        'first_name'=>$request->first_name,
-        'last_name'=>$request->last_name,
-        //'email'=>$request->email,
-        'phone'=>$request->phone,
-        'image' => $image['file_url'] ?? $prev_image
+            'name' => $request->first_name . ' ' . $request->last_name,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            //'email'=>$request->email,
+            'phone' => $request->phone,
+            'image' => $image['file_url'] ?? $prev_image
         ]);
         $user->refresh;
-        return responseJson(true,'user updated',$user);
+        return responseJson(true, 'user updated', $user);
     }
 
-    public function updateImage(Request $request){
+    public function updateImage(Request $request)
+    {
         $user_id = Auth::guard('sanctum')->user()->id;
-        $user = User::where('id',$user_id)->first();
+        $user = User::where('id', $user_id)->first();
 
         $request->validate([
-            'image' => ['file','mimes:jpeg,jpg,png']
+            'image' => ['file', 'mimes:jpeg,jpg,png']
         ]);
 
         $prev_image = $user->image;
@@ -118,23 +153,23 @@ class ProfileController extends Controller
         $user->update([
             'image' => $image['file_url'] ?? $prev_image
         ]);
-        return responseJson(true,'success updated','');
+        return responseJson(true, 'success updated', '');
     }
 
-    public function updatePassword(Request $request){
+    public function updatePassword(Request $request)
+    {
         $request->validate([
-            'current_password' => ['required',new MatchPassword],
+            'current_password' => ['required', new MatchPassword],
             'password' => 'required|confirmed'
         ]);
 
         $user_id = Auth::guard('sanctum')->user()->id;
-        $user = User::where('id',$user_id)->first();
+        $user = User::where('id', $user_id)->first();
 
         $user->update([
             'password' => Hash::make($request->password),
-            ]);
-            return responseJson(true,'password updated','');
-
+        ]);
+        return responseJson(true, 'password updated', '');
     }
 
     /**
@@ -149,8 +184,8 @@ class ProfileController extends Controller
         $request->validate([
             'password' => ['required', new MatchPassword('sanctum')],
         ]);
-        $user = User::where('id',authUser('sanctum')->id)->first();
+        $user = User::where('id', authUser('sanctum')->id)->first();
         $user->delete();
-        return responseJson(true,'success deleted account',$user);
+        return responseJson(true, 'success deleted account', $user);
     }
 }
