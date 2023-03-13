@@ -46,7 +46,7 @@ Route::post('user-restore/{id}', [AuthController::class, 'restore'])
 Route::get('/business-type', [BusinessTypeController::class, 'index']);
 Route::get('/status', [StatusController::class, 'index']);
 
-Route::middleware(['auth:sanctum'])->group(function () {
+Route::middleware(['auth:sanctum','verified'])->group(function () {
     Route::post('complete-register', [RegisterController::class, 'completeRegister']);
     Route::get('countries', [CountryController::class, 'index'])->middleware('auth:sanctum');
     //
@@ -100,6 +100,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('{id}/view', [CertificateController::class, 'view'])->middleware('auth:sanctum');
         Route::post('create', [CertificateController::class, 'store'])->middleware('auth:sanctum');
         Route::post('{id}/notes/create', [CertificateController::class, 'storeNote'])->middleware('auth:sanctum');
+        Route::post('{note_id}/notes/update', [CertificateController::class, 'updateNote'])->middleware('auth:sanctum');
         Route::post('{id}/update', [CertificateController::class, 'update'])->middleware('auth:sanctum');
         Route::post('{id}/update-status', [CertificateController::class, 'updateStatus'])->middleware('auth:sanctum');
 

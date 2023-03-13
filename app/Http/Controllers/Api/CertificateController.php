@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\CertificateNote;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 
@@ -34,7 +35,7 @@ class CertificateController extends Controller
             'user_id' => authUser('sanctum')->id,
         ])
             ->select('id', 'customer_id', 'status_id', 'form_id', 'created_at')
-            ->where('status_id', 3  )
+            ->where('status_id', 3)
             ->with(['status', 'customer', 'notes', 'form'])
             ->latest()
             ->get();
@@ -155,7 +156,7 @@ class CertificateController extends Controller
             if ($request->note_files) {
                 foreach ($request->note_files as $key =>  $file) {
                     //dd($file);
-                    $file_name = strtotime(now()) . '_' . Str::random(6).'.'.$file->extension();
+                    $file_name = strtotime(now()) . '_' . Str::random(6) . '.' . $file->extension();
                     $files_name[$key]['name'] = $file_name;
 
                     if ($file->extension() == 'jpeg' || $file->extension() == 'jpg' || $file->extension() == 'png') {
@@ -182,7 +183,63 @@ class CertificateController extends Controller
             ];
             DB::commit();
             return responseJson(true, 'success created', $body);
+        } catch (\Throwable $th) {
+            DB::rollBack();
+            throw $th;
+        }
+    }
 
+    public function updateNote($noteId, Request $request)
+    {
+        $request->validate([
+            'title' => ['required'],
+            'body' => ['required'],
+        ]);
+        
+        $user = authUser('sanctum');
+        $note = CertificateNote::where('user_id', $user->id)->find($noteId);
+        if (!$note) {
+            return responseJson(false, 'note not found', [],404);
+        }
+        DB::beginTransaction();
+        try {
+            //code...
+            $note->update([
+                'title' => $request->title,
+                'body' => $request->body,
+            ]);
+
+            $files_name = [];
+            if ($request->note_files) {
+                foreach ($request->note_files as $key =>  $file) {
+                    //dd($file);
+                    $file_name = strtotime(now()) . '_' . Str::random(6) . '.' . $file->extension();
+                    $files_name[$key]['name'] = $file_name;
+
+                    if ($file->extension() == 'jpeg' || $file->extension() == 'jpg' || $file->extension() == 'png') {
+                        $image = uploadImageAs($file, $file_name, 'image');
+                        $file = $note->files()->create($image);
+
+                        $files_name[$key]['id'] = $file->id;
+                        $files_name[$key]['url'] = $file->url;
+                        $files_name[$key]['type'] = 'image';
+                    } elseif ($file->extension() == 'mp4' || $file->extension() == 'vlc') {
+
+                        $image = uploadImageAs($file, $file_name, 'video');
+                        $file = $note->files()->create($image);
+                        $files_name[$key]['id'] = $file->id;
+                        $files_name[$key]['url'] = $file->url;
+                        $files_name[$key]['type'] = 'video';
+                    }
+                }
+            }
+
+            $body = [
+                "note" => $note,
+                "files" => $files_name
+            ];
+            DB::commit();
+            return responseJson(true, 'success created', $body);
         } catch (\Throwable $th) {
             DB::rollBack();
             throw $th;
@@ -225,7 +282,7 @@ class CertificateController extends Controller
 
 
 
-    public function view($id,Request $request)
+    public function view($id, Request $request)
     {
         $user_id = Auth::guard('sanctum')->user()->id;
 
@@ -268,11 +325,11 @@ class CertificateController extends Controller
 
 
                 $user = User::where('id', $user_id)->first();
-                 $html = View::make($page_path, [
+                $html = View::make($page_path, [
                     'form_data' => $data,
                     'data' => $data->data,
                     'gaz_safety_data' => $gaz_safety_data,
-                   /*  'final_result' => $final_result,
+                    /*  'final_result' => $final_result,
                     'final_result_no' => $final_result_no,
                     'final_result_yes' => $final_result_yes,*/
                     'user' => $user,
