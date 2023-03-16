@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Storage;
 
 class CertificateController extends Controller
 {
@@ -198,11 +199,11 @@ class CertificateController extends Controller
             'title' => ['required'],
             'body' => ['required'],
         ]);
-        
+
         $user = authUser('sanctum');
         $note = CertificateNote::where('user_id', $user->id)->find($noteId);
         if (!$note) {
-            return responseJson(false, 'note not found', [],404);
+            return responseJson(false, 'note not found', [], 404);
         }
         DB::beginTransaction();
         try {
@@ -318,7 +319,7 @@ class CertificateController extends Controller
                 $gaz_safety_data =  data_get($data->data, 'gaz_safety_data');
                 $final_result = data_get($data->data, 'gaz_safety_data.*.final_result');
 
-              
+
 
                 $user = User::where('id', $user_id)->first();
                 $html = View::make($page_path, [
@@ -346,17 +347,18 @@ class CertificateController extends Controller
         }
     }
 
-    function getPdfForm($id) {
+    function getPdfForm($id)
+    {
         $user_id = Auth::guard('sanctum')->user()->id;
 
         define('_MPDF_TTFONTPATH', asset('admin/fonts/gnu-free-font'));
-    
+
         $defaultConfig = (new ConfigVariables())->getDefaults();
         $fontDirs = $defaultConfig['fontDir'];
-    
+
         $defaultFontConfig = (new FontVariables())->getDefaults();
         $fontData = $defaultFontConfig['fontdata'];
-    
+
         //   $invoice = new Mpdf(['orientation' => 'L']);
         $invoice =  new Mpdf([
             'orientation' => 'L',
@@ -373,45 +375,45 @@ class CertificateController extends Controller
             'format' => 'A4'
         ]);
         $invoice->shrink_tables_to_fit = 1;
-        
+
         $data = Certificate::where('user_id', $user_id)->find($id);
-    
+
         $formData =  data_get($data->data, 'gaz_safety_data.0');
-       
+
         $invoice->fontdata["fontawesome"] = [
             'R' => "fa-solid-900.tff",
             'I' => "fa-regular-400.ttf",
         ];
-        
-    
+
+
         $html = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_installation_Condition_report.index', [
-           'data' => $data,
-           'formData' => $formData
-            ])->render();
-    
+            'data' => $data,
+            'formData' => $formData
+        ])->render();
+
         $invoice->WriteHTML($html);
-    
+
         $invoice->AddPage('L');
         $page_2 = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_installation_Condition_report.page2', [
             'data' => $data,
             'formData' => $formData
         ])->render();
         $invoice->WriteHTML($page_2);
-    
+
         $invoice->AddPage('L');
         $page_3 = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_installation_Condition_report.page3', [
             'data' => $data,
             'formData' => $formData
         ])->render();
         $invoice->WriteHTML($page_3);
-    
+
         $invoice->AddPage('L');
         $page_4 = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_installation_Condition_report.page4', [
             'data' => $data,
             'formData' => $formData
         ])->render();
         $invoice->WriteHTML($page_4);
-    
+
         $invoice->AddPage('L');
         $page_5 = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_installation_Condition_report.page5', [
             'data' => $data,
@@ -423,9 +425,23 @@ class CertificateController extends Controller
             'data' => $data,
             'formData' => $formData
         ])->render();
+
         $invoice->WriteHTML($page_6);
-    
-        $invoice->Output('form.pdf','D');
+        $fileName = "form_$data->id.pdf";
+        $file_path =  public_path("uploads/certificate/" . $fileName);
+
+        if (Storage::disk('uploads')->exists('certificate/'.$fileName)) {
+            return responseJson(true, 'pdf file for certificate', [
+                'url' => asset('uploads/certificate/'.$fileName) 
+            ]);
+        } else {
+           
+            $invoice->Output($file_path, 'F');
+
+            return responseJson(true, 'pdf file for certificate', [
+                'url' => asset('uploads/certificate/'.$fileName) 
+            ]);
+        }
     }
 
     public function updateStatus($id, Request $request)
