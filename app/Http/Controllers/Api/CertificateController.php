@@ -322,15 +322,12 @@ class CertificateController extends Controller
 
 
                 $user = User::where('id', $user_id)->first();
-                $html = View::make($page_path, [
+               /*  $html = View::make($page_path, [
                     'form_data' => $data,
                     'data' => $data->data,
                     'formData' => $gaz_safety_data[0],
-                    /*  'final_result' => $final_result,
-                    'final_result_no' => $final_result_no,
-                    'final_result_yes' => $final_result_yes,*/
                     'user' => $user,
-                ])->render();
+                ])->render(); */
 
                 $form_data = collect($data);
                 $form_data->all();
@@ -429,21 +426,21 @@ class CertificateController extends Controller
         $invoice->WriteHTML($page_6);
         $fileName = "form_$data->id.pdf";
         $file_path =  public_path("uploads/certificate/" . $fileName);
-        
+
         Storage::disk('uploads')->makeDirectory('certificate');
         if (Storage::disk('uploads')->exists('certificate/'.$fileName)) {
-           
+
             Storage::disk('uploads')->delete('certificate/'.$fileName);
             $invoice->Output($file_path, 'F');
             return responseJson(true, 'pdf file for certificate', [
-                'url' => asset('uploads/certificate/'.$fileName) 
+                'url' => asset('uploads/certificate/'.$fileName)
             ]);
 
         }else {
-           
+
             $invoice->Output($file_path, 'F');
             return responseJson(true, 'pdf file for certificate', [
-                'url' => asset('uploads/certificate/'.$fileName) 
+                'url' => asset('uploads/certificate/'.$fileName)
             ]);
         }
     }
