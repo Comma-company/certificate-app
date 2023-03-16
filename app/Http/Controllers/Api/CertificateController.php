@@ -325,7 +325,7 @@ class CertificateController extends Controller
                 $html = View::make($page_path, [
                     'form_data' => $data,
                     'data' => $data->data,
-                    'gaz_safety_data' => $gaz_safety_data,
+                    'formData' => $gaz_safety_data[0],
                     /*  'final_result' => $final_result,
                     'final_result_no' => $final_result_no,
                     'final_result_yes' => $final_result_yes,*/
