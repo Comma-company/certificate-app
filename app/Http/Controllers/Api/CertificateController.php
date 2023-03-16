@@ -429,7 +429,7 @@ class CertificateController extends Controller
         $invoice->WriteHTML($page_6);
         $fileName = "form_$data->id.pdf";
         $file_path =  public_path("uploads/certificate/" . $fileName);
-
+        Storage::disk('uploads')->makeDirectory('certificate');
         if (Storage::disk('uploads')->exists('certificate/'.$fileName)) {
             return responseJson(true, 'pdf file for certificate', [
                 'url' => asset('uploads/certificate/'.$fileName) 
