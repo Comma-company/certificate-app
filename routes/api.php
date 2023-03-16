@@ -98,6 +98,7 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
         Route::get('uncompleted', [CertificateController::class, 'uncompletedCertificate'])->middleware('auth:sanctum');
         Route::get('count', [CertificateController::class, 'certificateCount'])->middleware('auth:sanctum');
         Route::get('{id}/view', [CertificateController::class, 'view'])->middleware('auth:sanctum');
+        Route::get('{id}/pdf', [CertificateController::class, 'getPdfForm'])->middleware('auth:sanctum');
         Route::post('create', [CertificateController::class, 'store'])->middleware('auth:sanctum');
         Route::post('{id}/notes/create', [CertificateController::class, 'storeNote'])->middleware('auth:sanctum');
         Route::post('{note_id}/notes/update', [CertificateController::class, 'updateNote'])->middleware('auth:sanctum');

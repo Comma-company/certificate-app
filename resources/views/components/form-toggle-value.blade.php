@@ -1,8 +1,10 @@
- @if (getKeyForm($key,$dataForm[0]) == 'True')
-     <img src="{{ asset('admin/forms/Domestic_Electrical_installation_Condition_report/Check_mark.svg') }}"
-         width="25px">
- @elseif (getKeyForm($key,$dataForm[0]) == 'False')
-     <img src="{{ asset('admin/forms/Domestic_Electrical_installation_Condition_report/cross.png') }}" width="25px">
+
+{{-- {{ print_r($dataForm ) }} --}}
+
+ @if (getvalue($key,$dataForm[0]) == 'True')
+ <img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">
+ @elseif (getvalue($key,$dataForm[0]) == 'False')
+ <b>false</b>
  @else
-     {{ $dataForm[0][$key] ?? 'N/A' }}
+    <b>{{ $dataForm[0][$key] ?? 'N/A' }}</b>
  @endif

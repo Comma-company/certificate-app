@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers\Api;
 
+use Mpdf\Mpdf;
 use App\Models\Form;
 use App\Models\User;
 use App\Models\Certificate;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Mpdf\Config\FontVariables;
+use App\Models\CertificateNote;
+use Mpdf\Config\ConfigVariables;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\CertificateNote;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 
@@ -315,14 +318,7 @@ class CertificateController extends Controller
                 $gaz_safety_data =  data_get($data->data, 'gaz_safety_data');
                 $final_result = data_get($data->data, 'gaz_safety_data.*.final_result');
 
-                /*    $final_result_no =   Arr::where($final_result, function ($value, $key) {
-                    return strtoupper($value) == strtoupper('no');
-                });
-
-                $final_result_yes =   Arr::where($final_result, function ($value, $key) {
-                    return strtoupper($value) == strtoupper('yes');
-                }); */
-
+              
 
                 $user = User::where('id', $user_id)->first();
                 $html = View::make($page_path, [
@@ -348,6 +344,88 @@ class CertificateController extends Controller
         } else {
             return responseJson(false, 'certificate Not found ', null, 404);
         }
+    }
+
+    function getPdfForm($id) {
+        $user_id = Auth::guard('sanctum')->user()->id;
+
+        define('_MPDF_TTFONTPATH', asset('admin/fonts/gnu-free-font'));
+    
+        $defaultConfig = (new ConfigVariables())->getDefaults();
+        $fontDirs = $defaultConfig['fontDir'];
+    
+        $defaultFontConfig = (new FontVariables())->getDefaults();
+        $fontData = $defaultFontConfig['fontdata'];
+    
+        //   $invoice = new Mpdf(['orientation' => 'L']);
+        $invoice =  new Mpdf([
+            'orientation' => 'L',
+            'fontDir' => array_merge($fontDirs, [
+                asset('admin/fonts/'),
+            ]),
+            'fontdata' => $fontData + [
+                'FreeSans' => [
+                    'R' => "FreeSans.ttf",
+                    'I' => "FreeSansOblique.ttf",
+                ],
+            ],
+            'default_font' => 'FreeSans',
+            'format' => 'A4'
+        ]);
+        $invoice->shrink_tables_to_fit = 1;
+        
+        $data = Certificate::where('user_id', $user_id)->find($id);
+    
+        $formData =  data_get($data->data, 'gaz_safety_data.0');
+       
+        $invoice->fontdata["fontawesome"] = [
+            'R' => "fa-solid-900.tff",
+            'I' => "fa-regular-400.ttf",
+        ];
+        
+    
+        $html = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_installation_Condition_report.index', [
+           'data' => $data,
+           'formData' => $formData
+            ])->render();
+    
+        $invoice->WriteHTML($html);
+    
+        $invoice->AddPage('L');
+        $page_2 = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_installation_Condition_report.page2', [
+            'data' => $data,
+            'formData' => $formData
+        ])->render();
+        $invoice->WriteHTML($page_2);
+    
+        $invoice->AddPage('L');
+        $page_3 = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_installation_Condition_report.page3', [
+            'data' => $data,
+            'formData' => $formData
+        ])->render();
+        $invoice->WriteHTML($page_3);
+    
+        $invoice->AddPage('L');
+        $page_4 = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_installation_Condition_report.page4', [
+            'data' => $data,
+            'formData' => $formData
+        ])->render();
+        $invoice->WriteHTML($page_4);
+    
+        $invoice->AddPage('L');
+        $page_5 = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_installation_Condition_report.page5', [
+            'data' => $data,
+            'formData' => $formData
+        ])->render();
+        $invoice->WriteHTML($page_5);
+        $invoice->AddPage('L');
+        $page_6 = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_installation_Condition_report.page6', [
+            'data' => $data,
+            'formData' => $formData
+        ])->render();
+        $invoice->WriteHTML($page_6);
+    
+        $invoice->Output('form.pdf','D');
     }
 
     public function updateStatus($id, Request $request)

@@ -53,6 +53,16 @@ if (!function_exists('uploadImageAs')) {
     }
 }
 
+if (!function_exists('getvalue')){
+    function getvalue($key, Array $array) {
+        if (!isset($array[$key])) {
+            return false;
+        }
+        return $array[$key];
+    }
+}
+
+
 if (!function_exists('authUser')) {
     function authUser($guard = 'web')
     {
