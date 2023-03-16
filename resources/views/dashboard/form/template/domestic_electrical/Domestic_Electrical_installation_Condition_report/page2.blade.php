@@ -73,16 +73,16 @@
           </td>
         </tr>
       </table>
-
+      
       <table
         width="100%"
         style="
           border: 1px solid #2998ff;
           padding: 0;
           border-collapse: collapse;
-          margin: 20px 0;
+          margin: 10px 0 0px;
         "
-      >
+        >
         <tr>
           <th bgcolor="#2998ff"  style="padding-top: 10px; padding-bottom: 10px;text-align:left" colspan="6">
             <div style="text-align: left; padding: 0 10px">
@@ -96,7 +96,7 @@
           </th>
         </tr>
         <tr style="border-bottom: 1px solid #2998ff">
-          <td style="text-align: left; padding: 0 10px;  border-bottom: 1px solid #2998ff; width:8%;">
+          <td style="text-align: left; padding: 0 10px;  border-bottom: 1px solid #2998ff;">
             <h5 style="color: #2998ff; font-weight: 900">CODES:</h5>
           </td>
           <td
@@ -147,13 +147,11 @@
               CODE C3 ‘Improvement Recommended’
             </p>
           </td>
-          <td
-            style="
+          <td style="
               text-align: center;
               padding: 0 5px;
               border: 1px solid #2998ff;
-            "
-          >
+            ">
             <p style="font-size: 10px; font-weight: 900">
               CODE FI ‘Further Investigation Required’
             </p>
@@ -173,14 +171,24 @@
             </p>
           </td>
         </tr>
+    </table>
+        <table width="100%"
+        style="
+          border: 1px solid #2998ff;
+          padding: 5px 15px;
+          border-collapse: collapse;
+          margin: 0px 0px 10px ;
+        ">
         <tr>
           <th style="text-align: center; padding: 0 10px">
             <p style="font-weight: 900; font-size: 12px">Item No</p>
           </th>
-          <th style="text-align: center; padding: 0 10px" colspan="3">
+          <th></th>
+          <th style="text-align: center; padding: 5px 10px" >
             <p style="font-weight: 900; font-size: 12px">Observation(s) </p>
 
           </th>
+          <th></th>
           <th style="text-align: center; padding: 0 10px">
             <p style="font-weight: 900; font-size: 12px">Code</p>
           </th>
@@ -189,179 +197,89 @@
 
           </th>
         </tr>
-        <tr>
-          <td style="text-align: center;padding-top:5px; padding-bottom:0px">
-            <span>(..........)<span/>
-          </td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px" colspan="3">
-            <span>
-              (................................................................................................................................................................................)
-            </span>
-          </td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>(.....................)</span>
-
-          </td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>(.....................)</span>
-          </td>
-        </tr>
+        @foreach ($formData['all_observation_data'] as $item)
 
         <tr>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>(..........)<span/>
+          <td style="text-align: center;padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:60px">
+            <span>{{ $item['id'] }}<span/>
           </td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px" colspan="3">
+          <td></td>
+          <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:600px">
             <span>
-              (................................................................................................................................................................................)
+             {{ $item['observation_details'] }}
             </span>
           </td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>(.....................)</span>
+          <td></td>
+          <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:150px">
+            <span>{{ $item['observation_code'] }}</span>
 
           </td>
           <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>(.....................)</span>
+            <span>.....................</span>
           </td>
         </tr>
+        @endforeach
         <tr>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>(..........)<span/>
-          </td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px" colspan="3">
-            <span>
-              (................................................................................................................................................................................)
-            </span>
-          </td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>(.....................)</span>
-
-          </td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>(.....................)</span>
-          </td>
-        </tr>
+            <td style="text-align: center;padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:60px">
+              <span><span/>
+            </td>
+            <td></td>
+            <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:600px">
+              <span>
+               
+              </span>
+            </td>
+            <td></td>
+            <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:150px">
+              <span></span>
+  
+            </td>
+            <td style="text-align: center; padding-top:5px; padding-bottom:0px">
+              <span>.....................</span>
+            </td>
+          </tr>
         <tr>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>(..........)<span/>
-          </td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px" colspan="3">
-            <span>
-              (................................................................................................................................................................................)
-            </span>
-          </td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>(.....................)</span>
-
-          </td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>(.....................)</span>
-          </td>
-        </tr>
+            <td style="text-align: center;padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:60px">
+              <span><span/>
+            </td>
+            <td></td>
+            <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:600px">
+              <span>
+               
+              </span>
+            </td>
+            <td></td>
+            <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:150px">
+              <span></span>
+  
+            </td>
+            <td style="text-align: center; padding-top:5px; padding-bottom:0px">
+              <span>.....................</span>
+            </td>
+          </tr>
         <tr>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>(..........)<span/>
-          </td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px" colspan="3">
-            <span>
-              (................................................................................................................................................................................)
-            </span>
-          </td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>(.....................)</span>
-
-          </td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>(.....................)</span>
-          </td>
-        </tr>
-        <tr>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>(..........)<span/>
-          </td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px" colspan="3">
-            <span>
-              (................................................................................................................................................................................)
-            </span>
-          </td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>(.....................)</span>
-
-          </td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>(.....................)</span>
-          </td>
-        </tr>
-        <tr>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>(..........)<span/>
-          </td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px" colspan="3">
-            <span>
-              (................................................................................................................................................................................)
-            </span>
-          </td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>(.....................)</span>
-
-          </td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>(.....................)</span>
-          </td>
-        </tr>
-        <tr>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>(..........)<span/>
-          </td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px" colspan="3">
-            <span>
-              (................................................................................................................................................................................)
-            </span>
-          </td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>(.....................)</span>
-
-          </td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>(.....................)</span>
-          </td>
-        </tr>
-        <tr>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>(..........)<span/>
-          </td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px" colspan="3">
-            <span>
-              (................................................................................................................................................................................)
-            </span>
-          </td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>(.....................)</span>
-
-          </td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>(.....................)</span>
-          </td>
-        </tr>
-        <tr>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>(..........)<span/>
-          </td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px" colspan="3">
-            <span>
-              (................................................................................................................................................................................)
-            </span>
-          </td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>(.....................)</span>
-
-          </td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>(.....................)</span>
-          </td>
-        </tr>
-
-
+            <td style="text-align: center;padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:60px">
+              <span><span/>
+            </td>
+            <td></td>
+            <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:600px">
+              <span>
+               
+              </span>
+            </td>
+            <td></td>
+            <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:150px">
+              <span></span>
+  
+            </td>
+            <td style="text-align: center; padding-top:5px; padding-bottom:0px">
+              <span>.....................</span>
+            </td>
+          </tr>
+        
+        
+        
+    
         <tr>
           <td
             colspan="2"
