@@ -167,9 +167,9 @@ class CertificateController extends Controller
                         $image = uploadImageAs($file, $file_name, 'image');
                         $file = $note->files()->create($image);
 
-                        $files_name[$key]['id'] = $file->id;
-                        $files_name[$key]['url'] = $file->url;
-                        $files_name[$key]['type'] = 'image';
+                            $files_name[$key]['id'] = $file->id;
+                            $files_name[$key]['url'] = $file->url;
+                            $files_name[$key]['type'] = 'image';
                     } elseif ($file->extension() == 'mp4' || $file->extension() == 'vlc') {
 
                         $image = uploadImageAs($file, $file_name, 'video');
