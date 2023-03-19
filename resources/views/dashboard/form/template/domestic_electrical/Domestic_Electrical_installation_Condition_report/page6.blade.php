@@ -55,10 +55,10 @@
     >
 
 
-        <div style="align-items: center; border: 1px solid #2a98fc; padding: 0px">
+        <div style="align-items: center; border: 1px solid #00935f; padding: 0px">
             <div
                 style="color: #FFFFFF;
-                background-color: #2a98fc;
+                background-color: #00935f;
                 font-weight: bold;
                 float: left;
                 width: 45%;
@@ -113,36 +113,36 @@
         <table class="table-text-center" style="border-collapse: collapse; text-align: center;" id="last-table">
             <thead>
 
-                <tr  style=" background: rgba(41, 152, 255, 0.118);">
+                <tr  style=" background: rgba(0, 148, 96, 0.404);">
                     <td  rowspan="3"
-                        style="writing-mode: vertical-rl; transform: rotate(0deg); border: 1px solid #2a98fc;">
+                        style="writing-mode: vertical-rl; transform: rotate(0deg); border: 1px solid #00935f;">
                         <div style="rotate: 90deg">Circuit Reference</div>
                     </td>
-                    <td rowspan="3" style="border: 1px solid #2a98fc;">
+                    <td rowspan="3" style="border: 1px solid #00935f;">
                         <div>Circuit designation</div>
                         <!-- <div>* Where this consumer unit is remote from the origin of the installation, record details of the circuit supplying this consumer unit on the first line.</div> -->
                     </td>
                     <td rowspan="3"
-                        style="writing-mode: vertical-rl; transform: rotate(0deg); border: 1px solid #2a98fc;">
+                        style="writing-mode: vertical-rl; transform: rotate(0deg); border: 1px solid #00935f;">
                         Type of wiring (see Codes)</td>
                     <td rowspan="3"
-                        style="writing-mode: vertical-rl; transform: rotate(0deg); border: 1px solid #2a98fc;">
+                        style="writing-mode: vertical-rl; transform: rotate(0deg); border: 1px solid #00935f;">
                         Reference Method  (BS 7671)</td>
                     <td rowspan="3"
-                        style="writing-mode: vertical-rl; transform: rotate(0deg); border: 1px solid #2a98fc;">
+                        style="writing-mode: vertical-rl; transform: rotate(0deg); border: 1px solid #00935f;">
                         Number of points  served</td>
-                    <td colspan="2" style="border: 1px solid #2a98fc;">Circuit conductor csa</td>
+                    <td colspan="2" style="border: 1px solid #00935f;">Circuit conductor csa</td>
                     <td rowspan="3"
-                        style="writing-mode: vertical-lr;  border: 1px solid #2a98fc;">
+                        style="writing-mode: vertical-lr;  border: 1px solid #00935f;">
                         <p style="margin: 0;">Max disconnection </p>
                         <p style="margin: 0;">time (BS 7671)</p>
                     </td>
-                    <td colspan="5" style="border: 1px solid #2a98fc;">Overcurrent Protective device</td>
-                    <td colspan="4" style="position: relative; border: 1px solid #2a98fc;">
+                    <td colspan="5" style="border: 1px solid #00935f;">Overcurrent Protective device</td>
+                    <td colspan="4" style="position: relative; border: 1px solid #00935f;">
                         <div>RCD</div>
 
                     </td>
-                    <td rowspan="3" style="position: relative; border: 1px solid #2a98fc;">
+                    <td rowspan="3" style="position: relative; border: 1px solid #00935f;">
                         <div style="writing-mode: vertical-lr;">
                             <p style="margin: 0;">Maximum permitted Zs </p>
                             <p style="margin: 0;">for installed </p>
@@ -154,55 +154,55 @@
                             (Ω)
                         </div>
                     </td>
-                    <td colspan="5" style="border: 1px solid #2a98fc;">Circuit impedances (Ω)
+                    <td colspan="5" style="border: 1px solid #00935f;">Circuit impedances (Ω)
                     </td>
-                    <td colspan="3" style="border: 1px solid #2a98fc;">Insulation resistance</td>
+                    <td colspan="3" style="border: 1px solid #00935f;">Insulation resistance</td>
                     <td rowspan="3"
-                        style="writing-mode: vertical-rl; transform: rotate(0deg); border: 1px solid #2a98fc;">
+                        style="writing-mode: vertical-rl; transform: rotate(0deg); border: 1px solid #00935f;">
                         Polarity</td>
-                    <td rowspan="3" style="position: relative; border: 1px solid #2a98fc;">
+                    <td rowspan="3" style="position: relative; border: 1px solid #00935f;">
                         <div style="writing-mode: vertical-rl; transform: rotate(0deg);">Max. measured
                             earth <br> fault loop impedance, Zs</div>
                         <div
                             style="position: absolute; bottom: 5px; left: 50%; transform: translateX(-50%);">
                             (Ω)</div>
                     </td>
-                    <td  rowspan="3"  style="border: 1px solid #2a98fc;">
+                    <td  rowspan="3"  style="border: 1px solid #00935f;">
                         RCD
                         operating
                         time
                     </td>
 
-                    <td  colspan="2" style="position: relative; border: 1px solid #2a98fc;">
+                    <td  colspan="2" style="position: relative; border: 1px solid #00935f;">
                         <div>Test buttons</div>
 
                     </td>
                 </tr>
 
-                <tr  style=" background: rgba(41, 152, 255, 0.118);">
+                <tr  style=" background: rgba(0, 148, 96, 0.404);">
                     <td rowspan="2"
-                        style="position: relative; border: 1px solid #2a98fc;">
+                        style="position: relative; border: 1px solid #00935f;">
                         <div
                             >
                             Live (mm2)</div>
                     </td>
                     <td rowspan="2"
-                        style="position: relative;  border: 1px solid #2a98fc;">
+                        style="position: relative;  border: 1px solid #00935f;">
                         <div
                             >
                             Cpc (mm2)</div>
                     </td>
                     <td rowspan="2"
-                        style="writing-mode: vertical-rl; transform: rotate(0deg); border: 1px solid #2a98fc;">
+                        style="writing-mode: vertical-rl; transform: rotate(0deg); border: 1px solid #00935f;">
                     Type BS (EN)</td>
-                    <td rowspan="2" style="border: 1px solid #2a98fc;">Type</td>
-                    <td rowspan="2" style="position: relative; border: 1px solid #2a98fc;">
+                    <td rowspan="2" style="border: 1px solid #00935f;">Type</td>
+                    <td rowspan="2" style="position: relative; border: 1px solid #00935f;">
                         <div style="writing-mode: vertical-rl; transform: rotate(0deg);">Rating</div>
                         <div
                             style="position: absolute; bottom: 5px; left: 50%; transform: translateX(-50%);">
                             (A)</div>
                     </td>
-                    <td rowspan="2" style="position: relative;border: 1px solid #2a98fc;">
+                    <td rowspan="2" style="position: relative;border: 1px solid #00935f;">
                         <div style="writing-mode: vertical-rl; transform: rotate(0deg);">
                             Breaking
                             <br> capacity
@@ -212,71 +212,71 @@
                             (kA)
                         </div>
                     </td>
-                    <td rowspan="2" style="position: relative;border: 1px solid #2a98fc;">
+                    <td rowspan="2" style="position: relative;border: 1px solid #00935f;">
                         <div style="writing-mode: vertical-rl; transform: rotate(0deg);">
                             Max permitted zs (Ω)
                         </div>
 
                     </td>
 
-                    <td rowspan="2" style="position: relative;border: 1px solid #2a98fc;">
+                    <td rowspan="2" style="position: relative;border: 1px solid #00935f;">
                         <div style="writing-mode: vertical-rl; transform: rotate(0deg);">
                             Type BS (EN)
                         </div>
 
                     </td>
-                    <td rowspan="2" style="position: relative;border: 1px solid #2a98fc;">
+                    <td rowspan="2" style="position: relative;border: 1px solid #00935f;">
                         <div style="writing-mode: vertical-rl; transform: rotate(0deg);">
                             Type
                         </div>
 
                     </td>
-                    <td rowspan="2" style="position: relative;border: 1px solid #2a98fc;">
+                    <td rowspan="2" style="position: relative;border: 1px solid #00935f;">
                         <div style="writing-mode: vertical-rl; transform: rotate(0deg);">
                             I∆n (mA)
                         </div>
 
                     </td>
-                    <td rowspan="2" style="position: relative;border: 1px solid #2a98fc;">
+                    <td rowspan="2" style="position: relative;border: 1px solid #00935f;">
                         <div style="writing-mode: vertical-rl; transform: rotate(0deg);">
                             Rating (mA)
                         </div>
 
                     </td>
 
-                    <td colspan="3" style="border: 1px solid #2a98fc;">Ring final circuits only
+                    <td colspan="3" style="border: 1px solid #00935f;">Ring final circuits only
                         (measured end to end)</td>
-                    <td colspan="2" style="border: 1px solid #2a98fc;">All circuits (complete at
+                    <td colspan="2" style="border: 1px solid #00935f;">All circuits (complete at
                         least one column)</td>
-                    <td rowspan="2" style="position: relative; border: 1px solid #2a98fc;">
+                    <td rowspan="2" style="position: relative; border: 1px solid #00935f;">
                         <div>Live / Live</div>
                         <div
                             style="position: absolute; bottom: 5px; left: 50%; transform: translateX(-50%);">
                             (MΩ)</div>
                     </td>
-                    <td rowspan="2" style="position: relative; border: 1px solid #2a98fc;">
+                    <td rowspan="2" style="position: relative; border: 1px solid #00935f;">
                         <div>Live / Earth</div>
                         <div
                             style="position: absolute; bottom: 5px; left: 50%; transform: translateX(-50%);">
                             (MΩ)</div>
                     </td>
 
-                    <td rowspan="2" style="position: relative; border: 1px solid #2a98fc;">
+                    <td rowspan="2" style="position: relative; border: 1px solid #00935f;">
                         <div>Test Voltage DC</div>
                         <div
                             style="position: absolute; bottom: 5px; left: 50%; transform: translateX(-50%);">
                             (MΩ)</div>
                     </td>
-                    {{-- <td rowspan="2" style="border: 1px solid #2a98fc;">Disconnection time (ms)</td> --}}
-                    <td rowspan="2" style="border: 1px solid #2a98fc;">RCD</td>
-                    <td rowspan="2" style="border: 1px solid #2a98fc;">AFDD</td>
+                    {{-- <td rowspan="2" style="border: 1px solid #00935f;">Disconnection time (ms)</td> --}}
+                    <td rowspan="2" style="border: 1px solid #00935f;">RCD</td>
+                    <td rowspan="2" style="border: 1px solid #00935f;">AFDD</td>
                 </tr>
-                <tr style=" background: rgba(41, 152, 255, 0.118);">
-                    <td style="border: 1px solid #2a98fc;">(Line) r1</td>
-                    <td style="border: 1px solid #2a98fc;">(Natural) rn</td>
-                    <td style="border: 1px solid #2a98fc;">(Cps) r2</td>
-                    <td style="width: 0px; border: 1px solid #2a98fc;">(R1 + R2)</td>
-                    <td style="width: 0px; border: 1px solid #2a98fc;">R2</td>
+                <tr style=" background: rgba(0, 148, 96, 0.404));">
+                    <td style="border: 1px solid #00935f;">(Line) r1</td>
+                    <td style="border: 1px solid #00935f;">(Natural) rn</td>
+                    <td style="border: 1px solid #00935f;">(Cps) r2</td>
+                    <td style="width: 0px; border: 1px solid #00935f;">(R1 + R2)</td>
+                    <td style="width: 0px; border: 1px solid #00935f;">R2</td>
 
                 </tr>
             </thead>
@@ -284,237 +284,237 @@
             <tbody>
                 @foreach ($details['list_circuits_data'] as $listData)
                 <tr>
-                    <td style="border: 1px solid #2a98fc;">{{ getvalue('circuit_reference_a',$listData) }}</td>
-                    <td style="border: 1px solid #2a98fc;">{{ getvalue('circuit_designation_a',$listData) }}</td>
-                    <td style="border: 1px solid #2a98fc;">{{ getvalue('type_of_wiring_a',$listData) }}</td>
-                    <td style="border: 1px solid #2a98fc;">{{ getvalue('reference_method_a',$listData) }}</td>
-                    <td style="border: 1px solid #2a98fc;">{{ getvalue('number_of_point_a',$listData) }}</td>
-                    <td style="border: 1px solid #2a98fc;">{{ getvalue('live_b',$listData) }}</td>
-                    <td style="border: 1px solid #2a98fc;">{{ getvalue('cpc_b',$listData) }}</td>
-                    <td style="border: 1px solid #2a98fc;">{{ getvalue('max_disconnection_time_b',$listData) }}</td>
-                    <td style="border: 1px solid #2a98fc;">{{ getvalue('type_bs_c',$listData) }}</td>
-                    <td style="border: 1px solid #2a98fc;">{{ getvalue('type_c',$listData) }}</td>
-                    <td style="border: 1px solid #2a98fc;">{{ getvalue('rating_c',$listData) }}</td>
-                    <td style="border: 1px solid #2a98fc;">{{ getvalue('short_circuit_c',$listData) }}</td>
-                    <td style="border: 1px solid #2a98fc;">{{ getvalue('max_permitted_c',$listData) }}</td>
-                    <td style="border: 1px solid #2a98fc;">{{ getvalue('type_bs_d',$listData) }}</td>
-                    <td style="border: 1px solid #2a98fc;">{{ getvalue('type_d',$listData) }}</td>
-                    <td style="border: 1px solid #2a98fc;">{{ getvalue('rcd_d',$listData) }}</td>
-                    <td style="border: 1px solid #2a98fc;">{{ getvalue('rating_d',$listData) }}</td>
-                    <td style="border: 1px solid #2a98fc;">-</td>
-                    <td style="border: 1px solid #2a98fc;">{{ getvalue('r1_e',$listData) }}</td>
-                    <td style="border: 1px solid #2a98fc;">{{ getvalue('rn_e',$listData) }}</td>
-                    <td style="border: 1px solid #2a98fc;">{{ getvalue('r2_e',$listData) }}</td>
-                    <td style="border: 1px solid #2a98fc;">{{ getvalue('r1_r2_f',$listData) }}</td>
-                    <td style="border: 1px solid #2a98fc;">{{ getvalue('r2_f',$listData) }}</td>
-                    <td style="border: 1px solid #2a98fc;">{{ getvalue('live_live_f',$listData) }}</td>
-                    <td style="border: 1px solid #2a98fc;">{{ getvalue('live_earth_f',$listData) }}</td>
-                    <td style="border: 1px solid #2a98fc;">{{ getvalue('ir_test_voltage_f',$listData) }}</td>
-                   {{--  <td style="border: 1px solid #2a98fc;">-</td> --}}
-                    <td style="border: 1px solid #2a98fc;">{{ getvalue('polarity_g',$listData) }}</td>
-                    <td style="border: 1px solid #2a98fc;">{{ getvalue('maximum_measured_h',$listData) }}</td>
-                    <td style="border: 1px solid #2a98fc;">-</td>
-                    <td style="border: 1px solid #2a98fc;">{{ getvalue('test_button_i',$listData) }}</td>
-                    <td style="border: 1px solid #2a98fc;">{{ getvalue('testButton_j',$listData) }}</td>
+                    <td style="border: 1px solid #00935f;">{{ getvalue('circuit_reference_a',$listData) }}</td>
+                    <td style="border: 1px solid #00935f;">{{ getvalue('circuit_designation_a',$listData) }}</td>
+                    <td style="border: 1px solid #00935f;">{{ getvalue('type_of_wiring_a',$listData) }}</td>
+                    <td style="border: 1px solid #00935f;">{{ getvalue('reference_method_a',$listData) }}</td>
+                    <td style="border: 1px solid #00935f;">{{ getvalue('number_of_point_a',$listData) }}</td>
+                    <td style="border: 1px solid #00935f;">{{ getvalue('live_b',$listData) }}</td>
+                    <td style="border: 1px solid #00935f;">{{ getvalue('cpc_b',$listData) }}</td>
+                    <td style="border: 1px solid #00935f;">{{ getvalue('max_disconnection_time_b',$listData) }}</td>
+                    <td style="border: 1px solid #00935f;">{{ getvalue('type_bs_c',$listData) }}</td>
+                    <td style="border: 1px solid #00935f;">{{ getvalue('type_c',$listData) }}</td>
+                    <td style="border: 1px solid #00935f;">{{ getvalue('rating_c',$listData) }}</td>
+                    <td style="border: 1px solid #00935f;">{{ getvalue('short_circuit_c',$listData) }}</td>
+                    <td style="border: 1px solid #00935f;">{{ getvalue('max_permitted_c',$listData) }}</td>
+                    <td style="border: 1px solid #00935f;">{{ getvalue('type_bs_d',$listData) }}</td>
+                    <td style="border: 1px solid #00935f;">{{ getvalue('type_d',$listData) }}</td>
+                    <td style="border: 1px solid #00935f;">{{ getvalue('rcd_d',$listData) }}</td>
+                    <td style="border: 1px solid #00935f;">{{ getvalue('rating_d',$listData) }}</td>
+                    <td style="border: 1px solid #00935f;">-</td>
+                    <td style="border: 1px solid #00935f;">{{ getvalue('r1_e',$listData) }}</td>
+                    <td style="border: 1px solid #00935f;">{{ getvalue('rn_e',$listData) }}</td>
+                    <td style="border: 1px solid #00935f;">{{ getvalue('r2_e',$listData) }}</td>
+                    <td style="border: 1px solid #00935f;">{{ getvalue('r1_r2_f',$listData) }}</td>
+                    <td style="border: 1px solid #00935f;">{{ getvalue('r2_f',$listData) }}</td>
+                    <td style="border: 1px solid #00935f;">{{ getvalue('live_live_f',$listData) }}</td>
+                    <td style="border: 1px solid #00935f;">{{ getvalue('live_earth_f',$listData) }}</td>
+                    <td style="border: 1px solid #00935f;">{{ getvalue('ir_test_voltage_f',$listData) }}</td>
+                   {{--  <td style="border: 1px solid #00935f;">-</td> --}}
+                    <td style="border: 1px solid #00935f;">{{ getvalue('polarity_g',$listData) }}</td>
+                    <td style="border: 1px solid #00935f;">{{ getvalue('maximum_measured_h',$listData) }}</td>
+                    <td style="border: 1px solid #00935f;">-</td>
+                    <td style="border: 1px solid #00935f;">{{ getvalue('test_button_i',$listData) }}</td>
+                    <td style="border: 1px solid #00935f;">{{ getvalue('testButton_j',$listData) }}</td>
                 </tr>
                 @endforeach
                 <tr>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
                 </tr>
                 <tr>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
                 </tr>
                 <tr>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
                 </tr>
                 <tr>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
                 </tr>
                 <tr>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
                 </tr>
                 <tr>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
-                    <td style="border: 1px solid #2a98fc;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
+                    <td style="border: 1px solid #00935f;"></td>
                 </tr>
             </tbody>
         </table>
