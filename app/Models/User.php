@@ -154,7 +154,7 @@ class User extends Authenticatable implements MustVerifyEmail
         } else if ($this->url) {
             return asset('uploads/' . $this->url);
         } else {
-            return asset('admin/img/avatar.png');
+            return asset('assets/img/avatar.png');
         }
     }
 
