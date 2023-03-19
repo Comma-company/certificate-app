@@ -32,7 +32,7 @@
     >
   
 
-      <div  style="background:#2998ff;padding-top: 10px; padding-bottom: 10px;text-align:left">
+      <div  style="background:#00935f;padding-top: 10px; padding-bottom: 10px;text-align:left">
         <div style="text-align: start; padding: 0 10px; font-family: FreeSans;">
             <h3
                 style="color: #fff; font-weight: bold; padding: 0px 5px; margin: 0;font-family: FreeSans;"
@@ -41,7 +41,7 @@
             </h3>
         </div>
       </div>
-      <div style="border: 1px solid #2998ff;padding: 0;border-collapse: collapse;margin-bottom: 10px;">
+      <div style="border: 1px solid #00935f;padding: 0;border-collapse: collapse;margin-bottom: 10px;">
 
           <div style="text-align: left; padding-left: 5px;float: left;width: 33%;">
             <p style="margin: 0; font-weight: bold; font-size:9.5px;padding: 3px 0px">
@@ -74,7 +74,7 @@
                 </tr>
             </table>
 
-            <hr style="color: #2998ff; font-weight: bold;padding: 0px"/>
+            <hr style="color: #00935f; font-weight: bold;padding: 0px"/>
 
             <ol style="margin: 0; font-weight: bold; width: 500px; font-size: 10px; padding-left:15px; "  start="2">
                 <li>Presence of adequate arrangements for parallel or switched
@@ -111,7 +111,7 @@
              </tr>
            </table>
 
-            <hr style="color: #2998ff; font-weight: bold" />
+            <hr style="color: #00935f; font-weight: bold" />
             <ol style="margin: 0; font-weight: bold; width: 500px; font-size: 10px; padding-left:15px; "  start="3">
                 <li> Automatic disconnection of supply
                 </li>
@@ -222,7 +222,7 @@
 
           </div>
 
-          <div style="text-align: left;padding: 0 0 0 10px;border: 1px solid #2998ff;float: left;width: 32.3%;">
+          <div style="text-align: left;padding: 0 0 0 10px;border: 1px solid #00935f;float: left;width: 32.3%;">
             <table width="100%">
                 <tr>
                     <td style="font-weight: bold">
@@ -243,7 +243,7 @@
                 </tr>
             </table>
 
-            <hr style="color: #2998ff; font-weight: bold" />
+            <hr style="color: #00935f; font-weight: bold" />
 
             <ol style="margin: 0; font-weight: bold; width: 500px; font-size: 10px; padding-left:15px; "  start="5">
                 <li>Distribution equipment</li>
@@ -429,7 +429,7 @@
 
           </div>
 
-          <div style="text-align: left;padding: 0 0 0 10px;border: 1px solid #2998ff;float: left;width: 31.7%;">
+          <div style="text-align: left;padding: 0 0 0 10px;border: 1px solid #00935f;float: left;width: 31.7%;">
             <table>
                 <tr>
                     <td>
@@ -456,7 +456,7 @@
                    </td>
                 </tr>
             </table>
-            <hr style="color: #2998ff; font-weight: bold"/>
+            <hr style="color: #00935f; font-weight: bold"/>
 
             <ol style="margin: 0; font-weight: bold; width: 500px; font-size: 10px; padding-left:15px; "  start="6">
                 <li>Distribution / final circuits</li>
@@ -644,7 +644,7 @@
           </td>
         </tr>
       </table>
-      
+
     </div>
   </body>
 </html>

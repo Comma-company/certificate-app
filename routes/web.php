@@ -1,11 +1,6 @@
 <?php
 
-use Mpdf\Mpdf;
-use Mpdf\Config\FontVariables;
-use Mpdf\Config\ConfigVariables;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Models\Certificate;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,11 +13,12 @@ use App\Models\Certificate;
 |
 */
 
-//Route::get('/', [AuthenticatedSessionController::class, 'create']);
-//Route::get('/', []);
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

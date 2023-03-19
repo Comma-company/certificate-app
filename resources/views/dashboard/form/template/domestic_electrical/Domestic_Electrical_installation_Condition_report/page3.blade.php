@@ -37,14 +37,14 @@
         font-family: 'FreeSans';
       "
     >
-     
+
 
   <!-- part 7 -->
   <div width="100%"
-  style="border: 1px solid #2998ff; padding: 0; border-collapse: collapse; margin-bottom: 6px;"
+  style="border: 1px solid #00935f; padding: 0; border-collapse: collapse; margin-bottom: 6px;"
   >
 
-    <div  style="background:#2998ff;padding-top: 10px; padding-bottom: 10px;text-align:left" colspan="3">
+    <div  style="background:#00935f;padding-top: 10px; padding-bottom: 10px;text-align:left" colspan="3">
       <div style="text-align: start; padding: 0 10px">
         <h3
           style="color: #fff; font-weight: bold; padding: 0px 5px; margin: 0"
@@ -145,7 +145,7 @@
 
 
       {{-- 8 --}}
-      <div  style="background:#2998ff;padding-top: 10px; padding-bottom: 10px;text-align:left">
+      <div  style="background:#00935f;padding-top: 10px; padding-bottom: 10px;text-align:left">
         <div style="text-align: start; padding: 0 10px">
           <h3
             style="color: #fff; font-weight: bold; padding: 0px 5px; margin: 0"
@@ -157,7 +157,7 @@
 
       <div
         width="100%"
-        style="border: 1px solid #2998ff; padding: 0; border-collapse: collapse; margin-bottom: 6x;"
+        style="border: 1px solid #00935f; padding: 0; border-collapse: collapse; margin-bottom: 6x;"
         >
         <div style="text-align: left; padding: 5px 5px;width: 30%;float:left;" >
             <p style="font-size: 11px; font-weight: bold;margin: 5px 0px 0px">System type and earthing arrangements</p>
@@ -200,7 +200,7 @@
 
         </div>
 
-        <div style="text-align: start; padding: 5px 5px; border-right: 1px solid #2998ff; border-left: 1px solid #2998ff;width: 32%;float:left;" >
+        <div style="text-align: start; padding: 5px 5px; border-right: 1px solid #00935f; border-left: 1px solid #00935f;width: 32%;float:left;" >
            <p style="font-size: 11px; font-weight: bold;margin: 5px 0px 0px;">Number and type of live conductors</p>
            <table width="100%">
             <tr >
@@ -312,7 +312,7 @@
         </div>
     </div>
 
-     <div  style="background:#2998ff;padding-top: 10px; padding-bottom: 10px;text-align:left">
+     <div  style="background:#00935f;padding-top: 10px; padding-bottom: 10px;text-align:left">
         <div style="text-align: start; padding: 0 10px; font-family: FreeSans;">
             <h3
                 style="color: #fff; font-weight: bold; padding: 0px 5px; margin: 0;font-family: FreeSans;"
@@ -322,9 +322,9 @@
         </div>
       </div>
 
-<div width="100%" style="border: 1px solid #2998ff; padding: 0; border-collapse: collapse;">
+<div width="100%" style="border: 1px solid #00935f; padding: 0; border-collapse: collapse;">
 
-      <div style="text-align: left; padding: 0 5px 10px; border-right: 1px solid #2998ff; width:20%;float:left;" >
+      <div style="text-align: left; padding: 0 5px 10px; border-right: 1px solid #00935f; width:20%;float:left;" >
           <p style="font-size: 10px; font-weight: bold;margin:0px; padding:0px 5px">Means of Earthing</p>
             <table>
                 <tr>
@@ -358,7 +358,7 @@
             </table>
 
         </div>
-      <div style="text-align: start; padding: 0 5px 10px;border-right: 1px solid #2998ff; width:18%;float:left;" >
+      <div style="text-align: start; padding: 0 5px 10px;border-right: 1px solid #00935f; width:18%;float:left;" >
 
           <p style="font-size: 10px; font-weight: bold;word-spacing: -1px;margin:0px; padding:5px 0px 0xp">
             Main protective conductors
@@ -398,7 +398,7 @@
                 </tr>
             </table>
       </div>
-      <div style="text-align: start; padding: 0 5px 10px; border-right: 1px solid #2998ff; width:18%;float:left;" >
+      <div style="text-align: start; padding: 0 5px 10px; border-right: 1px solid #00935f; width:18%;float:left;" >
          <p style="font-size: 10px; font-weight: bold;word-spacing: -1px;margin:0px; padding:5px 0px 0xp">
             Main protective bonding connections
           </p>

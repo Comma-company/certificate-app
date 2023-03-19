@@ -28,14 +28,14 @@
       }
       .codes_wiring{
         font-size: 10px;
-        border: 1px solid #2998ff;
+        border: 1px solid #00935f;
       }
       .codes_wiring td{
         text-align: left;
-        border-left: 1px solid #2998ff;
+        border-left: 1px solid #00935f;
       }
       #last-table thead{
-        background: #2998ff1e;
+        background: #00935f1e;
       }
       #last-table tbody td{
         padding: 10px 2px;
@@ -520,21 +520,21 @@
         </table>
 
         <!-- ----- -->
-        <div style="border: 1px solid #2998ff;">
+        <div style="border: 1px solid #00935f;">
             <table style="width: 100%;">
                 <tr>
                     <td style="width: 35%;">
                         <table style="width:100%;">
                             <tr>
                                 <td style="width: 42%; text-align: left;">
-                                    <h4 style="margin: 0; color: #2998ff; word-spacing:-1px;"> DISTRIBUTION BOARD (DB) DETAILS</h4>
+                                    <h4 style="margin: 0; color: #00935f; word-spacing:-1px;"> DISTRIBUTION BOARD (DB) DETAILS</h4>
                                 </td>
                                 <td style="width: 15%; text-align: left;">DB designation:</td>
                                 <td style="width: 25%;border-bottom: 2px dotted #000;text-align: left;">N/a</td>
                             </tr>
                             <tr>
                                 <td style="text-align: left;">
-                                    <p style="margin: 0; color: #2998ff;font-weight: bold;">(to be completed in every case)</p>
+                                    <p style="margin: 0; color: #00935f;font-weight: bold;">(to be completed in every case)</p>
                                 </td>
                                 <td style="text-align: left;">Location of DB:</td>
                                 <td style="border-bottom: 2px dotted #000;text-align: left;"></td>
@@ -542,11 +542,11 @@
                         </table>
                     </td>
                     <!--  -->
-                    <td style="width: 50%; border-left: 2px solid #2998ff;">
+                    <td style="width: 50%; border-left: 2px solid #00935f;">
                         <table style="width: 100%;">
                             <tr>
                                 <td style="width: 10%; text-align: left;">
-                                    <h4 style="margin: 0; color: #2998ff;"> TESTED BY</h4>
+                                    <h4 style="margin: 0; color: #00935f;"> TESTED BY</h4>
                                 </td>
                                 <td style="width: 15%; text-align: right;">Name (capitals):</td>
                                 <td style="width: 25%;border-bottom: 2px dotted #000;text-align: left;">N/a</td>
@@ -575,8 +575,8 @@
         @endforeach
 
         <div style="margin-top: 20px;">
-            <div style="width: 70%; border:1px solid #2998ff;padding: 0px 10px; float: left;">
-                <h4 style="text-align: left;  color: #2998ff;word-spacing:-1px; padding: 0px ; margin: 5px 0px" >TO BE COMPLETED ONLY IF THE DB IS NOT CONNECTED DIRECTLY TO THE ORIGIN OF THE INSTALLATION</h4>
+            <div style="width: 70%; border:1px solid #00935f;padding: 0px 10px; float: left;">
+                <h4 style="text-align: left;  color: #00935f;word-spacing:-1px; padding: 0px ; margin: 5px 0px" >TO BE COMPLETED ONLY IF THE DB IS NOT CONNECTED DIRECTLY TO THE ORIGIN OF THE INSTALLATION</h4>
                 <table style="width:100%;">
                     <tr>
                         <td style="width: 20%; text-align: left;font-size: 11px">Supply to DB is from:</td>
@@ -651,9 +651,9 @@
                 </table>
             </div>
 
-            <div style="width: 25%; border:1px solid #2998ff;padding: 0px 5px; float: left; margin-left: 15px;">
+            <div style="width: 25%; border:1px solid #00935f;padding: 0px 5px; float: left; margin-left: 15px;">
 
-                    <h4 style="text-align: left;  color: #2998ff;word-spacing:-1px; padding: 0px ; margin: 5px 0px">
+                    <h4 style="text-align: left;  color: #00935f;word-spacing:-1px; padding: 0px ; margin: 5px 0px">
                         TEST INSTRUMENTS
                         <p style="font-size: 10px; margin: 0px;">
                         (enter serial number against each instrument used)
@@ -691,7 +691,7 @@
             </div>
             <div style="clear: both;"></div>
         </div>
-     
+
 
     </div>
   </body>

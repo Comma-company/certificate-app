@@ -30,7 +30,7 @@
         font-family: FreeSans;
       "
     >
-          <div  style="background:#2998ff;padding-top: 10px; padding-bottom: 10px;text-align:left">
+          <div  style="background:#00935f;padding-top: 10px; padding-bottom: 10px;text-align:left">
             <div style="text-align: start; padding: 0 10px; font-family: FreeSans;">
                 <h3
                     style="color: #fff; font-weight: bold; padding: 0px 5px; margin: 0;font-family: FreeSans;"
@@ -39,7 +39,7 @@
                 </h3>
             </div>
           </div>
-          <div style="border: 1px solid #2998ff;padding: 0;border-collapse: collapse;margin-bottom: 5px;">
+          <div style="border: 1px solid #00935f;padding: 0;border-collapse: collapse;margin-bottom: 5px;">
 
             <div style="text-align: left; padding-left: 5px;float: left;width: 33%;">
 
@@ -186,7 +186,7 @@
                 </table>
             </div>
 
-            <div style="text-align: left;padding: 0 0 0 10px;border: 1px solid #2998ff;float: left;width: 32.3%;">
+            <div style="text-align: left;padding: 0 0 0 10px;border: 1px solid #00935f;float: left;width: 32.3%;">
               <table width="100%">
                   <tr>
                       <td>
@@ -206,7 +206,7 @@
                   </tr>
               </table>
 
-              <hr style="color: #2998ff; font-weight: bold" />
+              <hr style="color: #00935f; font-weight: bold" />
 
               <ol style="margin: 0; font-weight: bold; width: 500px; font-size: 10px; padding-left:15px; "  start="7">
                   <li>Isolation and switching</li>
@@ -473,7 +473,7 @@
                      </td>
                  </tr>
              </table>
-                <hr style="color: #2998ff; font-weight: bold" />
+                <hr style="color: #00935f; font-weight: bold" />
                 <ol style="margin: 0; font-weight: bold; width: 500px; font-size: 10px; padding-left:15px; "  start="9">
                     <li>List all special installations or locations covered by this report:</li>
                 </ol>
@@ -501,8 +501,8 @@
                     Indicate if the relevant requirements of Part 7 are satisfied and append results
                     of inspection on a separate numbered page.
                 </p>
-                <hr style="color: #2998ff; font-weight: bold;padding:0px;margin:0px;" />
-                 <h3 style="color: #2998ff;font-weight:bold;padding:5px 0px;margin:0px;">SCHEDULE OF ITEMS INSPECTED BY</h3>
+                <hr style="color: #00935f; font-weight: bold;padding:0px;margin:0px;" />
+                 <h3 style="color: #00935f;font-weight:bold;padding:5px 0px;margin:0px;">SCHEDULE OF ITEMS INSPECTED BY</h3>
                 <table>
                     <tr>
                         <td>Name (capitals): </td>
@@ -519,20 +519,20 @@
             </div>
         </div>
 
-          <div  style="background:#2998ff;padding-top: 10px; padding-bottom: 10px;text-align:left">
+          <div  style="background:#00935f;padding-top: 10px; padding-bottom: 10px;text-align:left">
             <div style="text-align: start; padding: 0 10px; font-family: FreeSans;">
                 <h3 style="color: #fff; font-weight: bold; padding: 0px 5px; margin: 0;font-family: FreeSans;">
                 PART 11 : SCHEDULES AND ADDITIONAL PAGES
                 </h3>
             </div>
           </div>
-            <table width="100%" style="  border: 1px solid #2998ff; padding: 0; border-collapse: collapse;  margin-bottom: 00px;" >
+            <table width="100%" style="  border: 1px solid #00935f; padding: 0; border-collapse: collapse;  margin-bottom: 00px;" >
                 <tr>
                     <td
                         style="
                         text-align: start;
                         padding: 5px;
-                        border: 1px solid #2998ff;
+                        border: 1px solid #00935f;
                         ">
                         <h5 style="margin: 0; font-weight: 800; font-size: 10px">
                         Schedule of Inspections
@@ -543,7 +543,7 @@
                         style="
                         text-align: start;
                         padding: 5px;
-                        border: 1px solid #2998ff;
+                        border: 1px solid #00935f;
                         ">
                         <h5 style="margin: 0; font-weight: 800; font-size: 10px">
                         Schedule of Circuit Details and Test Results <br /> for the installation
@@ -554,7 +554,7 @@
                         style="
                         text-align: start;
                         padding:5px;
-                        border: 1px solid #2998ff;
+                        border: 1px solid #00935f;
                         ">
                         <h5 style="margin: 0; font-weight: 800; font-size: 10px">
                         Additional pages, including data sheets <br /> for additional sources
@@ -565,7 +565,7 @@
                         style="
                         text-align: start;
                         padding: 5px;
-                        border: 1px solid #2998ff;
+                        border: 1px solid #00935f;
                         ">
                         <h5 style="margin: 0; font-weight: 800; font-size: 10px">
                             Special installations or locations<br /> (indicated in item 9. above)
@@ -576,7 +576,7 @@
                         style="
                         text-align: start;
                         padding: 5px;
-                        border: 1px solid #2998ff;
+                        border: 1px solid #00935f;
                         ">
                         <h5 style="margin: 0; font-weight: 800; font-size: 12px">
                         Continuation sheets

@@ -8,13 +8,13 @@
     <style>
         @page {
             header: html_formHeader;
-            footer: html_formFooter2; 
+            footer: html_formFooter2;
             margin: 15px;
             margin-bottom:0mm;
             margin-top:15mm;
             margin-header:4mm;
             size: landscape; /* <length>{1,2} | auto | portrait | landscape */
-            margin-footer:10mm; 
+            margin-footer:10mm;
 
         }
       body {
@@ -38,13 +38,13 @@
         font-family: 'Poppins', sans-serif;
         font-family: 'Tajawal', sans-serif;
       ">
-        
+
       <table
         width="100%"
-        style="border: 1px solid #2998ff; padding: 0; border-collapse: collapse; margin-bottom: 10px;"
+        style="border: 1px solid #00935f; padding: 0; border-collapse: collapse; margin-bottom: 10px;"
         >
         <tr>
-          <th bgcolor="#2998ff"  style="padding-top: 10px; padding-bottom: 10px;text-align:left" >
+          <th bgcolor="#00935f"  style="padding-top: 10px; padding-bottom: 10px;text-align:left" >
             <div style="text-align: left; padding: 0 10px">
               <h3
                 style="color: #fff; font-weight: bold; padding: 5px; margin: 0"
@@ -73,18 +73,18 @@
           </td>
         </tr>
       </table>
-      
+
       <table
         width="100%"
         style="
-          border: 1px solid #2998ff;
+          border: 1px solid #00935f;
           padding: 0;
           border-collapse: collapse;
           margin: 10px 0 0px;
         "
         >
         <tr>
-          <th bgcolor="#2998ff"  style="padding-top: 10px; padding-bottom: 10px;text-align:left" colspan="6">
+          <th bgcolor="#00935f"  style="padding-top: 10px; padding-bottom: 10px;text-align:left" colspan="6">
             <div style="text-align: left; padding: 0 10px">
               <h3
                 style="color: #fff; font-weight: bold; padding: 5px; margin: 0"
@@ -95,15 +95,15 @@
             </div>
           </th>
         </tr>
-        <tr style="border-bottom: 1px solid #2998ff">
-          <td style="text-align: left; padding: 0 10px;  border-bottom: 1px solid #2998ff;">
-            <h5 style="color: #2998ff; font-weight: 900">CODES:</h5>
+        <tr style="border-bottom: 1px solid #00935f">
+          <td style="text-align: left; padding: 0 10px;  border-bottom: 1px solid #00935f;">
+            <h5 style="color: #00935f; font-weight: 900">CODES:</h5>
           </td>
           <td
             style="
               text-align: left;
               padding: 0 5px;
-              border-bottom: 1px solid #2998ff;
+              border-bottom: 1px solid #00935f;
             "
           >
             <p style="font-size: 10px">
@@ -117,7 +117,7 @@
             style="
               text-align: center;
               padding: 0 5px;
-              border: 1px solid #2998ff;
+              border: 1px solid #00935f;
             "
           >
             <p style="font-size: 10px; font-weight: 900">
@@ -129,7 +129,7 @@
             style="
               text-align: center;
               padding: 0 5px;
-              border: 1px solid #2998ff;
+              border: 1px solid #00935f;
             "
           >
             <p style="font-size: 10px; font-weight: 900">
@@ -140,7 +140,7 @@
             style="
               text-align: center;
               padding: 0 5px;
-              border: 1px solid #2998ff;
+              border: 1px solid #00935f;
             "
           >
             <p style="font-size: 10px; font-weight: 900">
@@ -150,7 +150,7 @@
           <td style="
               text-align: center;
               padding: 0 5px;
-              border: 1px solid #2998ff;
+              border: 1px solid #00935f;
             ">
             <p style="font-size: 10px; font-weight: 900">
               CODE FI ‘Further Investigation Required’
@@ -174,7 +174,7 @@
     </table>
         <table width="100%"
         style="
-          border: 1px solid #2998ff;
+          border: 1px solid #00935f;
           padding: 5px 15px;
           border-collapse: collapse;
           margin: 0px 0px 10px ;
@@ -226,13 +226,13 @@
             <td></td>
             <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:600px">
               <span>
-               
+
               </span>
             </td>
             <td></td>
             <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:150px">
               <span></span>
-  
+
             </td>
             <td style="text-align: center; padding-top:5px; padding-bottom:0px">
               <span>.....................</span>
@@ -245,13 +245,13 @@
             <td></td>
             <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:600px">
               <span>
-               
+
               </span>
             </td>
             <td></td>
             <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:150px">
               <span></span>
-  
+
             </td>
             <td style="text-align: center; padding-top:5px; padding-bottom:0px">
               <span>.....................</span>
@@ -264,22 +264,22 @@
             <td></td>
             <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:600px">
               <span>
-               
+
               </span>
             </td>
             <td></td>
             <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:150px">
               <span></span>
-  
+
             </td>
             <td style="text-align: center; padding-top:5px; padding-bottom:0px">
               <span>.....................</span>
             </td>
           </tr>
-        
-        
-        
-    
+
+
+
+
         <tr>
           <td
             colspan="2"
@@ -328,7 +328,7 @@
         reasonably be expected to receive during its intended life. The period
         should be agreed between relevant parties.
       </p>
-     
+
     </div>
   </body>
 </html>

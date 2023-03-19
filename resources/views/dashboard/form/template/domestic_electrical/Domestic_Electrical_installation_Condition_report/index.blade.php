@@ -8,23 +8,23 @@
     <style>
             @page :first {
                 header: html_formHeader;
-                footer: html_formFooter; 
+                footer: html_formFooter;
                 margin: 15px;
                 margin-bottom:20px;
                 margin-top:60px;
                 margin-header:4mm;
                 size: landscape; /* <length>{1,2} | auto | portrait | landscape */
-                margin-footer:5mm ; 
+                margin-footer:5mm ;
             }
             @page{
                 header: html_formHeader;
-                footer: html_formFooter2; 
+                footer: html_formFooter2;
                 margin: 15px;
                 margin-bottom:20px;
                 margin-top:60px;
                 margin-header:4mm;
                 size: landscape; /* <length>{1,2} | auto | portrait | landscape */
-                margin-footer:5mm ; 
+                margin-footer:5mm ;
             }
         @font-face {
         font-family:fontawesome;
@@ -54,17 +54,17 @@
         font-family: 'FreeSans';
       ">
         <htmlpageheader name="formHeader">
-            <table style="border: 1px solid #2998ff;padding: 0;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #2998ff;">
+            <table style="border: 1px solid #00935f;padding: 0;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #00935f;">
                 <tr>
                 <th>
                     <div style="padding: 0 120px 0 0"><h3>26770979</h3></div>
                 </th>
-                <th bgcolor="#2998ff" style="color: #fff; padding: 0">
+                <th bgcolor="#00935f" style="color: #fff; padding: 0">
                     <div style="padding: 0 140px 0 10px"><h3>IPM18C</h3></div>
                 </th>
                 </tr>
             </table>
-            <h2 style="color: #2998ff; padding: 0; margin: 0; font-weight: 900;text-align: right">
+            <h2 style="color: #00935f; padding: 0; margin: 0; font-weight: 900;text-align: right">
                 ELECTRICAL INSTALLATION CONDITION REPORT
             </h2>
             <p style="font-size: 10px; padding: 0; margin: 0; font-style: italic;text-align: right">
@@ -74,10 +74,10 @@
         </htmlpageheader>
       <table
         width="100%"
-        style="border: 1px solid #2998ff; padding: 0; border-collapse: collapse; margin-bottom: 10px;"
+        style="border: 1px solid #00935f; padding: 0; border-collapse: collapse; margin-bottom: 10px;"
       >
         <tr>
-          <th bgcolor="#2998ff" style="padding-top: 10px; padding-bottom: 10px;text-align:left" colspan="3">
+          <th bgcolor="#00935f" style="padding-top: 10px; padding-bottom: 10px;text-align:left" colspan="3">
             <div style="text-align: left; padding: 0 10px;">
               <h3
                 style="color: #fff; font-weight: bold; padding-top: 10px; padding-bottom: 10px; margin: 0;"
@@ -92,7 +92,7 @@
             <div style="text-align: left; padding: 0 10px">
               <h5
                 style="
-                  color: #2998ff;
+                  color: #00935f;
                   font-weight: bold;
                   padding: 0 5px;
                   margin: 0;
@@ -120,7 +120,7 @@
             <div style="text-align: left">
               <h5
                 style="
-                  color: #2998ff;
+                  color: #00935f;
                   font-weight: bold;
                   padding: 0 5px;
                   margin: 0;
@@ -149,7 +149,7 @@
             <div style="text-align: left">
               <h5
                 style="
-                  color: #2998ff;
+                  color: #00935f;
                   font-weight: bold;
                   padding: 0 5px;
                   margin: 0;
@@ -175,9 +175,9 @@
       </table>
       <div
         width="100%"
-        style="border: 1px solid #2998ff; padding: 0; border-collapse: collapse; margin-bottom: 10px;font-size:10px;"
+        style="border: 1px solid #00935f; padding: 0; border-collapse: collapse; margin-bottom: 10px;font-size:10px;"
         >
-        <div  style="background:#2998ff;padding-top: 10px; padding-bottom: 10px;text-align:left" colspan="3">
+        <div  style="background:#00935f;padding-top: 10px; padding-bottom: 10px;text-align:left" colspan="3">
             <div style="text-align: start; padding: 0 10px">
               <h3
                 style="color: #fff; font-weight: bold; padding: 0px 5px; margin: 0"
@@ -219,10 +219,10 @@
 
       <table
         width="100%"
-        style="border: 1px solid #2998ff; padding: 0; border-collapse: collapse; margin-bottom: 10px;"
+        style="border: 1px solid #00935f; padding: 0; border-collapse: collapse; margin-bottom: 10px;"
       >
         <tr>
-          <th bgcolor="#2998ff"  style="padding-top: 10px; padding-bottom: 10px;text-align:left" colspan="4">
+          <th bgcolor="#00935f"  style="padding-top: 10px; padding-bottom: 10px;text-align:left" colspan="4">
             <div style="text-align: left; padding: 0 10px">
               <h3
                 style="color: #fff; font-weight: bold; padding: 5px; margin: 0"
@@ -272,10 +272,10 @@
       </table>
       <table
         width="100%"
-        style="border: 1px solid #2998ff; padding: 0; border-collapse: collapse; margin-bottom: 10px;"
+        style="border: 1px solid #00935f; padding: 0; border-collapse: collapse; margin-bottom: 10px;"
         >
         <tr>
-          <th bgcolor="#2998ff"  style="padding-top: 10px; padding-bottom: 10px;text-align:left" colspan="4">
+          <th bgcolor="#00935f"  style="padding-top: 10px; padding-bottom: 10px;text-align:left" colspan="4">
             <div style="text-align: left; padding: 0 10px">
               <h3
                 style="color: #fff; font-weight: bold; padding: 5px; margin: 0"
@@ -287,7 +287,7 @@
         </tr>
         <tr>
           <td style="text-align: left; padding: 0 10px">
-            <h4 style="color: #2998ff; padding: 0; margin: 0; font-weight: bold">
+            <h4 style="color: #00935f; padding: 0; margin: 0; font-weight: bold">
               INSPECTION AND TESTING
             </h4>
           </td>
@@ -328,7 +328,7 @@
         </tr>
         <tr style="text-align: left">
           <td style="padding: 0 10px">
-            <h4 style="color: #2998ff; padding: 0; margin: 0; font-weight: bold">
+            <h4 style="color: #00935f; padding: 0; margin: 0; font-weight: bold">
               REVIEWED BY
             </h4>
           </td>
@@ -376,8 +376,8 @@
                 </p>
             </td>
 
-            <td style="padding: 0 5px; background-color:#2998ff; width:15%;float:left;text-align:left; overflow: hidden;">
-                <div style="color: #ffffff;font-size: 10px;font-weight: bold; background-color:#2998ff;">
+            <td style="padding: 0 5px; background-color:#00935f; width:15%;float:left;text-align:left; overflow: hidden;">
+                <div style="color: #ffffff;font-size: 10px;font-weight: bold; background-color:#00935f;">
                     Please see the ‘Notes for Recipient’
                 </div>
             </td>
@@ -387,12 +387,12 @@
 
             </td>
 
-            <td style="float: left;width: 30px;text-align: left;padding: 0px 5px;margin-left:5px;border: 1px solid #2998ff;">
+            <td style="float: left;width: 30px;text-align: left;padding: 0px 5px;margin-left:5px;border: 1px solid #00935f;">
                 <p style="text-align: left;">{nbpg}</p>
             </td>
         </tr>
         </table>
-       
+
       </htmlpagefooter>
       <htmlpagefooter name="formFooter2">
         <div style="margin-top: 10px; overflow: hidden;">
@@ -417,7 +417,7 @@
             <p>Page {PAGENO} of</p>
             </div>
 
-            <div style="float: left;width: 30px;text-align: left;padding: 0px 5px;margin-left:5px;border: 1px solid #2998ff;">
+            <div style="float: left;width: 30px;text-align: left;padding: 0px 5px;margin-left:5px;border: 1px solid #00935f;">
                 <p style="text-align: left;">{nbpg}</p>
             </div>
 
