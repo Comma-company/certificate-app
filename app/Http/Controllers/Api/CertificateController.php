@@ -237,12 +237,14 @@ class CertificateController extends Controller
                     }
                 }
             }
-
-            foreach ($request->files_id as $key => $file_id) {
-                $file = $note->files()->find($file_id);
-                Storage::disk('uploads')->delete($file->file_url);
-                $file->delete();
+            if ($request->files_id) {
+                foreach ($request->files_id as $key => $file_id) {
+                    $file = $note->files()->find($file_id);
+                    Storage::disk('uploads')->delete($file->file_url);
+                    $file->delete();
+                }
             }
+
             $body = [
                 "note" => $note,
                 "files" => $files_name
