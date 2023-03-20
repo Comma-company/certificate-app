@@ -102,7 +102,7 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
         Route::post('create', [CertificateController::class, 'store'])->middleware('auth:sanctum');
         Route::post('{id}/notes/create', [CertificateController::class, 'storeNote'])->middleware('auth:sanctum');
         Route::post('{note_id}/notes/update', [CertificateController::class, 'updateNote'])->middleware('auth:sanctum');
-        Route::post('{note_id}/notes/{file_id}/delete', [CertificateController::class, 'deleteFileNote'])->middleware('auth:sanctum');
+       /*  Route::post('{note_id}/notes/{file_id}/delete', [CertificateController::class, 'deleteFileNote'])->middleware('auth:sanctum'); */
         Route::post('{id}/update', [CertificateController::class, 'update'])->middleware('auth:sanctum');
         Route::post('{id}/update-status', [CertificateController::class, 'updateStatus'])->middleware('auth:sanctum');
 

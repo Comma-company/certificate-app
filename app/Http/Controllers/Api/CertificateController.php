@@ -238,6 +238,11 @@ class CertificateController extends Controller
                 }
             }
 
+            foreach ($request->files_id as $key => $file_id) {
+                $file = $note->files()->find($file_id);
+                Storage::disk('uploads')->delete($file->file_url);
+                $file->delete();
+            }
             $body = [
                 "note" => $note,
                 "files" => $files_name
@@ -250,14 +255,15 @@ class CertificateController extends Controller
         }
     }
 
-    public function deleteFileNote($id,$file_id){
+    /* public function deleteFileNote($id, $file_id)
+    {
         $user = authUser('sanctum');
         $note =  CertificateNote::where('user_id', $user->id)->findOrFail($id);
         $file = $note->files()->find($file_id);
         Storage::disk('uploads')->delete($file->file_url);
         $file->delete();
         return responseJson(true, 'success delete file', []);
-    }
+    } */
 
 
 
