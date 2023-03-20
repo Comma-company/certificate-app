@@ -255,6 +255,7 @@ class CertificateController extends Controller
         $note =  CertificateNote::where('user_id', $user->id)->findOrFail($id);
         $file = $note->files()->find($file_id);
         Storage::disk('uploads')->delete($file->file_url);
+        $file->delete();
         return responseJson(true, 'success delete file', []);
     }
 
