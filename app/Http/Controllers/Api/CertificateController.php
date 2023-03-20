@@ -150,6 +150,7 @@ class CertificateController extends Controller
         $user = authUser('sanctum');
         $certificate =  Certificate::where('user_id', $user->id)->findOrFail($id);
         DB::beginTransaction();
+
         try {
             $note = $certificate->notes()->create([
                 'user_id' => $user->id,
@@ -166,10 +167,9 @@ class CertificateController extends Controller
                     if ($file->extension() == 'jpeg' || $file->extension() == 'jpg' || $file->extension() == 'png') {
                         $image = uploadImageAs($file, $file_name, 'image');
                         $file = $note->files()->create($image);
-
-                            $files_name[$key]['id'] = $file->id;
-                            $files_name[$key]['url'] = $file->url;
-                            $files_name[$key]['type'] = 'image';
+                        $files_name[$key]['id'] = $file->id;
+                        $files_name[$key]['url'] = $file->url;
+                        $files_name[$key]['type'] = 'image';
                     } elseif ($file->extension() == 'mp4' || $file->extension() == 'vlc') {
 
                         $image = uploadImageAs($file, $file_name, 'video');
@@ -250,6 +250,16 @@ class CertificateController extends Controller
         }
     }
 
+    public function deleteFileNote($id,$file_id){
+        $user = authUser('sanctum');
+        $note =  CertificateNote::where('user_id', $user->id)->findOrFail($id);
+        $file = $note->files()->find($file_id);
+        Storage::disk('uploads')->delete($file->file_url);
+        return responseJson(true, 'success delete file', []);
+    }
+
+
+
     public function update($id, Request $request)
     {
 
@@ -322,7 +332,7 @@ class CertificateController extends Controller
 
 
                 $user = User::where('id', $user_id)->first();
-               /*  $html = View::make($page_path, [
+                /*  $html = View::make($page_path, [
                     'form_data' => $data,
                     'data' => $data->data,
                     'formData' => $gaz_safety_data[0],
@@ -428,19 +438,18 @@ class CertificateController extends Controller
         $file_path =  public_path("uploads/certificate/" . $fileName);
 
         Storage::disk('uploads')->makeDirectory('certificate');
-        if (Storage::disk('uploads')->exists('certificate/'.$fileName)) {
+        if (Storage::disk('uploads')->exists('certificate/' . $fileName)) {
 
-            Storage::disk('uploads')->delete('certificate/'.$fileName);
+            Storage::disk('uploads')->delete('certificate/' . $fileName);
             $invoice->Output($file_path, 'F');
             return responseJson(true, 'pdf file for certificate', [
-                'url' => asset('uploads/certificate/'.$fileName)
+                'url' => asset('uploads/certificate/' . $fileName)
             ]);
-
-        }else {
+        } else {
 
             $invoice->Output($file_path, 'F');
             return responseJson(true, 'pdf file for certificate', [
-                'url' => asset('uploads/certificate/'.$fileName)
+                'url' => asset('uploads/certificate/' . $fileName)
             ]);
         }
     }
