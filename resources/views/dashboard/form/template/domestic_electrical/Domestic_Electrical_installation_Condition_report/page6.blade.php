@@ -76,7 +76,7 @@
                 </p>
             </div>
             <div style=" margin: 0px;   padding: 5px 0px 3px 0px; font-size: 10px; width: 22%; float: left;text-align: left;">
-                <p  style="margin: 0px; padding: 0px; border-bottom: 2px dotted #000; text-align: left;">
+                <p  style="margin: 0px; padding: 0px;  text-align: left;">
                     &nbsp;
                 </p>
             </div>
@@ -113,7 +113,7 @@
         <table class="table-text-center" style="border-collapse: collapse; text-align: center;" id="last-table">
             <thead>
 
-                <tr  style=" background: rgba(0, 148, 96, 0.404);">
+                <tr  style=" background: rgba(0, 148, 96, 0.151);">
                     <td  rowspan="3"
                         style="writing-mode: vertical-rl; transform: rotate(0deg); border: 1px solid #00935f;">
                         <div style="rotate: 90deg">Circuit Reference</div>
@@ -179,7 +179,7 @@
                     </td>
                 </tr>
 
-                <tr  style=" background: rgba(0, 148, 96, 0.404);">
+                <tr  style=" background: rgba(0, 148, 96, 0.151);">
                     <td rowspan="2"
                         style="position: relative; border: 1px solid #00935f;">
                         <div
@@ -271,7 +271,7 @@
                     <td rowspan="2" style="border: 1px solid #00935f;">RCD</td>
                     <td rowspan="2" style="border: 1px solid #00935f;">AFDD</td>
                 </tr>
-                <tr style=" background: rgba(0, 148, 96, 0.404));">
+                <tr style=" background: rgba(0, 148, 96, 0.151);">
                     <td style="border: 1px solid #00935f;">(Line) r1</td>
                     <td style="border: 1px solid #00935f;">(Natural) rn</td>
                     <td style="border: 1px solid #00935f;">(Cps) r2</td>
@@ -530,14 +530,14 @@
                                     <h4 style="margin: 0; color: #00935f; word-spacing:-1px;"> DISTRIBUTION BOARD (DB) DETAILS</h4>
                                 </td>
                                 <td style="width: 15%; text-align: left;">DB designation:</td>
-                                <td style="width: 25%;border-bottom: 2px dotted #000;text-align: left;">N/a</td>
+                                <td style="width: 25%;text-align: left;">N/a</td>
                             </tr>
                             <tr>
                                 <td style="text-align: left;">
                                     <p style="margin: 0; color: #00935f;font-weight: bold;">(to be completed in every case)</p>
                                 </td>
                                 <td style="text-align: left;">Location of DB:</td>
-                                <td style="border-bottom: 2px dotted #000;text-align: left;"></td>
+                                <td style="text-align: left;"></td>
                             </tr>
                         </table>
                     </td>
@@ -549,20 +549,20 @@
                                     <h4 style="margin: 0; color: #00935f;"> TESTED BY</h4>
                                 </td>
                                 <td style="width: 15%; text-align: right;">Name (capitals):</td>
-                                <td style="width: 25%;border-bottom: 2px dotted #000;text-align: left;">N/a</td>
+                                <td style="width: 25%;text-align: left;">N/a</td>
 
                                 <td style="width: 15%; text-align: right;">Position:</td>
-                                <td style="width: 25%;border-bottom: 2px dotted #000;text-align: left;">N/a</td>
+                                <td style="width: 25%;text-align: left;">N/a</td>
                             </tr>
                             <tr>
                                 <td style="width: 10%; text-align: left;">
 
                                 </td>
                                 <td style="width: 15%; text-align: right;">Signature:</td>
-                                <td style="width: 25%;border-bottom: 2px dotted #000;text-align: left;">N/a</td>
+                                <td style="width: 25%;text-align: left;">N/a</td>
 
                                 <td style="width: 15%; text-align: right;">Date:</td>
-                                <td style="width: 25%;border-bottom: 2px dotted #000;text-align: left;">N/a</td>
+                                <td style="width: 25%;text-align: left;">N/a</td>
                             </tr>
                         </table>
                     </td>
@@ -580,12 +580,12 @@
                 <table style="width:100%;">
                     <tr>
                         <td style="width: 20%; text-align: left;font-size: 11px">Supply to DB is from:</td>
-                        <td style="width: 25%;border-bottom: 2px dotted #000;text-align: left;">N/a</td>
+                        <td style="width: 25%;text-align: left;">N/a</td>
                         <td style="width: 15%; text-align: right;font-size: 11px">Nominal voltage:</td>
-                        <td style="width: 10%;border-bottom: 2px dotted #000;text-align: left;">N/a</td>
+                        <td style="width: 10%;text-align: left;">N/a</td>
                         <td style="width: 10%; text-align: left;font-size: 11px">V</td>
                         <td style="width: 15%; text-align: right;font-size: 11px">No. of phases:</td>
-                        <td style="width: 10%;border-bottom: 2px dotted #000;text-align: left;">N/a</td>
+                        <td style="width: 10%;text-align: left;">N/a</td>
                     </tr>
 
                 </table>
@@ -597,9 +597,9 @@
                             </p>
                         </td>
                         <td style="width: 15%; text-align: right;font-size: 11px">Type: (BS EN)</td>
-                        <td style="width: 10%;border-bottom: 2px dotted #000;text-align: left;">N/a</td>
+                        <td style="width: 10%;text-align: left;">N/a</td>
                         <td style="width: 15%; text-align: right;font-size: 11px">Rating:</td>
-                        <td style="width: 10%;border-bottom: 2px dotted #000;text-align: left;">N/a</td>
+                        <td style="width: 10%;text-align: left;">N/a</td>
                     </tr>
                 </table>
                 <table  style="width:100%; margin: 10px 0px;">
@@ -610,17 +610,17 @@
                             </p>
                         </td>
                         <td style="text-align: right;font-size: 11px">Type: (BS EN)</td>
-                        <td style="border-bottom: 2px dotted #000;text-align: left;">N/a</td>
+                        <td style="text-align: left;">N/a</td>
 
                         <td style="text-align: right;font-size: 11px">No. of poles: </td>
-                        <td style="border-bottom: 2px dotted #000;text-align: left;">N/a</td>
+                        <td style="text-align: left;">N/a</td>
 
                         <td style="text-align: right; width: 10%; font-size: 11px;">I∆n :</td>
-                        <td style="border-bottom: 2px dotted #000;text-align: left;">N/a</td>
+                        <td style="text-align: left;">N/a</td>
                         <td style="text-align: left;">mA</td>
 
                         <td style="text-align: right;font-size: 11px;">Operating time :</td>
-                        <td style="border-bottom: 2px dotted #000;text-align: left;">N/a</td>
+                        <td style="text-align: left;">N/a</td>
                         <td style="text-align: left;">ms</td>
                     </tr>
                 </table>
@@ -633,17 +633,17 @@
                             </p>
                         </td>
                         <td style="text-align: right;width: 25%;font-size: 11px">Confirmation of supply polarity: </td>
-                        <td style="border-bottom: 2px dotted #000;text-align: left;">N/a</td>
+                        <td style="text-align: left;">N/a</td>
 
                         <td style="text-align: right;width: 40%;font-size: 11px">Phase sequence confirmed (where appropriate):  </td>
-                        <td style="border-bottom: 2px dotted #000;text-align: left;">N/a</td>
+                        <td style="text-align: left;">N/a</td>
 
                         <td style="text-align: right; width: 10%;font-size:11px">Z<sub style="font-size:12px">S</sub> :</td>
-                        <td style="border-bottom: 2px dotted #000;text-align: left;">N/a</td>
+                        <td style="text-align: left;">N/a</td>
                         <td style="text-align: left;">Ω</td>
 
                         <td style="text-align: right; width: 10%;font-size:11px">I <sub style="font-size:12px">pf</sub> :</td>
-                        <td style="border-bottom: 2px dotted #000;text-align: left;">N/a</td>
+                        <td style="text-align: left;">N/a</td>
                         <td style="text-align: left;">kA</td>
 
                     </tr>
@@ -665,8 +665,8 @@
                             <td>Continuity</td>
                         </tr>
                         <tr>
-                            <td><p style="border-bottom: 2px dotted #000;width: 100%;margin: 0;font-weight: bold;">{{ getvalue('mft_j',$formData) }}</p></td>
-                            <td><p style="border-bottom: 2px dotted #000;margin: 0;width: 100%;font-weight: bold;">{{ getvalue('continuity_j',$formData) }}</p></td>
+                            <td><p style="width: 100%;margin: 0;font-weight: bold;">{{ getvalue('mft_j',$formData) }}</p></td>
+                            <td><p style="margin: 0;width: 100%;font-weight: bold;">{{ getvalue('continuity_j',$formData) }}</p></td>
                         </tr>
 
                         <tr>
@@ -674,8 +674,8 @@
                             <td>Earth fault loop impedance:</td>
                         </tr>
                         <tr>
-                            <td><p style="border-bottom: 2px dotted #000;width: 80%;margin: 0;width: 100%;font-weight: bold;">{{ getvalue('insulation_resistance_j',$formData) }}</p></td>
-                            <td><p style="border-bottom: 2px dotted #000;margin: 0;width: 100%;font-weight: bold;">{{ getvalue('earth_fault_loop_j',$formData) }}</p></td>
+                            <td><p style="width: 80%;margin: 0;width: 100%;font-weight: bold;">{{ getvalue('insulation_resistance_j',$formData) }}</p></td>
+                            <td><p style="margin: 0;width: 100%;font-weight: bold;">{{ getvalue('earth_fault_loop_j',$formData) }}</p></td>
                         </tr>
 
                         <tr>
@@ -683,8 +683,8 @@
                             <td>RCD:</td>
                         </tr>
                         <tr>
-                            <td><p style="border-bottom: 2px dotted #000;width: 80%;margin: 0;width: 100%; font-weight: bold;">&nbsp;&nbsp;</p></td>
-                            <td><p style="border-bottom: 2px dotted #000;margin: 0;width: 100%;font-weight: bold;">{{ getvalue('rcd_j',$formData) }}</p></td>
+                            <td><p style="width: 80%;margin: 0;width: 100%; font-weight: bold;">&nbsp;&nbsp;</p></td>
+                            <td><p style="margin: 0;width: 100%;font-weight: bold;">{{ getvalue('rcd_j',$formData) }}</p></td>
                         </tr>
                     </table>
 

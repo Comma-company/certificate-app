@@ -88,35 +88,26 @@
           </th>
         </tr>
         <tr>
-          <td>
+          <td style="vertical-align: top;">
             <div style="text-align: left; padding: 0 10px">
-              <h5
-                style="
-                  color: #00935f;
-                  font-weight: bold;
-                  padding: 0 5px;
-                  margin: 0;
-                "
-              >
+              <h5 style="color: #00935f;font-weight: bold;padding: 0 5px;margin: 0;">
                 DETAILS OF THE CONTRACTOR
               </h5>
-              <p style="margin: 0">
+              <p style="margin: 15px">
                 Trading Title:
-                ..........<span style="font-weight: bold;">{{ $data->user->trading_name }}</span>.........
+                <span style="font-weight: bold;padding:3px 20px">{{ $data->user->trading_name }}</span>
               </p>
-              <p style="margin: 0">
+              <p style="margin: 15px">
                 Address:
-                .....<span style="font-weight: bold;">{{ $data->user->registered_address }}</span>........
-                <br />...............................................................................................
-                <br />...............................................................................................
+              <span style="font-weight: bold;padding:3px 20px">{{ $data->user->registered_address }}</span>
               </p>
-              <p style="margin: 0">
-                Postcode:......<span style="font-weight: bold;">{{ $data->user->postal_code }}</span>.......
-                <span>Tel No:...<span style="font-weight: bold;">{{ $data->user->phone }}</span>....</span>
+              <p style="margin: 15px">
+                Postcode:<span style="font-weight: bold;padding:3px 20px">{{ $data->user->postal_code }}</span>
+                <span>Tel No:<span style="font-weight: bold;padding:3px 20px">{{ $data->user->phone }}</span></span>
               </p>
             </div>
           </td>
-          <td>
+          <td style="vertical-align: top;">
             <div style="text-align: left">
               <h5
                 style="
@@ -128,24 +119,24 @@
               >
                 DETAILS OF THE CLIENT
               </h5>
-              <p style="margin: 0">
+              <p style="margin: 10px">
                 Contractor Reference Number
-                (CRN):.................................
+                (CRN):
               </p>
-              <p style="margin: 0">
-                Name:.....<span style="font-weight: bold;">{{ $data->customer->name }}</span>........................
+              <p style="margin: 10px">
+                Name:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->name }}</span>
               </p>
-              <p style="margin: 0">
-                Address:.....<span style="font-weight: bold;">{{ $data->customer->address }}</span>.............................
-                <br />...............................................................................................
+              <p style="margin: 10px">
+                Address:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->address }}</span>
+               
               </p>
-              <p style="margin: 0">
-                Postcode:.....<span style="font-weight: bold;">{{ $data->customer->postal_code }}</span>...........
-                <span>Tel No:....<span style="font-weight: bold;">{{ $data->customer->contacts->first()->phone }}</span>..........</span>
+              <p style="margin: 10px">
+                Postcode:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->postal_code }}</span>
+                <span>Tel No:.<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->contacts->first()->phone }}</span>.</span>
               </p>
             </div>
           </td>
-          <td>
+          <td style="vertical-align: top;">
             <div style="text-align: left">
               <h5
                 style="
@@ -157,17 +148,16 @@
               >
               DETAILS OF THE INSTALLATION
               </h5>
-              <p style="margin: 0">
-                Occupier:........<span style="font-weight: bold;">{{ $data->customer->sites->first()->name }}</span>.........................................
+              <p style="margin: 15px">
+                Occupier:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->sites->first()->name }}</span>
               </p>
-              <p style="margin: 0">
-                Address:.....<span style="font-weight: bold;">{{ $data->customer->sites->first()->address }}</span>...........
-                <br />...............................................................................................
-                <br />...............................................................................................
+              <p style="margin: 15px">
+                Address:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->sites->first()->address }}</span>
+                
               </p>
-              <p style="margin: 0">
-                Postcode:.....<span style="font-weight: bold;">{{ $data->customer->sites->first()->postal_code }}</span>...........
-                <span>Tel No:......<span style="font-weight: bold;">{{ $data->customer->sites->first()->siteContact->phone }}</span>............</span>
+              <p style="margin: 15px">
+                Postcode:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->sites->first()->postal_code }}</span>
+                <span>Tel No:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->sites->first()->siteContact->phone }}</span></span>
               </p>
             </div>
           </td>
@@ -192,7 +182,7 @@
             <div style="width:16.5%;float: left;padding:0px 10px;">
               Purpose for which this report is required:
             </div>
-            <div style="width:75%;border-bottom: 1px dotted #000;padding:0px 10px;float: left;font-weight: bold">{{ getvalue('reason_for_producing_a',$formData) }} </div>
+            <div style="width:75%;padding:0px 10px;float: left;font-weight: bold">{{ getvalue('reason_for_producing_a',$formData) }} </div>
           </div>
          <div style="clear: both;"></div>
 
@@ -200,17 +190,17 @@
           <div style="text-align: left;width:35%; float: left;">
             <p style="margin: 0; font-size:10px;">
               Date(s) when inspection and testing was carried out:
-              (<span style="border-bottom: 1px dotted #000; font-weight: bold">{{ getvalue('date_inspection_and_testing_a',$formData)  }}</span> )
+              (<span style="font-weight: bold">{{ getvalue('date_inspection_and_testing_a',$formData)  }}</span> )
             </p>
           </div>
           <div style="text-align: left; font-size:10px;width:15%;float: left;">
-            <p  style="margin: 0; font-size:10px;">Records available: (...............)</p>
+            <p  style="margin: 0; font-size:10px;">Records available: ()</p>
           </div>
           <div style="text-align: left;font-size:10px;width:25%;float: left;">
-            <p  style="margin: 0; font-size:10px;">Previous inspection report available: (...................)</p>
+            <p  style="margin: 0; font-size:10px;">Previous inspection report available: ()</p>
           </div>
           <div style="text-align: left;font-size:10px;width:20%;float: left;">
-            <p  style="margin: 0; font-size:10px;">Previous report date: (...................)</p>
+            <p  style="margin: 0; font-size:10px;">Previous report date: ()</p>
           </div>
         </div>
 
@@ -236,19 +226,8 @@
           <td colspan="3" style="text-align: left; padding: 0 10px">
             <p>
               General condition of the installation (in terms of electrical
-              safety): <span style="border-bottom: 1px dotted #000; font-weight: bold"> {{ getvalue('general_condition_d',$formData) }} </span>
-              <br />.......................................................
-              .................................................................................................
-              .................................................................................................
-              <br />
-              ...............................................................................................
-              ......................................................................................................
-              ......................................................................................................
-              ................... <br />
-              ...............................................................................................
-              ......................................................................................................
-              ......................................................................................................
-              ...................
+              safety): <span style="font-weight: bold"> {{ getvalue('general_condition_d',$formData) }} </span>
+             
             </p>
           </td>
         </tr>
@@ -256,16 +235,16 @@
           <td style="text-align: left; padding: 0 10px">
             <p style="margin: 0">
               Estimated age of electrical installation:
-              (........................) years
+              () years
             </p>
           </td>
           <td style="text-align: left">
-            <p>Evidence of additions or alterations: (...............)</p>
+            <p>Evidence of additions or alterations: ()</p>
           </td>
           <td style="text-align: left">
             <p>
-              Overall assessment of the installation is: (<span style="border-bottom: 1px dotted #000; font-weight: bold"> {{ getvalue('overall_assessment_d',$formData) }} </span>)
-              (delete as appropriate)
+              Overall assessment of the installation is: (<span style=" font-weight: bold"> {{ getvalue('overall_assessment_d',$formData) }} </span>)
+             
             </p>
           </td>
         </tr>
@@ -311,18 +290,21 @@
           <td style="text-align: left; padding: 0 10px">
             <p>
               Name
-              (capitals):<span style="border-bottom: 1px dotted #000; font-weight: bold">{{ getvalue('inspected_name',$formData['eicr_declaration']) }}</span>
+              (capitals):<span style="font-weight: bold">{{ getvalue('inspected_name',$formData['eicr_declaration']) }}</span>
             </p>
           </td>
           <td style="text-align: left; padding: 0 10px">
             <p style="margin: 0">
-              Signature:............................................................
+              Signature: 
+             @if ($data->user->signature)
+             <img width="120px" src="{{ asset('uploads/'.$data->user->signature->file_url) }}" alt="">
+             @endif
             </p>
           </td>
           <td style="text-align: left">
             <p>
               Date:
-              <span style="border-bottom: 1px dotted #000; font-weight: bold">{{ getvalue('inspected_date',$formData['eicr_declaration']) }}</span>
+              <span style="font-weight: bold">{{Carbon\Carbon::parse( getvalue('inspected_date',$formData['eicr_declaration']) )->format('d-m-Y')   }}</span>
             </p>
           </td>
         </tr>
@@ -337,18 +319,21 @@
           <td style="text-align: left; padding: 0 10px">
             <p>
               Name
-              (capitals):<span style="border-bottom: 1px dotted #000; font-weight: bold">{{ getvalue('report_contractor',$formData['eicr_declaration']) }}</span>
+              (capitals):<span style="font-weight: bold">{{ getvalue('report_contractor',$formData['eicr_declaration']) }}</span>
             </p>
           </td>
           <td style="text-align: left; padding: 0 10px">
             <p style="margin: 0">
-              Signature:............................................................
+              Signature: 
+              @if ($data->customerSignature)
+              <img width="120px" src="{{ asset('uploads/'.$data->customerSignature->file_url) }}" alt="">
+              @endif
             </p>
           </td>
           <td style="text-align: left">
             <p>
               Date:
-              <span style="border-bottom: 1px dotted #000; font-weight: bold">{{ getvalue('report_date',$formData['eicr_declaration']) }}</span>
+              <span style="font-weight: bold">{{ Carbon\Carbon::parse(getvalue('report_date',$formData['eicr_declaration']))->format('d-m-Y') }}</span>
             </p>
           </td>
         </tr>
@@ -370,10 +355,7 @@
                     Published by 360 Connect &nbsp; &nbsp; &nbsp; &nbsp;
                     <span> @ Copyright 360 Connect </span>
                 </p>
-                <p style="margin: 0; font-size: 10px">
-                    Warwick House, Houghton Hall Park, Houghton Regis, Dunstable, LU5
-                    5ZX
-                </p>
+
             </td>
 
             <td style="padding: 0 5px; background-color:#00935f; width:15%;float:left;text-align:left; overflow: hidden;">
@@ -406,10 +388,7 @@
                 Published by 360 Connect &nbsp; &nbsp; &nbsp; &nbsp;
                 <span> @ Copyright 360 Connect </span>
             </p>
-            <p style="margin: 0; font-size: 10px">
-                Warwick House, Houghton Hall Park, Houghton Regis, Dunstable, LU5
-                5ZX
-            </p>
+
             </div>
 
 

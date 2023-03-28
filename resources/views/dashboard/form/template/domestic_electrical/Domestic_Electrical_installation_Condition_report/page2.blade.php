@@ -60,15 +60,20 @@
               I/We (as indicated on page 1) recommend, subject to the necessary
               remedial work being taken, this installation should be further
               inspected and tested after an interval of not more than
-              ............... years/months* (delete as appropriate)
+              @if (getvalue('recommendations_month_year_e',$formData) == 'month')
+              {{   getvalue('recommendations_month_e',$formData) }} months* (delete as appropriate)
+              @else
+              {{   getvalue('recommendations_year_e',$formData) }} years* (delete as appropriate)
+              @endif
             </p>
           </td>
         </tr>
+
         <tr>
           <td style="text-align: left; padding:5px 10px; ">
              <p style="font-size: 10px;">
               Give reason for recommendation:
-              .....................................................................................................................................................................................................................
+             <span style="font-weight: bold"> {{   getvalue('reason_recommendations_e',$formData) }}</span>
             </p>
           </td>
         </tr>
@@ -200,80 +205,80 @@
         @foreach ($formData['all_observation_data'] as $item)
 
         <tr>
-          <td style="text-align: center;padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:60px">
+          <td style="text-align: center;padding-top:5px; padding-bottom:0px;font-weight: bold; width:60px">
             <span>{{ $item['id'] }}<span/>
           </td>
           <td></td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:600px">
+          <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold; width:600px">
             <span>
              {{ $item['observation_details'] }}
             </span>
           </td>
           <td></td>
-          <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:150px">
+          <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold; width:150px">
             <span>{{ $item['observation_code'] }}</span>
 
           </td>
           <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>.....................</span>
+            <span>{{ $item['observation_location_reference'] }}</span>
           </td>
         </tr>
         @endforeach
         <tr>
-            <td style="text-align: center;padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:60px">
+            <td style="text-align: center;padding-top:5px; padding-bottom:0px;font-weight: bold; width:60px">
               <span><span/>
             </td>
             <td></td>
-            <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:600px">
+            <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold; width:600px">
               <span>
 
               </span>
             </td>
             <td></td>
-            <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:150px">
+            <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold; width:150px">
               <span></span>
 
             </td>
             <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-              <span>.....................</span>
+              <span></span>
             </td>
           </tr>
         <tr>
-            <td style="text-align: center;padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:60px">
+            <td style="text-align: center;padding-top:5px; padding-bottom:0px;font-weight: bold; width:60px">
               <span><span/>
             </td>
             <td></td>
-            <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:600px">
+            <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold; width:600px">
               <span>
 
               </span>
             </td>
             <td></td>
-            <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:150px">
+            <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold; width:150px">
               <span></span>
 
             </td>
             <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-              <span>.....................</span>
+              <span></span>
             </td>
           </tr>
         <tr>
-            <td style="text-align: center;padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:60px">
+            <td style="text-align: center;padding-top:5px; padding-bottom:0px;font-weight: bold; width:60px">
               <span><span/>
             </td>
             <td></td>
-            <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:600px">
+            <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold; width:600px">
               <span>
 
               </span>
             </td>
             <td></td>
-            <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold;border-bottom:1px dotted #000;width:150px">
+            <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold; width:150px">
               <span></span>
 
             </td>
             <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-              <span>.....................</span>
+              <span></span>
             </td>
           </tr>
 
@@ -285,10 +290,10 @@
             colspan="2"
             style="text-align: left; width: 150px; padding-top:10px; padding-bottom:10px"
           >
-            <p>Additional pages? (.............)</p>
+            <p>Additional pages? ()</p>
           </td>
           <td colspan="2" style="text-align: left">
-            <p>State page numbers: (.............)</p>
+            <p>State page numbers: ()</p>
           </td>
         </tr>
         <tr>
@@ -296,12 +301,12 @@
             <p>
               Immediate action required
               <span style="font-weight: 100">for items:</span>
-              (..............................................................)<span
+              ()<span
                 >&nbsp; &nbsp; &nbsp;</span
               >
               Improvement recommended
               <span style="font-weight: 100">for items:</span>
-              (..............................................................)
+              ()
             </p>
           </td>
         </tr>
@@ -310,13 +315,13 @@
             <p>
               Urgent remedial action required
               <span style="font-weight: 100">for items:</span>
-              (..............................................................)<span
+              ()<span
                 >&nbsp; &nbsp; &nbsp;</span
               >
               Further investigation required<span style="font-weight: 100">
                 for items:</span
               >
-              (..............................................................)
+              ()
             </p>
           </td>
         </tr>

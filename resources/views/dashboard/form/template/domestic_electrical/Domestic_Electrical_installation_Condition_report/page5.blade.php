@@ -53,7 +53,7 @@
                           a)&nbsp;&nbsp;For all socket-outlets with a rated current not exceeding 32 A, unless exempt
                      </td>
                      <td>
-                         (...<x-form-toggle-value key="5.12_1_for_all_socket_outlets" :data-form="$formData"/>...)
+                         (<x-form-toggle-value key="5.12_1_for_all_socket_outlets" :data-form="$formData"/>)
                      </td>
                   </tr>
                   <tr>
@@ -61,7 +61,7 @@
                           b)&nbsp;&nbsp;Supplies for mobile equipment with a rated current not exceeding 32 A for use outdoors:
                      </td>
                      <td>
-                         (...<x-form-toggle-value key="5.12_2_for_the_supply" :data-form="$formData"/>...)
+                         (<x-form-toggle-value key="5.12_2_for_the_supply" :data-form="$formData"/>)
                      </td>
                   </tr>
                   <tr>
@@ -69,7 +69,7 @@
                           c)&nbsp;&nbsp;For cables concealed in walls / partitions at a depth of less than 50 mm:
                      </td>
                      <td>
-                         (...<x-form-toggle-value key="5.12_3_for_cables_concealed_depth_50mm" :data-form="$formData"/>...)
+                         (<x-form-toggle-value key="5.12_3_for_cables_concealed_depth_50mm" :data-form="$formData"/>)
                      </td>
                   </tr>
                   <tr>
@@ -77,7 +77,7 @@
                           d)&nbsp;&nbsp;For cables concealed in walls / partitions containing metal parts regardless of depth:
                      </td>
                      <td>
-                         (...<x-form-toggle-value key="5.12_4_for_cables_concealed" :data-form="$formData"/>...)
+                         (<x-form-toggle-value key="5.12_4_for_cables_concealed" :data-form="$formData"/>)
                      </td>
                   </tr>
                   <tr>
@@ -85,7 +85,7 @@
                           e)&nbsp;&nbsp;Circuits supplying luminaires within domestic (household) premises:
                      </td>
                      <td>
-                         (...<x-form-toggle-value key="5.12_6_for_circuit_supply" :data-form="$formData"/>...)
+                         (<x-form-toggle-value key="5.12_6_for_circuit_supply" :data-form="$formData"/>)
                      </td>
                   </tr>
 
@@ -101,7 +101,7 @@
                         against thermal effects:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="5.1_provision_of_fire_barriers" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="5.1_provision_of_fire_barriers" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -109,7 +109,7 @@
                         6.20 Band II cables segregated / separated from Band I cables:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="5.1_band_if_cables" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="5.1_band_if_cables" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -117,7 +117,7 @@
                         6.21 Cables segregated / separated from non-electrical services:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="5.1_cables_segregated_non_electrical_service" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="5.1_cables_segregated_non_electrical_service" :data-form="$formData"/>)
                    </td>
                 </tr>
               </table>
@@ -130,7 +130,7 @@
                             a)&nbsp;&nbsp;Connections under no undue strain:
                     </td>
                     <td>
-                        (...<x-form-toggle-value key="5.17_1_connections_soundly" :data-form="$formData"/>...)
+                        (<x-form-toggle-value key="5.17_1_connections_soundly" :data-form="$formData"/>)
                     </td>
                     </tr>
                     <tr>
@@ -138,7 +138,7 @@
                             b)&nbsp;&nbsp;No basic insulation of a conductor visible outside  an enclosure:
                     </td>
                     <td>
-                        (...<x-form-toggle-value key="5.17_2_no_basic_insulation" :data-form="$formData"/>...)
+                        (<x-form-toggle-value key="5.17_2_no_basic_insulation" :data-form="$formData"/>)
                     </td>
                     </tr>
                     <tr>
@@ -146,7 +146,7 @@
                             c)&nbsp;&nbsp;Connections of live conductors adequately enclosed:
                     </td>
                     <td>
-                        (...<x-form-toggle-value key="5.17_3_connections_of_live" :data-form="$formData"/>...)
+                        (<x-form-toggle-value key="5.17_3_connections_of_live" :data-form="$formData"/>)
                     </td>
                     </tr>
                     <tr>
@@ -154,7 +154,7 @@
                             d)&nbsp;&nbsp;Adequacy of connection at point of entry to enclosure:
                     </td>
                     <td>
-                        (...<x-form-toggle-value key="5.17_4_adequately_connected" :data-form="$formData"/>...)
+                        (<x-form-toggle-value key="5.17_4_adequately_connected" :data-form="$formData"/>)
                     </td>
                     </tr>
                 </table>
@@ -164,7 +164,7 @@
                             6.23 Temperature rating of cable insulation addequate:
                     </td>
                     <td>
-                        (......)
+                        ()
                     </td>
                     </tr>
                     <tr>
@@ -172,7 +172,7 @@
                             6.24 Condition of accessories including socket-outlets, switches  and joint boxes satisfactory:
                     </td>
                     <td>
-                        (...<x-form-toggle-value key="5.18_conditions_of_accessories" :data-form="$formData"/>...)
+                        (<x-form-toggle-value key="5.18_conditions_of_accessories" :data-form="$formData"/>)
                     </td>
                     </tr>
                     <tr>
@@ -180,7 +180,7 @@
                             6.25 Suitability of accessories for external influences:
                     </td>
                     <td>
-                        (...<x-form-toggle-value key="5.19_suitability_of_accessories" :data-form="$formData"/>...)
+                        (<x-form-toggle-value key="5.19_suitability_of_accessories" :data-form="$formData"/>)
                     </td>
                     </tr>
                 </table>
@@ -193,7 +193,7 @@
                           6.26&nbsp;&nbsp;Single-pole switching or protective devices in line conductors only
                      </td>
                      <td>
-                         (...<x-form-toggle-value key="5.21_single_pole_switching" :data-form="$formData"/>...)
+                         (<x-form-toggle-value key="5.21_single_pole_switching" :data-form="$formData"/>)
                      </td>
                   </tr>
                   <tr>
@@ -201,7 +201,7 @@
                         6.27&nbsp;&nbsp;Adequacy of connections, including cpcs, within accessoriesand to fixed and stationary equipment
                      </td>
                      <td>
-                         (......)
+                         ()
                      </td>
                   </tr>
               </table>
@@ -220,7 +220,7 @@
                             a)&nbsp;&nbsp;Presence and condition of appropriate devices:
                         </td>
                         <td>
-                            (...<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">...)
+                            (<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">)
                         </td>
                     </tr>
                     <tr>
@@ -228,7 +228,7 @@
                             b)&nbsp;&nbsp;Acceptable location (local / remote)
                         </td>
                         <td>
-                            (...<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">...)
+                            (<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">)
                         </td>
                     </tr>
                     <tr>
@@ -236,7 +236,7 @@
                             c)&nbsp;&nbsp;Capable of being secured in the OFF position:
                         </td>
                         <td>
-                            (...<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">...)
+                            (<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">)
                         </td>
                     </tr>
                     <tr>
@@ -244,7 +244,7 @@
                             d)&nbsp;&nbsp;Correct operation verified:
                         </td>
                         <td>
-                            (...<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">...)
+                            (<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">)
                         </td>
                     </tr>
                     <tr>
@@ -252,7 +252,7 @@
                             e)&nbsp;&nbsp;Clearly identified by position and / or durable markings:
                         </td>
                         <td>
-                            (...<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">...)
+                            (<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">)
                         </td>
                     </tr>
                     <tr>
@@ -261,7 +261,7 @@
                              be isolated by the operation of a single device:
                         </td>
                         <td>
-                            (...<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">...)
+                            (<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">)
                         </td>
                     </tr>
 
@@ -277,7 +277,7 @@
                             a)&nbsp;&nbsp;Presence and condition of appropriate devices:
                         </td>
                         <td>
-                            (...<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">...)
+                            (<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">)
                         </td>
                     </tr>
                     <tr>
@@ -285,7 +285,7 @@
                             b)&nbsp;&nbsp;Acceptable location:
                         </td>
                         <td>
-                            (...<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">...)
+                            (<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">)
                         </td>
                     </tr>
                     <tr>
@@ -293,7 +293,7 @@
                             c)&nbsp;&nbsp;Capable of being secured in the OFF position:
                         </td>
                         <td>
-                            (...<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">...)
+                            (<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">)
                         </td>
                     </tr>
                     <tr>
@@ -301,7 +301,7 @@
                             d)&nbsp;&nbsp;Correct operation verified:
                         </td>
                         <td>
-                            (...<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">...)
+                            (<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">)
                         </td>
                     </tr>
                     <tr>
@@ -309,7 +309,7 @@
                             e)&nbsp;&nbsp;Clearly identified by position and / or durable marking(s):
                         </td>
                         <td>
-                            (...<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">...)
+                            (<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">)
                         </td>
                     </tr>
                 </table>
@@ -323,7 +323,7 @@
                             a)&nbsp;&nbsp;Presence and condition of appropriate devices:
                         </td>
                         <td>
-                            (...<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">...)
+                            (<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">)
                         </td>
                     </tr>
                     <tr>
@@ -331,7 +331,7 @@
                             b)&nbsp;&nbsp;Readily accessible for operation where danger might occur:
                         </td>
                         <td>
-                            (...<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">...)
+                            (<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">)
                         </td>
                     </tr>
                     <tr>
@@ -339,7 +339,7 @@
                             c)&nbsp;&nbsp;Correct operation verified
                         </td>
                         <td>
-                            (...<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">...)
+                            (<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">)
                         </td>
                     </tr>
                 </table>
@@ -354,7 +354,7 @@
                             a)&nbsp;&nbsp;Presence and condition of appropriate devices:
                         </td>
                         <td>
-                            (...<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">...)
+                            (<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">)
                         </td>
                     </tr>
                     <tr>
@@ -362,7 +362,7 @@
                             b)&nbsp;&nbsp;Correct operation (functionality) verified
                         </td>
                         <td>
-                            (...N/A...)
+                            (N/A)
                         </td>
                     </tr>
                 </table>
@@ -379,7 +379,7 @@
                         8.1&nbsp;&nbsp;Condition of equipment in terms of IP rating:
                      </td>
                      <td>
-                         (...<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">...)
+                         (<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">)
                      </td>
                   </tr>
                   <tr>
@@ -387,7 +387,7 @@
                           8.2&nbsp;&nbsp;Equipment does not constitute a fire hazard:
                      </td>
                      <td>
-                         (...<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">...)
+                         (<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">)
                      </td>
                   </tr>
                   <tr>
@@ -395,7 +395,7 @@
                           8.3&nbsp;&nbsp;Enclosure not damaged / deteriorated so as to impair safety:
                      </td>
                      <td>
-                         (...<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">...)
+                         (<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">)
                      </td>
                   </tr>
                   <tr>
@@ -403,7 +403,7 @@
                           8.4&nbsp;&nbsp;Suitability for the environment and external influences:
                      </td>
                      <td>
-                         (...<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">...)
+                         (<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">)
                      </td>
                   </tr>
                   <tr>
@@ -411,7 +411,7 @@
                           8.5&nbsp;&nbsp;Security of fixing:
                      </td>
                      <td>
-                         (...<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">...)
+                         (<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">)
                      </td>
                   </tr>
                   <tr>
@@ -420,7 +420,7 @@
                           so as to restrict the spread of fire:
                      </td>
                      <td>
-                         (...<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">...)
+                         (<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">)
                      </td>
                   </tr>
                   <tr>
@@ -431,7 +431,7 @@
                         Page No.
                      </td>
                      <td>
-                         (...<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">...)
+                         (<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">)
                      </td>
                   </tr>
               </table>
@@ -445,7 +445,7 @@
                          a)&nbsp;&nbsp;Correct type of lamps fitted:
                      </td>
                      <td>
-                         (...<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">...)
+                         (<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">)
                      </td>
                  </tr>
                  <tr>
@@ -453,7 +453,7 @@
                          b)&nbsp;&nbsp;Installed to minimise build-up of heat
                      </td>
                      <td>
-                         (...<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">...)
+                         (<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">)
                      </td>
                  </tr>
                  <tr>
@@ -461,7 +461,7 @@
                          c)&nbsp;&nbsp;No signs of overheating to surrounding building fabric:
                      </td>
                      <td>
-                         (...<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">...)
+                         (<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">)
                      </td>
                  </tr>
                  <tr>
@@ -469,7 +469,7 @@
                          d)&nbsp;&nbsp;No signs of overheating to conductors / terminations:
                      </td>
                      <td>
-                         (...<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">...)
+                         (<img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">)
                      </td>
                  </tr>
              </table>
@@ -479,22 +479,22 @@
                 </ol>
                 <table width="100%">
                     <tr>
-                        <td style="width: 70%;border-bottom:1px dotted #000"></td>
-                        <td  style="width: 30px;border-bottom:1px dotted #000">
+                        <td style="width: 70%;"></td>
+                        <td  style="width: 30px;">
                             <div>N/A</div>
                         </td>
                     </tr>
                     <tr>
-                        <td style="width: 70%;border-bottom:1px dotted #000"></td>
-                        <td style="width: 30px;border-bottom:1px dotted #000">N/A</td>
+                        <td style="width: 70%;"></td>
+                        <td style="width: 30px;">N/A</td>
                     </tr>
                     <tr>
-                        <td style="width: 70%;border-bottom:1px dotted #000"></td>
-                        <td style="width: 30px;border-bottom:1px dotted #000">N/A</td>
+                        <td style="width: 70%;"></td>
+                        <td style="width: 30px;">N/A</td>
                     </tr>
                     <tr>
-                        <td style="width: 70%;border-bottom:1px dotted #000"></td>
-                        <td style="width: 30px;border-bottom:1px dotted #000">N/A</td>
+                        <td style="width: 70%;"></td>
+                        <td style="width: 30px;">N/A</td>
                     </tr>
                 </table>
                 <p style="font-style:italic;padding:0px;margin:0px;">
@@ -506,14 +506,14 @@
                 <table>
                     <tr>
                         <td>Name (capitals): </td>
-                        <td colspan="3" style="border-bottom:1px dotted #000"></td>
+                        <td colspan="3" style=""></td>
 
                     </tr>
                     <tr>
                         <td>Signature:</td>
-                        <td style="border-bottom:1px dotted #000;width:100px"></td>
+                        <td style=";width:100px"></td>
                         <td style="width:40%;text-align:right;">Date:</td>
-                        <td style="border-bottom:1px dotted #000;width:70px"></td>
+                        <td style=";width:70px"></td>
                     </tr>
                 </table>
             </div>
@@ -537,7 +537,7 @@
                         <h5 style="margin: 0; font-weight: 800; font-size: 10px">
                         Schedule of Inspections
                         </h5>
-                        <p style="font-size: 10px; margin: 20px 0 0 0; padding-top: 5px">Page No(s):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(..........................)</p>
+                        <p style="font-size: 10px; margin: 20px 0 0 0; padding-top: 5px">Page No(s):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;()</p>
                     </td>
                     <td
                         style="
@@ -548,7 +548,7 @@
                         <h5 style="margin: 0; font-weight: 800; font-size: 10px">
                         Schedule of Circuit Details and Test Results <br /> for the installation
                         </h5>
-                        <p style="font-size: 10px; margin: 20px 0 0 0; padding-top: 5px">Page No(s):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(..........................)</p>
+                        <p style="font-size: 10px; margin: 20px 0 0 0; padding-top: 5px">Page No(s):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;()</p>
                     </td>
                     <td
                         style="
@@ -559,7 +559,7 @@
                         <h5 style="margin: 0; font-weight: 800; font-size: 10px">
                         Additional pages, including data sheets <br /> for additional sources
                         </h5>
-                        <p style="font-size: 10px; margin: 20px 0 0 0; padding-top: 5px">Page No(s):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(..........................)</p>
+                        <p style="font-size: 10px; margin: 20px 0 0 0; padding-top: 5px">Page No(s):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;()</p>
                     </td>
                     <td
                         style="
@@ -570,7 +570,7 @@
                         <h5 style="margin: 0; font-weight: 800; font-size: 10px">
                             Special installations or locations<br /> (indicated in item 9. above)
                         </h5>
-                        <p style="font-size: 10px; margin: 20px 0 0 0; padding-top: 5px">Page No(s):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(..........................)</p>
+                        <p style="font-size: 10px; margin: 20px 0 0 0; padding-top: 5px">Page No(s):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;()</p>
                     </td>
                     <td
                         style="
@@ -581,7 +581,7 @@
                         <h5 style="margin: 0; font-weight: 800; font-size: 12px">
                         Continuation sheets
                         </h5>
-                        <p style="font-size: 10px; margin: 20px 0 0 0; padding-top: 5px">Page No(s):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(..........................)</p>
+                        <p style="font-size: 10px; margin: 20px 0 0 0; padding-top: 5px">Page No(s):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;()</p>
                     </td>
                     </tr>
                     <tr>

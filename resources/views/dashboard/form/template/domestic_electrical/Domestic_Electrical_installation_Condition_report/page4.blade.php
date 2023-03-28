@@ -56,21 +56,21 @@
             <table style="font-size: 10px; margin:0;">
                 <tr>
                     <td style="width:40%;">1.1&nbsp;&nbsp;Service cable:</td>
-                    <td >(...<x-form-toggle-value key='1.1_condition_cable' :data-form="$formData"/>...)</td>
+                    <td >(<x-form-toggle-value key='1.1_condition_cable' :data-form="$formData"/>)</td>
                     <td style="width:35%;">1.2&nbsp;&nbsp;Service head:</td>
-                    <td >(...<x-form-toggle-value key='1.2_condition_head' :data-form="$formData"/>...)</td>
+                    <td >(<x-form-toggle-value key='1.2_condition_head' :data-form="$formData"/>)</td>
                 </tr>
                 <tr>
                     <td style="width:35%;">1.3&nbsp;&nbsp;Earthing arrangement:</td>
-                    <td >(...<x-form-toggle-value key="1.3_arrangement" :data-form="$formData"/>...)</td>
+                    <td >(<x-form-toggle-value key="1.3_arrangement" :data-form="$formData"/>)</td>
                     <td >1.4&nbsp;&nbsp; Meter tails:</td>
-                    <td >(...<x-form-toggle-value key="1.4_consumer" :data-form="$formData"/>...)</td>
+                    <td >(<x-form-toggle-value key="1.4_consumer" :data-form="$formData"/>)</td>
                 </tr>
                 <tr>
                     <td style="width:35%;">1.5&nbsp;&nbsp;Metering equipment:</td>
-                    <td >(...<x-form-toggle-value key="1.5_isolator" :data-form="$formData"/>...)</td>
+                    <td >(<x-form-toggle-value key="1.5_isolator" :data-form="$formData"/>)</td>
                     <td >1.6&nbsp;&nbsp;solator (where present):</td>
-                    <td >(...<x-form-toggle-value key="1.5_isolator" :data-form="$formData"/>...)</td>
+                    <td >(<x-form-toggle-value key="1.5_isolator" :data-form="$formData"/>)</td>
                 </tr>
             </table>
 
@@ -88,7 +88,7 @@
                     2.1&nbsp;&nbsp;Adequate arrangements where a generating set operates as a switched alternative to the public supply:
                 </td>
                     <td>
-                        (......)
+                        ()
                     </td>
              </tr>
              <tr>
@@ -96,7 +96,7 @@
                     2.2&nbsp;&nbsp;Adequate arrangements where generating set parallel with the public supply:
                 </td>
                 <td>
-                    (......)
+                    ()
                 </td>
              </tr>
              <tr>
@@ -106,7 +106,7 @@
                     required:
                 </td>
                 <td>
-                    (......)
+                    ()
                 </td>
              </tr>
            </table>
@@ -127,7 +127,7 @@
                         earthing arrangement:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="3.1_presence_arrangement" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="3.1_presence_arrangement" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -135,7 +135,7 @@
                         b)&nbsp;&nbsp;Presence and condition of earth electrode arrangement, present:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="3.2_presence_applicable" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="3.2_presence_applicable" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -143,7 +143,7 @@
                         c)&nbsp;&nbsp;Adequacy of earthing conductor size:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="3.4_adequacy_size" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="3.4_adequacy_size" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -151,7 +151,7 @@
                         d)&nbsp;&nbsp;Adequacy of earthing conductor connections:
                    </td>
                    <td>
-                       (.....)
+                       ()
                    </td>
                 </tr>
                 <tr>
@@ -159,7 +159,7 @@
                         e)&nbsp;&nbsp;Accessibility of earthing conductor connections:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="3.5_accessibility_connections" :data-form="$formData"/>....)
+                       (<x-form-toggle-value key="3.5_accessibility_connections" :data-form="$formData"/>.)
                    </td>
                 </tr>
                 <tr>
@@ -167,7 +167,7 @@
                         f)&nbsp;&nbsp;Adequacy of main protective bonding conductor size(s):
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="3.6_adequacy_sizes" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="3.6_adequacy_sizes" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -175,7 +175,7 @@
                         g)&nbsp;&nbsp;Adequacy of main protective bonding conductor connections:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="3.7_adequacy_connections" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="3.7_adequacy_connections" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -183,7 +183,7 @@
                         h)&nbsp;&nbsp;Accessibility of main protective bonding connections:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="3.8_accessibility_connections" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="3.8_accessibility_connections" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -191,7 +191,7 @@
                         j)&nbsp;&nbsp;Provision of earthing / bonding labels at all appropriate locations:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="3.3_provision_appropriate" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="3.3_provision_appropriate" :data-form="$formData"/>)
                    </td>
                 </tr>
             </table>
@@ -206,7 +206,7 @@
                         a)&nbsp;&nbsp;Source providing at least simple separation:
                    </td>
                    <td>
-                       (......)
+                       ()
                    </td>
                 </tr>
                 <tr>
@@ -215,7 +215,7 @@
                         with those of other systems within the premises:
                    </td>
                    <td>
-                       (......)
+                       ()
                    </td>
                 </tr>
             </table>
@@ -229,7 +229,7 @@
                         4.&nbsp;&nbsp;Other methods of protection
                    </td>
                    <td>
-                       (......)
+                       ()
                    </td>
                 </tr>
                 <tr>
@@ -238,7 +238,7 @@
                         sheets:
                    </td>
                    <td>
-                       (......)
+                       ()
                    </td>
                 </tr>
             </table>
@@ -254,7 +254,7 @@
                         5.1&nbsp;&nbsp;Adequacy of working space / accessibility of equipment:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="4.1_adequacy_board" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="4.1_adequacy_board" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -262,7 +262,7 @@
                         5.2&nbsp;&nbsp;Security of fixing:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="4.2_security_fixing" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="4.2_security_fixing" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -270,7 +270,7 @@
                         5.3&nbsp;&nbsp;Condition of insulation of live  parts:
                    </td>
                    <td>
-                       (......)
+                       ()
                    </td>
                 </tr>
                 <tr>
@@ -278,7 +278,7 @@
                         5.4&nbsp;&nbsp;Adequacy / security of barriers:
                    </td>
                    <td>
-                       (......)
+                       ()
                    </td>
                 </tr>
                 <tr>
@@ -286,7 +286,7 @@
                         5.5&nbsp;&nbsp;Condition of enclosure(s) in terms of IP rating:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="4.3_condition_ip_rating" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="4.3_condition_ip_rating" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -294,7 +294,7 @@
                         5.6&nbsp;&nbsp;Condition of enclosure(s) in terms of fire rating:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="4.4_condition_fire_rating" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="4.4_condition_fire_rating" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -302,7 +302,7 @@
                         5.7&nbsp;&nbsp;Enclosure not damaged / deteriorated so as to impair safety:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="4.5_enclosure_safety" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="4.5_enclosure_safety" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -310,7 +310,7 @@
                         5.8&nbsp;&nbsp;Presence and effectiveness of obstacles:
                    </td>
                    <td>
-                       (......)
+                       ()
                    </td>
                 </tr>
                 <tr>
@@ -318,7 +318,7 @@
                         5.9&nbsp;&nbsp; Presence of main switch(es), linked where required:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="4.6_presence_switch" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="4.6_presence_switch" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -326,7 +326,7 @@
                         5.10&nbsp;&nbsp; Operation of main switch(es) (functional check):
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="4.6_presence_switch" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="4.6_presence_switch" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -334,7 +334,7 @@
                         5.11&nbsp;&nbsp; Correct identification of circuit protective  devices:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="4.9_correct_device" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="4.9_correct_device" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -342,7 +342,7 @@
                         5.12&nbsp;&nbsp; Adequacy of protective devices for prospective fault current:
                    </td>
                    <td>
-                       (......)
+                       ()
                    </td>
                 </tr>
                 <tr>
@@ -350,7 +350,7 @@
                         5.13&nbsp;&nbsp; RCD(s) provided for fault protection – includes RCBOs:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="4.17_rcd_provided_for_fault" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="4.17_rcd_provided_for_fault" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -358,7 +358,7 @@
                         5.14&nbsp;&nbsp;RCD(s) provided for additional protection – includes RCBOs:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="4.18_rcd_provided_for_additional" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="4.18_rcd_provided_for_additional" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -366,7 +366,7 @@
                         5.15&nbsp;&nbsp; RCD(s) provided for protection against fire–includes RCBOs:
                    </td>
                    <td>
-                       (......)
+                       ()
                    </td>
                 </tr>
                 <tr>
@@ -374,7 +374,7 @@
                         5.16&nbsp;&nbsp; Manual operation of circuit-breakers and RCDs to prove disconnection:
                    </td>
                    <td>
-                       (......)
+                       ()
                    </td>
                 </tr>
                 <tr>
@@ -382,7 +382,7 @@
                         5.17&nbsp;&nbsp;Confirmation that integral test button/switch causes RCD(s) to trip when operated (functional check):
                    </td>
                    <td>
-                       (......)
+                       ()
                    </td>
                 </tr>
                 <tr>
@@ -390,7 +390,7 @@
                         5.18&nbsp;&nbsp;Presence of RCD six-monthly retest notice at or near equipment, where required:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="4.10_presence_required" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="4.10_presence_required" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -398,7 +398,7 @@
                         5.19&nbsp;&nbsp;Presence of diagrams, charts or schedules at or  near equipment where required:
                    </td>
                    <td>
-                       (......)
+                       ()
                    </td>
                 </tr>
                 <tr>
@@ -406,7 +406,7 @@
                         5.20&nbsp;&nbsp; Presence of non-standard (mixed) cable colour warning notices at or near equipment, where required:
                    </td>
                    <td>
-                       (......)
+                       ()
                    </td>
                 </tr>
                 <tr>
@@ -414,7 +414,7 @@
                         5.21&nbsp;&nbsp;Presence of next inspection recommendation label:
                    </td>
                    <td>
-                       (......)
+                       ()
                    </td>
                 </tr>
                 <tr>
@@ -422,7 +422,7 @@
                         5.23&nbsp;&nbsp; Compatibility of protective device(s), base(s)  and other components:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="4.13_compatibility_of_protective" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="4.13_compatibility_of_protective" :data-form="$formData"/>)
                    </td>
                 </tr>
             </table>
@@ -436,7 +436,7 @@
                         5.24&nbsp;&nbsp; Single-pole switching or protective devices in line conductors  only:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="4.14_single_pole_switching" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="4.14_single_pole_switching" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -444,7 +444,7 @@
                         5.25&nbsp;&nbsp; Protection against mechanical damage where cables enter equipment:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="4.15_protection_against_mechanical" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="4.15_protection_against_mechanical" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -452,7 +452,7 @@
                         5.26&nbsp;&nbsp; Protection against electromagnetic effects where cables enter ferrromagnetic enclosures:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="4.16_protection_against_electromagnetic" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="4.16_protection_against_electromagnetic" :data-form="$formData"/>)
                    </td>
                 </tr>
             </table>
@@ -467,7 +467,7 @@
                         6.1&nbsp;&nbsp;Identification of conductors
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="5.1_identification" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="5.1_identification" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -475,7 +475,7 @@
                         6.2&nbsp;&nbsp;Cables correctly supported throughout their length:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="5.2_cables_correctly" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="5.2_cables_correctly" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -483,7 +483,7 @@
                         6.3&nbsp;&nbsp;Condition of insulation of live parts:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="5.3_condition_live_parts" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="5.3_condition_live_parts" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -491,7 +491,7 @@
                         6.4&nbsp;&nbsp;Non-sheathed cables protected by enclosures  in conduit, ducting or trunking:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="5.4_non_sheathed_cables" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="5.4_non_sheathed_cables" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -499,7 +499,7 @@
                         6.5&nbsp;&nbsp;Suitability of containment systems for continued use (including flexible conduit):
                    </td>
                    <td>
-                       (......)
+                       ()
                    </td>
                 </tr>
                 <tr>
@@ -507,7 +507,7 @@
                         6.6&nbsp;&nbsp; Cables correctly terminated in enclosures (indicate extent of sampling in PART 7 of report):
                    </td>
                    <td>
-                       (......)
+                       ()
                    </td>
                 </tr>
                 <tr>
@@ -515,7 +515,7 @@
                         6.7&nbsp;&nbsp;Indication of SPD(s) continued functionality confirmed:
                    </td>
                    <td>
-                       (......)
+                       ()
                    </td>
                 </tr>
                 <tr>
@@ -523,7 +523,7 @@
                         6.8&nbsp;&nbsp; Adequacy of AFDD(s), where specified:
                    </td>
                    <td>
-                       (......)
+                       ()
                    </td>
                 </tr>
                 <tr>
@@ -531,7 +531,7 @@
                         6.9&nbsp;&nbsp;Confirmation that conductor connections,including connections to busbars are correctly located in terminals and are tight and  secure:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="4.20_confirmation_that_all_conductor" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="4.20_confirmation_that_all_conductor" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -539,7 +539,7 @@
                         6.10&nbsp;&nbsp;Examination of cables for signs of unacceptable thermal and mechanical damage / deterioration:
                    </td>
                    <td>
-                       (......)
+                       ()
                    </td>
                 </tr>
                 <tr>
@@ -547,7 +547,7 @@
                         6.11&nbsp;&nbsp;Adequacy of cables for current-carrying capacity with regard to the type and nature of installation:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="5.5_adequacy_of_cables" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="5.5_adequacy_of_cables" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -555,7 +555,7 @@
                         6.12&nbsp;&nbsp;Adequacy of protective devices; type and rated current for fault protection:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="5.7_adequacy_of_protective" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="5.7_adequacy_of_protective" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -563,7 +563,7 @@
                         6.13&nbsp;&nbsp;Presence and adequacy of circuit protective conductors:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="5.8_presence_and_adequacy" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="5.8_presence_and_adequacy" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -571,7 +571,7 @@
                         6.14&nbsp;&nbsp;Co-ordination between conductors and overload protective devices:
                    </td>
                    <td>
-                       (...<x-form-toggle-value key="5.6_coordination" :data-form="$formData"/>...)
+                       (<x-form-toggle-value key="5.6_coordination" :data-form="$formData"/>)
                    </td>
                 </tr>
                 <tr>
@@ -579,7 +579,7 @@
                         6.15&nbsp;&nbsp;Cable installation methods / practices appropriate to the type and nature of installation and external influences:
                    </td>
                    <td>
-                       (......)
+                       ()
                    </td>
                 </tr>
                 <tr>
@@ -587,7 +587,7 @@
                         6.16&nbsp;&nbsp;Cables where exposed to direct sunlight, of a suitable type or adequatelyprotected against solar radiation:
                    </td>
                    <td>
-                       (......)
+                       ()
                    </td>
                 </tr>
                 <tr>
@@ -595,7 +595,7 @@
                         6.17&nbsp;&nbsp;Cables adequately protected  against damage and abrasion:
                    </td>
                    <td>
-                       (.....)
+                       ()
                    </td>
                 </tr>
             </table>

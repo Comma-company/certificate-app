@@ -71,16 +71,16 @@
         <p style="font-size: 10px; margin: 0;float: left;width: 22%;">
           Details of the installation covered by this report:
         </p>
-        <P style="font-size: 10px;font-weight: bold; margin: 0;float: left;border-bottom: 1px dotted #000; width: 70%;">{{ getvalue('extent_electrical_c',$formData) }}</P>
+        <P style="font-size: 10px;font-weight: bold; margin: 0;float: left;  width: 70%;">{{ getvalue('extent_electrical_c',$formData) }}</P>
     <div class="clear"></div>
     </div>
 
     <div style="text-align: left; padding: 0 10px;">
-        <P style="font-size: 10px; margin: 0;float: left;border-bottom: 1px dotted #000; width: 80%;">&nbsp;</P>
+        <P style="font-size: 10px; margin: 0;float: left;  width: 80%;">&nbsp;</P>
         <p style="font-size: 10px; margin: 0;float: left;width: 20%;">
 
             (<span style="font-size: 10px; margin: 0;width: 80%;">see additional page No  </span>
-            <span style="font-size: 10px; font-weight: bold; margin: 0;width: 20px;border-bottom: 1px dotted #000;">N/A</span>
+            <span style="font-size: 10px; font-weight: bold; margin: 0;width: 20px; ">N/A</span>
             )
             <div class="clear"></div>
         </p>
@@ -91,14 +91,14 @@
         <p style="font-size: 10px; margin: 0;float: left;width: 35%;">
             Agreed limitations including the reasons, if any, on the inspection and testing:
         </p>
-        <P style="font-size: 10px;font-weight: bold; margin: 0;float: left;border-bottom: 1px dotted #000; width: 65%;">{{  getvalue('agreed_limitations_c',$formData) }}</P>
+        <P style="font-size: 10px;font-weight: bold; margin: 0;float: left;  width: 65%;">{{  getvalue('agreed_limitations_c',$formData) }}</P>
         <div class="clear"></div>
     </div>
 
       <div style="text-align: start; padding: 0 5px;margin:0px">
 
         <div style="font-size: 10px; margin: 0px;float: left; width: 53%;">
-            <p style="border-bottom: 1px dotted #000; font-weight: bold;margin:5px 0px;"> &nbsp; </p>
+            <p style="  font-weight: bold;margin:5px 0px;"> &nbsp; </p>
          </div>
 
         <div  style="font-size: 10px;margin:0px;float: left; width: 12%;">
@@ -106,7 +106,7 @@
          </div>
 
         <div style="font-size: 10px; margin: 0;float: left; width: 33%;">
-            <p style="border-bottom: 1px dotted #000;font-weight: bold;margin:5px 0px;">{{getvalue('agreed_limitations_with_c',$formData)}}  </p>
+            <p style=" font-weight: bold;margin:5px 0px;">{{getvalue('agreed_limitations_with_c',$formData)}}  </p>
          </div>
       </div>
 
@@ -117,10 +117,10 @@
             <p style="margin:5px 0px;"> Extent of sampling: </p>
          </div>
           <div style="font-size: 10px; margin:0px;float: left; width: 72%;">
-            <p style="border-bottom: 1px dotted #000;font-weight: bold;margin:5px 0px;"> &nbsp;  </p>
+            <p style=" font-weight: bold;margin:5px 0px;"> &nbsp;  </p>
          </div>
           <div  style="font-size: 10px; margin:0px;float: left; width: 15%;">
-            <p style="margin:5px 0px;">  (see additional page No. <span style="border-bottom: 1px dotted #000;font-weight: bold;">&nbsp;&nbsp;</span> )</p>
+            <p style="margin:5px 0px;">  (see additional page No. <span style=" font-weight: bold;">&nbsp;&nbsp;</span> )</p>
          </div>
 
       </div>
@@ -132,10 +132,10 @@
             <p style="margin:5px 0px;">  Operational limitations including the reasons:</p>
          </div>
           <div style="font-size: 10px; margin:0px;float: left; width: 60%;">
-            <p style="margin:5px 0px;border-bottom: 1px dotted #000;font-weight: bold;"> {{ getvalue('operational_limitation_c',$formData) }}  </p>
+            <p style="margin:5px 0px; font-weight: bold;"> {{ getvalue('operational_limitation_c',$formData) }}  </p>
          </div>
           <div  style="font-size: 10px; margin:0px;float: left; width: 15%;">
-            <p style="margin:5px 0px;">  (see additional page No. <span style="border-bottom: 1px dotted #000;font-weight: bold;">&nbsp;&nbsp;</span> )</p>
+            <p style="margin:5px 0px;">  (see additional page No. <span style=" font-weight: bold;">&nbsp;&nbsp;</span> )</p>
          </div>
 
       </div>
@@ -164,36 +164,36 @@
            <table style="width: 100%;margin: 0px">
             <tr>
               <td style="width: 20px"><p style="font-size: 11px;">TN-C-S:</p></td>
-              <td style="width: 24%;border-bottom: 1px dotted #000; text-align: left;"><p style="font-size: 11px;font-weight: bold;"><x-form-toggle-value key='tn_c_a_f' :data-form="$formData"/></p></td>
+              <td style="width: 24%;  text-align: left;"><p style="font-size: 11px;font-weight: bold;">(<x-form-toggle-value key='tn_c_a_f' :data-form="$formData"/>)</p></td>
 
               <td style="width:20px"><p style="font-size: 11px;">TN-S:</p></td>
-              <td style="width: 24%;border-bottom: 1px dotted #000;"><p style="font-size: 11px;font-weight: bold;"> <x-form-toggle-value key='tn_s_f' :data-form="$formData"/> </p></td>
+              <td style="width: 24%; "><p style="font-size: 11px;font-weight: bold;"> (<x-form-toggle-value key='tn_s_f' :data-form="$formData"/>) </p></td>
 
               <td style="width: 20px"><p style="font-size: 11px;">TT:</p></td>
-              <td style="width: 24%;border-bottom: 1px dotted #000;"><p style="font-size: 11px;font-weight: bold;"> <x-form-toggle-value key='tt_f' :data-form="$formData"/> </p></td>
+              <td style="width: 24%; "><p style="font-size: 11px;font-weight: bold;"> <x-form-toggle-value key='tt_f' :data-form="$formData"/> </p></td>
             </tr>
            </table>
            <table style="width: 100%;margin: 0px;">
             <tr>
               <td style="width: 8%"><p style="font-size: 11px;">Other (state)</p></td>
-              <td style="width: 70%; border-bottom: 1px dotted #000;"><p style="font-size: 11px;font-weight: bold"> <x-form-toggle-value key='other_f' :data-form="$formData"/> </p></td>
+              <td style="width: 70%;  "><p style="font-size: 11px;font-weight: bold"> (<x-form-toggle-value key='other_f' :data-form="$formData"/>) </p></td>
             </tr>
            </table>
            <p style="font-size: 11px; font-weight: bold; padding: 0px;margin: 5px 0px 0px">Supply protective device</p>
            <table style="width: 60%;margin: 0px;">
             <tr>
               <td  style="width:13%"><p style="font-size: 11px;">BS (EN)</p></td>
-              <td  style="width:60%; border-bottom: 1px dotted #000;"><p style="font-size: 11px;font-weight: bold"><x-form-toggle-value key='bs_f' :data-form="$formData"/></p></td>
+              <td  style="width:60%;  "><p style="font-size: 11px;font-weight: bold">(<x-form-toggle-value key='bs_f' :data-form="$formData"/>)</p></td>
             </tr>
 
            </table>
            <table style="margin: 0px">
             <tr>
               <td> <p style="font-size: 11px;">Type:</p></td>
-              <td style="width:40%; border-bottom: 1px dotted #000;"> <x-form-toggle-value key='type_f' :data-form="$formData"/> </td>
+              <td style="width:40%;  "> (<x-form-toggle-value key='type_f' :data-form="$formData"/>) </td>
 
               <td> <p style="font-size: 11px;">Rated current:</p></td>
-              <td style="width:20%; border-bottom: 1px dotted #000;"> <x-form-toggle-value key='rated_current_f' :data-form="$formData"/> </td>
+              <td style="width:20%;  "> (<x-form-toggle-value key='rated_current_f' :data-form="$formData"/>) </td>
              <td>A</td>
             </tr>
            </table>
@@ -207,14 +207,14 @@
               <td style="font-size: 11px; ">
                 <p style="">&emsp; <span style="font-weight: bold"> AC</span>&emsp;<span>1-phase, 2-wire:</span></p>
               </td>
-              <td style="border-bottom: 1px dotted #000">
-                <p style="font-size: 11px; font-weight: bold"> <x-form-toggle-value key='1phase_2wire_f' :data-form="$formData"/> </p>
+              <td style="">
+                <p style="font-size: 11px; font-weight: bold"> (<x-form-toggle-value key='1phase_2wire_f' :data-form="$formData"/>) </p>
               </td>
               <td style="width: 40%;font-size: 11px; text-align: right">
                 <span>2-phase, 3-wire:</span>
               </td>
-              <td  style="font-size: 11px;border-bottom: 1px dotted #000">
-                <p style="font-weight: bold"><x-form-toggle-value key='2phase_3wire_f' :data-form="$formData"/></p>
+              <td  style="font-size: 11px;">
+                <p style="font-weight: bold">(<x-form-toggle-value key='2phase_3wire_f' :data-form="$formData"/>)</p>
               </td>
             </tr>
 
@@ -222,14 +222,14 @@
               <td style="font-size: 11px; ">
                 <p style="">&emsp;&emsp;&emsp;&emsp;<span>3-phase, 3-wire:</span></p>
               </td>
-              <td  style="border-bottom: 1px dotted #000">
-                <p style="font-size: 11px; font-weight: bold"><x-form-toggle-value key='3phase_3wire_f' :data-form="$formData"/></p>
+              <td  style="">
+                <p style="font-size: 11px; font-weight: bold">(<x-form-toggle-value key='3phase_3wire_f' :data-form="$formData"/>)</p>
               </td>
               <td style="width: 40%;font-size: 11px; text-align: right">
                 <span>3-phase, 4-wire:</span>
               </td>
-              <td  style="font-size: 11px;border-bottom: 1px dotted #000">
-                <p style="font-weight: bold"> <x-form-toggle-value key='3phase_4wire_f' :data-form="$formData"/> </p>
+              <td  style="font-size: 11px;">
+                <p style="font-weight: bold"> (<x-form-toggle-value key='3phase_4wire_f' :data-form="$formData"/>) </p>
               </td>
             </tr>
            </table>
@@ -239,36 +239,36 @@
                     <td style="font-size: 11px; ">
                         <p style="">&emsp; <span style="font-weight: bold"> DC</span>&emsp;<span>2-wire:</span></p>
                     </td>
-                    <td style="border-bottom: 1px dotted #000">
-                        <p style="font-size: 11px; font-weight: bold"><x-form-toggle-value key='2wire_f' :data-form="$formData"/></p>
+                    <td style="">
+                        <p style="font-size: 11px; font-weight: bold">(<x-form-toggle-value key='2wire_f' :data-form="$formData"/>)</p>
                     </td>
                     <td style="width: 22%;font-size: 11px; text-align: right">
                         <span>3-wire:</span>
                     </td>
-                    <td  style="font-size: 11px;border-bottom: 1px dotted #000">
-                        <p style="font-weight: bold"><x-form-toggle-value key='3wire_f' :data-form="$formData"/></p>
+                    <td  style="font-size: 11px;">
+                        <p style="font-weight: bold">(<x-form-toggle-value key='3wire_f' :data-form="$formData"/>)</p>
                     </td>
 
                     <td style="width: 20%;font-size: 11px; text-align: right">
                         <span style="font-weight: bold">Other</span>
                     </td>
-                    <td  style="width: 13%;font-size: 11px;border-bottom: 1px dotted #000">
-                        <p style="font-weight: bold"><x-form-toggle-value key='other_f' :data-form="$formData"/></p>
+                    <td  style="width: 13%;font-size: 11px;">
+                        <p style="font-weight: bold">(<x-form-toggle-value key='other_f' :data-form="$formData"/>)</p>
                     </td>
                 </tr>
             </table>
             <table width="100%">
                 <tr>
                     <td style="width: 95%">Confirmation of supply polarity</td>
-                    <td style="border-bottom: 1px dotted #000; font-weight: bold;font-size: 11px;">
-                        <x-form-toggle-value key='confirmation_of_supply_f' :data-form="$formData"/>
+                    <td style="  font-weight: bold;font-size: 11px;">
+                        (<x-form-toggle-value key='confirmation_of_supply_f' :data-form="$formData"/>)
                     </td>
                 </tr>
                 <tr>
                     <td style="width: 90%">Other sources of supply
                         (<span style="font-style:italic; font-size: 9px">as detailed on attached schedule</span>)
                         &ensp;&ensp;  Page No:</td>
-                    <td style="border-bottom: 1px dotted #000;font-weight: bold;font-size: 11px;">N/A</td>
+                    <td style=" font-weight: bold;font-size: 11px;">N/A</td>
                 </tr>
             </table>
 
@@ -279,27 +279,27 @@
         <table width="100%">
             <tr>
                 <td style="width:80%">Nominal line voltage, U (1):</td>
-                <td style="border-bottom: 1px dotted #000;font-weight: bold;width: 30px"></td>
+                <td style=" font-weight: bold;width: 30px">()</td>
                 <td>V</td>
             </tr>
             <tr>
                 <td >Nominal line voltage to Earth, U0 (1):</td>
-                <td style="border-bottom: 1px dotted #000;font-weight: bold;width: 30px">{{ getvalue('nominal_voltage_f',$formData) }}</td>
+                <td style=" font-weight: bold;width: 30px">({{ getvalue('nominal_voltage_f',$formData) }})</td>
                 <td>V</td>
             </tr>
             <tr>
                 <td style="margin-top: 10px">Nominal frequency, f (1):</td>
-                <td style="border-bottom: 1px dotted #000;font-weight: bold;width: 30px">{{ getvalue('nominal_frequency_f',$formData) }}</td>
+                <td style=" font-weight: bold;width: 30px">({{ getvalue('nominal_frequency_f',$formData) }})</td>
                 <td>Hz</td>
             </tr>
             <tr >
                 <td style="margin-top: 10px">Prospective fault current, Ipf (1)*:</td>
-                <td style="border-bottom: 1px dotted #000;font-weight: bold;width: 30px">{{ getvalue('pfc_f',$formData) }}</td>
+                <td style=" font-weight: bold;width: 30px">({{ getvalue('pfc_f',$formData) }})</td>
                 <td>kA</td>
             </tr>
             <tr>
                 <td style="margin-top: 10px">External loop impedance, Ze (1)*:</td>
-                <td style="border-bottom: 1px dotted #000;font-weight: bold;width: 30px">{{ getvalue('earth_fault_loop_impedance_ze_f',$formData) }}</td>
+                <td style=" font-weight: bold;width: 30px">({{ getvalue('earth_fault_loop_impedance_ze_f',$formData) }})</td>
                 <td>Ω</td>
             </tr>
         </table>
@@ -329,11 +329,11 @@
             <table>
                 <tr>
                     <td style="font-size: 10px;width: 70%">Distributor’s facility: </td>
-                    <td style="font-size: 11px; width: 30px;border-bottom: 1px dotted #000;font-weight: bold;"> <x-form-toggle-value key='distributor_facility_g' :data-form="$formData"/> </td>
+                    <td style="font-size: 11px; width: 30px; font-weight: bold;"> (<x-form-toggle-value key='distributor_facility_g' :data-form="$formData"/>) </td>
                 </tr>
                 <tr>
                     <td style="font-size: 10px;">Installation earth electrode: </td>
-                    <td style="font-size: 11px;width: 30px;border-bottom: 1px dotted #000;font-weight: bold;"> <x-form-toggle-value key='installation_earth_electrode_g' :data-form="$formData"/> </td>
+                    <td style="font-size: 11px;width: 30px; font-weight: bold;"> (<x-form-toggle-value key='installation_earth_electrode_g' :data-form="$formData"/>) </td>
                 </tr>
             </table>
 
@@ -341,19 +341,19 @@
           <table>
             <tr>
                 <td style="font-size: 10px;">Type – rod(s), tape, etc: </td>
-                <td style="font-size: 11px; width: 60px;border-bottom: 1px dotted #000;font-weight: bold;">{{ getvalue('type_i_g',$formData) }}</td>
+                <td style="font-size: 11px; width: 60px; font-weight: bold;">({{ getvalue('type_i_g',$formData) }})</td>
             </tr>
           </table>
             <table style="margin-top:5px;">
                 <tr>
                     <td style="font-size: 10px;">Location: </td>
-                    <td style="font-size: 11px;width: 90px;border-bottom: 1px dotted #000;font-weight: bold;">{{ getvalue('location_of_the_earth_electrode_g',$formData) }}</td>
+                    <td style="font-size: 11px;width: 90px; font-weight: bold;">({{ getvalue('location_of_the_earth_electrode_g',$formData) }})</td>
                 </tr>
             </table>
           <table style="margin-top:5px;">
                 <tr>
                     <td style="font-size: 10px;">Electrode resistance to Earth:</td>
-                    <td style="font-size: 11px;width: 40px;border-bottom: 1px dotted #000;font-weight: bold;">{{ getvalue('electrode_resistance_ra_g',$formData) }}</td>
+                    <td style="font-size: 11px;width: 40px; font-weight: bold;">( {{ getvalue('electrode_resistance_ra_g',$formData) }} )</td>
                 </tr>
             </table>
 
@@ -368,16 +368,16 @@
             <table width="100%">
                 <tr>
                     <td style="font-size: 10px;">material: </td>
-                    <td style="font-size: 11px;border-bottom: 1px dotted #000;font-weight: bold;">{{  getvalue('conductor_material_h_1',$formData) }}</td>
+                    <td style="font-size: 11px; font-weight: bold;">( {{getvalue('conductor_material_h_1',$formData)}} )</td>
                     <td style="font-size: 10px;">csa</td>
-                    <td style="font-size: 11px;border-bottom: 1px dotted #000;font-weight: bold;">{{  getvalue('conductor_csa_h_1',$formData) }}</td>
+                    <td style="font-size: 11px; font-weight: bold;">( {{getvalue('conductor_csa_h_1',$formData)}} )</td>
                     <td style="font-size: 10px;">mm2</td>
                 </tr>
             </table>
             <table>
                 <tr>
                     <td style="font-size: 10px;">Connection / continuity verified:</td>
-                    <td style="font-size: 11px;border-bottom: 1px dotted #000;font-weight: bold;"> <x-form-toggle-value key='continuity_check_h_1' :data-form="$formData"/> </td>
+                    <td style="font-size: 11px; font-weight: bold;"> (<x-form-toggle-value key='continuity_check_h_1' :data-form="$formData"/>) </td>
                 </tr>
             </table>
             <p style="font-size: 10px; margin:0px; padding:5px 0px 0xp"> Main protective bonding conductors:</p>
@@ -385,16 +385,16 @@
             <table width="100%">
                 <tr>
                     <td style="font-size: 10px;">material: </td>
-                    <td style="font-size: 11px;border-bottom: 1px dotted #000;font-weight: bold;">{{ getvalue('conductor_material_h_2',$formData) }}</td>
+                    <td style="font-size: 11px; font-weight: bold;">({{ getvalue('conductor_material_h_2',$formData) }})</td>
                     <td style="font-size: 10px;">csa</td>
-                    <td style="font-size: 11px;border-bottom: 1px dotted #000;font-weight: bold;">{{ getvalue('conductor_csa_h_2',$formData) }}</td>
+                    <td style="font-size: 11px; font-weight: bold;">({{ getvalue('conductor_csa_h_2',$formData) }})</td>
                     <td style="font-size: 10px;">mm2</td>
                 </tr>
             </table>
             <table>
                 <tr>
                     <td style="font-size: 10px;">Connection / continuity verified:</td>
-                    <td style="font-size: 11px;border-bottom: 1px dotted #000;font-weight: bold;"><x-form-toggle-value key='continuity_check_h_2' :data-form="$formData"/></td>
+                    <td style="font-size: 11px; font-weight: bold;">(<x-form-toggle-value key='continuity_check_h_2' :data-form="$formData"/>)</td>
                 </tr>
             </table>
       </div>
@@ -406,27 +406,27 @@
           <table width="100%">
             <tr>
                 <td style="font-size: 10px;">Water installation pipes: </td>
-                <td style="font-size: 11px;width: 60px;border-bottom: 1px dotted #000;font-weight: bold;"> <x-form-toggle-value key='water_installation_pipes_h' :data-form="$formData"/> </td>
+                <td style="font-size: 11px;width: 60px; font-weight: bold;"> (<x-form-toggle-value key='water_installation_pipes_h' :data-form="$formData"/>) </td>
             </tr>
             <tr>
                 <td style="font-size: 10px;">Gas installation pipes: </td>
-                <td style="font-size: 11px;width: 60px;border-bottom: 1px dotted #000;font-weight: bold;"><x-form-toggle-value key='gas_installation_h' :data-form="$formData"/></td>
+                <td style="font-size: 11px;width: 60px; font-weight: bold;"> (<x-form-toggle-value key='gas_installation_h' :data-form="$formData"/>) </td>
             </tr>
             <tr>
                 <td style="font-size: 10px;">Structural steel: </td>
-                <td style="font-size: 11px;width: 60px;border-bottom: 1px dotted #000;font-weight: bold;"><x-form-toggle-value key='structural_steel_h' :data-form="$formData"/></td>
+                <td style="font-size: 11px;width: 60px; font-weight: bold;"> (<x-form-toggle-value key='structural_steel_h' :data-form="$formData"/>) </td>
             </tr>
             <tr>
                 <td style="font-size: 10px;">Oil installation pipes:</td>
-                <td style="font-size: 11px;width: 60px;border-bottom: 1px dotted #000;font-weight: bold;"><x-form-toggle-value key='oil_installation_pipes_h' :data-form="$formData"/></td>
+                <td style="font-size: 11px;width: 60px; font-weight: bold;"> (<x-form-toggle-value key='oil_installation_pipes_h' :data-form="$formData"/>) </td>
             </tr>
             <tr>
                 <td style="font-size: 10px;">Lightning protection:</td>
-                <td style="font-size: 11px;width: 60px;border-bottom: 1px dotted #000;font-weight: bold;"></td>
+                <td style="font-size: 11px;width: 60px; font-weight: bold;"></td>
             </tr>
         </table>
           <p style="font-size: 10px; margin: 5px 0;">Other (state) </p>
-          <p style="font-size: 11px; margin: 5px 0;border-bottom: 1px dotted #000;font-weight: bold;"><x-form-toggle-value key='other_services_h' :data-form="$formData"/></p>
+          <p style="font-size: 11px; margin: 5px 0; font-weight: bold;"> (<x-form-toggle-value key='other_services_h' :data-form="$formData"/>) </p>
 
       </div>
       <div style="text-align: start; padding: 0 5px; width:39%;float:left;" >
@@ -437,25 +437,25 @@
           <table width="100%">
             <tr>
                 <td style="font-size: 10px;width:25%;">type</td>
-                <td colspan="2" style="font-size: 10px;border-bottom:1px dotted #000;width: 25px;font-weight: bold;">{{ getvalue('type_bs_i',$formData) }}</td>
+                <td colspan="3" style="font-size: 10px;width: 25px;font-weight: bold;">( {{ getvalue('type_bs_i',$formData) }} )</td>
             </tr>
             <tr>
                 <td style="font-size: 10px;width:25%;">Location</td>
-                <td colspan="4" style="font-size: 10px;border-bottom:1px dotted #000;width: 25px;font-weight: bold;">N/A</td>
+                <td colspan="4" style="font-size: 10px;width: 25px;font-weight: bold;">()</td>
             </tr>
             <tr>
                 <td style="font-size: 10px;width:25%;">No. of poles:</td>
-                <td style="font-size: 10px;border-bottom:1px dotted #000;width: 25px;font-weight: bold;">{{ getvalue('no_of_poles_i',$formData) }}</td>
+                <td style="font-size: 10px;width: 25px;font-weight: bold;">({{ getvalue('no_of_poles_i',$formData) }})</td>
                 <td style="font-size: 10px; width:40%;text-align: center;" colspan="2">Rating / setting of device:</td>
-                <td style="font-size: 10px;border-bottom:1px dotted #000;width: 25px;font-weight: bold;">N/A</td>
+                <td style="font-size: 10px;width: 25px;font-weight: bold;"> </td>
                 <td style="font-size: 10px;">A</td>
             </tr>
             <tr>
                 <td style="font-size: 10px;width:25%;">Current rating:</td>
-                <td style="font-size: 10px;border-bottom:1px dotted #000;width: 25px;font-weight: bold;">{{ getvalue('rated_current_i',$formData) }}</td>
+                <td style="font-size: 10px;width: 25px;font-weight: bold;">({{ getvalue('rated_current_i',$formData) }})</td>
                 <td style="font-size: 10px;">A</td>
                 <td style="font-size: 10px; width:40%;text-align: center;">Voltage rating:</td>
-                <td style="font-size: 10px;border-bottom:1px dotted #000;width: 25px;font-weight: bold;">{{ getvalue('voltage_rating_i',$formData) }}</td>
+                <td style="font-size: 10px;width: 25px;font-weight: bold;">({{ getvalue('voltage_rating_i',$formData) }})</td>
                 <td style="font-size: 10px;">V</td>
             </tr>
           </table>
@@ -465,22 +465,20 @@
           <table width="100%">
             <tr>
                 <td colspan="3" style="font-size: 10px;">RCD rated residual operating current, I∆n </td>
-                <td  style="font-size: 10px;border-bottom:1px dotted #000;width: 25px;font-weight: bold;">{{ getvalue('rcd_operation_current_i',$formData) }}</td>
+                <td  style="font-size: 10px;width: 25px;font-weight: bold;">({{ getvalue('rcd_operation_current_i',$formData) }})</td>
                 <td  style="font-size: 10px;">mA</td>
             </tr>
             <tr>
                 <td style="font-size: 10px;width:45%;">RCD measured operating time:</td>
-                <td  style="font-size: 10px;border-bottom:1px dotted #000;width: 25px;font-weight: bold;">{{ getvalue('rcd_operation_time_i',$formData) }}</td>
+                <td  style="font-size: 10px;width: 25px;font-weight: bold;">({{ getvalue('rcd_operation_time_i',$formData) }})</td>
                 <td  style="font-size: 10px;">ms</td>
                 <td style="font-size: 10px;width:30%;">Rated time delay:</td>
-                <td  style="font-size: 10px;border-bottom:1px dotted #000;width: 25px;font-weight: bold;">{{ getvalue('rated_time_delay_i',$formData) }}</td>
+                <td  style="font-size: 10px;width: 25px;font-weight: bold;">({{ getvalue('rated_time_delay_i',$formData) }})</td>
                 <td  style="font-size: 10px;">ms</td>
             </tr>
 
           </table>
-        {{--
-        <p style="font-size: 11px; margin: 5px 0; "> (........................) ms&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(..........................)mA</p>
-         --}}
+      
       </div>
 
     </div>

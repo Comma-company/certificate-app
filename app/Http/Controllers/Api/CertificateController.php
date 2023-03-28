@@ -365,7 +365,7 @@ class CertificateController extends Controller
 
     function getPdfForm($id)
     {
-        $user_id = Auth::guard('sanctum')->user()->id;
+        $user = Auth::guard('sanctum')->user();
 
         define('_MPDF_TTFONTPATH', asset('admin/fonts/gnu-free-font'));
 
@@ -392,7 +392,7 @@ class CertificateController extends Controller
         ]);
         $invoice->shrink_tables_to_fit = 1;
 
-        $data = Certificate::where('user_id', $user_id)->find($id);
+        $data = Certificate::where('user_id', $user->id)->find($id);
 
         $formData =  data_get($data->data, 'gaz_safety_data.0');
 
@@ -404,6 +404,7 @@ class CertificateController extends Controller
 
         $html = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_installation_Condition_report.index', [
             'data' => $data,
+            
             'formData' => $formData
         ])->render();
 
