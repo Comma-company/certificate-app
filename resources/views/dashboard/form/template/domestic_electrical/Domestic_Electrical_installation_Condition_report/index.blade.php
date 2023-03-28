@@ -128,7 +128,7 @@
               </p>
               <p style="margin: 10px">
                 Address:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->address }}</span>
-               
+
               </p>
               <p style="margin: 10px">
                 Postcode:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->postal_code }}</span>
@@ -153,7 +153,7 @@
               </p>
               <p style="margin: 15px">
                 Address:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->sites->first()->address }}</span>
-                
+
               </p>
               <p style="margin: 15px">
                 Postcode:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->sites->first()->postal_code }}</span>
@@ -227,7 +227,7 @@
             <p>
               General condition of the installation (in terms of electrical
               safety): <span style="font-weight: bold"> {{ getvalue('general_condition_d',$formData) }} </span>
-             
+
             </p>
           </td>
         </tr>
@@ -244,7 +244,7 @@
           <td style="text-align: left">
             <p>
               Overall assessment of the installation is: (<span style=" font-weight: bold"> {{ getvalue('overall_assessment_d',$formData) }} </span>)
-             
+
             </p>
           </td>
         </tr>
@@ -295,9 +295,9 @@
           </td>
           <td style="text-align: left; padding: 0 10px">
             <p style="margin: 0">
-              Signature: 
+              Signature:
              @if ($data->user->signature)
-             <img width="120px" src="{{ asset('uploads/'.$data->user->signature->file_url) }}" alt="">
+             <img width="120px" src="{{ $data->user->signature->file_url }}" alt="">
              @endif
             </p>
           </td>
@@ -324,7 +324,7 @@
           </td>
           <td style="text-align: left; padding: 0 10px">
             <p style="margin: 0">
-              Signature: 
+              Signature:
               @if ($data->customerSignature)
               <img width="120px" src="{{ asset('uploads/'.$data->customerSignature->file_url) }}" alt="">
               @endif
