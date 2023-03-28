@@ -60,7 +60,7 @@
               I/We (as indicated on page 1) recommend, subject to the necessary
               remedial work being taken, this installation should be further
               inspected and tested after an interval of not more than
-              @if (getvalue('recommendations_month_year_e',$formData) == 'month')
+              @if (getvalue('recommendations_month_year_e',$formData) == 'months')
               {{   getvalue('recommendations_month_e',$formData) }} months* (delete as appropriate)
               @else
               {{   getvalue('recommendations_year_e',$formData) }} years* (delete as appropriate)
