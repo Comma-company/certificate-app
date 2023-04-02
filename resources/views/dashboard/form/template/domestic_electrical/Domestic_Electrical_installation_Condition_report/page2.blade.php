@@ -206,21 +206,21 @@
 
         <tr>
           <td style="text-align: center;padding-top:5px; padding-bottom:0px;font-weight: bold; width:60px">
-            <span>{{ $item['id'] }}<span/>
+            <span>{{ getvalue('id',$item)  }}<span/>
           </td>
           <td></td>
           <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold; width:600px">
             <span>
-             {{ $item['observation_details'] }}
+             {{ getvalue('observation_details',$item)  }}
             </span>
           </td>
           <td></td>
           <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold; width:150px">
-            <span>{{ $item['observation_code'] }}</span>
+            <span>{{ getvalue('observation_code',$item)   }}</span>
 
           </td>
           <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-            <span>{{ $item['observation_location_reference'] }}</span>
+            <span>{{ getvalue('observation_location_reference',$item)  }}</span>
           </td>
         </tr>
         @endforeach
