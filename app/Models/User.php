@@ -7,6 +7,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Notifications\ResetPasswordNotification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -158,6 +159,12 @@ class User extends Authenticatable implements MustVerifyEmail
         }
     }
 
+    public function sendPasswordResetNotification($token)
+        {
+            $url = route('password.reset',$token);
+
+            $this->notify(new ResetPasswordNotification($url));
+        }
     /**
      * Specifies the user's FCM tokens
      *
