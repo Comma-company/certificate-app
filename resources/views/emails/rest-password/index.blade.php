@@ -87,7 +87,9 @@
         <td></td>
     </tr>
     <tr>
-       <td style="text-align: center;"><img style="max-width: 200px;" src=" {{asset('assets/img/logoo.png')}}" alt="logo"></td>
+       <td style="text-align: center;">
+        <img style="max-width: 200px;" src="{{asset('assets/img/logo.png')}}" alt="logo">
+    </td>
     </tr>
 </table>
 </body>
