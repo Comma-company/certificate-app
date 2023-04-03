@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\SettingController;
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\Auth\AuthController;
+use App\Http\Controllers\Api\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Api\SignatureController;
 use App\Http\Controllers\Api\TaxSettingController;
 use App\Http\Controllers\Api\CertificateController;
@@ -34,6 +35,7 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
 Route::post('/email/verification-notification', [AuthController::class, 'ResendingVerificationEmail'])->middleware('auth:sanctum');
 Route::post('/register', [RegisterController::class, 'store']);
+Route::post('/rest-password', [PasswordResetLinkController::class, 'store']);
 
 Route::delete('user/delete', [ProfileController::class, 'destroy']);
 

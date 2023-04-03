@@ -204,25 +204,25 @@
         </tr>
         @if (isset($formData['all_observation_data']))
             @foreach ($formData['all_observation_data'] as $item)
-            <tr>
-            <td style="text-align: center;padding-top:5px; padding-bottom:0px;font-weight: bold; width:60px">
-                <span>{{ getvalue('id',$item)  }}<span/>
-            </td>
-            <td></td>
-            <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold; width:600px">
-                <span>
-                {{ getvalue('observation_details',$item)  }}
-                </span>
-            </td>
-            <td></td>
-            <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold; width:150px">
-                <span>{{ getvalue('observation_code',$item)   }}</span>
+                <tr>
+                    <td style="text-align: center;padding-top:5px; padding-bottom:0px;font-weight: bold; width:60px">
+                        <span>{{ getvalue('id',$item)  }}<span/>
+                    </td>
+                    <td></td>
+                    <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold; width:600px">
+                        <span>
+                        {{ getvalue('observation_details',$item)  }}
+                        </span>
+                    </td>
+                    <td></td>
+                    <td style="text-align: center; padding-top:5px; padding-bottom:0px;font-weight: bold; width:150px">
+                        <span>{{ getvalue('observation_code',$item)   }}</span>
 
-            </td>
-            <td style="text-align: center; padding-top:5px; padding-bottom:0px">
-                <span>{{ getvalue('observation_location_reference',$item)  }}</span>
-            </td>
-            </tr>
+                    </td>
+                    <td style="text-align: center; padding-top:5px; padding-bottom:0px">
+                        <span>{{ getvalue('observation_location_reference',$item)  }}</span>
+                    </td>
+                </tr>
             @endforeach
         @endif
         <tr>

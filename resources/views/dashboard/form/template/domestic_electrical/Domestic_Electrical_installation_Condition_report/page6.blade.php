@@ -88,7 +88,6 @@
         @endphp
     @foreach ($circuit_details as $details)
 
-
         <div
             style=" background-color: white; margin: 0px; padding: 0px;">
             <table style="font-size: 9px" class="codes_wiring mt-3">
