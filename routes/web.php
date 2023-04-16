@@ -48,9 +48,9 @@ Route::get('/get-pdf', function () {
     ]);
     $invoice->shrink_tables_to_fit = 1;
 
-    $data = Certificate::find(4);
+    $data = Certificate::find(3);
 
-    $formData =  data_get($data->data, 'gaz_safety_data.0');
+     $formData =  $data->data;
 
     $invoice->fontdata["fontawesome"] = [
         'R' => "fa-solid-900.tff",

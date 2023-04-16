@@ -363,6 +363,9 @@ class CertificateController extends Controller
         }
     }
 
+
+
+
     function getPdfForm($id)
     {
         $user = Auth::guard('sanctum')->user();
@@ -376,7 +379,7 @@ class CertificateController extends Controller
         $fontData = $defaultFontConfig['fontdata'];
 
         //   $invoice = new Mpdf(['orientation' => 'L']);
-        $invoice =  new Mpdf([
+        $pdf_form =  new Mpdf([
             'orientation' => 'L',
             'fontDir' => array_merge($fontDirs, [
                 asset('admin/fonts/'),
@@ -390,79 +393,96 @@ class CertificateController extends Controller
             'default_font' => 'FreeSans',
             'format' => 'A4'
         ]);
-        $invoice->shrink_tables_to_fit = 1;
+        $pdf_form->shrink_tables_to_fit = 1;
 
-        $data = Certificate::where('user_id', $user->id)->find($id);
+        $certificate = Certificate::where('user_id', $user->id)->find($id);
+        //Domestic_Electrical_installation_Condition_report
+        $file_name = $certificate->form->file_name;
+        if ($file_name == 'Domestic_Electrical_installation_Condition_report') {
+            $formData =  data_get($certificate->data, 'gaz_safety_data.0');
+            $pdf_form->fontdata["fontawesome"] = [
+                'R' => "fa-solid-900.tff",
+                'I' => "fa-regular-400.ttf",
+            ];
 
-        $formData =  data_get($data->data, 'gaz_safety_data.0');
+            $html = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_installation_Condition_report.index', [
+                'data' => $certificate,
+                'formData' => $formData
+            ])->render();
 
-        $invoice->fontdata["fontawesome"] = [
-            'R' => "fa-solid-900.tff",
-            'I' => "fa-regular-400.ttf",
-        ];
+            $pdf_form->WriteHTML($html);
 
+            $pdf_form->AddPage('L');
+            $page_2 = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_installation_Condition_report.page2', [
+                'data' => $certificate,
+                'formData' => $formData
+            ])->render();
+            $pdf_form->WriteHTML($page_2);
 
-        $html = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_installation_Condition_report.index', [
-            'data' => $data,
+            $pdf_form->AddPage('L');
+            $page_3 = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_installation_Condition_report.page3', [
+                'data' => $certificate,
+                'formData' => $formData
+            ])->render();
+            $pdf_form->WriteHTML($page_3);
 
-            'formData' => $formData
-        ])->render();
+            $pdf_form->AddPage('L');
+            $page_4 = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_installation_Condition_report.page4', [
+                'data' => $certificate,
+                'formData' => $formData
+            ])->render();
+            $pdf_form->WriteHTML($page_4);
 
-        $invoice->WriteHTML($html);
+            $pdf_form->AddPage('L');
+            $page_5 = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_installation_Condition_report.page5', [
+                'data' => $certificate,
+                'formData' => $formData
+            ])->render();
+            $pdf_form->WriteHTML($page_5);
+            $pdf_form->AddPage('L');
+            $page_6 = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_installation_Condition_report.page6', [
+                'data' => $certificate,
+                'formData' => $formData
+            ])->render();
 
-        $invoice->AddPage('L');
-        $page_2 = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_installation_Condition_report.page2', [
-            'data' => $data,
-            'formData' => $formData
-        ])->render();
-        $invoice->WriteHTML($page_2);
+            $pdf_form->WriteHTML($page_6);
+        }elseif ($file_name == 'Landlord_Homeowner_Gas_Safety_Record') {
+            $formData =  $certificate->data;
+            $html = view('dashboard.form.template.domestic_gas.Landlord_Homeowner_Gas_Safety_Record.index', [
+                'data' => $certificate,
+                'formData' => $formData
+            ])->render();
+        
+            $pdf_form->WriteHTML($html);
+        
+            $pdf_form->AddPage('L');
+            $page_2 = view('dashboard.form.template.domestic_gas.Landlord_Homeowner_Gas_Safety_Record.page-2', [
+                'data' => $certificate,
+                'formData' => $formData
+            ])->render();
+            $pdf_form->WriteHTML($page_2);
+        }
 
-        $invoice->AddPage('L');
-        $page_3 = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_installation_Condition_report.page3', [
-            'data' => $data,
-            'formData' => $formData
-        ])->render();
-        $invoice->WriteHTML($page_3);
-
-        $invoice->AddPage('L');
-        $page_4 = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_installation_Condition_report.page4', [
-            'data' => $data,
-            'formData' => $formData
-        ])->render();
-        $invoice->WriteHTML($page_4);
-
-        $invoice->AddPage('L');
-        $page_5 = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_installation_Condition_report.page5', [
-            'data' => $data,
-            'formData' => $formData
-        ])->render();
-        $invoice->WriteHTML($page_5);
-        $invoice->AddPage('L');
-        $page_6 = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_installation_Condition_report.page6', [
-            'data' => $data,
-            'formData' => $formData
-        ])->render();
-
-        $invoice->WriteHTML($page_6);
-        $fileName = "form_$data->id.pdf";
+        $fileName = "form_$certificate->id.pdf";
         $file_path =  public_path("uploads/certificate/" . $fileName);
 
         Storage::disk('uploads')->makeDirectory('certificate');
         if (Storage::disk('uploads')->exists('certificate/' . $fileName)) {
 
             Storage::disk('uploads')->delete('certificate/' . $fileName);
-            $invoice->Output($file_path, 'F');
+            $pdf_form->Output($file_path, 'F');
             return responseJson(true, 'pdf file for certificate', [
                 'url' => asset('uploads/certificate/' . $fileName)
             ]);
         } else {
 
-            $invoice->Output($file_path, 'F');
+            $pdf_form->Output($file_path, 'F');
             return responseJson(true, 'pdf file for certificate', [
                 'url' => asset('uploads/certificate/' . $fileName)
             ]);
         }
     }
+
 
     public function updateStatus($id, Request $request)
     {
@@ -475,5 +495,11 @@ class CertificateController extends Controller
         $data->update(['status_id' => $request->status_id]);
 
         return responseJson(true, 'success update status', $data);
+    }
+
+
+    public function createPdfForm($certificate, $pdf_form)
+    {
+   
     }
 }

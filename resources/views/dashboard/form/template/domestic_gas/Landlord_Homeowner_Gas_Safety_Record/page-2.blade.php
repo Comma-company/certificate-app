@@ -4,30 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page 2</title>
+    <title>LANDLORD/HOMEOWNER GAS SAFETY RECORD</title>
     <style>
-            /* @page :first {
-                header: html_formHeader;
-                footer: html_formFooter;
-                margin: 15px;
-                margin-bottom:20px;
-                margin-top:60px;
-                margin-header:4mm;
-                size: landscape;
-                margin-footer:5mm ;
-            }
-            @page{
-                header: html_formHeader;
-                footer: html_formFooter2;
-                margin: 15px;
-                margin-bottom:20px;
-                margin-top:60px;
-                margin-header:4mm;
-                size: landscape;
-                margin-footer:5mm ;
-            } */
-
-            @font-face {
+        @font-face {
             font-family:Arial;
             src:'./Ayar/Arial.ttf';
           }
@@ -55,12 +34,17 @@
       ">
 
        <div style="padding: 22px;">
-
-                <table style="width: 100%;border-collapse: collapse;">
+                @php
+                        $appliance_data =[];
+                        if (isset($formData['appliance_data'])) {
+                            $appliance_data =  $formData['appliance_data'];
+                        }
+                @endphp
+                <table style="width: 100%;  border-collapse: separate; border-spacing: 0 10px;">
                     <tr style="height: 50px; background-color: #333333; text-align: center; color: #fff;">
-                        <th colspan="8" style="border: 1px solid;border-right: 0; font-size: 16px; color: #fff;
+                        <th colspan="8" style="border: 1px solid;border-right: 0;padding-top:10px; font-size: 16px; color: #fff;
                         font-weight: 100;">APPLIANCE DETAILS</th>
-                        <th colspan="8" style="border: 1px solid;border-left: 0; font-size: 16px;color: #fff;
+                        <th colspan="8" style="padding-top:10px; border: 1px solid;border-left: 0; font-size: 16px;color: #fff;
                         font-weight: 100;">APPLIANCE RESULTS</th>
                     </tr>
                     <tr>
@@ -94,12 +78,12 @@
                         border-right: 0;">Inspected Yes/No?
                         </td>
                         <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
-                       border-right: 0;
-                        ">Type Of Flue
+                       border-right: 0;">
+                        Type Of Flue
                         </td>
 
                         <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
-                            border-right: 0;">
+                            border-right: 0;padding-top:10px; ">
                             Operating Pressure In Mbar &/Or Heat Input Kw/ H Or Btu/H
                          </td>
                         <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
@@ -134,67 +118,172 @@
 
 
                     </tr>
+                    @foreach ($appliance_data as $item)
+                    <tr>
+                        <td style="border: 1px solid;margin: 0;text-align: center;border-right: 0;padding-top:10px; ">
+                            {{ getvalue('appliance_number',$item) }}
+                        </td>
+                        <td style="border: 1px solid;margin: 0;text-align: center;border-right: 0;padding-top:10px; ">
+                            {{ getvalue('appliance_designation',$item) }}
+                        </td>
+                        <td style="border: 1px solid;margin: 0;text-align: center;border-right: 0;padding-top:10px; ">
+                            {{ getvalue('appliance_type',$item) }}
+                        </td>
+                        <td style="border: 1px solid;margin: 0;text-align: center;border-right: 0;padding-top:10px; ">
+                             {{ getvalue('appliance_make',$item) }}
+                        </td>
+                        <td style="border: 1px solid;margin: 0;text-align: center; border-right: 0;padding-top:10px; ">
+                            {{ getvalue('appliance_model',$item) }}
+                        </td>
+                        <td style="border: 1px solid;margin: 0;text-align: center;border-right: 0;padding-top:10px; ">
+                            {{ getvalue('appliance_owned_by',$item) }}
+                        </td>
+                        <td style="border: 1px solid;margin: 0;text-align: center;border-right: 0;padding-top:10px; ">
+                            {{ getvalue('inspected_make',$item) }}
+                        </td>
+                        <td style="border: 1px solid;margin: 0;text-align: center; border-right: 0;padding-top:10px; ">
+                            {{ getvalue('appliance_flue_type',$item) }}
+                        </td>
+
+                        <td style="border: 1px solid;margin: 0;text-align: center;  border-right: 0;padding-top:10px; ">
+                            {{ getvalue('appliance_operating_pressure',$item) }}
+                            </td>
+                        <td style="border: 1px solid;margin: 0;text-align: center;border-right: 0;padding-top:10px; ">
+                               {{ getvalue('appliance_operating_of_safety',$item) }}
+                        </td>
+                        <td style="border: 1px solid;margin: 0;text-align: center;  border-right: 0;padding-top:10px; ">
+                            {{ getvalue('appliance_ventilation_satisfactory',$item) }}
+                        </td>
+                        <td style="border: 1px solid;margin: 0;text-align: center; border-right: 0;padding-top:10px; ">
+                            {{ getvalue('appliance_visual_condition',$item) }}
+                        </td>
+                        <td style="border: 1px solid;margin: 0;text-align: center;border-right: 0;padding-top:10px; ">
+                            {{ getvalue('appliance_flue_operation',$item) }}
+                        </td>
+                        <td style="border: 1px solid;margin: 0;text-align: center; border-right: 0;padding-top:10px; ">
+                            {{ getvalue('appliance_combustion_analyses',$item) }}
+                        </td>
+                        <td style="border: 1px solid;margin: 0;text-align: center; border-right: 0;padding-top:10px; ">
+                            {{ getvalue('appliance_serviced',$item) }}
+                        </td>
+                        <td style="border: 1px solid;margin: 0;text-align: center;padding-top:10px; ">
+                            {{ getvalue('appliance_safe_to_use',$item) }}
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="16">
+                        <table style="border-collapse: collapse">
+                            <tr  style="height: 50px; text-align: center;">
+                                <td colspan="3" style="text-align: center;padding:10px 0px;border: 1px solid; background-color: #333333;  font-size: 15px;color: #fff;font-weight: 100;">
+                                Audible CO Alarm
+                                </td>
+                                <td colspan="13"><td/>
+                            </tr>
+                            <tr>
+        
+                                <td style="border: 1px solid;margin: 0;text-align: center;padding:10px 5;
+                                    border-right: 0;padding-top:10px;">
+                                    Approved CO Alarm Fitted?
+                                 </td>
+                                <td style="border: 1px solid;margin: 0;text-align: center;
+                                    padding:10px 5;
+                                    border-right: 0;padding-top:10px;">
+                                    Is CO Alarm In Date?
+                                 </td>
+                                <td style="border: 1px solid;margin: 0;text-align: center;
+                                 padding:10px 5;">CO Alarm Test Satisfactory?
+                               </td>
+                               <td colspan="13"></td>
+                            </tr>
+                            <tr>
+                                    <td style=" border: 1px solid;margin: 0;text-align: center; padding:10px 0; border-right: 0;">
+                                        {{ getvalue('appliance_approved_co',$item) }}
+                                    </td>
+                                    <td style="border: 1px solid;margin: 0;text-align: center;padding:10px 0;  border-right: 0;">
+                                        {{ getvalue('appliance_is_co_alarm',$item) }}
+                                    </td>
+                                    <td style="border: 1px solid;margin: 0;text-align: center; padding:10px 0;">
+                                        {{ getvalue('appliance_co_alarm_test',$item) }}
+                                     </td>
+                                     <td colspan="13"></td>
+                            </tr>
+                        </table>
+                    </td>
+                    </tr>
+
+                   
+
+                    @endforeach
                 </table>
                 <div style="clear: both;"></div>
-                <br/><br/>
+                <br/>
+               {{--  @php
+                    $appliance_data =[];
+                    if (isset($formData['appliance_data'])) {
+                        $appliance_data =  $formData['appliance_data'];
+                    }
+                @endphp
+
+                @foreach ($appliance_data as $item)
                 <table style="width: 100%;border-collapse: collapse;">
                     <tr>
                         <td style="border: 1px solid;float: left;margin: 0;text-align: center;
                         border-right: 0;">
-                            1
+                            {{ getvalue('appliance_number',$item) }}
                         </td>
                         <td style="border: 1px solid;float: left;margin: 0;text-align: center;border-right: 0;">
-                            Kitchen
+                            {{ getvalue('appliance_designation',$item) }}
                         </td>
                         <td style="border: 1px solid;float: left;margin: 0;text-align: center;
                         border-right: 0;">
-                            Hob
+                            {{ getvalue('appliance_type',$item) }}
                         </td>
                         <td style="border: 1px solid;float: left;margin: 0;text-align: center;
                         border-right: 0;">
-                            Smeg
+                             {{ getvalue('appliance_make',$item) }}
                         </td>
                         <td style="border: 1px solid;float: left;margin: 0;text-align: center;
                         border-right: 0;">
-                            5 Burner
+                            {{ getvalue('appliance_model',$item) }}
                         </td>
                         <td style="border: 1px solid;float: left;margin: 0;text-align: center;
                         border-right: 0;">
-                        Yes
+                            {{ getvalue('appliance_owned_by',$item) }}
                         </td>
                         <td style="border: 1px solid;float: left;margin: 0;text-align: center;
                         border-right: 0;">
-                        Yes
+                            {{ getvalue('inspected_make',$item) }}
                         </td>
                         <td style="border: 1px solid;float: left;margin: 0;text-align: center; border-right: 0; ">
-                            Fl
+                            {{ getvalue('appliance_flue_type',$item) }}
                         </td>
 
                         <td style="border: 1px solid;float: left;margin: 0;text-align: center;
                             border-right: 0;">
-                            9.8 Kwh
+                            {{ getvalue('appliance_operating_pressure',$item) }}
                             </td>
                         <td style="border: 1px solid;float: left;margin: 0;text-align: center;
                         border-right: 0;">
-                                Pass
+                               {{ getvalue('appliance_operating_of_safety',$item) }}
                         </td>
                         <td style="border: 1px solid;float: left;margin: 0;text-align: center;  border-right: 0;">
-                            Yes
+                            {{ getvalue('appliance_ventilation_satisfactory',$item) }}
                         </td>
                         <td style="border: 1px solid;float: left;margin: 0;text-align: center; border-right: 0;">
-                            N/A
+                            {{ getvalue('appliance_visual_condition',$item) }}
                         </td>
                         <td style="border: 1px solid;float: left;margin: 0;text-align: center;border-right: 0;">
-                            N/A
+                            {{ getvalue('appliance_flue_operation',$item) }}
                         </td>
                         <td style="border: 1px solid;float: left;margin: 0;text-align: center; border-right: 0;">
-                            N/A
+                            {{ getvalue('appliance_combustion_analyses',$item) }}
                         </td>
                         <td style="border: 1px solid;float: left;margin: 0;text-align: center; border-right: 0;">
-                            N/A
+                            {{ getvalue('appliance_serviced',$item) }}
                         </td>
                         <td style="border: 1px solid;float: left;margin: 0;text-align: center;">
-                            <img width="10px" src="{{asset('assets/img/checkmark.png')}}" alt="">
+                            {{ getvalue('appliance_safe_to_use',$item) }}
                         </td>
 
                     </tr>
@@ -225,203 +314,21 @@
                     </tr>
                     <tr>
                             <td style=" border: 1px solid;float: left;margin: 0;text-align: center; padding:10px 0; border-right: 0;">
-                            N/A
+                                {{ getvalue('appliance_approved_co',$item) }}
                             </td>
                             <td style="border: 1px solid;float: left;margin: 0;text-align: center;padding:10px 0;  border-right: 0;">
-                            N/A
+                                {{ getvalue('appliance_is_co_alarm',$item) }}
                             </td>
                             <td style="border: 1px solid;float: left;margin: 0;text-align: center; padding:10px 0;">
-                             N/A
+                                {{ getvalue('appliance_co_alarm_test',$item) }}
                              </td>
                         </tr>
                 </table>
                 <br>
-                <table style="width: 100%;border-collapse: collapse;">
-                    <tr>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center;
-                        border-right: 0;">
-                           &nbsp;
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center;border-right: 0;">
-                           
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center;
-                        border-right: 0;">
-                           
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center;  border-right: 0;">
-                          
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center;   border-right: 0;">
-                         
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center;  border-right: 0;">
-                      
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center; border-right: 0;">
-                        
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center; border-right: 0; ">
-                           
-                        </td>
+                @endforeach --}}
 
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center;border-right: 0;">
-                           
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center;border-right: 0;">
-                           
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center;  border-right: 0;">
-                            
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center; border-right: 0;">
-                           
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center;border-right: 0;">
-                          
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center; border-right: 0;">
-                           
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center; border-right: 0;">
-                           
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center;">
-                           
-                        </td>
 
-                    </tr>
 
-                </table>
-
-                <table style="width: 40%;border-collapse: collapse;">
-                    <tr  style="height: 50px; background-color: #333333; text-align: center;">
-                        <th colspan="3" style="border: 1px solid;border-right: 0;  font-size: 12px;color: #fff;
-                        font-weight: 100;">
-                        Audible CO Alarm
-                    </th>
-                    </tr>
-                    <tr>
-
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center;padding:10px 0;
-                            border-right: 0;border-bottom: 0;">
-                            Approved CO Alarm Fitted?
-                         </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center;
-                            padding:10px 0;
-                            border-right: 0;border-bottom: 0;">
-                            Is CO Alarm In Date?
-                         </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center;
-                         padding:10px 0;border-bottom: 0;">CO Alarm Test Satisfactory?
-                       </td>
-                    </tr>
-                    <tr>
-                        <td style=" border: 1px solid;float: left;margin: 0;text-align: center; padding:10px 0; border-right: 0;">
-                        
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center;padding:10px 0;  border-right: 0;">
-                        
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center; padding:10px 0;">
-                        
-                        </td>
-                    </tr>
-                </table>
-                <br>
-
-                <table style="width: 100%;border-collapse: collapse;">
-                    <tr>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center; border-right: 0;">
-                            &nbsp;
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center;border-right: 0;">
-                           
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center;
-                        border-right: 0;">
-                           
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center;  border-right: 0;">
-                          
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center;   border-right: 0;">
-                         
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center;  border-right: 0;">
-                      
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center; border-right: 0;">
-                        
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center; border-right: 0; ">
-                           
-                        </td>
-
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center;border-right: 0;">
-                           
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center;border-right: 0;">
-                           
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center;  border-right: 0;">
-                            
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center; border-right: 0;">
-                           
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center;border-right: 0;">
-                          
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center; border-right: 0;">
-                           
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center; border-right: 0;">
-                           
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center;">
-                           
-                        </td>
-
-                    </tr>
-
-                </table>
-
-                <table style="width: 40%;border-collapse: collapse;">
-                    <tr  style="height: 50px; background-color: #333333; text-align: center;">
-                        <th colspan="3" style="border: 1px solid;border-right: 0;  font-size: 12px;color: #fff;
-                        font-weight: 100;">
-                        Audible CO Alarm
-                    </th>
-                    </tr>
-                    <tr>
-
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center;padding:10px 0;
-                            border-right: 0;border-bottom: 0;">
-                            Approved CO Alarm Fitted?
-                         </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center;
-                            padding:10px 0;
-                            border-right: 0;border-bottom: 0;">
-                            Is CO Alarm In Date?
-                         </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center;
-                         padding:10px 0;border-bottom: 0;">CO Alarm Test Satisfactory?
-                       </td>
-                    </tr>
-                    <tr>
-                        <td style=" border: 1px solid;float: left;margin: 0;text-align: center; padding:10px 0; border-right: 0;">
-                        
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center;padding:10px 0;  border-right: 0;">
-                        
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;text-align: center; padding:10px 0;">
-                        
-                        </td>
-                    </tr>
-                </table>
-              
         </div>
 
        </div>

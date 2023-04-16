@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page 1</title>
+    <title>LANDLORD/HOMEOWNER GAS SAFETY RECORD</title>
     <style>
         @page {
             /* header: html_formHeader;*/
@@ -14,7 +14,7 @@
             margin-bottom: 20px;
             margin-top: 0px;
             margin-header: 10mm 0mm 0mm;
-            margin-footer: 5mm;
+            margin-footer: 5mm 5mm 2mm;
             padding: 0px;
         }
 
@@ -125,9 +125,9 @@
                 font-weight: 100; margin-top: 0;margin-bottom: 0;    height: 35px;">
                     DETAILS OF LANDLORD/HOMEOWNER (OR AGENT WHERE APPROPRIATE)</h5>
                 <div style="padding: 10px;min-height: 107px;">
-                    <p style="font-size: 10px;">Hanover Estates</p>
-                    <p style="font-size: 10px;">12 The Yoo Building</p>
-                    <p style="font-size: 10px;">Hall Road St. John's Wood London</p>
+                    <p style="font-size: 10px;">{{ $data->customer->name }}</p>
+                    <p style="font-size: 10px;">{{ $data->customer->address }}</p>
+                   {{--  <p style="font-size: 10px;">Hall Road St. John's Wood London</p> --}}
                 </div>
                 <div style="text-align: right">
                     <span
@@ -136,8 +136,7 @@
                     float: right;
                     clear: both;
                    margin-right: 10px;
-                    width: 98px;    height: 10px;">NW8
-                        9RF</span>
+                    width: 98px;    height: 10px;">{{ $data->customer->postal_code }}</span>
                 </div>
 
             </div>
@@ -148,9 +147,9 @@
                     ADDRESS OF THE INSTALLTION</h5>
 
                 <div style="padding: 10px;min-height: 107px;">
-                    <p style="font-size: 10px;">Hanover Estates</p>
-                    <p style="font-size: 10px;">12 The  Yoo Building</p>
-                    <p style="font-size: 10px;">&nbsp;</p>
+                    <p style="font-size: 10px;">{{ $data->customer->sites->first()->name }}</p>
+                    <p style="font-size: 10px;">{{ $data->customer->sites->first()->address }}</p>
+                    {{-- <p style="font-size: 10px;">&nbsp;</p> --}}
                 </div>
 
                 <div style="text-align: right">
@@ -160,8 +159,7 @@
                     float: right;
                     clear: both;
                    margin-right: 10px;
-                    width: 98px;    height: 10px;">NW8
-                        9RF</span>
+                    width: 98px;    height: 10px;">{{ $data->customer->sites->first()->postal_code }}</span>
                 </div>
             </div>
 
@@ -172,9 +170,9 @@
             font-weight: 100; margin-top: 0;margin-bottom: 0;height: 35px;">
                     DETAILS Of Registred Business</h5>
                 <div style="padding: 10px;min-height: 107px;">
-                    <p style="font-size: 10px;">Hanover Estates</p>
-                    <p style="font-size: 10px;">12 The Yoo Building</p>
-                    <p style="font-size: 10px;">Hall Road St. John's Wood London</p>
+                    <p style="font-size: 10px;">{{ $data->user->trading_name }}</p>
+                    <p style="font-size: 10px;">{{  $data->user->registered_address  }}</p>
+                    {{-- <p style="font-size: 10px;">Hall Road St. John's Wood London</p> --}}
 
 
                 </div>
@@ -191,8 +189,7 @@
                  float: right;
                  clear: both;
                 margin-right: 10px;
-                 width: 98px;    height: 10px;">NW8
-                        9RF</span>
+                 width: 98px;    height: 10px;">{{ $data->user->postal_code }}</span>
                 </div>
 
 
@@ -202,7 +199,7 @@
 
         <div style="clear: both;"></div>
 
-
+        <!-------------- Part 1 ------------>
         <div style="padding:5px 22px;">
             <div style="border: 1px solid;min-height: 220px;">
                 <h5
@@ -213,7 +210,9 @@
                 <div style="padding: 5px;">
                     <div
                         style="padding: 10px;width: 68%;background-color: rgba(51, 51, 51, 0.1) ; float: left;min-height: 150px; ">
-                        CP12
+                       @if (isset($formData['form_part_1']))
+                         {{ getvalue('name_p1',$formData['form_part_1']) }}
+                       @endif
 
                     </div>
                     <div
@@ -228,12 +227,11 @@
 
 
         <div style="clear: both;"></div>
-
+        <!-------------- Part 2 => 3 in mobile ------------>
         <div style="padding:0px 22px 10px 22px; width: 100%; ">
             <div style="width: 70%; float: left;border: 1px solid; margin-right: 5px;min-height: 150px;">
 
-                <h5
-                    style="background-color: #333333; padding: 10px; text-align: left; color: #FFFFFF;
+                <h5  style="background-color: #333333; padding: 10px; text-align: left; color: #FFFFFF;
                 font-size: 12px;
                 font-weight: 100; margin-top: 0;margin-bottom: 0; height: 20px;">
                     DEFECTS IDENTIFIED</h5>
@@ -243,23 +241,23 @@
                         <table class="table-border">
                             <tr>
                                 <td>1</td>
-                                <td>Lorem ipsum dolor sit amet.</td>
+                                <td>{{ getvalue('defects_identified_1',$formData['form_part_3']) }}</td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>Lorem ipsum dolor sit amet.</td>
+                                <td>{{ getvalue('defects_identified_2',$formData['form_part_3']) }}</td>
                             </tr>
                             <tr>
                                 <td>3</td>
-                                <td>Lorem ipsum dolor sit amet.</td>
+                                <td>{{ getvalue('defects_identified_3',$formData['form_part_3']) }}</td>
                             </tr>
                             <tr>
                                 <td>4</td>
-                                <td>Lorem ipsum dolor sit amet.</td>
+                                <td>{{ getvalue('defects_identified_4',$formData['form_part_3']) }}</td>
                             </tr>
                             <tr>
                                 <td>5</td>
-                                <td>Lorem ipsum dolor sit amet.</td>
+                                <td>{{ getvalue('defects_identified_5',$formData['form_part_3']) }}</td>
                             </tr>
                         </table>
                     </div>
@@ -279,19 +277,19 @@
                     <div style="width: 100%;background-color: rgba(51, 51, 51, 0.1) ;min-height: 135px; ">
                         <table class="table-border">
                             <tr>
-                                <td>&nbsp;</td>
+                                <td>{{ getvalue('warning_notice_1',$formData['form_part_3']) }}</td>
                             </tr>
                             <tr>
-                                <td>&nbsp;</td>
+                                <td>{{ getvalue('warning_notice_2',$formData['form_part_3']) }}</td>
                             </tr>
                             <tr>
-                                <td>&nbsp;</td>
+                                <td>{{ getvalue('warning_notice_3',$formData['form_part_3']) }}</td>
                             </tr>
                             <tr>
-                                <td>&nbsp;</td>
+                                <td>{{ getvalue('warning_notice_4',$formData['form_part_3']) }}</td>
                             </tr>
                             <tr>
-                                <td>&nbsp;</td>
+                                <td>{{ getvalue('warning_notice_5',$formData['form_part_3']) }}</td>
                             </tr>
                         </table>
 
@@ -301,6 +299,7 @@
         </div>
 
         <div style="clear: both;"></div>
+          <!-------------- Part 3 => 2 in mobile ------------>
         <div style="padding:10px 22px;">
             <div style="border: 1px solid;min-height: 220px;">
                 <h5 style="background-color: #333333; padding: 10px; text-align: left; color: #FFFFFF; font-size: 12px;font-weight: 100; margin-top: 0;margin-bottom: 0; height: 20px;">
@@ -311,52 +310,51 @@
                     <div style="width: 20%; float: left;min-height: 181px;border-right: 1px solid; ">
 
                         <div style="padding: 0px 10px;">
-                            <p style="height:65px; font-size: 10px;">PIPEWORK VISUAL INSPECTION</p>
+                            <p style="height:55px; font-size: 10px;">PIPEWORK VISUAL INSPECTION</p>
 
                             <span
-                                style="background-color:rgb(234, 234, 234) ; padding: 20px; font-weight: bold;font-size: 18px;">N/A</span>
+                                style="background-color:rgb(234, 234, 234) ; padding: 20px; font-weight: bold;font-size: 18px;">{{ getvalue('pipework_visual_p2',$formData['form_part_2']) }}</span>
                         </div>
 
                     </div>
 
                     <div style="width: 20%; float: left;min-height: 181px;border-right: 1px solid; ">
                         <div style="padding: 0px 10px;">
-                            <p style="height:65px; font-size: 10px;">OUTCOME OF GAS SUPPLY PIPEWORK VISUAL INSPECTION
+                            <p style="height:55px; font-size: 10px;">OUTCOME OF GAS SUPPLY PIPEWORK VISUAL INSPECTION
                             </p>
 
                             <span
-                                style="background-color:rgb(234, 234, 234) ; padding: 20px; font-weight: bold;font-size: 18px;">N/A</span>
+                                style="background-color:rgb(234, 234, 234) ; padding: 20px; font-weight: bold;font-size: 18px;">{{ getvalue('pipework_outcome_supply_p2',$formData['form_part_2']) }}</span>
                         </div>
 
                     </div>
 
                     <div style="width: 20%; float: left;min-height: 181px;border-right: 1px solid; ">
                         <div style="padding: 0px 10px;">
-                            <p style="height:65px; font-size: 10px;">IS THE EMERGENCY CONTROL VALVE ACCESS SATISFACTORY
+                            <p style="height:55px; font-size: 10px;">IS THE EMERGENCY CONTROL VALVE ACCESS SATISFACTORY
                             </p>
 
                             <span
-                                style="background-color:rgb(234, 234, 234) ; padding: 20px; font-weight: bold;font-size: 18px;">N/A</span>
+                                style="background-color:rgb(234, 234, 234) ; padding: 20px; font-weight: bold;font-size: 18px;">{{ getvalue('pipework_emergency_p2',$formData['form_part_2']) }}</span>
                         </div>
 
                     </div>
 
                     <div style="width: 20%; float: left;min-height: 181px;border-right: 1px solid; ">
                         <div style="padding: 0px 10px;">
-                            <p style="height:65px; font-size: 10px;">OUTCOME OF GAS TIGHTNESS TEST?</p>
+                            <p style="height:55px; font-size: 10px;">OUTCOME OF GAS TIGHTNESS TEST?</p>
 
                             <span
-                                style="background-color:rgb(234, 234, 234) ; padding: 20px; font-weight: bold;font-size: 18px;">N/A</span>
+                                style="background-color:rgb(234, 234, 234) ; padding: 20px; font-weight: bold;font-size: 18px;">{{ getvalue('pipework_outcome_tightness_p2',$formData['form_part_2']) }}</span>
                         </div>
 
                     </div>
                     <div style="width: 19%; float: left;min-height: 181px; ">
                         <div style="padding: 0px 10px;">
-                            <p style="height:65px; font-size: 10px;">IS PROTECTIVE EQUIPOTENTIAL BONDING SATISFACTORY
+                            <p style="height:55px; font-size: 10px;">IS PROTECTIVE EQUIPOTENTIAL BONDING SATISFACTORY
                             </p>
 
-                            <span
-                                style="background-color:rgb(234, 234 ,234) ; padding: 20px; font-weight: bold;font-size: 18px;">N/A</span>
+                            <span style="background-color:rgb(234, 234 ,234) ; padding: 20px; font-weight: bold;font-size: 18px;">{{ getvalue('pipework_protective_p2',$formData['form_part_2']) }}</span>
                         </div>
                     </div>
 
@@ -368,22 +366,19 @@
 
 
         <div style="clear: both;"></div>
-
+  <!-------------- Part 4  ------------>
         <div style="padding:0 22px 10px 22px; ">
-            <div style="border: 1px solid;min-height: 220px;
-        ">
-                <h5
-                    style="background-color: #333333; padding: 10px; text-align: left; color: #FFFFFF;
-                font-size: 15px;
-                font-weight: 100; margin-top: 0;margin-bottom: 0;    height: 20px;">
+            <div style="border: 1px solid;min-height: 220px;">
+                <h5 style="background-color: #333333; padding: 10px; text-align: left; color: #FFFFFF; font-size: 15px; font-weight: 100; margin-top: 0;margin-bottom: 0;    height: 20px;">
                     ANY REMEDIAL ACTION TAKEN OR NOTES <span style="font-size: 13px; margin-left: 10px;">Number
                         Should Correspond To Defects Above</span></h5>
 
                 <div style="padding: 5px;width: 99%;">
                     <div
                         style="padding: 10px;width: 99%;background-color: rgba(51, 51, 51, 0.1) ; float: left;min-height: 150px; ">
-
-
+                    @if (isset($formData['form_part_4']))
+                        {{ getvalue('record_remedial_action',$formData['form_part_4']) }}
+                    @endif
                     </div>
 
                 </div>
@@ -410,7 +405,11 @@
                             <table>
                                 <tr>
                                     <td>Signature :</td>
-                                    <td style="background-color: rgba(51, 51, 51, 0.1);"></td>
+                                    <td style="background-color: rgba(51, 51, 51, 0.1);">
+                                        @if ($data->user->signature)
+                                        <img width="120px" src="{{ $data->user->signature->file_url }}" alt="">
+                                        @endif
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2">
@@ -419,7 +418,11 @@
                                 </tr>
                                 <tr>
                                     <td>Signature :</td>
-                                    <td style="background-color: rgba(51, 51, 51, 0.1);">Signature :</td>
+                                    <td style="background-color: rgba(51, 51, 51, 0.1);">
+                                        @if ($data->customerSignature)
+                                        <img width="120px" src="{{ asset('uploads/'.$data->customerSignature->file_url) }}" alt="">
+                                        @endif
+                                    </td>
                                 </tr>
                             </table>
 
@@ -431,14 +434,20 @@
                             <table>
                                 <tr>
                                     <td>Name (Capitals) :</td>
-                                    <td style="background-color: rgba(51, 51, 51, 0.1);"></td>
+                                    <td style="background-color: rgba(51, 51, 51, 0.1);">
+                                        @if($data->user)
+                                            {{$data->user->name}}
+                                        @endif
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2">&nbsp;</td>
                                 </tr>
                                 <tr>
                                     <td>Name (Capitals) :</td>
-                                    <td style="background-color: rgba(51, 51, 51, 0.1);"></td>
+                                    <td style="background-color: rgba(51, 51, 51, 0.1);">
+                                        {{ getvalue('record_issue_by',$formData['part_declaration']) }}
+                                    </td>
                                 </tr>
                             </table>
 
@@ -468,7 +477,7 @@
                         <span style="font-size: 13px; line-height: 1.5;">
                             Next Safety Check
                             <br>
-                            Due By:
+                            Due By: {{ getvalue('next_safety_check_by',$formData['form_part_5']) }}
                         </span>
 
                     </div>
