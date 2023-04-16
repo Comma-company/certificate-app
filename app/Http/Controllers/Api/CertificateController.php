@@ -28,7 +28,7 @@ class CertificateController extends Controller
             ->select('id', 'customer_id', 'form_id', 'created_at', 'status_id')
             ->with(['status', 'customer', 'notes', 'form'])
             ->latest()
-            ->get();
+            ->paginate();
 
         return responseJson(true, 'list of all certificates', $data);
     }
@@ -404,7 +404,7 @@ class CertificateController extends Controller
 
         $html = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_installation_Condition_report.index', [
             'data' => $data,
-            
+
             'formData' => $formData
         ])->render();
 
