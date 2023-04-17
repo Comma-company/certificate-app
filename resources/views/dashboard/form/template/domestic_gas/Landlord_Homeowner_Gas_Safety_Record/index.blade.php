@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LANDLORD/HOMEOWNER GAS SAFETY RECORD</title>
     <style>
-        @page {
-            /* header: html_formHeader;*/
+         
+        @page  {
+            
             footer: html_formFooter;
             margin: 0px;
             margin-bottom: 20px;
@@ -17,7 +18,7 @@
             margin-footer: 5mm 5mm 2mm;
             padding: 0px;
         }
-
+      
         /* @page{
                 header: html_formHeader;
                 footer: html_formFooter2;
@@ -118,7 +119,7 @@
 
 
         <div style="padding:10px 22px 10px 22px; width: 100%; ">
-            <div style="width: 32%; float: left;border: 1px solid; margin-right: 15px; height: 160px;">
+            <div style="width: 33%; float: left;border: 1px solid; margin-right: 15px; height: 160px;">
                 <h5
                     style="background-color: #333333; padding: 10px; text-align: center; color: #FFFFFF;
                 font-size: 12px;
@@ -141,7 +142,7 @@
 
             </div>
 
-            <div style="width: 32%; float: left;border: 1px solid; margin-right: 5px; height: 160px;">
+            <div style="width: 33%; float: left;border: 1px solid; margin-right: 5px; height: 160px;">
                 <h5
                     style="background-color: #333333; padding: 10px; text-align: center; color: #FFFFFF;font-size: 12px;font-weight: 100; margin-top: 0;margin-bottom: 0; height: 35px;">
                     ADDRESS OF THE INSTALLTION</h5>
@@ -163,7 +164,7 @@
                 </div>
             </div>
 
-            <div style="width: 32%; float: left;border: 1px solid;height: 160px;">
+            <div style="width: 33%; float: left;border: 1px solid;height: 160px;">
                 <h5
                     style="background-color: #333333; padding: 10px; text-align: center; color: #FFFFFF;
             font-size: 12px;
@@ -268,7 +269,7 @@
             </div>
 
             <div
-                style="width: 29%; float: left;border: 1px solid; margin-right: 5px;
+                style="width: 29.4%; float: left;border: 1px solid; margin-right: 5px;
                  min-height: 150px; ">
                 <h5 style="background-color: #333333; padding: 10px; text-align: left; color: #FFFFFF; font-size: 12px;
               font-weight: 100; margin-top: 0;margin-bottom: 0; height: 20px;">
@@ -508,7 +509,7 @@
                 <table style="width: 100%;">
                     <tr>
                         <td style="width:85%;">Produced Using 360 Connect @</td>
-                        <td>  Page 1 Of</td>
+                        <td>  Page {PAGENO} Of</td>
                         <td style="width: 25px;
                         height: 25px;
                         border: 1px solid;"> 2 </td>
