@@ -373,7 +373,7 @@ class CertificateController extends Controller
         $user = Auth::guard('sanctum')->user();
 
         $certificate = Certificate::where('user_id', $user->id)->find($id);
-        //Domestic_Electrical_installation_Condition_report
+       
         $file_name = $certificate->form->file_name;
         if ($file_name == 'Domestic_Electrical_installation_Condition_report') {
             $form =  Eicr::getPdf($certificate);

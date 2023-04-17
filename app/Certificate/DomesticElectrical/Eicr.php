@@ -86,7 +86,7 @@ class Eicr
 
         $pdf_form->WriteHTML($page_6);
 
-        $fileName = "form_$certificate->id.pdf";
+        $fileName = "C$certificate->id.pdf";
         $file_path =  public_path("uploads/certificate/" . $fileName);
 
         Storage::disk('uploads')->makeDirectory('certificate');

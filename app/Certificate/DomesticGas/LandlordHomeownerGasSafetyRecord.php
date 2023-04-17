@@ -62,7 +62,7 @@ class LandlordHomeownerGasSafetyRecord
         ])->render();
         $invoice->WriteHTML($page_2);
 
-        $fileName = "cert_$data->id.pdf";
+        $fileName = "C$data->id.pdf";
         $file_path =  public_path("uploads/certificate/" . $fileName);
         Storage::disk('uploads')->makeDirectory('certificate');
         if (Storage::disk('uploads')->exists('certificate/' . $fileName)) {
