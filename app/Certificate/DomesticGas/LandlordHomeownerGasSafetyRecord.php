@@ -37,7 +37,7 @@ class LandlordHomeownerGasSafetyRecord
         ]);
         /* $invoice->AddPage('P'); */
         $invoice->shrink_tables_to_fit = 1;
-
+        $invoice->use_kwt = true; 
         $data = $certificate;
 
         $formData =  $data->data;

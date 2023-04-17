@@ -17,6 +17,7 @@
             margin-header: 10mm 0mm 0mm;
             margin-footer: 5mm 5mm 2mm;
             padding: 0px;
+            page-break-inside: avoid
         }
       
         /* @page{
@@ -40,7 +41,7 @@
             margin: 0;
             padding: 0;
             font-size: 12px;
-
+            page-break-inside: avoid
         }
 
         .table-border {
