@@ -35,10 +35,10 @@
 
        <div style="padding: 22px;">
                 @php
-                        $appliance_data =[];
-                        if (isset($formData['appliance_data'])) {
-                            $appliance_data =  $formData['appliance_data'];
-                        }
+                    $appliance_data =[];
+                    if (isset($formData['appliance_data'])) {
+                        $appliance_data =  $formData['appliance_data'];
+                    }
                 @endphp
                 <table style="width: 100%;  border-collapse: separate; border-spacing: 0 10px;">
                     <thead>
