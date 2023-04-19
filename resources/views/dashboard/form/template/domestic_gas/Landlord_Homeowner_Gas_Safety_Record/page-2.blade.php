@@ -41,83 +41,85 @@
                         }
                 @endphp
                 <table style="width: 100%;  border-collapse: separate; border-spacing: 0 10px;">
-                    <tr style="height: 50px; background-color: #333333; text-align: center; color: #fff;">
-                        <th colspan="8" style="border: 1px solid;border-right: 0;padding-top:10px; font-size: 16px; color: #fff;
-                        font-weight: 100;">APPLIANCE DETAILS</th>
-                        <th colspan="8" style="padding-top:10px; border: 1px solid;border-left: 0; font-size: 16px;color: #fff;
-                        font-weight: 100;">APPLIANCE RESULTS</th>
-                    </tr>
-                    <tr>
-                        <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
-
-                        border-right: 0;">
-                        Appliance Number
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
-
-                        border-right: 0;">Location
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
-
-                        border-right: 0;">Type
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
-
-                        border-right: 0;">Manufacturer
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
-
-                        border-right: 0;">Model
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
-
-                        border-right: 0;">Owned By Landlord/ Homeowner?
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
-
-                        border-right: 0;">Inspected Yes/No?
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
-                       border-right: 0;">
-                        Type Of Flue
-                        </td>
-
-                        <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
-                            border-right: 0;padding-top:10px; ">
-                            Operating Pressure In Mbar &/Or Heat Input Kw/ H Or Btu/H
-                         </td>
-                        <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
-
-                        border-right: 0;">Operation Of Safety Device(S) Pass/Fail Or N/A
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
+                    <thead>
+                        <tr style="height: 50px; background-color: #333333; text-align: center; color: #fff;">
+                            <th colspan="8" style="border: 1px solid;border-right: 0;padding-top:10px; font-size: 16px; color: #fff;
+                            font-weight: 100;">APPLIANCE DETAILS</th>
+                            <th colspan="8" style="padding-top:10px; border: 1px solid;border-left: 0; font-size: 16px;color: #fff;
+                            font-weight: 100;">APPLIANCE RESULTS</th>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
 
                             border-right: 0;">
-                            Ventilation Satisfactory Yes/No
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
+                            Appliance Number
+                            </td>
+                            <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
 
-                        border-right: 0;">
-                        Visual Condition Of Flue & Termination Pass/Fail / N/A
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
+                            border-right: 0;">Location
+                            </td>
+                            <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
 
-                            border-right: 0;">Flue Operation Checks Pass /Fail/N/A
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
-                        border-right: 0;">
-                        Combustion Analyser Reading (If Applicable)
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
+                            border-right: 0;">Type
+                            </td>
+                            <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
 
-                            border-right: 0;">Serviced Yes/No?
-                        </td>
-                        <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;">
-                        Safe To Use Yes/No?
-                        </td>
+                            border-right: 0;">Manufacturer
+                            </td>
+                            <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
+
+                            border-right: 0;">Model
+                            </td>
+                            <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
+
+                            border-right: 0;">Owned By Landlord/ Homeowner?
+                            </td>
+                            <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
+
+                            border-right: 0;">Inspected Yes/No?
+                            </td>
+                            <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
+                             border-right: 0;">
+                            Type Of Flue
+                            </td>
+
+                            <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
+                                border-right: 0;padding-top:10px; ">
+                                Operating Pressure In Mbar &/Or Heat Input Kw/ H Or Btu/H
+                            </td>
+                            <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
+
+                            border-right: 0;">Operation Of Safety Device(S) Pass/Fail Or N/A
+                            </td>
+                            <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
+
+                                border-right: 0;">
+                                Ventilation Satisfactory Yes/No
+                            </td>
+                            <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
+
+                            border-right: 0;">
+                            Visual Condition Of Flue & Termination Pass/Fail / N/A
+                            </td>
+                            <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
+
+                                border-right: 0;">Flue Operation Checks Pass /Fail/N/A
+                            </td>
+                            <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
+                            border-right: 0;">
+                            Combustion Analyser Reading (If Applicable)
+                            </td>
+                            <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;
+
+                                border-right: 0;">Serviced Yes/No?
+                            </td>
+                            <td style="border: 1px solid;float: left;margin: 0;height: 100px;text-align: center;">
+                            Safe To Use Yes/No?
+                            </td>
 
 
-                    </tr>
+                        </tr>
+                    </thead>
                     @foreach ($appliance_data as $item)
                     <tr>
                         <td style="border: 1px solid;margin: 0;text-align: center;border-right: 0;padding-top:10px; ">
@@ -181,7 +183,7 @@
                                 <td colspan="13"><td/>
                             </tr>
                             <tr>
-        
+
                                 <td style="border: 1px solid;margin: 0;text-align: center;padding:10px 5;
                                     border-right: 0;padding-top:10px;">
                                     Approved CO Alarm Fitted?
@@ -212,7 +214,7 @@
                     </td>
                     </tr>
 
-                   
+
 
                     @endforeach
                 </table>

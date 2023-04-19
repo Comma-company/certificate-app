@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LANDLORD/HOMEOWNER GAS SAFETY RECORD</title>
     <style>
-         
+
         @page  {
-            
+
             footer: html_formFooter;
             margin: 0px;
             margin-bottom: 20px;
@@ -19,7 +19,7 @@
             padding: 0px;
             page-break-inside: avoid
         }
-      
+
         /* @page{
                 header: html_formHeader;
                 footer: html_formFooter2;
@@ -302,6 +302,7 @@
 
         <div style="clear: both;"></div>
           <!-------------- Part 3 => 2 in mobile ------------>
+          <pagebreak>
         <div style="padding:10px 22px;">
             <div style="border: 1px solid;min-height: 220px;">
                 <h5 style="background-color: #333333; padding: 10px; text-align: left; color: #FFFFFF; font-size: 12px;font-weight: 100; margin-top: 0;margin-bottom: 0; height: 20px;">
@@ -393,7 +394,7 @@
         </div>
 
         <div style="clear: both;"></div>
-        <pagebreak>
+
         <div style="padding:0px 22px 10px 22px; width: 100%; ">
             <div style="width: 80%; float: left;border: 1px solid; margin-right: 5px;">
                 <h5
@@ -513,7 +514,7 @@
                         <td>  Page {PAGENO} Of</td>
                         <td style="width: 25px;
                         height: 25px;
-                        border: 1px solid;"> 2 </td>
+                        border: 1px solid;"> {nbpg} </td>
                     </tr>
                         {{--
                          <div style=" width: 25px; height: 25px;  border: 1px solid; margin-left: 10px; text-align: center; padding-top: 5px;">
