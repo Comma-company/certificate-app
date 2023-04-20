@@ -21,7 +21,7 @@ use App\Certificate\DomesticGas\LandlordHomeownerGasSafetyRecord;
 
 class CertificateController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $data =  Certificate::where([
             'user_id' => authUser('sanctum')->id,
@@ -30,7 +30,7 @@ class CertificateController extends Controller
             ->select('id', 'customer_id', 'form_id', 'created_at', 'status_id')
             ->with(['status', 'customer', 'notes', 'form'])
             ->latest()
-            ->paginate();
+            ->paginate($request->perPage);
 
         return responseJson(true, 'list of all certificates', $data);
     }
@@ -373,13 +373,13 @@ class CertificateController extends Controller
         $user = Auth::guard('sanctum')->user();
 
         $certificate = Certificate::where('user_id', $user->id)->find($id);
-       
+
         $file_name = $certificate->form->file_name;
         if ($file_name == 'Domestic_Electrical_installation_Condition_report') {
             $form =  Eicr::getPdf($certificate);
         } elseif ($file_name == 'Landlord_Homeowner_Gas_Safety_Record') {
             $form =  LandlordHomeownerGasSafetyRecord::getPdf($certificate);
-           
+
         }
         return $form;
     }
