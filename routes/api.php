@@ -39,11 +39,9 @@ Route::post('/rest-password', [PasswordResetLinkController::class, 'store']);
 
 Route::delete('user/delete', [ProfileController::class, 'destroy']);
 
-
-
 Route::post('user-restore/{id}', [AuthController::class, 'restore'])
-    ->middleware(['signed'])
-    ->name('api.restore.user');
+->middleware(['signed'])
+->name('api.restore.user');
 
 Route::get('/business-type', [BusinessTypeController::class, 'index']);
 Route::get('/status', [StatusController::class, 'index']);
@@ -51,7 +49,7 @@ Route::get('/status', [StatusController::class, 'index']);
 Route::middleware(['auth:sanctum','verified'])->group(function () {
     Route::post('complete-register', [RegisterController::class, 'completeRegister']);
     Route::get('countries', [CountryController::class, 'index'])->middleware('auth:sanctum');
-    //
+
     Route::get('payment-terms', [PaymentTermController::class, 'index'])->middleware('auth:sanctum');
 
     Route::get('search', [HomeController::class, 'search'])->middleware('auth:sanctum');
@@ -67,7 +65,6 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
     Route::post('contact/create', [ContactController::class, 'store']);
 
     // Form Template
-
     Route::get('forms/templates', [FormTemplateController::class, 'index'])->middleware('auth:sanctum');
     Route::post('forms/templates/store', [FormTemplateController::class, 'store'])->middleware('auth:sanctum');
     Route::get('forms/templates/{id}/show', [FormTemplateController::class, 'show'])->middleware('auth:sanctum');
@@ -76,13 +73,13 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
     Route::delete('forms/templates/{id}/delete', [FormTemplateController::class, 'destroy'])->middleware('auth:sanctum');
 
     //profile
-
     Route::get('profile', [ProfileController::class, 'index'])->middleware('auth:sanctum');
     Route::get('profile/other-data', [ProfileController::class, 'otherData'])->middleware('auth:sanctum');
     Route::put('profile/update', [ProfileController::class, 'update'])->middleware('auth:sanctum');
     Route::post('profile/update-image', [ProfileController::class, 'updateImage'])->middleware('auth:sanctum');
     Route::put('profile/update-password', [ProfileController::class, 'updatePassword'])->middleware('auth:sanctum');
     Route::put('profile/change-address', [ProfileController::class, 'updateAddress']);
+
     //signature
     Route::apiResource('signature', SignatureController::class)->middleware('auth:sanctum');
 
@@ -90,7 +87,6 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
     Route::prefix('setting')->group(function () {
         Route::get('tax-setting', [TaxSettingController::class, 'index']);
         Route::put('tax-setting/{id}/change-default', [TaxSettingController::class, 'changeDefault']);
-
     });
 
     //
@@ -104,7 +100,7 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
         Route::post('create', [CertificateController::class, 'store'])->middleware('auth:sanctum');
         Route::post('{id}/notes/create', [CertificateController::class, 'storeNote'])->middleware('auth:sanctum');
         Route::post('{note_id}/notes/update', [CertificateController::class, 'updateNote'])->middleware('auth:sanctum');
-       /*  Route::post('{note_id}/notes/{file_id}/delete', [CertificateController::class, 'deleteFileNote'])->middleware('auth:sanctum'); */
+       /* Route::post('{note_id}/notes/{file_id}/delete', [CertificateController::class, 'deleteFileNote'])->middleware('auth:sanctum'); */
         Route::post('{id}/update', [CertificateController::class, 'update'])->middleware('auth:sanctum');
         Route::post('{id}/update-status', [CertificateController::class, 'updateStatus'])->middleware('auth:sanctum');
 
