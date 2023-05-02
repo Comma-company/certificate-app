@@ -82,7 +82,7 @@
                     padding-bottom: 12px;
                     font-size: 15px;text-align: center;    font-weight: 300;">Form number</h5>
                     <div style="background-color: #fff; height: 30px;margin-left: 44px;
-                    width: 170px;"></div>
+                    width: 170px;">{{ $data->id ?? 00 }}</div>
                     </div>
                </div>
 
