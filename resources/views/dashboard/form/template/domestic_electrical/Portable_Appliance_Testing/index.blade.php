@@ -1,341 +1,766 @@
 <!DOCTYPE html>
-<html lang="en">
+<html dir="ltr" lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>Link-1-1</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-
-    <link rel="stylesheet" href="{{asset('admin/forms/portable_appliance_testing/style.css')}}" media="all" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page 1</title>
     <style>
-        *{
-            box-sizing: border-box;
-        }
-        body {
-            height: 35cm;
-            background-color: #EAF3FD;
-            /* padding: 0 40px; */
-        }
-        body {
-            height: 35cm;
-            width: 27cm;
-            background-color: #EAF3FD;
-        }
+            @page :first {
+                /* header: html_formHeader;
+                footer: html_formFooter; */
+                margin: 15px;
+                margin-bottom:20px;
+                margin-top:60px;
+                margin-header:4mm;
+                size: landscape; /* <length>{1,2} | auto | portrait | landscape */
+                margin-footer:5mm ;
+            }
+            @page{
+                /* header: html_formHeader;
+                footer: html_formFooter2; */
+                margin: 15px;
+                margin-bottom:20px;
+                margin-top:60px;
+                margin-header:4mm;
+                size: landscape; /* <length>{1,2} | auto | portrait | landscape */
+                margin-footer:5mm ;
+            }
 
-        table td{
-            vertical-align: middle;
-            text-align: center;
-            padding: 10px 4px;
-            font-size: 10px;
-        }
+            @font-face {
+            font-family:Arial;
+            src:'./Ayar/Arial.ttf';
+          }
 
+      body {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-size: 12px;
+        /* background-color: #EAEAEA; */
+      }
+
+    dt{
+        background-color: #EAEAEA;
+    }
+      .table-container {
+
+        text-align: left;
+      }
     </style>
   </head>
-  <body>
-    <header>
-      <div id="logo">
-        <img src="{{asset('admin/forms/portable_appliance_testing/main-logo.png')}}" style="width: 150px; object-fit: contain;">
-        <img src="{{asset('admin/forms/portable_appliance_testing/Image 1.png')}}">
-      </div>
-      <div id="information">
-        <div class="btns">
-          <div>
-            <span>Certificate Reference</span>
-            <span style=" width: auto; ">PT51418225 SW9 9BA</span>
-          </div>
-          <div style="margin-right: 20px; font-size: 14px; font-weight: bold;">
-            <span>Date Completed</span>
-            <span>20/06/2022</span>
-          </div>
-        </div>
-        <p style="margin-top: 15px; font-size: 20px;">Portable Appliance Test (PAT) Completion Certificate</p>
-      </div>
-    </header>
-    <main style="padding: 20px;">
-        <table>
-        <tbody>
-          <tr id="part-2" class="part-container">
-            <td style="text-align: left">
-              <div style="display: flex; justify-content: space-between;">
-                <div style="width: calc(96% / 2);">
-                    <p style="margin-bottom: 0; text-align: center; background-color: #2a98fc; color: white; font-size: 14px; font-weight: bold; padding: 8px;">DETAILS OF CLIENT</p>
-                    <div style="padding: 15px; display: flex; justify-content: space-between; background-color: white; height: 100px;">
-                        <div style="border: 1px solid #ddd; padding: 15px; flex-grow: 1; margin-right: 15px;">
-                            @if($job->customer)
-                                {{$job->customer->street_num.", ".$job->customer->address.", ".$job->customer->city}}
-                            @else
-                            null address
-                            @endif
-                        </div>
-                        <div style="align-self: end;">
-                            <span>Postcode:</span>
-                            <span style="display: inline-block; border: 1px solid #dddd; width: 90px; text-align: center; padding: 5px 0;"> {{$job->customer->postal_code ?? "test"}} </span>
-                        </div>
-                    </div>
-                </div>
-                <div style="width: calc(96% / 2);">
-                    <p style="margin-bottom: 0; text-align: center; background-color: #2a98fc; color: white; font-size: 14px; font-weight: bold; padding: 8px;">ADDRESS OF TESTING</p>
-                    <div style="padding: 15px; display: flex; justify-content: space-between; background-color: white; height: 100px;">
-                        <div style="border: 1px solid #ddd; padding: 15px; flex-grow: 1; margin-right: 15px;">
-                            @if($job->site)
-                            {{$job->site->street_num.", ".$job->site->address.", ".$job->site->city}}
-                            @else
-                            null address    
-                            @endif
-                        </div>
-                        <div style="align-self: end;">
-                            <span>Postcode:</span>
-                            <span style="display: inline-block; border: 1px solid #dddd; width: 90px; text-align: center; padding: 5px 0;">  {{$job->site->postal_code ?? "test"}}  </span>
-                        </div>
-                    </div>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr id="part-2" class="part-container">
-            <td style="text-align: left">
-              <div style="display: flex; justify-content: space-between;">
-                <div style="width: calc(96% / 2);">
-                    <p style="margin-bottom: 0; text-align: center; background-color: #2a98fc; color: white; font-size: 14px; font-weight: bold; padding: 8px;">ENGINEER, NAME & SIGNATURE</p>
-                    <div style="padding: 15px; display: flex; justify-content: space-between; background-color: white; ">
-                        <div style="flex-grow: 1;     margin-right: 15px;">
-                            <div style="font-weight: bold; margin-bottom: 10px;">Signature</div>
-                            <div style="border: 1px solid #ddd; padding: 15px; flex-grow: 1; height: 100px;">
-                                @if ($user->signature)
-                                <img src="{{asset('uploads/'.$user->signature->signature)}}" style="width: 80px; object-fit: contain;">
-                                @endif
-                            </div>
-                        </div>
-                        <div>
-                            <div style="margin-bottom: 15px;">
-                                <label style="font-weight: bold; display:block; margin-bottom: 32px;">Name</label>
-                                <input type="text" value="{{$user->name}}" disabled style="padding: 10px; border: 1px solid #ddd ">
-                            </div>
-                            <div>
-                                <label style="font-weight: bold; display:block; margin-bottom: 10px;">Date</label>
-                                <input type="text" disabled style="padding: 10px; border: 1px solid #ddd ">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div style="width: calc(96% / 2);">
-                    <p style="margin-bottom: 0; text-align: center; background-color: #2a98fc; color: white; font-size: 14px; font-weight: bold; padding: 8px;">*ANY LIMITATIONS AGREED ON TESTING <span style="font-size: 10px;">*if any reasons and with whom agreed</span></p>
-                    <div style="padding: 15px; display: flex; justify-content: space-between; background-color: white; height: 156px;">
-                        <div style="border: 1px solid #ddd; padding: 15px; flex-grow: 1;">
-                            Lorem, ipsum dolor.
-                        </div>
+  <body style="width: 100%; margin: 0; overflow-x: hidden;">
+    <div
+      class="table-container"
+      style="
 
-                    </div>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr id="part-2" class="part-container">
-            <td style="text-align: left">
-              <div style="display: flex; justify-content: space-between;">
-                <div style="width: calc(96% / 2); background: white;">
-                    <p style="margin-bottom: 0; text-align: center; background-color: #2a98fc; color: white; font-size: 14px; font-weight: bold; padding: 8px;">TESTING CARRIED OUT BY</p>
-                    <div style="padding: 15px; background-color: white;">
-                        <div style="border: 1px solid #ddd; padding: 15px; font-weight: bold;">
-                            {{$user->company_name}}
-                        </div>
-                        <div style="border: 1px solid #ddd; margin: 15px 0; padding: 15px;">
-                            <div style="display: inline-block; width: 45%; font-weight: 700">
-                                <p>{{$user->number_street_name}}</p>
-                                <p>{{$user->city}}</p>
-                                <p>{{$user->state}}</p>
-                                <p>{{$user->postal_code}}</p>
-                            </div>
-                            <div style="display: inline-block; width: 45%; font-weight: 700">
-                                <p>Email: {{$user->email}}</p>
-                                <p>Web: {{$user->website}}</p>
-                                <p>Telephone: {{$user->phone}}</p>
-                                
-                            </div>
-                           
-                        </div>
-                        <div>
-                            <span style="font-weight: bold;">Registration No:</span> {{$user->registration_number}} (If Applicable)
-                        </div>
-                    </div>
-                </div>
-                <div style="width: calc(96% / 2); background: white;">
-                    <p style="margin-bottom: 0; text-align: center; background-color: #2a98fc; color: white; font-size: 14px; font-weight: bold; padding: 8px;">PAT TESTER SERIAL NUMBER</p>
-                    <div style="padding: 15px; background-color: white;">
-                        <div style="border: 1px solid #ddd; padding: 15px; min-height: 50px;">
+        font-family:'Arial';
+      ">
+          <div style="margin: 10px 25px;">
+            <div style="float: left;">
+                {{-- <img src="./image/niceic-logo.png" width="160px" height="60px"> --}}
+            </div>
+            <div style="float: right; height: 70px;background-color: #000000;width:87%;">
+              <table style="width: 100%;     padding: 12px;">
+                <tr style="color: #FFFFFF;">
+                    <th></th>
+                    <th style="font-size: 15px; color: #D3D2D2;font-weight: 100;">Certificate Reference <span style="color:#FFFFFF">39689968</span> </th>
 
-                        </div>
-                        <p style="margin-bottom: 0; text-align: center; background-color: #2a98fc; color: white; font-size: 14px; font-weight: bold; padding: 8px;">DECLARATION</p>
-                        <div style="padding: 15px; font-weight: bold;">
-                            This is to certify the electrical appliances details in this certificate and record sheets have been tested for electrical safety in accordance with the IET code of practice for in service and inspection and testing of electrical equipment. It does not guarantee the correct operation of The appliance for any length of time. Users of the appliance should be aware of any fault or defect that may occur with future use. Any doubt regarding the safety or correct operation of The appliance, the device should be removed from service for further inspection by a competent person.
-                        </div>
-                    </div>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-                <div style="padding: 15px 30px;">
-                    <div style="color: white; font-weight: bold; padding: 15px; text-align: center; background-color: #2a98fc;">
-                        ANY FAILED APPLIANCES SHOULD BE REMOVED FROM SERVICE UNTIL THE DEFECT HAS BEEN RECTIFIED
-                    </div>
-                </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </main>
-    <div class="footer">
-      <div style="display: flex; justify-content: space-between;">
-        <img src="{{asset('admin/forms/portable_appliance_testing/footer-logo.png')}}" style="width: 250px; object-fit: contain;">
-        <div>
-          page 1 of <span style="border: 1px solid #DDDD; padding: 8px 12px; display: inline-block; margin-left: 5px;">2</span>
+
+                </tr>
+                <tr style="color: #FFFFFF;">
+                    <td style="font-size: 25px;">Portable Appliance Test (PAT) Completion Certificate</td>
+
+                    <td style="font-size: 15px; color: #D3D2D2;font-weight: 100;">Date Completed <span style="color:#FFFFFF">03/04/2023</span></td>
+
+                </tr>
+
+            </table>
         </div>
-      </div>
+            <div style="clear: both;"></div>
+          </div>
+
+          <div style="clear: both;"></div>
+
+
+          <div style="padding:0px 22px 10px 22px; width: 100%; ">
+            <div style="width: 35%; float: left;border: 1px solid;
+            height: 108px;
+        ">
+                <h5 style="background-color: #009933; padding: 3px; text-align: left; color: #FFFFFF;
+                font-size: 15px;
+                font-weight: 100; margin-top: 0;margin-bottom: 0;  height: 20px;">DETAILS OF THE CLIENT</h5>
+                 <div>
+                  <table style="width: 100%;">
+                    <tr>
+                      <td style="background: #EAEAEA; width: 70%;">
+                        <ul>
+                          <dt style="list-style: none; font-size: 13px;">Mahender Tanwar</dt>
+                            <br>
+                          <dt style="line-height: 2;font-size: 13px;">16 Palm Court - Alpine Road</dt>
+                          <br>
+
+                          <dt style="line-height: 2;font-size: 13px;">London</dt>
+                          <br>
+
+                        </ul>
+                      </td>
+                      <td style="background: #EAEAEA;">
+                        <ul style="list-style: none;">
+                          <dt style="line-height: 2;font-size: 13px;">Postcode:</dt>
+
+                          <dt style="line-height: 2;font-size: 13px;">NW9 9BQ</dt>
+                        </ul>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+
+
+            </div>
+
+            <div style="width: 32%; float: left;border: 1px solid; margin-right: 5px;
+            height: 108px;
+        ">
+                <h5 style="background-color: #009933; padding: 3px; text-align: left; color: #FFFFFF;
+                font-size: 15px;
+                font-weight: 100; margin-top: 0;margin-bottom: 0;    height: 21x;">ADDRESS OF TESTING</h5>
+                 <div>
+                  <table style="width: 100%;">
+                    <tr>
+                      <td style="background: #EAEAEA; width: 70%;">
+                        <ul style="list-style: none; margin: 0;">
+                          <br>
+
+                          <dt style="line-height: 2;font-size: 13px;">16 Palm Court - Alpine Road</dt>
+                          <br>
+
+                          <dt style="line-height: 2;font-size: 13px;">London</dt>
+                          <br>
+
+                        </ul>
+                        <br>
+
+                      </td>
+                      <td style="background: #EAEAEA;">
+                        <ul style="list-style: none;">
+                          <dt style="line-height: 2;font-size: 13px;">Postcode:</dt>
+
+                          <dt style="line-height: 2;font-size: 13px;">NW9 9BQ</dt>
+                        </ul>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+
+
+            </div>
+
+            <div style="width: 32%; float: left;border: 1px solid; margin-right: 5px;
+            height: 108px;
+        ">
+                <h5 style="background-color: #009933; padding: 3px; text-align: left; color: #FFFFFF;
+                font-size: 15px;
+                font-weight: 100; margin-top: 0;margin-bottom: 0;    height: 22px;">ENGINEER, NAME & SIGNATURE</h5>
+
+                 <div>
+                  <table style="width: 100%;">
+                    <tr>
+                      <td style="background: #EAEAEA; width: 50%;">
+                        <br>
+
+                        <ul style="list-style: none; margin: 0;">
+
+                          <dt style="line-height: 2;font-size: 13px;color:#000000b3 ;">Signature</dt>
+                          <br>
+
+
+                          <dt style="line-height: 2;font-size: 13px;"></dt>
+                          <br>
+
+                        </ul>
+                        <br>
+
+                      </td>
+                      <td style="background: #EAEAEA;">
+                        <ul style="list-style: none;">
+                          <dt style="line-height: 2;font-size: 13px;"> <span style="color:#000000b3 ;"> Name : </span> W Koreshi</dt>
+
+                          <dt style="line-height: 2;font-size: 13px;">  <span style="color:#000000b3 ;">Date :</span> 03/04/2023 </dt>
+                        </ul>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+          </div>
+
+          <div style="clear: both;"></div>
+
+          <div style="padding:10px 22px 10px 22px; width: 100%; ">
+            <div style="width: 370; float: left;border: 1px solid; margin-right: 5px;
+            height: 180px;
+        ">
+                <h5 style="background-color: #009933; padding: 3px; text-align: left; color: #FFFFFF;
+                font-size: 15px;
+                font-weight: 100; margin-top: 0;margin-bottom: 0;    height: 20px;">ANYON LIMITATIONS AGREED ON TESTING</h5>
+                 <div>
+                  <table style="width: 100%;">
+                    <tr>
+
+                      <td style="background: #EAEAEA; width: 100%; height: 155px;padding: 5px 5px 3px 10px;">
+                        <br>
+                        <p style="list-style: none; margin: 0;">
+                          Visual check and/or earth continuity test only carried out on any integrated/restricted appliances
+                      </p>
+                      </td>
+                    </tr>
+                  </table>
+
+                </div>
+
+
+
+            </div>
+
+            <div style="width: 32%; float: left;border: 1px solid; margin-right: 5px;
+            height: 180px;;
+        ">
+                <h5 style="background-color: #009933; padding: 3px; text-align: left; color: #FFFFFF;
+                font-size: 15px;
+                font-weight: 100; margin-top: 0;margin-bottom: 0;    height: 20.5px;">TESTING CARRIED OUT BY</h5>
+                 <div style="background-color: #eaeaea; padding: 2px 10px 10px 10px;">
+                  <table style="width: 100%;border-collapse: collapse; margin-bottom: 3px; ">
+                    <tbody>
+                      <tr style="border-bottom: 1px #f8f8f8 solid;">
+                        <th style="line-height: 1.5;">Echsmart Group</th>
+                        <th></th>
+
+                    </tr>
+                    <tr>
+                        <td style="line-height: 1.5;color: #000000b3;">332 Cranbrook Road</td>
+                        <td></td>
+
+                    </tr>
+                    <tr>
+                        <td style="line-height: 1.5;color: #000000b3;">Ilford</td>
+                        <td style="line-height: 1.5;color: #000000b3;">Email</td>
+
+                    </tr>
+                    <tr>
+                      <td style="line-height: 1.5;color: #000000b3;">Essex</td>
+                      <td style="line-height: 1.5;color: #000000b3;">Web</td>
+
+                    </tr>
+                    <tr>
+                    <td style="line-height: 1.5;color: #000000b3;">IG2 6EP</td>
+                    <td style="line-height: 1.5;color: #000000b3;">Telephone</td>
+
+                </tr>
+                    </tbody>
+
+
+                </table>
+
+                <table style="width: 100%">
+                  <tr>
+                      <th style="color: #000000b3;">Registration No: <span>607485000</span></th>
+                      <th></th>
+
+                  </tr>
+                  <tr>
+                      <td style="color: #000000b3;">(If Applicable)</td>
+                      <td></td>
+
+                  </tr>
+
+
+              </table>
+                </div>
+
+
+
+            </div>
+
+            <div style="width: 32%; float: left;border: 1px solid; margin-right: 5px;
+            height: 180px;">
+                <h5 style="background-color: #009933; padding: 3px; text-align: left; color: #FFFFFF;
+                font-size: 15px;
+                font-weight: 100; margin-top: 0;margin-bottom: 0;    height: 20px;">ANYON LIMITATIONS AGREED ON TESTING</h5>
+                 <div>
+                  <table style="width: 100%;">
+                    <tr>
+                      <td style="background: #EAEAEA; width: 100%; height: 155px; text-align: center;">
+                        <p style="list-style: none; margin: 0;">
+                          KT63
+                      </p>
+                      </td>
+                    </tr>
+                    <br>
+
+                  </table>
+                </div>
+            </div>
+
+          </div>
+
+          <div style="clear: both;"></div>
+
+          <div style="padding:10px 22px 10px 22px; width: 97%; ">
+            <div style="width: 100%; border: 1px solid; margin-right: 5px;
+            height: 110px;">
+                <h5 style="background-color: #009933; padding: 3px; text-align: left; color: #FFFFFF;
+                font-size: 15px;
+                font-weight: 100; margin-top: 0;margin-bottom: 0;    height: 20px;">ANYON LIMITATIONS AGREED ON TESTING</h5>
+                 <div>
+                  <table style="width: 100%;">
+                    <tr>
+                      <td style="background: #EAEAEA; width: 100%; height: 105px;padding: 5px 5px 3px 10px;">
+                        <p style="list-style: none; margin: 0;">
+                          This is to certify the electrical appliances details in this certificate and record sheets have been tested for electrical safety in accordance with the IET code of practice for in service and inspection and testing of electrical equipment. It does not guarantee the correct operation of the appliance for any length of time. Users of the appliance should be aware of any fault or defect that may occur with future use. Any doubt regarding the safety or correct operation of the appliance, the device should be removed from service for further inspection by a competent person.
+                      </p>
+                      </td>
+
+                    </tr>
+                  </table>
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+
+
+          </div>
+
+          <div style="padding:0 22px 10px 22px; width: 97%; ">
+            <div style="width: 100%; border: 1px solid; margin-right: 5px;
+            height: 60px;
+        ">
+
+                 <div>
+                  <table style="width: 100%;">
+                    <tr>
+                      <td style="background: #EAEAEA; width: 100%; height: 90px;padding: 5px 5px 3px 10px; text-align: center;">
+                        <p style="list-style: none; margin: 0; color: red; font-weight: bold;">
+                          ANY FAILED APPLIANCES SHOULD BE REMOVED FROM SERVICE UNTIL THE DEFECT HAS BEEN RECTIFIED
+                      </p>
+                      </td>
+
+                    </tr>
+                  </table>
+                </div>
+
+            </div>
+
+
+          </div>
+
+          <div style="padding:0px 22px 10px 22px; width: 97%; ">
+
+            <div style="width: 100%; border: 1px solid; margin-right: 5px;
+            height: 150px; ">
+                 <h5 style="background-color: #009933; padding: 3px; text-align: left; color: #FFFFFF;
+                 font-size: 15px;
+                 font-weight: 100; margin-top: 0;margin-bottom: 0;    height: 20px;">APPLIANCE SUMMARY FOR<span style="font-size: 12px;"> Mahender Tanwar 16 Palm Court - Alpine Road London NW9 9BQ</span>
+                <small style="float: right;">Appliances Total : <span style="font-weight: bold;">20</span></small>
+                </h5>
+
+               <div style="padding: 5px;">
+                  <div style="background-color: #eaeaea;height: 117px;">
+                    <div style="width: 48%;background-color: #009933; padding: 10px; float: left;">
+                      <p style="width: 100%; text-align: center;margin: 0; padding: 5px 0 10px 0; color: #FFFFFF;">Passed Appliances</p>
+                      <div style="background-color: #FFFFFF; height: 65px; text-align: center; font-weight: bold;">
+                        10
+                      </div>
+                    </div>
+                    <div style="width: 48%;background-color: #E20319; padding: 10px; float: right;">
+                      <p style="width: 100%; text-align: center;margin: 0; padding: 5px 0 10px 0;color: #FFFFFF;">Failed Appliances</p>
+                      <div style="background-color: #FFFFFF; height: 65px; text-align: center; font-weight: bold;">
+                        10
+                      </div>
+                    </div>
+                  </div>
+               </div>
+
+            </div>
+
+
+          </div>
+
+          <div style="clear: both;"></div>
+
+          <div style="padding:0px 22px 10px 22px; width: 97%; ">
+            <div style="width: 100%; border: 1px solid; margin-right: 5px;
+            height: 110px;">
+                <h5 style="background-color: #009933; padding: 3px; text-align: left; color: #FFFFFF;
+                font-size: 15px;
+                font-weight: 100; margin-top: 0;margin-bottom: 0;    height: 60px;">ANYON LIMITATIONS AGREED ON TESTING</h5>
+                 <div>
+                  <table style="width: 100%;">
+                    <tr>
+                      <td style="background: #EAEAEA; width: 100%; height: 70px;padding: 5px 5px 3px 10px;">
+                        <p style="list-style: none; margin: 0;">
+                          This is to certify the electrical appliances details in this certificate and record sheets have been tested for electrical safety in accordance with the IET code of practice for in service and inspection and testing of electrical equipment. It does not guarantee the correct operation of the appliance for any length of time. Users of the appliance should be aware of any fault or defect that may occur with future use. Any doubt regarding the safety or correct operation of the appliance, the device should be removed from service for further inspection by a competent person.
+                      </p>
+                      </td>
+
+                    </tr>
+                  </table>
+                </div>
+
+            </div>
+
+          </div>
+
+          <div style="clear: both;"></div>
+
+          <div style="padding:0px 22px 10px 22px; width: 97%;">
+
+            <table style="width: 100%;border-collapse: collapse">
+              <tr style="background-color: #E5F5EA;">
+                <th style="writing-mode: vertical-lr; font-weight: 500; text-align: center;border: 1px solid;" rowspan="2">Appliance Number</th>
+                <th style="font-weight: 500; text-align: center; border: 1px solid;" colspan="2" rowspan="2">Appliance</th>
+                <th style="font-weight: 500; text-align: center; border: 1px solid;" rowspan="2">Class</th>
+                <th style="font-weight: 500; text-align: center; border: 1px solid;" rowspan="2">Polarity</th>
+                <th style="font-weight: 500; text-align: center; border: 1px solid;" colspan="2" rowspan="2">Location</th>
+                <th style="font-weight: 500; text-align: center; border: 1px solid;" colspan="2" rowspan="2">Serial Number/Ld</th>
+
+                <th style="font-weight: 500; text-align: center; border: 1px solid;" rowspan="" colspan="4">Test Results </th>
+
+
+                <th style="writing-mode: vertical-lr;font-weight: 500; text-align: center; border: 1px solid;" rowspan="2">Visual Check</th>
+                <th style="writing-mode: vertical-lr;font-weight: 500; text-align: center; border: 1px solid;" rowspan="2">Fuse Rating (A)</th>
+                <th style="writing-mode: vertical-lr;font-weight: 500; text-align: center; border: 1px solid;" rowspan="2">Formal Visual Inspection (Months)</th>
+                <th style="writing-mode: vertical-lr;font-weight: 500; text-align: center; border: 1px solid;" rowspan="2">Combined Inspection & Test (Months)</th>
+                <th style="writing-mode: vertical-lr;font-weight: 500; text-align: center; border: 1px solid;" rowspan="2">Result</th>
+                <th style="writing-mode: vertical-lr;font-weight: 500; text-align: center; border: 1px solid;" rowspan="2">Repair Code</th>
+              </tr>
+              <tr style="background-color: #E5F5EA;">
+                <th style="writing-mode: vertical-lr;font-weight: 500; text-align: center; border: 1px solid;" >Insulation Resistance M(Q)</th>
+                <th style="writing-mode: vertical-lr;font-weight: 500; text-align: center; border: 1px solid;" >Load Test (Kva)</th>
+                <th style="writing-mode: vertical-lr;font-weight: 500; text-align: center; border: 1px solid;" >Earth Leakage Test (Ma)</th>
+                <th style="writing-mode: vertical-lr;font-weight: 500; text-align: center; border: 1px solid;" >Earth Leakage Test (Ma)</th>
+              </tr>
+
+              <tr>
+                <td style="text-align: center; border: 1px solid;">1</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2" > Toaster - Goodmans</td>
+                <td  style="text-align: center; border: 1px solid;">1</td>
+                <td  style="text-align: center; border: 1px solid;">Yes</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2">Kitchen</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2">03042301</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;">200</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;"><p style="
+                     display: INLINE-BLOCK;
+                    transform: rotate(46deg);
+                    height: 9px;
+                    width: 5px;
+                    margin-left: 0;
+                    border-bottom: 3px solid #080808;
+                    border-right: 3px solid #020202;"></p></td>
+                <td  style="text-align: center; border: 1px solid;">13</td>
+                <td  style="text-align: center; border: 1px solid;">3</td>
+                <td  style="text-align: center; border: 1px solid;">12</td>
+                <td  style="text-align: center; border: 1px solid;">Pass</td>
+                <td  style="text-align: center; border: 1px solid;"></td>
+              </tr>
+
+              <tr>
+                <td style="text-align: center; border: 1px solid;">2</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2" > Toaster - Goodmans</td>
+                <td  style="text-align: center; border: 1px solid;">1</td>
+                <td  style="text-align: center; border: 1px solid;">Yes</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2">Kitchen</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2">03042301</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;">200</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;"><p style="
+                     display: INLINE-BLOCK;
+                    transform: rotate(46deg);
+                    height: 9px;
+                    width: 5px;
+                    margin-left: 0;
+                    border-bottom: 3px solid #080808;
+                    border-right: 3px solid #020202;"></p></td>
+                <td  style="text-align: center; border: 1px solid;">13</td>
+                <td  style="text-align: center; border: 1px solid;">3</td>
+                <td  style="text-align: center; border: 1px solid;">12</td>
+                <td  style="text-align: center; border: 1px solid;">Pass</td>
+                <td  style="text-align: center; border: 1px solid;"></td>
+              </tr>
+
+
+              <tr>
+                <td style="text-align: center; border: 1px solid;">3</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2" > Toaster - Goodmans</td>
+                <td  style="text-align: center; border: 1px solid;">1</td>
+                <td  style="text-align: center; border: 1px solid;">Yes</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2">Kitchen</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2">03042301</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;">200</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;"><p style="
+                     display: INLINE-BLOCK;
+                    transform: rotate(46deg);
+                    height: 9px;
+                    width: 5px;
+                    margin-left: 0;
+                    border-bottom: 3px solid #080808;
+                    border-right: 3px solid #020202;"></p></td>
+                <td  style="text-align: center; border: 1px solid;">13</td>
+                <td  style="text-align: center; border: 1px solid;">3</td>
+                <td  style="text-align: center; border: 1px solid;">12</td>
+                <td  style="text-align: center; border: 1px solid;">Pass</td>
+                <td  style="text-align: center; border: 1px solid;"></td>
+              </tr>
+
+
+              <tr>
+                <td style="text-align: center; border: 1px solid;">4</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2" > Toaster - Goodmans</td>
+                <td  style="text-align: center; border: 1px solid;">1</td>
+                <td  style="text-align: center; border: 1px solid;">Yes</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2">Kitchen</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2">03042301</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;">200</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;"><p style="
+                     display: INLINE-BLOCK;
+                    transform: rotate(46deg);
+                    height: 9px;
+                    width: 5px;
+                    margin-left: 0;
+                    border-bottom: 3px solid #080808;
+                    border-right: 3px solid #020202;"></p></td>
+                <td  style="text-align: center; border: 1px solid;">13</td>
+                <td  style="text-align: center; border: 1px solid;">3</td>
+                <td  style="text-align: center; border: 1px solid;">12</td>
+                <td  style="text-align: center; border: 1px solid;">Pass</td>
+                <td  style="text-align: center; border: 1px solid;"></td>
+              </tr>
+
+
+              <tr>
+                <td style="text-align: center; border: 1px solid;">5</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2" > Toaster - Goodmans</td>
+                <td  style="text-align: center; border: 1px solid;">1</td>
+                <td  style="text-align: center; border: 1px solid;">Yes</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2">Kitchen</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2">03042301</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;">200</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;"><p style="
+                     display: INLINE-BLOCK;
+                    transform: rotate(46deg);
+                    height: 9px;
+                    width: 5px;
+                    margin-left: 0;
+                    border-bottom: 3px solid #080808;
+                    border-right: 3px solid #020202;"></p></td>
+                <td  style="text-align: center; border: 1px solid;">13</td>
+                <td  style="text-align: center; border: 1px solid;">3</td>
+                <td  style="text-align: center; border: 1px solid;">12</td>
+                <td  style="text-align: center; border: 1px solid;">Pass</td>
+                <td  style="text-align: center; border: 1px solid;"></td>
+              </tr>
+
+
+              <tr>
+                <td style="text-align: center; border: 1px solid;">6</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2" > Toaster - Goodmans</td>
+                <td  style="text-align: center; border: 1px solid;">1</td>
+                <td  style="text-align: center; border: 1px solid;">Yes</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2">Kitchen</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2">03042301</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;">200</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;"><p style="
+                     display: INLINE-BLOCK;
+                    transform: rotate(46deg);
+                    height: 9px;
+                    width: 5px;
+                    margin-left: 0;
+                    border-bottom: 3px solid #080808;
+                    border-right: 3px solid #020202;"></p></td>
+                <td  style="text-align: center; border: 1px solid;">13</td>
+                <td  style="text-align: center; border: 1px solid;">3</td>
+                <td  style="text-align: center; border: 1px solid;">12</td>
+                <td  style="text-align: center; border: 1px solid;">Pass</td>
+                <td  style="text-align: center; border: 1px solid;"></td>
+              </tr>
+
+              <tr>
+                <td style="text-align: center; border: 1px solid;">7</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2" > Toaster - Goodmans</td>
+                <td  style="text-align: center; border: 1px solid;">1</td>
+                <td  style="text-align: center; border: 1px solid;">Yes</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2">Kitchen</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2">03042301</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;">200</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;"><p style="
+                     display: INLINE-BLOCK;
+                    transform: rotate(46deg);
+                    height: 9px;
+                    width: 5px;
+                    margin-left: 0;
+                    border-bottom: 3px solid #080808;
+                    border-right: 3px solid #020202;"></p></td>
+                <td  style="text-align: center; border: 1px solid;">13</td>
+                <td  style="text-align: center; border: 1px solid;">3</td>
+                <td  style="text-align: center; border: 1px solid;">12</td>
+                <td  style="text-align: center; border: 1px solid;">Pass</td>
+                <td  style="text-align: center; border: 1px solid;"></td>
+              </tr>
+
+              <tr>
+                <td style="text-align: center; border: 1px solid;">8</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2" > Toaster - Goodmans</td>
+                <td  style="text-align: center; border: 1px solid;">1</td>
+                <td  style="text-align: center; border: 1px solid;">Yes</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2">Kitchen</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2">03042301</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;">200</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;"><p style="
+                     display: INLINE-BLOCK;
+                    transform: rotate(46deg);
+                    height: 9px;
+                    width: 5px;
+                    margin-left: 0;
+                    border-bottom: 3px solid #080808;
+                    border-right: 3px solid #020202;"></p></td>
+                <td  style="text-align: center; border: 1px solid;">13</td>
+                <td  style="text-align: center; border: 1px solid;">3</td>
+                <td  style="text-align: center; border: 1px solid;">12</td>
+                <td  style="text-align: center; border: 1px solid;">Pass</td>
+                <td  style="text-align: center; border: 1px solid;"></td>
+              </tr>
+
+              <tr>
+                <td style="text-align: center; border: 1px solid;">9</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2" > Toaster - Goodmans</td>
+                <td  style="text-align: center; border: 1px solid;">1</td>
+                <td  style="text-align: center; border: 1px solid;">Yes</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2">Kitchen</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2">03042301</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;">200</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;"><p style="
+                     display: INLINE-BLOCK;
+                    transform: rotate(46deg);
+                    height: 9px;
+                    width: 5px;
+                    margin-left: 0;
+                    border-bottom: 3px solid #080808;
+                    border-right: 3px solid #020202;"></p></td>
+                <td  style="text-align: center; border: 1px solid;">13</td>
+                <td  style="text-align: center; border: 1px solid;">3</td>
+                <td  style="text-align: center; border: 1px solid;">12</td>
+                <td  style="text-align: center; border: 1px solid;">Pass</td>
+                <td  style="text-align: center; border: 1px solid;"></td>
+              </tr>
+
+              <tr>
+                <td style="text-align: center; border: 1px solid;">10</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2" > Toaster - Goodmans</td>
+                <td  style="text-align: center; border: 1px solid;">1</td>
+                <td  style="text-align: center; border: 1px solid;">Yes</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2">Kitchen</td>
+                <td  style="text-align: center; border: 1px solid;" colspan="2">03042301</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;">200</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;">N/A</td>
+                <td  style="text-align: center; border: 1px solid;"><p style="
+                     display: INLINE-BLOCK;
+                    transform: rotate(46deg);
+                    height: 9px;
+                    width: 5px;
+                    margin-left: 0;
+                    border-bottom: 3px solid #080808;
+                    border-right: 3px solid #020202;"></p></td>
+                <td  style="text-align: center; border: 1px solid;">13</td>
+                <td  style="text-align: center; border: 1px solid;">3</td>
+                <td  style="text-align: center; border: 1px solid;">12</td>
+                <td  style="text-align: center; border: 1px solid;">Pass</td>
+                <td  style="text-align: center; border: 1px solid;"></td>
+              </tr>
+
+
+            </table>
+
+          </div>
+
+          <div style="padding:0px 22px 10px 22px; width: 97%;">
+            <div style="width: 48%; float: left">
+                <table style="width: 100%;">
+                    <tr>
+                      <th>Repair Codes:</th>
+                    </tr>
+
+                    <tr>
+                      <td>A = Replace Plug</td>
+                      <td>D = Fit Rubber Plug</td>
+                      <td>G = Replace Lead</td>
+                    </tr>
+                    <tr>
+                      <td>B = Rewire Plug</td>
+                      <td>E = Fit Inline Switch</td>
+                      <td>H = Other</td>
+                    </tr>
+                    <tr>
+                      <td>C = Fit BS1361 Sleeved Plug</td>
+                      <td>H = Other</td>
+
+                    </tr>
+                </table>
+            </div>
+
+            <div style="float: right">
+              <p> Page 1 Of Certificate Ref: <span style="width: 150px; height: 30px; padding: 5px 20px; background-color: #EAEAEA;"> 39689968 </span></p>
+              <div style="text-align: right;">
+                <strong>Produced Using 360 Connect</strong>
+              </div>
+            </div>
+          </div>
+
+
+
     </div>
-
-    <main style="padding: 20px;">
-      <table>
-        <tbody>
-            <tr id="part-2" class="part-container">
-                <td>
-                    <div style="background-color: white;">
-                        <div>
-                            <p style="margin-bottom: 0; text-align: center; background-color: #2a98fc; color: white; font-size: 14px; font-weight: bold; padding: 8px;">PORTABLE APPLIANCE REGISTER</p>
-                        </div>
-                        <div style="display: flex; justify-content:end; padding: 15px; align-items:center ;">
-                            <div style="display: flex;">
-                                <div style="border: 1px solid #dddd; padding: 15px 30px; border-radius: 8px; margin-right: 15px;">
-                                    <div style="font-size: 14px; margin-bottom: 15px;">Application Passes</div>
-                                    <div style="background-color: #2a98fc; font-weight: bold; padding: 10px 5px; width: 150px; border-radius: 8px; color: white; font-size: 14px;">{{count($final_result_yes)}}</div>
-                                </div>
-                                <div style="border: 1px solid #dddd; padding: 15px 30px; border-radius: 8px; margin-right: 15px;">
-                                    <div style="font-size: 14px; margin-bottom: 15px;">Application Failed</div>
-                                    <div style="background-color: #2a98fc; font-weight: bold; padding: 10px 5px; width: 150px; border-radius: 8px; color: white; font-size: 14px;">{{count($final_result_no)}}</div>
-                                </div>
-                            </div>
-                            <div style="padding: 15px; background-color: #2a98fc; color: white; font-weight: bold; font-size: 14px; border-radius: 8px; margin-left: 100px;">
-                                <div>{{count($final_result)}}</div>
-                                <div>Total Appliances</div>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-          <tr id="part-2" class="part-container">
-            <td>
-                <div style="background-color: white;">
-                    <div>
-                        <p style="margin-bottom: 0; text-align: center; background-color: #2a98fc; color: white; font-size: 14px; font-weight: bold; padding: 8px;">PORTABLE APPLIANCE REGISTER</p>
-                    </div>
-                    <table style="border-collapse: collapse;">
-                        <thead>
-                            <tr>
-                                <td style="border: 1px solid #2a98fc;">ID</td>
-                                <td  style="border: 1px solid #2a98fc;">
-                                    <div>Make </div>
-                                </td>
-                                <td rowspan="1" style="border: 1px solid #2a98fc;">Model</td>
-                                <td rowspan="1" style="border: 1px solid #2a98fc;">Location</td>
-                                <td rowspan="1" style="border: 1px solid #2a98fc;"><div>Visual</div> Inspection</td>
-
-                                <td rowspan="1" style=" transform: rotate(0deg); border: 1px solid #2a98fc;">Fuse rating <div>(A)</div></td>
-                                <td rowspan="1" style=" transform: rotate(0deg); border: 1px solid #2a98fc;">Voltage  <div>(V)</div></td>
-                                <td rowspan="1" style="transform: rotate(0deg); border: 1px solid #2a98fc;">Earth
-                                    <div>Continuity</div>
-                                    <div></div>(Ω)</div>
-                                </td>
-                                <td rowspan="1" style="transform: rotate(0deg); border: 1px solid #2a98fc;">Insulation
-                                    <div>Resistance</div>
-                                    <div>(MΩ)</div>
-                                </td>
-                                <td rowspan="1" style=" transform: rotate(0deg); border: 1px solid #2a98fc;">Touch
-                                    <div>Leakage</div>
-                                    <div>(mA)</div>
-                                </td>
-                                <td rowspan="1" style="transform: rotate(0deg); border: 1px solid #2a98fc;">Polarity</td>
-                                <td rowspan="1" style="transform: rotate(0deg); border: 1px solid #2a98fc;">Pass / Fail</td>
-                            </tr>
-
-                        </thead>
-                        <tbody>
-                        @foreach ($gaz_safety_data as $item)
-                           <tr>
-                            <td style="border: 1px solid #2a98fc;">{{$item['id']}}</td>
-                            <td style="border: 1px solid #2a98fc;">{{$item['make']}}</td>
-                            <td style="border: 1px solid #2a98fc;">{{$item['model']}}</td>
-                            <td style="border: 1px solid #2a98fc;">{{$item['location']}}</td>
-                            <td style="border: 1px solid #2a98fc;">{{$item['visual_inspection_result']}}</td>
-                            <td style="border: 1px solid #2a98fc;">{{$item['fuse_rating']}}</td>
-                            <td style="border: 1px solid #2a98fc;">{{$item['voltage']}}</td>
-                            <td style="border: 1px solid #2a98fc;">{{$item['earth_continuity']}}</td>
-                            <td style="border: 1px solid #2a98fc;">{{$item['insulation_resistance']}}</td>
-                            <td style="border: 1px solid #2a98fc;">{{$item['touch_leakage']}}</td>
-                            <td style="border: 1px solid #2a98fc;">{{$item['polarity']}}</td>
-                            <td style="border: 1px solid #2a98fc;">{{$item['final_result']}}</td>
-                           </tr>
-                        @endforeach
-
-                           <tr>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                           </tr>
-                           <tr>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                           </tr>
-                           <tr>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                            <td style="border: 1px solid #2a98fc;"></td>
-                           </tr>
-
-                        </tbody>
-                    </table>
-                </div>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    <div class="footer">
-        <div style="display: flex; justify-content: space-between;">
-          <img src="{{asset('admin/forms/portable_appliance_testing/footer-logo.png')}}" style="width: 250px; object-fit: contain;">
-          <div>
-            page 1 of <span style="border: 1px solid #DDDD; padding: 8px 12px; display: inline-block; margin-left: 5px;">1</span>
-          </div>
-        </div>
-      </div>
-
-      <x-print-modal-layout></x-print-modal-layout>
   </body>
 </html>

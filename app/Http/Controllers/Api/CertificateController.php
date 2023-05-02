@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Storage;
 use App\Certificate\DomesticElectrical\Eicr;
 use App\Certificate\DomesticGas\LandlordHomeownerGasSafetyRecord;
+use App\Certificate\DomesticGas\WarningNoticeGas;
 
 class CertificateController extends Controller
 {
@@ -380,6 +381,8 @@ class CertificateController extends Controller
         } elseif ($file_name == 'Landlord_Homeowner_Gas_Safety_Record') {
             $form =  LandlordHomeownerGasSafetyRecord::getPdf($certificate);
 
+        }elseif($file_name == 'Warning_Notice'){
+            $form = WarningNoticeGas::getPdf($certificate);
         }
         return $form;
     }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Certificate\DomesticGas\LandlordHomeownerGasSafetyRecord;
+use App\Certificate\DomesticGas\WarningNoticeGas;
 use Mpdf\Mpdf;
 use App\Models\Certificate;
 use Mpdf\Config\FontVariables;
@@ -25,10 +26,8 @@ Route::get('/', function () {
 
 Route::get('/get-pdf', function () {
 
-    $data = Certificate::find(3);
-
-    $form =new LandlordHomeownerGasSafetyRecord();
-   
+    $data = Certificate::find(5);
+    $form =new WarningNoticeGas();
     $form->getPdf($data);
 
 });
