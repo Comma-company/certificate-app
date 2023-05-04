@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Certificate\DomesticElectrical;
+
 use Mpdf\Mpdf;
 use Mpdf\Config\FontVariables;
 use Mpdf\Config\ConfigVariables;
@@ -8,7 +10,8 @@ use Illuminate\Support\Facades\View;
 use Symfony\Component\Console\Output\Output;
 
 
-class ElectricalDangerNotification{
+class ElectricalDangerNotification
+{
     public static function getPdf($certificate)
     {
         define('_MPDF_TTFONTPATH', asset('admin/fonts/gnu-free-font'));
@@ -21,7 +24,7 @@ class ElectricalDangerNotification{
 
         //   $invoice = new Mpdf(['orientation' => 'L']);
         $invoice =  new Mpdf([
-           'orientation' => 'L',
+            'orientation' => 'L',
             'fontDir' => array_merge($fontDirs, [
                 asset('admin/fonts/'),
             ]),
@@ -39,7 +42,7 @@ class ElectricalDangerNotification{
         $invoice->use_kwt = true;
         $data = $certificate;
 
-         $formData =  $data->data;
+        $formData =  $data->data;
 
         $invoice->fontdata["fontawesome"] = [
             'R' => "fa-solid-900.tff",
@@ -54,8 +57,22 @@ class ElectricalDangerNotification{
 
         $invoice->WriteHTML($html);
 
-        $invoice->Output();
-
+        //$invoice->Output();
+        $fileName = "C$data->id.pdf";
+        $file_path =  public_path("uploads/certificate/" . $fileName);
+        Storage::disk('uploads')->makeDirectory('certificate');
+        if (Storage::disk('uploads')->exists('certificate/' . $fileName)) {
+            Storage::disk('uploads')->delete('certificate/' . $fileName);
+            $invoice->Output($file_path, 'F');
+            return responseJson(true, 'pdf file for certificate', [
+                'url' => asset('uploads/certificate/' . $fileName)
+            ]);
+        } else {
+            $invoice->Output($file_path, 'F');
+            return responseJson(true, 'pdf file for certificate', [
+                'url' => asset('uploads/certificate/' . $fileName)
+            ]);
+        }
+        return $invoice->Output();
     }
 }
-
