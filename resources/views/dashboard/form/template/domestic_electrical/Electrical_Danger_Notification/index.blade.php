@@ -184,10 +184,10 @@
 
 
           <div style="padding:0px 22px 10px 22px; width: 100%; ">
-            <div style="width: 97%;border: 1px solid;height:180px;">
+            <div style="width: 97%;border: 1px solid;height:140px;">
               <h5 style="background-color: #009933; padding: 3px; text-align: left; color: #FFFFFF;
               font-size: 15px;
-              font-weight: 100; margin-top: 0;margin-bottom: 0;    height: 20px;">PART 3 : IMMEDIATE ACTION TAKEN</h5>
+              font-weight: 100; margin-top: 0;margin-bottom: 0;  height: 20px;">PART 3 : IMMEDIATE ACTION TAKEN</h5>
                       <div style="width: 98%;">
                             <ul>
                                 <li style="list-style-type: disclosure-closed;border-bottom: 1px solid; line-height: 2;">
@@ -204,7 +204,7 @@
           <div style="clear: both;"></div>
 
           <div style="padding:0px 22px 10px 22px; width: 100%; ">
-            <div style="width: 97%;border: 1px solid;height:180px;">
+            <div style="width: 97%;border: 1px solid;height:140px;">
               <h5 style="background-color: #009933; padding: 3px; text-align: left; color: #FFFFFF;
               font-size: 15px;
               font-weight: 100; margin-top: 0;margin-bottom: 0;    height: 20px;">PART 4 : FURTHER URGENT ACTION RECOMMENDED</h5>

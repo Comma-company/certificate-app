@@ -30,7 +30,7 @@ Route::get('/get-pdf', function () {
 
     $data = Certificate::find(5);
 
-    $form = ElectricalDangerNotification::getPdf($data);
+   return $form = ElectricalDangerNotification::getPdf($data);
 
 });
 
