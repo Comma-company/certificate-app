@@ -88,9 +88,9 @@
 
                           <h6 style="margin:15px 5px 30px 5px;font-size: 12px;font-weight: 100;">Address : {{ $data->customer->sites ? $data->customer->sites->first()->address : "" }}</h6>
                           <h6 style="margin:15px 5px;font-size: 12px;font-weight: 100;">Postcode :  {{ $data->customer->sites->first()->postal_code }}
-                                <span style="margin-left: 170px;">Tel No : {{  $data->customer->sites->siteContact ? $data->customer->sites->siteContact->phone : " " }} </span>
+                                <span style="margin-left: 170px;">Tel No : {{  $data->customer->sites->first()->siteContact ? $data->customer->sites->first()->siteContact->phone : " " }} </span>
                           </h6>
-                          <h6 style="margin:15px 5px;font-size: 12px;font-weight: 100;">Email : {{ $data->customer->sites->siteContact? $data->customer->sites->siteContact->email : "" }} </h6>
+                          <h6 style="margin:15px 5px;font-size: 12px;font-weight: 100;">Email : {{ $data->customer->sites->first()->siteContact? $data->customer->sites->first()->siteContact->email : "" }} </h6>
                         </div>
 
                       </div>

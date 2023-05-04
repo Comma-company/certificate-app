@@ -28,9 +28,9 @@ Route::get('/', function () {
 
 Route::get('/get-pdf', function () {
 
-    $data = Certificate::find(6);
+    $data = Certificate::find(5);
 
-    $form = PortableApplianceTesting::getPdf($data);
+    $form = ElectricalDangerNotification::getPdf($data);
 
 });
 
