@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Certificate\DomesticElectrical;
 use Mpdf\Mpdf;
 use Mpdf\Config\FontVariables;
@@ -8,7 +7,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
 use Symfony\Component\Console\Output\Output;
 
-class PortableApplianceTesting{
+
+class ElectricalDangerNotification{
     public static function getPdf($certificate)
     {
         define('_MPDF_TTFONTPATH', asset('admin/fonts/gnu-free-font'));
@@ -47,30 +47,15 @@ class PortableApplianceTesting{
         ];
 
 
-        $html = view('dashboard.form.template.domestic_electrical.Portable_Appliance_Testing.index', [
+        $html = view('dashboard.form.template.domestic_electrical.Electrical_Danger_Notification.index', [
             'data' => $data,
-            'formData' =>   $formData 
+            'formData' =>   $formData
         ])->render();
 
         $invoice->WriteHTML($html);
 
         $invoice->Output();
 
-        // $fileName = "C$data->id.pdf";
-        // $file_path =  public_path("uploads/certificate/" . $fileName);
-        // Storage::disk('uploads')->makeDirectory('certificate');
-        // if (Storage::disk('uploads')->exists('certificate/' . $fileName)) {
-        //     Storage::disk('uploads')->delete('certificate/' . $fileName);
-        //     $invoice->Output($file_path, 'F');
-        //     return responseJson(true, 'pdf file for certificate', [
-        //         'url' => asset('uploads/certificate/' . $fileName)
-        //     ]);
-        // } else {
-        //     $invoice->Output($file_path, 'F');
-        //     return responseJson(true, 'pdf file for certificate', [
-        //         'url' => asset('uploads/certificate/' . $fileName)
-        //     ]);
-        // }
-        //return $invoice->Output();
     }
 }
+

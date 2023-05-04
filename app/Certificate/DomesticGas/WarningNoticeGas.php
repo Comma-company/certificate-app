@@ -20,8 +20,9 @@ class WarningNoticeGas
         $defaultFontConfig = (new FontVariables())->getDefaults();
         $fontData = $defaultFontConfig['fontdata'];
 
+        //   $invoice = new Mpdf(['orientation' => 'L']);
         $invoice =  new Mpdf([
-            'orientation' => 'L',
+           'orientation' => 'L',
             'fontDir' => array_merge($fontDirs, [
                 asset('admin/fonts/'),
             ]),
@@ -34,7 +35,7 @@ class WarningNoticeGas
             'default_font' => 'FreeSans',
             'format' => 'A4'
         ]);
-
+        /* $invoice->AddPage('P'); */
         $invoice->shrink_tables_to_fit = 1;
         $invoice->use_kwt = true;
         $data = $certificate;
@@ -45,7 +46,7 @@ class WarningNoticeGas
             'R' => "fa-solid-900.tff",
             'I' => "fa-regular-400.ttf",
         ];
-
+ 
 
         $html = view('dashboard.form.template.domestic_gas.Warning_Notice.index', [
             'data' => $data,
@@ -54,7 +55,7 @@ class WarningNoticeGas
 
         $invoice->WriteHTML($html);
 
-        //$invoice->Output();
+        $invoice->Output();
 
         $fileName = "C$data->id.pdf";
         $file_path =  public_path("uploads/certificate/" . $fileName);

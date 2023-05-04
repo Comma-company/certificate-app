@@ -57,18 +57,18 @@
 
           <div style="width: 100%;height: 80px;padding: 22px;">
             <div style="border: 1px solid ;width: 97%;">
-              <div style=" float: left;text-align: right;width: 10%">
-                <img  src="{{ asset('certificate/image/gasSafe_logo.png') }}" style="width: 90px;
-                height: 100px;margin-left: 20px;margin-top: 15px;">
+              <div style=" float: left;text-align: right;width: 10%W">
+                {{-- <img  src="./image/logo.png" style="width: 90px;
+                height: 100px;margin-left: 20px;margin-top: 15px;"> --}}
                </div>
 
-               <div style="float: left;width: 59.9%">
-                    <h4 style="color: #333;
-                    font-size: 15px;
-                    font-weight: bold;
-                    margin-top: 85px;
-                    margin-left: 15px;">WARNING NOTICE</h4>
-                </div>
+               <div style="float: left;width: 60%">
+               <h4 style="color: #333;
+               font-size: 15px;
+               font-weight: bold;
+               margin-top: 85px;
+               margin-left: 15px;">WARNING NOTICE</h4>
+               </div>
 
 
                <div style="float:right;width: 30%">
@@ -82,7 +82,7 @@
                     padding-bottom: 12px;
                     font-size: 15px;text-align: center;    font-weight: 300;">Form number</h5>
                     <div style="background-color: #fff; height: 30px;margin-left: 44px;
-                    width: 170px;">{{ $data->id ?? 00 }}</div>
+                    width: 170px;"></div>
                     </div>
                </div>
 
@@ -388,8 +388,8 @@
                     <tr>
                       <td style="border: 1px solid #cbcbcb;     width: 60%;     padding: 5px;text-align: left;">The appliance/installation has been classified as ‘At Risk’, turned off to
                         made safe and labelled ‘Danger Do not Use’.</td>
-                      <td style="border: 1px solid #cbcbcb;text-align: center">{{ getvalue('riddor_reporting_4',$formData['form_part_3']) }}</td>
-                      <td style="border: 1px solid #cbcbcb; text-align: center"></td>
+                      <td style="border: 1px solid #cbcbcb;"></td>
+                      <td style="border: 1px solid #cbcbcb; text-align: center">{{ getvalue('riddor_reporting_4',$formData['form_part_3']) }}</td>
 
                     </tr>
                     <tr>
@@ -404,7 +404,11 @@
 
                   </table>
 
-                <div style="clear: both;"></div>
+
+
+
+
+                    <div style="clear: both;"></div>
                 </div>
 
 
@@ -487,12 +491,7 @@
                   font-weight: 100;
                   margin: 0;
 
-                  padding-right: 10px;font-weight: bold;">
-                        Responsible person signature :
-                        @if ($data->customerSignature)
-                              <img width="120px" src="{{ asset('uploads/'.$data->customerSignature->file_url) }}" alt="">
-                           @endif
-                       </h6>
+                  padding-right: 10px;font-weight: bold;">Responsible person signature : </h6>
 
                   <span style="background-color: #f6f6f6; width: 225px; height: 30px; display: block; float: left;">{{ getvalue('customer_name',$formData['part_declaration']) }}</span>
                 </div>
@@ -519,12 +518,7 @@
                 <h6 style="    float: left;
                 font-size: 13px;
                 font-weight: 100;
-                padding-right: 10px;font-weight: bold;margin: 0;margin-top:6px">
-                Gas Engineer’s signature :
-                @if ($data->user->signature)
-                <img width="120px" src="{{ $data->user->signature->file_url }}" alt="">
-                @endif
-                </h6>
+                padding-right: 10px;font-weight: bold;margin: 0;margin-top:6px">Gas Engineer’s signature :</h6>
                 <span style="background-color: #f6f6f6; width: 250px; height: 30px; display: block; float: left;">{{ getvalue('engineer_name',$formData['part_declaration']) }}</span>
               </div>
 

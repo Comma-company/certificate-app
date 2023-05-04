@@ -1,5 +1,7 @@
 <?php
 
+use App\Certificate\DomesticElectrical\ElectricalDangerNotification;
+use App\Certificate\DomesticElectrical\PortableApplianceTesting;
 use App\Certificate\DomesticGas\LandlordHomeownerGasSafetyRecord;
 use App\Certificate\DomesticGas\WarningNoticeGas;
 use Mpdf\Mpdf;
@@ -26,9 +28,9 @@ Route::get('/', function () {
 
 Route::get('/get-pdf', function () {
 
-    $data = Certificate::find(5);
-    $form =new WarningNoticeGas();
-    $form->getPdf($data);
+    $data = Certificate::find(6);
+
+    $form = PortableApplianceTesting::getPdf($data);
 
 });
 
