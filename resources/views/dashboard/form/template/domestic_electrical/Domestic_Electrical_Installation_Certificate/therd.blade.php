@@ -7,8 +7,8 @@
     <title>Page 1</title>
     <style>
             @page :first {
-                header: html_formHeader;
-                footer: html_formFooter;
+                /* header: html_formHeader; */
+                /* footer: html_formFooter; */
                 margin: 15px;
                 margin-bottom:20px;
                 margin-top:60px;
@@ -17,8 +17,8 @@
                 margin-footer:5mm ;
             }
             @page{
-                header: html_formHeader;
-                footer: html_formFooter2;
+                /* header: html_formHeader; */
+                /* footer: html_formFooter2; */
                 margin: 15px;
                 margin-bottom:20px;
                 margin-top:60px;
@@ -31,17 +31,17 @@
             font-family:Arial;
             src:'./Ayar/Arial.ttf';
           }
-    
+
       body {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
         font-size: 12px;
-       
-    
+
+
       }
       .table-container {
-       
+
         text-align: left;
       }
     </style>
@@ -50,27 +50,27 @@
     <div
       class="table-container"
       style="
-   
+
         font-family:'Arial';
       ">
-          <div style="margin: 10px 25px;     width: 97%;">
-            <div style="float: left;"> <img src="./image/niceic-logo.png" width="160px" height="60px"></div>
-            <div style="float: right; height: 70px;background-color: #000000;width:  87%;">
+         <div style="margin: 10px 25px;  width: 97%;">
+            <div style="float: left;width:25%">
+                <img src="{{ asset('certificate/image/niceic-logo.png') }}" width="160px" height="60px">
+            </div>
+            <div style="float: left; margin-right: 46px; height: 70px;background-color: #000000;width: 70%;">
               <table style="width: 100%;     padding: 12px;">
-                <tr style="color: #FFFFFF;">
-                    <th></th>
-                   
-                  
-                  
-                </tr>
-                <tr style="color: #FFFFFF;">
-                    <td style="font-size: 25px;">Domestic Electrical Installation Certificate</td>
-                
-                    <td style="font-size: 15px; color: #D3D2D2;font-weight: 100;">CERT NO <span style="color:#FFFFFF">03/04/2023</span></td>
-                    
-                </tr>
-        
-            </table style="width:100%"></div>
+                    <tr style="color: #FFFFFF;">
+                        <th></th>
+                    </tr>
+                    <tr style="color: #FFFFFF;">
+                        <td style="font-size: 25px;">Domestic Electrical Installation Certificate</td>
+
+                        <td style="font-size: 15px; color: #D3D2D2;font-weight: 100;">CERT NO <span style="color:#FFFFFF">03/04/2023</span></td>
+
+                    </tr>
+
+                </table>
+            </div>
             <div style="clear: both;"></div>
           </div>
 
@@ -81,10 +81,18 @@
             <h5 style="background-color: #009933; padding: 3px; text-align: left; color: #FFFFFF;
             font-size: 15px;
             font-weight: 100; margin-top: 0;margin-bottom: 0;    height: 20px;">PART 8 : SCHEDULE OF CIRCUIT DETAILS AND TEST RESULTS</h5>
-            <div style="width: 98.5%; border: 1px solid; padding: 0 10px;border-bottom: 1px solid transparent;">
+            @php
+              $distribution_boards_data=  $formData['distribution_boards_data'];
+            @endphp
+            @foreach ($distribution_boards_data as $boards_data )
+
+
+            <div style="width: 98.5%; border: 1px solid; padding: 0 10px;border-bottom: 1px solid rgba(0, 0, 0, 0)">
                 <h6 style="font-size: 13px; font-weight: 100;">Designation Ot Consumer Unit : <span style="margin-left: 200px;"> Location : </span> <span style="margin-left: 200px;"> Prospective Fault Current : </span> <span style="margin-left: 200px;"> Type Of Wiring 0—0Ther : </span></h6>
             </div>
             <table style="width: 100%;border-collapse: collapse;">
+
+                <thead>
               <tr style="background-color: #E5F5EA;">
                 <th style="writing-mode: vertical-lr; font-weight: 500; text-align: center;border: 1px solid;" rowspan="2" colspan="1">Circuit Number</th>
                 <th style="font-weight: 500; text-align: center; border: 1px solid;" colspan="" rowspan="2">Circuit Description</th>
@@ -160,530 +168,52 @@
                 <th style="text-align: center; border: 1px solid;"></th>
 
               </tr>
+            </thead>
 
-          
+            @foreach ($boards_data['list_circuits_data'] as $circuits_data )
+
+
               <tr>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                
-               
+                <td style="text-align: center; border: 1px solid; padding: 5px;">{{ getvalue('circuit_reference_a',$circuits_data) }}</td>
+                <td  style="text-align: center; border: 1px solid; padding: 5px;" >{{ getvalue('circuit_designation_a',$circuits_data) }} </td>
+                <td  style="text-align: center; border: 1px solid; padding: 5px;"> {{ getvalue('type_of_wiring_a',$circuits_data) }}</td>
+                <td style="text-align: center; border: 1px solid; padding: 5px;">{{ getvalue('reference_method_a',$circuits_data) }}</td>
+                <td  style="text-align: center; border: 1px solid; padding: 5px;" >{{ getvalue('number_of_point_a',$circuits_data) }} </td>
+                <td  style="text-align: center; border: 1px solid; padding: 5px;"> {{ getvalue('live_b',$circuits_data) }}</td>
+                <td style="text-align: center; border: 1px solid; padding: 5px;">{{ getvalue('cpc_b',$circuits_data) }}</td>
+                <td  style="text-align: center; border: 1px solid; padding: 5px;" >{{ getvalue('max_disconnection_time_b',$circuits_data) }} </td>
+                <td  style="text-align: center; border: 1px solid; padding: 5px;"> {{ getvalue('type_bs_c',$circuits_data) }}</td>
+                <td style="text-align: center; border: 1px solid; padding: 5px;">{{ getvalue('type_c',$circuits_data) }}</td>
+                <td  style="text-align: center; border: 1px solid; padding: 5px;" >{{ getvalue('rating_c',$circuits_data) }} </td>
+                <td  style="text-align: center; border: 1px solid; padding: 5px;"> {{ getvalue('short_circuit_c',$circuits_data) }}</td>
+                <td style="text-align: center; border: 1px solid; padding: 5px;">{{ getvalue('max_permitted_c',$circuits_data) }}</td>
+                <td  style="text-align: center; border: 1px solid; padding: 5px;" >{{ getvalue('type_bs_d',$circuits_data) }}</td>
+                <td  style="text-align: center; border: 1px solid; padding: 5px;"> {{ getvalue('type_d',$circuits_data) }}</td>
+                <td style="text-align: center; border: 1px solid; padding: 5px;">{{ getvalue('rcd_d',$circuits_data) }}</td>
+                <td  style="text-align: center; border: 1px solid; padding: 5px;" >{{ getvalue('rating_d',$circuits_data) }} </td>
+                <td  style="text-align: center; border: 1px solid; padding: 5px;"> {{ getvalue('r1_e',$circuits_data) }}</td>
+                <td style="text-align: center; border: 1px solid; padding: 5px;">{{ getvalue('rn_e',$circuits_data) }}</td>
+                <td  style="text-align: center; border: 1px solid; padding: 5px;" >{{ getvalue('r2_e',$circuits_data) }} </td>
+                <td  style="text-align: center; border: 1px solid; padding: 5px;"> {{ getvalue('r1_r2_f',$circuits_data) }}</td>
+                <td style="text-align: center; border: 1px solid; padding: 5px;">{{ getvalue('r2_f',$circuits_data) }}</td>
+                <td  style="text-align: center; border: 1px solid; padding: 5px;" >{{ getvalue('ir_test_voltage_f',$circuits_data) }} </td>
+                <td  style="text-align: center; border: 1px solid; padding: 5px;"> {{ getvalue('ir_test_voltage_f',$circuits_data) }}</td>
+                <td style="text-align: center; border: 1px solid; padding: 5px;">{{ getvalue('disconnection_time_i',$circuits_data) }}</td>
+                <td  style="text-align: center; border: 1px solid; padding: 5px;" >{{ getvalue('test_button_i',$circuits_data) }} </td>
+                <td  style="text-align: center; border: 1px solid; padding: 5px;"> {{ getvalue('testButton_j',$circuits_data) }}</td>
+
+
               </tr>
 
-                  
-              <tr>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                
-               
-              </tr>
+              @endforeach
 
-                  
-              <tr>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                
-               
-              </tr>
 
-                  
-              <tr>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                
-               
-              </tr>
-
-                  
-              <tr>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                
-               
-              </tr>
-
-                  
-              <tr>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                
-               
-              </tr>
-
-                  
-              <tr>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                
-               
-              </tr>
-
-                  
-              <tr>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                
-               
-              </tr>
-
-                  
-              <tr>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                
-               
-              </tr>
-
-                  
-              <tr>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                
-               
-              </tr>
-
-                  
-              <tr>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                
-               
-              </tr>
-
-                  
-              <tr>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                
-               
-              </tr>
-
-                  
-              <tr>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                
-               
-              </tr>
-
-                  
-              <tr>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                
-               
-              </tr>
-
-                  
-              <tr>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                <td style="text-align: center; border: 1px solid; padding: 5px;">N/A</td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;" >Yes </td>
-                <td  style="text-align: center; border: 1px solid; padding: 5px;"> NO</td>
-                
-               
-              </tr>
-              
-
-         
-           
-           
             </table>
+            @endforeach
           </div>
 
           <div style="clear: both;"></div>
 
-          <div style="width: 97%; margin-left: 24px;">
-            <div style="float: left;">
-              <p>Produced Using 360 Connect @</p>
-            </div>
-            <span style="    width: 25px;
-            height: 25px;
-            border: 1px solid;
-            float: right;
-            margin-left: 10px; text-align: center; padding-top: 5px;"> 3 </span>
-            <div style="float: right; margin-top: 10px;">
-              Page 3 Of 
-            </div>
-           
-        </div>
-
-         
-       
-         
-          
 
     </div>
   </body>

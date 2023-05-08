@@ -1,15 +1,16 @@
 <?php
 
-use App\Certificate\DomesticElectrical\ElectricalDangerNotification;
-use App\Certificate\DomesticElectrical\PortableApplianceTesting;
-use App\Certificate\DomesticGas\LandlordHomeownerGasSafetyRecord;
-use App\Certificate\DomesticGas\WarningNoticeGas;
 use Mpdf\Mpdf;
 use App\Models\Certificate;
 use Mpdf\Config\FontVariables;
 use Mpdf\Config\ConfigVariables;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
+use App\Certificate\DomesticGas\WarningNoticeGas;
+use App\Certificate\DomesticElectrical\PortableApplianceTesting;
+use App\Certificate\DomesticGas\LandlordHomeownerGasSafetyRecord;
+use App\Certificate\DomesticElectrical\ElectricalDangerNotification;
+use App\Certificate\DomesticElectrical\DomesticElectricalInstallationCertificate;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,9 +29,9 @@ Route::get('/', function () {
 
 Route::get('/get-pdf', function () {
 
-    $data = Certificate::find(5);
+    $data = Certificate::find(7);
 
-   return $form = ElectricalDangerNotification::getPdf($data);
+   return $form = DomesticElectricalInstallationCertificate::getPdf($data);
 
 });
 

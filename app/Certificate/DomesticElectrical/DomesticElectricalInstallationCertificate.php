@@ -1,14 +1,16 @@
 <?php
 
 namespace App\Certificate\DomesticElectrical;
+
 use Mpdf\Mpdf;
 use Mpdf\Config\FontVariables;
 use Mpdf\Config\ConfigVariables;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\View;
-use Symfony\Component\Console\Output\Output;
 
-class PortableApplianceTesting{
+class DomesticElectricalInstallationCertificate
+{
+
+
     public static function getPdf($certificate)
     {
         define('_MPDF_TTFONTPATH', asset('admin/fonts/gnu-free-font'));
@@ -20,7 +22,8 @@ class PortableApplianceTesting{
         $fontData = $defaultFontConfig['fontdata'];
 
         //   $invoice = new Mpdf(['orientation' => 'L']);
-        $invoice =  new Mpdf([
+
+        $pdf_form =  new Mpdf([
             'orientation' => 'L',
             'fontDir' => array_merge($fontDirs, [
                 asset('admin/fonts/'),
@@ -34,43 +37,51 @@ class PortableApplianceTesting{
             'default_font' => 'FreeSans',
             'format' => 'A4'
         ]);
-        /* $invoice->AddPage('P'); */
-        $invoice->shrink_tables_to_fit = 1;
-        $invoice->use_kwt = true;
-        $data = $certificate;
+        $pdf_form->shrink_tables_to_fit = 1;
+        $formData =  $certificate->data;
 
-        $formData =  $data->data;
-
-        $invoice->fontdata["fontawesome"] = [
+        $pdf_form->fontdata["fontawesome"] = [
             'R' => "fa-solid-900.tff",
             'I' => "fa-regular-400.ttf",
         ];
 
-
-        $html = view('dashboard.form.template.domestic_electrical.Portable_Appliance_Testing.index', [
-            'data' => $data,
-            'formData' =>   $formData
+        $html = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_Installation_Certificate.index', [
+            'data' => $certificate,
+            'formData' => $formData
         ])->render();
 
-        $invoice->WriteHTML($html);
+        $pdf_form->WriteHTML($html);
 
-        //$invoice->Output();
+        $pdf_form->AddPage('L');
+        $page_2 = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_Installation_Certificate.scond', [
+            'data' => $certificate,
+            'formData' => $formData
+        ])->render();
+        $pdf_form->WriteHTML($page_2);
+        // $pdf_form->Output();
 
-        $fileName = "C$data->id.pdf";
+
+        $pdf_form->AddPage('L');
+        $page_3 = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_Installation_Certificate.therd', [
+            'data' => $certificate,
+            'formData' => $formData
+        ])->render();
+        $pdf_form->WriteHTML($page_3);
+        $fileName = "C$certificate->id.pdf";
         $file_path =  public_path("uploads/certificate/" . $fileName);
         Storage::disk('uploads')->makeDirectory('certificate');
         if (Storage::disk('uploads')->exists('certificate/' . $fileName)) {
             Storage::disk('uploads')->delete('certificate/' . $fileName);
-            $invoice->Output($file_path, 'F');
+            $pdf_form->Output($file_path, 'F');
             return responseJson(true, 'pdf file for certificate', [
                 'url' => asset('uploads/certificate/' . $fileName)
             ]);
         } else {
-            $invoice->Output($file_path, 'F');
+            $pdf_form->Output($file_path, 'F');
             return responseJson(true, 'pdf file for certificate', [
                 'url' => asset('uploads/certificate/' . $fileName)
             ]);
         }
-        return $invoice->Output();
+        return $pdf_form->Output();
     }
 }

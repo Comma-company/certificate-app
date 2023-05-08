@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Certificate\DomesticElectrical\DomesticElectricalInstallationCertificate;
 use Mpdf\Mpdf;
 use App\Models\Form;
 use App\Models\User;
@@ -17,8 +18,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Storage;
 use App\Certificate\DomesticElectrical\Eicr;
-use App\Certificate\DomesticElectrical\ElectricalDangerNotification;
-use App\Certificate\DomesticElectrical\PortableApplianceTesting;
 use App\Certificate\DomesticGas\LandlordHomeownerGasSafetyRecord;
 use App\Certificate\DomesticGas\WarningNoticeGas;
 
@@ -385,12 +384,8 @@ class CertificateController extends Controller
 
         }elseif($file_name == 'Warning_Notice'){
             $form = WarningNoticeGas::getPdf($certificate);
-        }
-        elseif($file_name == 'Portable_Appliance_Testing'){
-            $form = PortableApplianceTesting::getPdf($certificate);
-        }
-        elseif($file_name == 'Electrical_Danger_Notification'){
-            $form = ElectricalDangerNotification::getPdf($certificate);
+        }elseif ($file_name == 'Domestic_Electrical_Installation_Certificate') {
+            $form = DomesticElectricalInstallationCertificate::getPdf($certificate);
         }
         return $form;
     }
