@@ -7,22 +7,22 @@
     <title>Page 1</title>
     <style>
             @page :first {
-                /* header: html_formHeader;*/
-                footer: html_formFooter; 
+                header: html_formHeader;
+                footer: html_formFooter;
                 margin: 15px;
                 margin-bottom:20px;
-                margin-top:60px;
-                margin-header:4mm;
+                margin-top:110px;
+                margin-header:20px;
                 size: landscape; /* <length>{1,2} | auto | portrait | landscape */
                 margin-footer:5mm ;
             }
             @page{
-               /*  header: html_formHeader; */
+                header: html_formHeader;
                 footer: html_formFooter;
                 margin: 15px;
                 margin-bottom:20px;
-                margin-top:60px;
-                margin-header:4mm;
+                margin-top:110px;
+                margin-header:20px;
                 size: landscape; /* <length>{1,2} | auto | portrait | landscape */
                 margin-footer:5mm ;
             }
@@ -50,33 +50,43 @@
     <div
       class="table-container"
       style="font-family:'Arial';">
-          <div style="margin: 10px 25px;  width: 97%;">
-            <div style="float: left;width:25%">
-                <img src="{{ asset('certificate/image/niceic-logo.png') }}" width="160px" height="60px">
-            </div>
-            <div style="float: left; margin-right: 46px; height: 70px;background-color: #000000;width: 70%;">
-              <table style="width: 100%;     padding: 12px;">
-                    <tr style="color: #FFFFFF;">
-                        <th></th>
-                    </tr>
-                    <tr style="color: #FFFFFF;">
-                        <td style="font-size: 25px;">Domestic Electrical Installation Certificate</td>
+        <htmlpageheader name="formHeader">
+            <div style="margin: 10px 25px;  width: 100%;">
+                <div style="float: left;width:40%;">
+                    <img src="{{ asset('certificate/image/niceic-logo.png') }}" width="160px" height="60px">
+                    {{-- <img src="{{ asset('certificate/image/niceic-logo.png') }}" style="margin-left:35px" width="160px" height="60px"> --}}
+                </div>
+                <div style="float: left; margin-right: 46px; height: 70px;width: 60%;">
+                    <table style="border: 1px solid #00935f;padding: 10px;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #00935f;">
+                        <tr style="padding: 10px;">
+                            <th style="padding: 10px;">
+                                <div style="padding: 0 120px 0 0"><h3>26770979</h3></div>
+                            </th>
+                            <th bgcolor="#00935f" style="color: #fff; padding: 10px">
+                                <div style="padding: 0 140px 0 10px"><h3>IPM18C</h3></div>
+                            </th>
+                        </tr>
+                    </table>
+                    <h2 style="color: #00935f; padding: 0; margin: 0; font-weight: 900;text-align: right">
+                        Domestic Electrical Installation Certificate
+                    </h2>
+                    <p style="font-size: 10px; padding: 0; margin: 0; font-style: italic;text-align: right">
+                        Issued in accordance with BS 7671: 2018 – Requirements for Electrical
+                        Installations
+                    </p>
+                </div>
+                <div style="clear: both;"></div>
+              </div>
+        </htmlpageheader>
 
-                        <td style="font-size: 15px; color: #D3D2D2;font-weight: 100;">CERT NO <span style="color:#FFFFFF">03/04/2023</span></td>
 
-                    </tr>
-
-                </table>
-            </div>
-            <div style="clear: both;"></div>
-          </div>
 
           <div style="clear: both;"></div>
 
 
           <div style="padding:0px 22px 10px 22px; width: 100%; ">
-            <div style="width: 97%;border: 1px solid;height: 265px;">
-              <h5 style="background-color: #009933; padding: 3px; text-align: left; color: #FFFFFF;
+            <div style="width: 100%;border: 1px solid;height: 265px;">
+              <h5 style="background-color: #00935f; padding: 3px; text-align: left; color: #FFFFFF;
               font-size: 15px;
               font-weight: 100; margin-top: 0;margin-bottom: 0; height: 20px;">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</h5>
                       <div style="width: 32.3%;border-right: 1px solid #000000;height: 240px; float: left;">
@@ -120,8 +130,8 @@
 
 
           <div style="padding:0px 22px 10px 22px; width: 100%; ">
-            <div style="width: 97%;border: 1px solid;height: 150px;">
-              <h5 style="background-color: #009933; padding: 3px; text-align: left; color: #FFFFFF;
+            <div style="width: 100%;border: 1px solid;height: 150px;">
+              <h5 style="background-color: #00935f; padding: 3px; text-align: left; color: #FFFFFF;
               font-size: 15px;
               font-weight: 100; margin-top: 0;margin-bottom: 0;    height: 20px;">PART 2 : DETAILS AND EXTENT OF THE INSTALLATION</h5>
                       <div style="width: 100%;border-right: 1px solid #000000; float: left;">
@@ -143,8 +153,8 @@
 
 
           <div style="padding:0px 22px 10px 22px; width: 100%; ">
-            <div style="width: 97%;border: 1px solid;height:300px;">
-              <h5 style="background-color: #009933; padding: 3px; text-align: left; color: #FFFFFF;
+            <div style="width: 100%;border: 1px solid;height:300px;">
+              <h5 style="background-color: #00935f; padding: 3px; text-align: left; color: #FFFFFF;
               font-size: 15px;
               font-weight: 100; margin-top: 0;margin-bottom: 0;    height: 20px;">PART 3 : COMMENTS ON EXISTING INSTALLATION</h5>
                       <div style="width: 100%;border-right: 1px solid #000000; float: left; padding:10px;">
@@ -160,8 +170,8 @@
 
 
           <div style="padding:0px 22px 10px 22px; width: 100%; ">
-            <div style="width: 97%;border: 1px solid;height: 100px;">
-              <h5 style="background-color: #009933; padding: 3px; text-align: left; color: #FFFFFF;
+            <div style="width: 100%;border: 1px solid;height: 100px;">
+              <h5 style="background-color: #00935f; padding: 3px; text-align: left; color: #FFFFFF;
               font-size: 15px;
               font-weight: 100; margin-top: 0;margin-bottom: 0;    height: 20px;">PART 4 : NEXT INSPECTION</h5>
                       <div style="width: 100%;border-right: 1px solid #000000; float: left;">
@@ -183,8 +193,8 @@
 
 
           <div style="padding:0px 22px 10px 22px; width: 100%; ">
-            <div style="width: 97%;border: 1px solid;height: 170px;">
-              <h5 style="background-color: #009933; padding: 3px; text-align: left; color: #FFFFFF;
+            <div style="width: 100%;border: 1px solid;height: 170px;">
+              <h5 style="background-color: #00935f; padding: 3px; text-align: left; color: #FFFFFF;
               font-size: 15px;
               font-weight: 100; margin-top: 0;margin-bottom: 0;    height: 20px;">PART 5 : TEST INSTRUMENTS</h5>
                       <div style="width: 49%; float: left;">
@@ -222,8 +232,8 @@
 
 
           <div style="padding:0px 22px 10px 22px; width: 100%; margin-top: 100px; ">
-            <div style="width: 97%;border: 1px solid;">
-              <h5 style="background-color: #009933; padding: 3px; text-align: left; color: #FFFFFF;
+            <div style="width: 100%;border: 1px solid;">
+              <h5 style="background-color: #00935f; padding: 3px; text-align: left; color: #FFFFFF;
               font-size: 15px;
               font-weight: 100; margin-top: 0;margin-bottom:0;height: 20px;">PART 6 : DESIGN, CONSTRUCTION, INSPECTION AND TESTING</h5>
                       <div style="width: 100%;">
@@ -241,7 +251,7 @@
                                   <small>the extent of liability of the signatory/signatories is limited to the work described above as the subject of this certificate.</small>
                                   <h6 style="font-size: 13px;">for design, the construction, and the inspection and testing of the installation:</h6>
 
-                                  <h6 style="font-size: 12px; font-weight: 100;">Signature:   
+                                  <h6 style="font-size: 12px; font-weight: 100;">Signature:
                                     @if ($data->customerSignature)
                                     <img width="120px" src="{{ asset('uploads/'.$data->customerSignature->file_url) }}" alt="">
                                     @endif

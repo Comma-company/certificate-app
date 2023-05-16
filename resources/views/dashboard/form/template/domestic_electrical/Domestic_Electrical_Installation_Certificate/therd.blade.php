@@ -6,26 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page 1</title>
     <style>
-            @page :first {
-                /* header: html_formHeader; */
-                /* footer: html_formFooter; */
-                margin: 15px;
-                margin-bottom:20px;
-                margin-top:60px;
-                margin-header:4mm;
-                size: landscape; /* <length>{1,2} | auto | portrait | landscape */
-                margin-footer:5mm ;
-            }
-            @page{
-                /* header: html_formHeader; */
-                /* footer: html_formFooter2; */
-                margin: 15px;
-                margin-bottom:20px;
-                margin-top:60px;
-                margin-header:4mm;
-                size: landscape; /* <length>{1,2} | auto | portrait | landscape */
-                margin-footer:5mm ;
-            }
+
 
             @font-face {
             font-family:Arial;
@@ -53,32 +34,13 @@
 
         font-family:'Arial';
       ">
-         <div style="margin: 10px 25px;  width: 97%;">
-            <div style="float: left;width:25%">
-                <img src="{{ asset('certificate/image/niceic-logo.png') }}" width="160px" height="60px">
-            </div>
-            <div style="float: left; margin-right: 46px; height: 70px;background-color: #000000;width: 70%;">
-              <table style="width: 100%;     padding: 12px;">
-                    <tr style="color: #FFFFFF;">
-                        <th></th>
-                    </tr>
-                    <tr style="color: #FFFFFF;">
-                        <td style="font-size: 25px;">Domestic Electrical Installation Certificate</td>
-
-                        <td style="font-size: 15px; color: #D3D2D2;font-weight: 100;">CERT NO <span style="color:#FFFFFF">03/04/2023</span></td>
-
-                    </tr>
-
-                </table>
-            </div>
-            <div style="clear: both;"></div>
-          </div>
+  
 
           <div style="clear: both;"></div>
 
 
-          <div style="padding:0px 22px 10px 22px; width: 97%;">
-            <h5 style="background-color: #009933; padding: 3px; text-align: left; color: #FFFFFF;
+          <div style="padding:0px 22px 10px 22px; width: 100%;">
+            <h5 style="background-color: #00935f; padding: 3px; text-align: left; color: #FFFFFF;
             font-size: 15px;
             font-weight: 100; margin-top: 0;margin-bottom: 0;    height: 20px;">PART 8 : SCHEDULE OF CIRCUIT DETAILS AND TEST RESULTS</h5>
             @php

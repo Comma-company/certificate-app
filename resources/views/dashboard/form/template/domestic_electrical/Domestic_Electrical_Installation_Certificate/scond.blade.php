@@ -6,26 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page 1</title>
     <style>
-            @page :first {
-                /* header: html_formHeader;
-                footer: html_formFooter; */
-                margin: 15px;
-                margin-bottom:20px;
-                margin-top:60px;
-                margin-header:4mm;
-                size: landscape; /* <length>{1,2} | auto | portrait | landscape */
-                margin-footer:5mm ;
-            }
-            @page{
-                /* header: html_formHeader;
-                footer: html_formFooter2; */
-                margin: 15px;
-                margin-bottom:20px;
-                margin-top:60px;
-                margin-header:4mm;
-                size: landscape; /* <length>{1,2} | auto | portrait | landscape */
-                margin-footer:5mm ;
-            }
+
 
             @font-face {
             font-family:Arial;
@@ -53,36 +34,17 @@
 
         font-family:'Arial';
       ">
-           <div style="margin: 10px 25px;  width: 97%;">
-            <div style="float: left;width:25%">
-                <img src="{{ asset('certificate/image/niceic-logo.png') }}" width="160px" height="60px">
-            </div>
-            <div style="float: left; margin-right: 46px; height: 70px;background-color: #000000;width: 70%;">
-              <table style="width: 100%;     padding: 12px;">
-                    <tr style="color: #FFFFFF;">
-                        <th></th>
-                    </tr>
-                    <tr style="color: #FFFFFF;">
-                        <td style="font-size: 25px;">Domestic Electrical Installation Certificate</td>
 
-                        <td style="font-size: 15px; color: #D3D2D2;font-weight: 100;">CERT NO <span style="color:#FFFFFF">03/04/2023</span></td>
-
-                    </tr>
-
-                </table>
-            </div>
-            <div style="clear: both;"></div>
-          </div>
 
           <div style="clear: both;"></div>
 
 
 
           <div style="padding:0px 22px 10px 22px; width: 100%; ">
-            <div style="width: 97%;border: 1px solid;height: 300px;">
-              <h5 style="background-color: #009933; padding: 3px; text-align: left; color: #FFFFFF;
+            <div style="width: 100%;border: 1px solid;height: 300px;">
+              <h5 style="background-color: #00935f; padding: 3px; text-align: left; color: #FFFFFF;
               font-size: 15px;
-              font-weight: 100; margin-top: 0;margin-bottom: 0;    height: 20px;">PART 7 SUPPLY CHARACTERISTICS AND EARTHING ARRANGEMENTS</h5>
+              font-weight: 100; margin-top: 0;margin-bottom: 0;    height: 20px;">PART 7: SUPPLY CHARACTERISTICS AND EARTHING ARRANGEMENTS</h5>
                 <div style="width: 15%;border-right: 1px solid #000000;height: 275px; float: left;">
                     <p style="padding: 10px; margin: 0;">Earthing Arrangements</p>
                     <hr>
@@ -109,22 +71,22 @@
                   </div>
 
                  </div>
-              <div style="width: 28%;border-right: 1px solid #000000;height: 265px; float: left; padding: 5px;">
-                <p style="padding: 5px; margin: 0; font-weight: 600;">Nature Of Supply Parameters</p>
-                <div>
-                  <h6 style="font-weight: 100;font-size: 12px;margin:15px 5px; line-height: 2; margin-top: 15px;">Nominal <br> Voltage(S): {{ getValue('nominal_voltage',$formData['form_part_6']) }}   <span style="margin-left: 60px;"> U : </span> <span style="margin-left: 60px;"> UO : </span>
-                   </h6>
 
-                     <h6 style="font-weight: 100;font-size: 12px;margin:15px 5px; line-height: 2;">Nominal Frequency, F:
-                        <br> Prospective Fault  </h6>
+                <div style="width: 28%;border-right: 1px solid #000000;height: 265px; float: left; padding: 5px;">
+                    <p style="padding: 5px; margin: 0; font-weight: 600;">Nature Of Supply Parameters</p>
+                    <div>
+                    <h6 style="font-weight: 100;font-size: 12px;margin:15px 5px; line-height: 2; margin-top: 15px;">Nominal <br> Voltage(S): {{ getValue('nominal_voltage',$formData['form_part_6']) }}   <span style="margin-left: 60px;"> U : </span> <span style="margin-left: 60px;"> UO : </span>
+                    </h6>
 
-                        <h6 style="font-weight: 100;font-size: 12px;margin:15px 5px; line-height: 2;">Current, Lpf:   </h6>
+                        <h6 style="font-weight: 100;font-size: 12px;margin:15px 5px; line-height: 2;">Nominal Frequency, F:
+                            <br> Prospective Fault  </h6>
 
-                        <h6 style="font-weight: 100;font-size: 12px;margin:15px 5px; line-height: 2;">External Earth Fault <br> Loop Impedance, Ze:   </h6>
+                            <h6 style="font-weight: 100;font-size: 12px;margin:15px 5px; line-height: 2;">Current, Lpf:   </h6>
+
+                            <h6 style="font-weight: 100;font-size: 12px;margin:15px 5px; line-height: 2;">External Earth Fault <br> Loop Impedance, Ze:   </h6>
+                    </div>
                 </div>
 
-
-                </div>
                 <div style="height: 265px; float: left; padding: 5px;">
                     <p style="padding: 5px; margin: 0; font-weight: 600;">Supply Protective Device</p>
                     <div>
@@ -149,10 +111,10 @@
 
 
           <div style="padding:0px 22px 10px 22px; width: 100%; ">
-            <div style="width: 97%;border: 1px solid;height: 660px;">
-              <h5 style="background-color: #009933; padding: 3px; text-align: left; color: #FFFFFF;
+            <div style="width: 100%;border: 1px solid;height: 600px;">
+              <h5 style="background-color: #00935f; padding: 3px; text-align: left; color: #FFFFFF;
               font-size: 15px;
-              font-weight: 100; margin-top: 0;margin-bottom: 0;    height: 20px;">PART 8 PARTICULARS OF INSTALLATION REFERRED TO IN THE CERTIFICATE</h5>
+              font-weight: 100; margin-top: 0;margin-bottom: 0;    height: 20px;">PART 8: PARTICULARS OF INSTALLATION REFERRED TO IN THE CERTIFICATE</h5>
                 <div style="width: 100%;">
                     <div style="width: 25%;border-right: 1px solid #000000;height: 130px; float: left; border-bottom: 1px solid;">
                         <p style="padding: 10px; margin: 0;font-weight: bold; ">Number And Type Of Live Conductors</p>
@@ -186,16 +148,12 @@
                 </div>
 
 
-                 <div style="width: 100%;height: 80px; clear: both;border-bottom: 1px solid;">
-
+                 <div style="width: 100%; clear: both;border-bottom: 1px solid;">
                     <div style="padding: 10px;">
-                        <h6 style="font-weight: 100;
-                        font-size: 12px;">Maximum Demand (Load) :   <span style=" margin-left: 385px;">Protective Measure(S) Against Electric Shock :</span>  <span style=" margin-left: 300px;">Measured Ze : </span> </h6>
+                        <h6 style="font-weight: 100;font-size: 12px;margin: 0px;">
+                            Maximum Demand (Load) :   <span style=" margin-left: 385px;">Protective Measure(S) Against Electric Shock :</span>  <span style=" margin-left: 300px;">Measured Ze : </span>
+                        </h6>
                     </div>
-
-
-
-
                  </div>
 
                  <div style="width: 100%; clear: both;border-bottom: 1px solid;">
@@ -211,30 +169,28 @@
                             font-size: 12px;margin-top: 30px;">Voltage Rating :  <span style=" margin-left: 885px;">Measured Operating Time (In) :</span>   </h6>
                     </div>
 
-
-
-
                  </div>
 
                  <div style="width: 100%;">
                     <div style="width: 65%; float: left;">
-                        <p style="padding: 10px; margin: 0;font-weight: bold; line-height: 2;">Earthing And Protective Bonding Conductors <br>
+                        <p style="padding: 10px; margin: 0;font-weight: bold; ">Earthing And Protective Bonding Conductors <br>
                             Earthing Conductor</p>
 
                         <div style="padding: 10px;">
-                            <h6 style="font-weight: 100;
-                            font-size: 12px;margin: 0;">Conductor Material : <span style="margin-left: 150px;">Csa :</span> <span style="margin-left: 150px;"> Connection/Continuity Verified :</span></h6>
+                            <h6 style="font-weight: 100;font-size: 12px;margin: 0;">
+                                Conductor Material : <span style="margin-left: 150px;">Csa :</span> <span style="margin-left: 150px;"> Connection/Continuity Verified :</span>
+                            </h6>
 
-                            <h6 style="font-weight: 100;
+                            <h6 style="font-weight: 100; margin-top:10px;
                             font-size: 12px;">Number Of Poles :</h6>
-                        </div>
+                            </div>
 
 
                      </div>
                      <div style="width:35%; float: left; ">
                         <p style="padding: 10px; margin: 0;font-weight: bold; ">Bonding Of Extraneous-Conductive Parts</p>
 
-                        <table style="width: 100%; margin-top: 40px;">
+                        <table style="width: 100%; margin-top: 20px;">
 
                             <tr>
                               <td style="padding-bottom: 10px; line-height: 2;">To Water <br> Installation Pipes:</td>
@@ -249,12 +205,8 @@
                             <tr>
                                 <td style="padding-bottom: 10px;">To Structural Steel :</td>
                                 <td style="padding-bottom: 10px;">To Other Service(S) :</td>
-
                               </tr>
                           </table>
-
-
-
 
                      </div>
 
@@ -271,19 +223,21 @@
 
 
 
-          <div style="padding:0px 22px 10px 22px; width: 100%; ">
-            <div style="width: 97%;">
-              <h5 style="background-color: #009933; padding: 3px; text-align: left; color: #FFFFFF;
+          <div style="padding:0px 22px 10px 22px; width: 100%; page-break-inside: avoid">
+            <div style="width: 100%;">
+              <h5 style="background-color: #00935f; padding: 3px; text-align: left; color: #FFFFFF;
               font-size: 15px;
               font-weight: 100; margin-top: 0;margin-bottom: 0;    height: 20px;">PART 9 : SCHEDULE OF ITEMS INSPECTED</h5>
                 <div style="width: 100%;">
 
                     <table style="width:100% ; border-collapse: collapse; ">
+                        <thead>
                         <tr style="text-align:center;">
                           <th style=" border: 1px solid black; padding:5px;">Item</th>
                           <th style=" border: 1px solid black; padding: 5px;">Description</th>
                           <th style=" border: 1px solid black; padding: 5px;">Outcome</th>
                         </tr>
+                        </thead>
                         <tr style="text-align: center;">
                           <td style=" border: 1px solid black; padding: 5px; font-weight: bold;"> 1.0</td>
                           <td style="text-align: left;  border: 1px solid black; padding: 5px;">Condition Of Consumer's Intake Equipment (Visual Inspection Only)</td>
@@ -365,7 +319,7 @@
 
           <div style="clear: both;"></div>
 
-        
+
     </div>
   </body>
 </html>

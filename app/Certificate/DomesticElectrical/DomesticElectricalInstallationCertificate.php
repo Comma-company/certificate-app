@@ -67,6 +67,7 @@ class DomesticElectricalInstallationCertificate
             'formData' => $formData
         ])->render();
         $pdf_form->WriteHTML($page_3);
+        $pdf_form->Output();
         $fileName = "C$certificate->id.pdf";
         $file_path =  public_path("uploads/certificate/" . $fileName);
         Storage::disk('uploads')->makeDirectory('certificate');
