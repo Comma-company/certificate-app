@@ -46,13 +46,7 @@
   <body>
     <div
       class="table-container"
-      style="
-        font-family: 'Cairo', sans-serif;
-        font-family: 'Open Sans', sans-serif;
-        font-family: 'Poppins', sans-serif;
-        font-family: 'Tajawal', sans-serif;
-        font-family: 'FreeSans';
-      ">
+      style="font-family: 'FreeSans';">
         <htmlpageheader name="formHeader">
             <table style="border: 1px solid #00935f;padding: 0;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #00935f;">
                 <tr>
