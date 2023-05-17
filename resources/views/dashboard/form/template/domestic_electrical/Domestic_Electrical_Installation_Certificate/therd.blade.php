@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page 1</title>
     <style>
 
 
@@ -52,7 +51,7 @@
             </div>
             <table class="color-border" style="width: 100%;border-collapse: collapse;">
             <thead>
-              <tr style="background-color: #E5F5EA;">
+              <tr style=" background: #B8E1D2;">
                 <th style="writing-mode: vertical-lr; font-weight: 500; text-align: center;border: 1px solid #00935f;" rowspan="2" colspan="1">Circuit Number</th>
                 <th style="font-weight: 500; text-align: center; border: 1px solid #00935f;" colspan="" rowspan="2">Circuit Description</th>
                 <th style="font-weight: 500; text-align: center; border: 1px solid #00935f; writing-mode: vertical-lr;" rowspan="2">Type Of Wiring</th>
@@ -73,7 +72,7 @@
                 <th style="font-weight: 500; text-align: center; border: 1px solid #00935f;" rowspan="" colspan="3">RCD</th>
                 <th style="font-weight: 500; text-align: center; border: 1px solid #00935f;" rowspan="" colspan="2">AFDD</th>
               </tr>
-              <tr style="background-color: #E5F5EA;">
+              <tr style=" background: #B8E1D2;">
                 <th style="font-weight: 500; text-align: center; border: 1px solid #00935f;" rowspan="" colspan="1">Live    </th>
                 <th style="font-weight: 500; text-align: center; border: 1px solid #00935f;" rowspan="" colspan="1">Cpc </th>
 
@@ -97,7 +96,7 @@
                 <th style="writing-mode: vertical-lr;font-weight: 500; text-align: center; border: 1px solid #00935f;" rowspan="" colspan="">Manual AFDD test button operation</th>
               </tr>
 
-              <tr style="text-align: center; border: 1px solid #00935f; background-color: #E5F5EA;">
+              <tr style="text-align: center; border: 1px solid #00935f; background: #B8E1D2;">
                 <th style="text-align: center; border: 1px solid #00935f;"></th>
                 <th style="text-align: center; border: 1px solid #00935f;"></th>
                 <th style="text-align: center; border: 1px solid #00935f;"></th>

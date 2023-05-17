@@ -38,6 +38,8 @@ class DomesticElectricalInstallationCertificate
             'format' => 'A4'
         ]);
         $pdf_form->shrink_tables_to_fit = 1;
+        $pdf_form->SetTitle('Domestic_Electrical_Installation_Certificate');
+
         $formData =  $certificate->data;
 
         $pdf_form->fontdata["fontawesome"] = [
@@ -68,6 +70,7 @@ class DomesticElectricalInstallationCertificate
         ])->render();
         $pdf_form->WriteHTML($page_3);
         //$pdf_form->Output();
+        
         $fileName = "C$certificate->id.pdf";
         $file_path =  public_path("uploads/certificate/" . $fileName);
         Storage::disk('uploads')->makeDirectory('certificate');

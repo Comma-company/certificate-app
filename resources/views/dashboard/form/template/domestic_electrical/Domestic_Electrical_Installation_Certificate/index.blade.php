@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page 1</title>
+    
     <style>
             @page :first {
                 header: html_formHeader;
@@ -93,34 +93,57 @@
                      PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION
                 </h3>
                       <div style="width: 32.3%;float: left;">
-                              <p style="padding: 0px 10px; margin: 0;font-weight: bold;color: #00935f;">BUSINESS DETAILS</p>
+                              <p style="padding: 0px 10px; margin: 0;font-weight: bold;color: #00935f;">DETAILS OF THE CONTRACTOR</p>
                               <div style="padding:0 10px;">
-                                <h6 style="margin:5px;font-size: 12px;font-weight: 100;">Register No : <span style="font-weight: bold">{{ $data->user->trading_name }} </span> </h6>
-                                <h6 style="margin:5px;font-size: 12px;font-weight: 100;">Operative :</h6>
-                                <h6 style="margin:5px;font-size: 12px;font-weight: 100;">Company : </h6>
-                                <h6 style="margin:5px; font-size: 12px;font-weight: 100;">Address : <span style="font-weight: bold">{{ $data->user->registered_address }}</span></h6>
-                                <h6 style="margin:5px;font-size: 12px;font-weight: 100;">Postcode :  <span style="font-weight: bold">{{ $data->user->postal_code }} </span><span style="margin-left: 170px;">Tel No :</span></h6>
-                                <h6 style="margin:5px;font-size: 12px;font-weight: 100;">Email :</h6>
+                                  <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
+                                    Trading Title:
+                                    <span style="font-weight: bold;padding:3px 20px">{{ $data->user->trading_name }}</span>
+                                  </h6>
+                                  <h6 style="margin:5px 0px;font-size: 12px;font-weight: 100;">
+                                    Address:
+                                  <span style="font-weight: bold;padding:3px 20px">{{ $data->user->registered_address }}</span>
+                                  </h6>
+                                  <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
+                                    Postcode:<span style="font-weight: bold;padding:3px 20px">{{ $data->user->postal_code }}</span>
+                                    <span>Tel No:<span style="font-weight: bold;padding:3px 20px">{{ $data->user->phone }}</span></span>
+                                  </h6>
                               </div>
                       </div>
                       <div style="width: 32.3%; float: left;">
-                        <p style="padding: 0px 10px; margin: 0;font-weight: bold;color: #00935f;">JOB ADDRESS</p>
+                        <p style="padding: 0px 10px; margin: 0;font-weight: bold;color: #00935f;">DETAILS OF THE CLIENT</p>
                         <div style="padding:0 10px;">
-                          <h6 style="margin: 5px;font-size: 12px;font-weight: 100;">Name : <span style="font-weight: bold"> {{ $data->customer->sites->first()->name }}</span> </h6>
-                          <h6 style="margin:5px  ;font-size: 12px;font-weight: 100;">Address : <span style="font-weight: bold"> {{ $data->customer->sites->first()->address }} </span></h6>
-                          <h6 style="margin:5px ;font-size: 12px;font-weight: 100;">Postcode : <span style="font-weight: bold"> {{ $data->customer->sites->first()->postal_code }}</span> <span style="margin-left: 170px;">Tel No :</span></h6>
-                          <h6 style="margin:5px ;font-size: 12px;font-weight: 100;">Email : </h6>
+                              <h6 style="margin:0px ;font-size: 12px;font-weight: 100;">
+                                Contractor Reference Number
+                                (CRN):
+                              </h6>
+                              <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
+                                Name:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->name }}</span>
+                              </h6>
+                              <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
+                                Address:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->address }}</span>
+
+                              </h6>
+                              <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
+                                Postcode:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->postal_code }}</span>
+                                <span>Tel No:.<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->contacts->first()->phone }}</span>.</span>
+                              </h6>
                         </div>
 
                       </div>
                       <div style="width: 32.3%; float: left; ">
-                        <p style="padding:0px 10px; margin: 0;font-weight: bold;color: #00935f;">CLIENT/LANDLORD</p>
+                        <p style="padding:0px 10px; margin: 0;font-weight: bold;color: #00935f;">DETAILS OF THE INSTALLATION</p>
                         <div style="padding:0 10px;">
-                          <h6 style="margin:5px;font-size: 12px;font-weight: 100;">Name : <span style="font-weight: bold">{{ $data->customer->name }}</span> </h6>
-                          <h6 style="margin:5px;font-size: 12px;font-weight: 100;">Company : <span style="font-weight: bold"></span> </h6>
-                          <h6 style="margin:5px ;font-size: 12px;font-weight: 100;">Address : <span style="font-weight: bold"> {{ $data->customer->address }} </span></h6>
-                          <h6 style="margin:5px;font-size: 12px;font-weight: 100;">Postcode : <span style="font-weight: bold">{{ $data->customer->postal_code }}</span>  <span style="margin-left: 170px;">Tel No :</span></h6>
-                          <h6 style="margin:5px;font-size: 12px;font-weight: 100;">Email :</h6>
+                              <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
+                                Occupier:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->sites->first()->name }}</span>
+                              </h6>
+                              <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
+                                Address:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->sites->first()->address }}</span>
+
+                              </h6>
+                              <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
+                                Postcode:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->sites->first()->postal_code }}</span>
+                                <span>Tel No:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->sites->first()->siteContact->phone }}</span></span>
+                              </h6>
                         </div>
                       </div>
             </div>
@@ -158,7 +181,8 @@
                 PART 3 : COMMENTS ON EXISTING INSTALLATION
               </h3>
             <div style="width: 100%; float: left; padding:5px 10px;">
-                <span style="font-weight: bold"> {{ getvalue('comments_on_installation', $formData['form_part_4']) }} </span>
+                <span style="font-weight: bold"> {{ getvalue('comments_on_installation', $formData['form_part_4']) }}
+                </span>
             </div>
 
             </div>
