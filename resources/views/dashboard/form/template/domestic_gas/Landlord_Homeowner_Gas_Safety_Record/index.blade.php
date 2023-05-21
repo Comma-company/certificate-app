@@ -325,33 +325,26 @@
         <div style="clear: both;"></div>
 
   <!-------------- Part 4  ------------>
-        <div style="padding:0 22px 10px 22px;">
-            <div style="float:left; width:48%">
-                <div style="border: 1px solid;min-height: 220px;">
-                    <h3 style="background-color: #00935f; font-weight: bold;font-size: 12px; padding: 10px; padding-bottom: 10px; text-align: left; color: #FFFFFF; margin-top: 0;margin-bottom: 0;">
-                        ANY REMEDIAL ACTION TAKEN OR NOTES <span style="font-size: 10px; margin-left: 10px;">Number
-                            Should Correspond To Defects Above</span>
-                    </h3>
-                    <div style="padding: 5px;width: 99%;">
-                        <div
-                            style="padding: 10px;width: 99%; float: left;min-height: 150px; ">
-                        @if (isset($formData['form_part_4']))
-                            {{ getvalue('record_remedial_action',$formData['form_part_4']) }}
-                        @endif
-                        </div>
-
+      <div style="padding:0 22px 10px 22px;">
+        <div style="float:left; width:48%">
+            <div style="border: 1px solid;min-height: 220px;">
+                <h3 style="background-color: #00935f; font-weight: bold;font-size: 12px; padding: 10px; padding-bottom: 10px; text-align: left; color: #FFFFFF; margin-top: 0;margin-bottom: 0;">
+                    ANY REMEDIAL ACTION TAKEN OR NOTES <span style="font-size: 10px; margin-left: 10px;">Number
+                        Should Correspond To Defects Above</span>
+                </h3>
+                <div style="padding: 5px;width: 99%;">
+                    <div
+                        style="padding: 10px;width: 99%; float: left;min-height: 150px; ">
+                    @if (isset($formData['form_part_4']))
+                        {{ getvalue('record_remedial_action',$formData['form_part_4']) }}
+                    @endif
                     </div>
-
 
                 </div>
             </div>
-
-
-
-
-
+        </div>
         <div style="float:left; width: 50%;">
-            <div style="width: 60%; float: left; margin-right: 5px;">
+            <div style="width: 65%; float: left; margin-right: 5px;">
                 <h3 style="padding: 10px; text-align: left; color: #000000;font-size: 15px; font-weight: 100; margin-top: 0;margin-bottom: 0;    height: 20px;">
                     Record Issued By:
                 </h3>
@@ -367,8 +360,9 @@
 
                                     <td style="background-color: rgba(51, 51, 51, 0.1);">
                                         @if ($data->user->signature)
-                                        <img width="120px" src="{{ $data->user->signature->file_url }}" alt="">
+                                        <img height="120px" src="{{ $data->user->signature->file_url }}" alt="">
                                         @endif
+
                                     </td>
                                     <td style="background-color: rgba(51, 51, 51, 0.1);">
                                         @if($data->user)
@@ -408,7 +402,7 @@
 
             </div>
 
-            <div style="width: 35%; float: left;border: 1px solid; margin-right: 5px;height: 90px;background-color: #00935f; margin-left:20px;margin-top:22px;">
+            <div style="width: 30%; float: left;border: 1px solid; margin-right: 5px;height: 90px;background-color: #00935f; margin-left:20px;margin-top:22px;">
                 <h5
                     style=" padding:3px; text-align: center; color: #FFFFFF; font-size: 15px;
                       font-weight: 110; margin-top: 0;margin-bottom: 0; height: 20px;">
