@@ -54,7 +54,7 @@ class PortableApplianceTesting{
 
         $invoice->WriteHTML($html);
 
-        $invoice->Output();
+        //$invoice->Output();
 
         $fileName = "C$data->id.pdf";
         $file_path =  public_path("uploads/certificate/" . $fileName);
