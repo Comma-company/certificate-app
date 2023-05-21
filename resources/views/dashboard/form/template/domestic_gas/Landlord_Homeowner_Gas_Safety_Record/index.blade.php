@@ -360,7 +360,7 @@
 
                                     <td style="background-color: rgba(51, 51, 51, 0.1);">
                                         @if ($data->user->signature)
-                                        <img height="120px" src="{{ $data->user->signature->file_url }}" alt="">
+                                        <img height="30px" src="{{ $data->user->signature->file_url }}" alt="">
                                         @endif
 
                                     </td>
@@ -384,7 +384,7 @@
 
                                     <td style="background-color: rgba(51, 51, 51, 0.1);">
                                         @if ($data->customerSignature)
-                                        <img width="120px" src="{{ asset('uploads/'.$data->customerSignature->file_url) }}" alt="">
+                                        <img height="30px" src="{{ asset('uploads/'.$data->customerSignature->file_url) }}" alt="">
                                         @endif
                                     </td>
                                     <td style="background-color: rgba(51, 51, 51, 0.1);">
