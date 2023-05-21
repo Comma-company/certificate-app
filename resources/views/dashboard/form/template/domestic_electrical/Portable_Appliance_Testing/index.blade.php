@@ -153,7 +153,7 @@
 
               </div>
 
-            
+
             <div style="padding:0px 22px 10px 22px; width: 100%; ">
               {{--   <div style="width: 100%;border: 1px solid #00935f;">
                     <h3 style="background-color: #00935f; font-weight: bold; padding: 10px; padding-bottom: 10px; text-align: left; color: #FFFFFF; margin-top: 0;margin-bottom: 0;">
@@ -167,7 +167,7 @@
                           <br>
 
                           <dt style="line-height: 2;font-size: 13px;">{{ $data->customer->sites->first()->address }}</dt>
-                        
+
                           <br>
 
                         </ul>
@@ -199,7 +199,7 @@
                             <dt style="line-height: 2;font-size: 13px;color:#000000b3;background:#fff;">Signature</dt>
                             <dt style="line-height: 2;font-size: 13px;background:#fff;">
                                 @if ($data->user->signature)
-                                    <img width="100px" src="{{ $data->user->signature->file_url }}" alt="">
+                                    <img height="30px" src="{{ $data->user->signature->file_url }}" alt="">
                                 @endif
                             </dt>
                         </ul>
@@ -326,14 +326,14 @@
 
           <div style=" width: 100%; ">
             <div style="width: 100%; border: 1px solid #00935f; margin-right: 5px;">
-              
+
             <h3 style="background-color: #00935f; font-weight: bold; padding: 10px; padding-bottom: 10px; text-align: left; color: #FFFFFF; margin-top: 0;margin-bottom: 0;">
                 ANYON LIMITATIONS AGREED ON TESTING
             </h3>
                  <div>
                   <table style="width: 100%;">
                     <tr>
-                      <td style="width: 100%; height: 105px;padding: 5px 5px 3px 10px;">
+                      <td style="width: 100%; padding: 5px 5px 3px 10px;">
                         <p style="list-style: none; margin: 0;">
                             {{ getvalue('any_limitations_agreed_testing', $formData['part_declaration']) }}
                       </p>
@@ -367,7 +367,7 @@
                 <h3 style="background-color: #00935f; font-weight: bold; padding: 10px; padding-bottom: 10px; text-align: left; color: #FFFFFF; margin-top: 0;margin-bottom: 0;">
                     APPLIANCE SUMMARY FOR
                     <span style="font-size: 12px;"> Mahender Tanwar 16 Palm Court - Alpine Road London NW9 9BQ</span>
-                    <small style="float: left; text-align: left">Appliances Total : 
+                    <small style="float: left; text-align: left">Appliances Total :
                         <span style="font-weight: bold; float: right; text-align: right; margin-left: 200px;">
                             @if ( isset($formData['appliance_summary_data']))
                                 {{ getvalue('total_appliance_number', $formData['appliance_summary_data']) }}
@@ -378,7 +378,7 @@
 
                <div style="padding: 5px;">
                   <div style="height: 117px;">
-                   
+
                     <div style="width: 46%;background-color: #009933; padding: 10px; float: left;">
                       <p style="width: 100%; text-align: center;margin: 0; padding: 5px 0 10px 0; color: #FFFFFF;">Passed Appliances</p>
                       <div style="background-color: #FFFFFF; height: 65px; text-align: center; font-weight: bold;">
