@@ -172,11 +172,11 @@
 
                           <dt style="line-height: 2;font-size: 13px;color:#000000b3 ;">Signature</dt>
                           <br>
-                          <dt style="line-height: 2;font-size: 13px;">
-                            @if ($data->user->signature)
-                            <img height="30px" src="{{ $data->user->signature->file_url }}" alt="">
-                            @endif
-                             </dt>
+                            <dt style="line-height: 2;font-size: 13px;">
+                                @if ($data->user->signature)
+                                <img height="30px" src="{{ $data->user->signature->file_url }}" alt="">
+                                @endif
+                            </dt>
                           <br>
 
                         </ul>

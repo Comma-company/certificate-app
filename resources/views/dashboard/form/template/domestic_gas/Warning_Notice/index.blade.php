@@ -237,7 +237,7 @@
                     RIDDOR* REPORTING
                   </h3>
                   <table style="width: 100%; border-collapse: collapse;">
-                   
+
                     <tr>
                       <td style="border: 1px solid #cbcbcb;width: 40%;padding: 5px; text-align: left;">Reported to HSE under RIDDOR
                         11(1) (Gas Incident)</td>
@@ -308,7 +308,7 @@
           <pagebreak></pagebreak>
           <div style="padding:10px 22px 10px 22px; width: 100%; text-align: center;">
             <div style="width: 100%; ">
-               
+
                 <h3 style="text-align: left;  background-color: #00935f; font-weight: bold; padding: 10px; padding-bottom: 10px; color: #FFFFFF; margin-top: 0;margin-bottom: 0;">
                     DESCRIBE FAULT(S) ON GAS EQUIPMENT
                   </h3>
@@ -408,7 +408,12 @@
                 <h6 style="    float: left;
                 font-size: 13px;
                 font-weight: 100;
-                padding-right: 10px;font-weight: bold;margin: 0;margin-top:6px">Gas Engineer’s signature :</h6>
+                padding-right: 10px;font-weight: bold;margin: 0;margin-top:6px">
+                    Gas Engineer’s signature :
+                    @if ($data->user->signature)
+                    <img height="30px" src="{{ $data->user->signature->file_url }}" alt="">
+                    @endif
+                </h6>
                 <span style="background-color: #f6f6f6; width: 250px; height: 30px; display: block; float: left;">{{ getvalue('engineer_name',$formData['part_declaration']) }}</span>
               </div>
 
