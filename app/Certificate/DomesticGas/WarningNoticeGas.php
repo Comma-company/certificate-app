@@ -46,7 +46,7 @@ class WarningNoticeGas
             'R' => "fa-solid-900.tff",
             'I' => "fa-regular-400.ttf",
         ];
- 
+
 
         $html = view('dashboard.form.template.domestic_gas.Warning_Notice.index', [
             'data' => $data,
@@ -55,7 +55,7 @@ class WarningNoticeGas
 
         $invoice->WriteHTML($html);
 
-        $invoice->Output();
+        //$invoice->Output();
 
         $fileName = "C$data->id.pdf";
         $file_path =  public_path("uploads/certificate/" . $fileName);

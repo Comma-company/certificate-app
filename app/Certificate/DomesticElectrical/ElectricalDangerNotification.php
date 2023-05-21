@@ -73,6 +73,6 @@ class ElectricalDangerNotification
                 'url' => asset('uploads/certificate/' . $fileName)
             ]);
         }
-        return $invoice->Output();
+        // return $invoice->Output();
     }
 }

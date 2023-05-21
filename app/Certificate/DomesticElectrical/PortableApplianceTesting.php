@@ -71,6 +71,6 @@ class PortableApplianceTesting{
                 'url' => asset('uploads/certificate/' . $fileName)
             ]);
         }
-        return $invoice->Output();
+        // return $invoice->Output();
     }
 }
