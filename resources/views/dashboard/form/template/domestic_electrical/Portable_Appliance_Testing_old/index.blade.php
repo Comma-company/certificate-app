@@ -174,7 +174,7 @@
                           <br>
                           <dt style="line-height: 2;font-size: 13px;">
                             @if ($data->user->signature)
-                            <img width="100px" src="{{ $data->user->signature->file_url }}" alt="">
+                            <img height="30px" src="{{ $data->user->signature->file_url }}" alt="">
                             @endif
                              </dt>
                           <br>
