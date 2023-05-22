@@ -32,7 +32,7 @@ Route::get('/get-pdf', function () {
 
     $data = Certificate::find(7);
 
-   return $form = LandlordHomeownerGasSafetyRecord::getPdf($data);
+   return $form = WarningNoticeGas::getPdf($data);
 
 });
 

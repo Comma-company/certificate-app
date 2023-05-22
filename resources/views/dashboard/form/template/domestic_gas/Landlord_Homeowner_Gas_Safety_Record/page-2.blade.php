@@ -177,7 +177,7 @@
                         <td colspan="16">
                         <table style="border-collapse: collapse">
                             <tr  style="height: 50px; text-align: center;">
-                                <td colspan="3" style="text-align: center;padding:10px 0px;border: 1px solid #FFF200; background-color: #FFF200;  font-size: 15px;color: #fff;font-weight: 100;">
+                                <td colspan="3" style="text-align: center;padding:10px 0px;border: 1px solid #FFF200; background-color: #FFF200;  font-size: 15px;color: #000;font-weight: 100;">
                                 Audible CO Alarm
                                 </td>
                                 <td colspan="13"><td/>

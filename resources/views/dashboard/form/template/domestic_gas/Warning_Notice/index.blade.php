@@ -369,13 +369,13 @@
 
         <div style="clear: both;"></div>
 
-        <div style="width: 100%;padding:10px 20px 10px 20px; margin-bottom: 5px; margin-top:10px;">
-            <div style="float: left; width: 60%;height: 150px; border: 1px solid #000000; padding: 5px; ">
-              <p style="font-size: 13px;">I confirm that as the responsible person for the gas installation at the address detailed above I
+        <div style="width: 100%;padding:5px 10px 5px 10px; margin-bottom: 5px; margin-top:5px;">
+            <div style="float: left; width: 60%;height: 130px; border: 1px solid #000000; padding: 5px; ">
+              <p style="padding:0px;font-size: 13px;margin-top:0px;">I confirm that as the responsible person for the gas installation at the address detailed above I
                 have been served this Warning/Advisory Record. As a gas appliance/installation has been classified
                 as either ‘Immediately Dangerous’ or ‘At Risk’, as detailed above, continued use of the appliance/
                 installation, after being advised not to do so, may be in breach of the Gas Safety Installation and confirm that as </p>
-                <div style="float:right;margin-top: 15px; margin-bottom: 20px;">
+                <div style="float:right;margin-top:5px; margin-bottom: 5px;">
                   <h6 style="    float: left;
                   font-size: 13px;
                   font-weight: 100;
@@ -387,16 +387,15 @@
                 </div>
                 <div style="clear: both;"></div>
                 <div style="float:right">
-                  <h6 style="    float: left;
-                  font-size: 13px;
-                  font-weight: 100;
-                  padding-right: 10px;font-weight: bold;margin: 0;margin-top:6px">Data : </h6>
+                    <h6 style="float: left; font-size: 13px;font-weight: 100;padding-right: 10px;font-weight: bold;margin: 0;margin-top:0px">
+                        Data : 
+                    </h6>
                   <span style="background-color: #f6f6f6; width: 310px; height: 30px; display: block; float: left;">{{ getvalue('customer_date',$formData['part_declaration']) }}</span>
                 </div>
             </div>
 
-            <div style="float: left; height: 150px; width: 37%;padding: 5px;border: 1px solid #000000;background-color: #FFF200;color:#000;">
-              <p style="padding: 15px;">I confirm that the situations recorded above, have been
+            <div style="float: left; height: 130px; width: 37%;padding:5px;border: 1px solid #000000;background-color: #FFF200;color:#000;">
+              <p style="padding: 0px;margin-top:0px;">I confirm that the situations recorded above, have been
                 identified and brought to the attention of the Responsible
                 Person in accordance with the Gas Safety (Installation and
                 Use) Regulations and Gas Industry Unsafe Situation
@@ -404,11 +403,8 @@
 
               </p>
 
-              <div style="padding: 15px;">
-                <h6 style="    float: left;
-                font-size: 13px;
-                font-weight: 100;
-                padding-right: 10px;font-weight: bold;margin: 0;margin-top:6px">
+              <div style="padding: 0px;">
+                <h6 style="float: left;font-size: 13px;font-weight: 100;padding-right: 5px;font-weight: bold;margin: 0;margin-top:5px">
                     Gas Engineer’s signature :
                     @if ($data->user->signature)
                     <img height="30px" src="{{ $data->user->signature->file_url }}" alt="">
