@@ -69,7 +69,7 @@
                                 <div style="padding: 0 120px 0 0"><h3>{{ $data->id ?? 0 }}</h3></div>
                             </th>
                             <th bgcolor="#00935f" style="color: #fff; padding: 10px">
-                                <div style="padding: 0 140px 0 10px"><h3>IPM18C</h3></div>
+                                <div style="padding: 0 140px 0 10px"><h3>NO</h3></div>
                             </th>
                         </tr>
                     </table>

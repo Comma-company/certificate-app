@@ -83,7 +83,7 @@
                                 <div style="padding: 0 120px 0 0"><h3>{{$data->id ?? 0}}</h3></div>
                             </th>
                             <th bgcolor="#FFF200" style="color: #000; padding: 10px">
-                                <div style="padding: 0 140px 0 10px"><h3>IPM18C</h3></div>
+                                <div style="padding: 0 140px 0 10px"><h3>NO</h3></div>
                             </th>
                         </tr>
                     </table>
@@ -360,7 +360,7 @@
 
                                     <td style="background-color: rgba(51, 51, 51, 0.1);">
                                         @if ($data->user->signature)
-                                        <img height="30px" src="{{ $data->user->signature->file_url }}" alt="">
+                                        <img width="90px" height="30px" src="{{ $data->user->signature->file_url }}" alt="">
                                         @endif
 
                                     </td>
@@ -384,7 +384,7 @@
 
                                     <td style="background-color: rgba(51, 51, 51, 0.1);">
                                         @if ($data->customerSignature)
-                                        <img height="30px" src="{{ asset('uploads/'.$data->customerSignature->file_url) }}" alt="">
+                                        <img width="90px" height="30px" src="{{ asset('uploads/'.$data->customerSignature->file_url) }}" alt="">
                                         @endif
                                     </td>
                                     <td style="background-color: rgba(51, 51, 51, 0.1);">

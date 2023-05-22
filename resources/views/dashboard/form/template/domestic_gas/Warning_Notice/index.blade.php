@@ -68,7 +68,7 @@
                         <div style="padding: 0 120px 0 0"><h3>{{$data->id ?? 0}}</h3></div>
                     </th>
                     <th bgcolor="#FFF200" style="color: #000000; padding: 10px">
-                        <div style="padding: 0 140px 0 10px"><h3>IPM18C</h3></div>
+                        <div style="padding: 0 140px 0 10px"><h3>NO</h3></div>
                     </th>
                 </tr>
             </table>
@@ -407,7 +407,7 @@
                 <h6 style="float: left;font-size: 13px;font-weight: 100;padding-right: 5px;font-weight: bold;margin: 0;margin-top:5px">
                     Gas Engineer’s signature :
                     @if ($data->user->signature)
-                    <img height="30px" src="{{ $data->user->signature->file_url }}" alt="">
+                    <img width="90px" height="30px" src="{{ $data->user->signature->file_url }}" alt="">
                     @endif
                 </h6>
                 <span style="background-color: #f6f6f6; width: 250px; height: 30px; display: block; float: left;">{{ getvalue('engineer_name',$formData['part_declaration']) }}</span>
