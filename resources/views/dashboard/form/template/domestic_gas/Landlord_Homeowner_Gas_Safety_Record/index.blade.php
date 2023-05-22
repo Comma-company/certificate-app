@@ -80,7 +80,7 @@
                     <table style="border: 1px solid #FFF200;padding: 10px;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #FFF200;">
                         <tr style="padding: 10px;">
                             <th style="padding: 10px;">
-                                <div style="padding: 0 120px 0 0"><h3>26770979</h3></div>
+                                <div style="padding: 0 120px 0 0"><h3>{{$data->id ?? 0}}</h3></div>
                             </th>
                             <th bgcolor="#FFF200" style="color: #000; padding: 10px">
                                 <div style="padding: 0 140px 0 10px"><h3>IPM18C</h3></div>

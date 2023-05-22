@@ -66,7 +66,7 @@
                     <table style="border: 1px solid #00935f;padding: 10px;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #00935f;">
                         <tr style="padding: 10px;">
                             <th style="padding: 10px;">
-                                <div style="padding: 0 120px 0 0"><h3>26770979</h3></div>
+                                <div style="padding: 0 120px 0 0"><h3>{{ $data->id ?? 0 }}</h3></div>
                             </th>
                             <th bgcolor="#00935f" style="color: #fff; padding: 10px">
                                 <div style="padding: 0 140px 0 10px"><h3>IPM18C</h3></div>
@@ -381,19 +381,33 @@
 
                     <div style="width: 46%;background-color: #009933; padding: 10px; float: left;">
                       <p style="width: 100%; text-align: center;margin: 0; padding: 5px 0 10px 0; color: #FFFFFF;">Passed Appliances</p>
-                      <div style="background-color: #FFFFFF; height: 65px; text-align: center; font-weight: bold;">
+                      <div style="background-color: #FFFFFF; text-align: center; font-weight: bold;">
                         @if ( isset($formData['appliance_summary_data']))
-                        {{ getvalue('appliance_passed', $formData['appliance_summary_data']) }}
+                        <p style="margin-top:22px;font-size:22px">
+                            {{ getvalue('appliance_passed', $formData['appliance_summary_data']) }}
+                        </p>
+                        @else
+                        <p style="margin-top:22px;font-size:22px">
+                           0
+                        </p>
                         @endif
+                        
                       </div>
                     </div>
 
                     <div style="width: 46%;background-color: #E20319; padding: 10px; float: right;">
                       <p style="width: 100%; text-align: center;margin: 0; padding: 5px 0 10px 0;color: #FFFFFF;">Failed Appliances</p>
-                      <div style="background-color: #FFFFFF; height: 65px; text-align: center; font-weight: bold;">
+                      <div style="background-color: #FFFFFF; text-align: center; font-weight: bold;">
                         @if (isset($formData['appliance_summary_data']))
-                        {{ getvalue('appliance_failed', $formData['appliance_summary_data']) }}
+                        <p style="margin-top:22px;font-size:22px"> 
+                            {{ getvalue('appliance_failed', $formData['appliance_summary_data']) ?? 0 }}
+                        </p>
+                        @else
+                        <p style="margin-top:22px;font-size:22px">
+                           0
+                        </p>
                         @endif
+                     
                       </div>
                     </div>
 
