@@ -16,7 +16,7 @@
                 margin-top:110px;
                 margin-header:20px;
                 size: landscape; /* <length>{1,2} | auto | portrait | landscape */
-                margin-footer:5mm ;
+                margin-footer:4mm 5mm ;
             }
             @page{
                 header: html_formHeader;
@@ -26,7 +26,7 @@
                 margin-top:110px;
                 margin-header:20px;
                 size: landscape; /* <length>{1,2} | auto | portrait | landscape */
-                margin-footer:5mm ;
+                margin-footer:4mm 5mm ;
             }
 
         @font-face {
@@ -49,16 +49,16 @@
         }
 
         .table-border tr td {
-            border-left: 1px solid #00935f;
+            border-left: 1px solid #FFF200;
             padding: 3px;
         }
 
         .table-border tr td {
-            border-bottom: 1px solid #00935f;
+            border-bottom: 1px solid #FFF200;
             border-collapse: collapse;
         }
         .border-right{
-            border-right: 1px solid #00935f;
+            border-right: 1px solid #FFF200;
         }
         .table-container {
 
@@ -73,27 +73,27 @@
         <htmlpageheader name="formHeader">
             <div style="margin: 10px 25px;  width: 100%;">
                 <div style="float: left;width:40%;">
-                    <img src="{{ asset('certificate/image/niceic-logo.png') }}" width="160px" height="60px">
+                    <img src="{{ asset('certificate/image/gas_safe_logo.png') }}"  height="80px">
                     {{-- <img src="{{ asset('certificate/image/niceic-logo.png') }}" style="margin-left:35px" width="160px" height="60px"> --}}
                 </div>
                 <div style="float: left; margin-right: 46px; height: 70px;width: 60%;">
-                    <table style="border: 1px solid #00935f;padding: 10px;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #00935f;">
+                    <table style="border: 1px solid #FFF200;padding: 10px;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #FFF200;">
                         <tr style="padding: 10px;">
                             <th style="padding: 10px;">
                                 <div style="padding: 0 120px 0 0"><h3>26770979</h3></div>
                             </th>
-                            <th bgcolor="#00935f" style="color: #fff; padding: 10px">
+                            <th bgcolor="#FFF200" style="color: #000; padding: 10px">
                                 <div style="padding: 0 140px 0 10px"><h3>IPM18C</h3></div>
                             </th>
                         </tr>
                     </table>
-                    <h2 style="color: #00935f; padding: 0; margin: 0; font-weight: 900;text-align: right">
+                    <h2 style="color: #000; padding: 0; margin: 0; font-weight: 900;text-align: right">
                         LANDLORD/HOMEOWNER GAS SAFETY RECORD
                     </h2>
-                    <p style="font-size: 10px; padding: 0; margin: 0; font-style: italic;text-align: right">
+                   {{--  <p style="font-size: 10px; padding: 0; margin: 0; font-style: italic;text-align: right">
                         Issued in accordance with BS 7671: 2018 – Requirements for Electrical
                         Installations
-                    </p>
+                    </p> --}}
                 </div>
                 <div style="clear: both;"></div>
               </div>
@@ -103,12 +103,12 @@
 
 
         <div style="padding:0px 22px 10px 22px; width: 100%; ">
-            <div style="width: 100%;border: 1px solid #00935f;">
-                <h3 style="background-color: #00935f; font-weight: bold; padding: 10px; padding-bottom: 10px; text-align: left; color: #FFFFFF; margin-top: 0;margin-bottom: 0;">
+            <div style="width: 100%;border: 1px solid #FFF200;">
+                <h3 style="background-color: #FFF200; font-weight: bold; padding: 10px; padding-bottom: 10px; text-align: left; color: #000; margin-top: 0;margin-bottom: 0;">
                      PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION
                 </h3>
                       <div style="width: 32.3%;float: left;">
-                              <p style="padding: 0px 10px; margin: 0;font-weight: bold;color: #00935f;">DETAILS OF THE CONTRACTOR</p>
+                              <p style="padding: 0px 10px; margin: 0;font-weight: bold;color: #000;">DETAILS OF THE CONTRACTOR</p>
                               <div style="padding:0 10px;">
                                   <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
                                     Trading Title:
@@ -125,7 +125,7 @@
                               </div>
                       </div>
                       <div style="width: 32.3%; float: left;">
-                        <p style="padding: 0px 10px; margin: 0;font-weight: bold;color: #00935f;">DETAILS OF THE CLIENT</p>
+                        <p style="padding: 0px 10px; margin: 0;font-weight: bold;color: #000;">DETAILS OF THE CLIENT</p>
                         <div style="padding:0 10px;">
                               <h6 style="margin:0px ;font-size: 12px;font-weight: 100;">
                                 Contractor Reference Number
@@ -146,7 +146,7 @@
 
                       </div>
                       <div style="width: 32.3%; float: left; ">
-                        <p style="padding:0px 10px; margin: 0;font-weight: bold;color: #00935f;">DETAILS OF THE INSTALLATION</p>
+                        <p style="padding:0px 10px; margin: 0;font-weight: bold;color: #000;">DETAILS OF THE INSTALLATION</p>
                         <div style="padding:0 10px;">
                               <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
                                 Occupier:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->sites->first()->name }}</span>
@@ -170,9 +170,9 @@
 
         <!-------------- Part 1 ------------>
         <div style="padding:5px 22px;">
-            <div style="border: 1px solid #00935f;min-height: 220px;">
+            <div style="border: 1px solid #FFF200;min-height: 220px;">
 
-                <h3 style="background-color: #00935f; font-weight: bold; padding: 10px; padding-bottom: 10px; text-align: left; color: #FFFFFF; margin-top: 0;margin-bottom: 0;">
+                <h3 style="background-color: #FFF200; font-weight: bold; padding: 10px; padding-bottom: 10px; text-align: left; color: #000; margin-top: 0;margin-bottom: 0;">
                     DETAILS OF WORK CARRIED OUT
                </h3>
                 <div style="padding: 5px;">
@@ -200,8 +200,8 @@
                     <td style="width:60%" >
                         <table  class="table-border">
                             <tr>
-                                <td style="width:100%;background-color: #00935f; font-weight: bold; padding: 10px; padding-bottom: 10px; text-align: left; color: #FFFFFF; margin-top: 0;margin-bottom: 0;" colspan="2">
-                                     <h3 style="width:100%;background-color: #00935f; font-weight: bold; padding: 10px; padding-bottom: 10px; text-align: left; color: #FFFFFF; margin-top: 0;margin-bottom: 0;">
+                                <td style="width:100%;background-color: #FFF200; font-weight: bold; padding: 10px; padding-bottom: 10px; text-align: left; color: #000; margin-top: 0;margin-bottom: 0;" colspan="2">
+                                     <h3 style="width:100%;background-color: #FFF200; font-weight: bold; padding: 10px; padding-bottom: 10px; text-align: left; color: #000; margin-top: 0;margin-bottom: 0;">
                                         DEFECTS IDENTIFIED
                                     </h3>
                                 </td>
@@ -231,8 +231,8 @@
                     <td style="width:40%">
                         <table  class="border-right table-border">
                             <tr>
-                                <td style="width:100%;background-color: #00935f; font-weight: bold; padding: 10px; padding-bottom: 10px; text-align: left; color: #FFFFFF; margin-top: 0;margin-bottom: 0;">
-                                     <h3 style="background-color: #00935f; font-weight: bold; padding: 10px; padding-bottom: 10px; text-align: left; color: #FFFFFF; margin-top: 0;margin-bottom: 0;">
+                                <td style="width:100%;background-color: #FFF200; font-weight: bold; padding: 10px; padding-bottom: 10px; text-align: left; color: #000; margin-top: 0;margin-bottom: 0;">
+                                     <h3 style="background-color: #FFF200; font-weight: bold; padding: 10px; padding-bottom: 10px; text-align: left; color: #000; margin-top: 0;margin-bottom: 0;">
                                         Warning Notice Issued?
                                     </h3>
                                 </td>
@@ -257,11 +257,11 @@
                 </tr>
             </table>
         </div>
-        <div style="width:50%; float:left">
+        <div style="width:50%; float:left;margin-top:3px">
             <table class="table-border border-right">
                     <tr>
-                        <td style="background-color: #00935f; font-weight: bold; padding: 10px; padding-bottom: 10px; text-align: left; color: #FFFFFF; margin-top: 0;margin-bottom: 0;" colspan="5">
-                            <h3 style="background-color: #00935f; font-weight: bold; padding: 10px; padding-bottom: 10px; text-align: left; color: #FFFFFF; margin-top: 0;margin-bottom: 0;">
+                        <td style="background-color: #FFF200; font-weight: bold; padding: 10px; padding-bottom: 10px; text-align: left; color: #000; margin-top: 0;margin-bottom: 0;" colspan="5">
+                            <h3 style="background-color: #FFF200; font-weight: bold; padding: 10px; padding-bottom: 10px; text-align: left; color: #000; margin-top: 0;margin-bottom: 0;">
                                 GAS INSTALLATION PIPEWORK
                             </h3>
                         </td>
@@ -328,7 +328,7 @@
       <div style="padding:0 22px 10px 22px;">
         <div style="float:left; width:48%">
             <div style="border: 1px solid;min-height: 220px;">
-                <h3 style="background-color: #00935f; font-weight: bold;font-size: 12px; padding: 10px; padding-bottom: 10px; text-align: left; color: #FFFFFF; margin-top: 0;margin-bottom: 0;">
+                <h3 style="background-color: #FFF200; font-weight: bold;font-size: 12px; padding: 10px; padding-bottom: 10px; text-align: left; color: #000; margin-top: 0;margin-bottom: 0;">
                     ANY REMEDIAL ACTION TAKEN OR NOTES <span style="font-size: 10px; margin-left: 10px;">Number
                         Should Correspond To Defects Above</span>
                 </h3>
@@ -402,9 +402,9 @@
 
             </div>
 
-            <div style="width: 30%; float: left;border: 1px solid; margin-right: 5px;height: 90px;background-color: #00935f; margin-left:20px;margin-top:22px;">
+            <div style="width: 30%; float: left;border: 1px solid; margin-right: 5px;height: 90px;background-color: #FFF200; margin-left:20px;margin-top:22px;">
                 <h5
-                    style=" padding:3px; text-align: center; color: #FFFFFF; font-size: 15px;
+                    style=" padding:3px; text-align: center; color: #000; font-size: 15px;
                       font-weight: 110; margin-top: 0;margin-bottom: 0; height: 20px;">
                     ATTENTION
                 </h5>
@@ -427,7 +427,7 @@
         </div>
     </div>
     <div style="clear: both;"></div>
-        <div style="color:#fff;background-color: #00935f;  width: 95%; padding: 0px 15px; line-height: 1.4; font-size: 12px; margin:5px 0;">
+        <div style="color:#000;background-color: #FFF200;  width: 95%; padding: 0px 15px; line-height: 1.4; font-size: 12px; margin:5px 0;">
             <p style="padding:5px; margin:0px;">This Record Can Be Used To Document The Outcomes Of The Checks And Tests Required By The Gas Safety
                 (Installation And Use) Regulations. Some Of The Outcomes Are As A Result Of Visual Inspection Only
                 And Are Recorded As Appropriate. Unless Specifically Recorded No Detailed Inspection Of The Flue

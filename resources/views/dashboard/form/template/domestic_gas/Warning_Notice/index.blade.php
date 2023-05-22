@@ -8,7 +8,7 @@
     <style>
              @page :first {
                 header: html_formHeader;
-               /*  footer: html_formFooter; */
+                footer: html_formFooter;
                 margin: 15px;
                 margin-bottom:0px;
                 margin-top:110px;
@@ -18,13 +18,13 @@
             }
             @page{
                 header: html_formHeader;
-                /* footer: html_formFooter; */
+                footer: html_formFooter;
                 margin: 15px;
                 margin-bottom:20px;
                 margin-top:110px;
                 margin-header:20px;
                 size: landscape; /* <length>{1,2} | auto | portrait | landscape */
-                margin-footer:5mm ;
+                margin-footer: 5mm ;
             }
 
             @font-face {
@@ -58,27 +58,27 @@
 <htmlpageheader name="formHeader">
     <div style="margin: 10px 25px;  width: 100%;">
         <div style="float: left;width:40%;">
-            <img src="{{ asset('certificate/image/niceic-logo.png') }}" width="160px" height="60px">
+            <img src="{{ asset('certificate/image/gas_safe_logo.png') }}"  height="80px">
             {{-- <img src="{{ asset('certificate/image/niceic-logo.png') }}" style="margin-left:35px" width="160px" height="60px"> --}}
         </div>
         <div style="float: left; margin-right: 46px; height: 70px;width: 60%;">
-            <table style="border: 1px solid #00935f;padding: 10px;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #00935f;">
+            <table style="border: 1px solid #FFF200;padding: 10px;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #FFF200;">
                 <tr style="padding: 10px;">
                     <th style="padding: 10px;">
                         <div style="padding: 0 120px 0 0"><h3>26770979</h3></div>
                     </th>
-                    <th bgcolor="#00935f" style="color: #fff; padding: 10px">
+                    <th bgcolor="#FFF200" style="color: #000000; padding: 10px">
                         <div style="padding: 0 140px 0 10px"><h3>IPM18C</h3></div>
                     </th>
                 </tr>
             </table>
-            <h2 style="color: #00935f; padding: 0; margin: 0; font-weight: 900;text-align: right">
+            <h2 style="color: #000; padding: 0; margin: 0; font-weight: 900;text-align: right">
                 WARNING NOTICE
             </h2>
-            <p style="font-size: 10px; padding: 0; margin: 0; font-style: italic;text-align: right">
+            {{-- <p style="font-size: 10px; padding: 0; margin: 0; font-style: italic;text-align: right">
                 Issued in accordance with BS 7671: 2018 – Requirements for Electrical
                 Installations
-            </p>
+            </p> --}}
         </div>
         <div style="clear: both;"></div>
       </div>
@@ -90,12 +90,12 @@
 
 
           <div style="padding:0px 22px 10px 22px; width: 100%; ">
-            <div style="width: 100%;border: 1px solid #00935f;">
-                <h3 style="background-color: #00935f; font-weight: bold; padding: 10px; padding-bottom: 10px; text-align: left; color: #FFFFFF; margin-top: 0;margin-bottom: 0;">
+            <div style="width: 100%;border: 1px solid #FFF200;">
+                <h3 style="background-color: #FFF200; font-weight: bold; padding: 10px; padding-bottom: 10px; text-align: left; color: #000; margin-top: 0;margin-bottom: 0;">
                      PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION
                 </h3>
                       <div style="width: 32.3%;float: left;">
-                              <p style="padding: 0px 10px; margin: 0;font-weight: bold;color: #00935f;">DETAILS OF THE CONTRACTOR</p>
+                              <p style="padding: 0px 10px; margin: 0;font-weight: bold;color: #000;">DETAILS OF THE CONTRACTOR</p>
                               <div style="padding:0 10px;">
                                   <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
                                     Trading Title:
@@ -112,7 +112,7 @@
                               </div>
                       </div>
                       <div style="width: 32.3%; float: left;">
-                        <p style="padding: 0px 10px; margin: 0;font-weight: bold;color: #00935f;">DETAILS OF THE CLIENT</p>
+                        <p style="padding: 0px 10px; margin: 0;font-weight: bold;color: #000;">DETAILS OF THE CLIENT</p>
                         <div style="padding:0 10px;">
                               <h6 style="margin:0px ;font-size: 12px;font-weight: 100;">
                                 Contractor Reference Number
@@ -133,7 +133,7 @@
 
                       </div>
                       <div style="width: 32.3%; float: left; ">
-                        <p style="padding:0px 10px; margin: 0;font-weight: bold;color: #00935f;">DETAILS OF THE INSTALLATION</p>
+                        <p style="padding:0px 10px; margin: 0;font-weight: bold;color: #000;">DETAILS OF THE INSTALLATION</p>
                         <div style="padding:0 10px;">
                               <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
                                 Occupier:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->sites->first()->name }}</span>
@@ -161,15 +161,15 @@
 
 
               <div style="width: 100%; float: left;">
-                <h3 style="text-align: center;  background-color: #00935f; font-weight: bold; padding: 10px; padding-bottom: 10px; color: #FFFFFF; margin-top: 0;margin-bottom: 0;">
+                <h3 style="text-align: center;  background-color: #FFF200; font-weight: bold; padding: 10px; padding-bottom: 10px; color: #000; margin-top: 0;margin-bottom: 0;">
                         DEFECTS IDENTIFIED ON GAS EQUIPMENT
                 </h3>
                 <table style="width: 100%; border-collapse: collapse;">
                   <thead>
                     <tr >
-                    <th style="background-color:#00935f;" colspan="">#</th>
-                    <th style="background-color:#00935f;" colspan="">APPLIANCE TYPE</th>
-                    <th style="background-color:#00935f;" colspan="">LOCATION</th>
+                    <th style="background-color:#FFF200;" colspan="">#</th>
+                    <th style="background-color:#FFF200;" colspan="">APPLIANCE TYPE</th>
+                    <th style="background-color:#FFF200;" colspan="">LOCATION</th>
                         <th colspan="">Gas Escape</th>
                         <th colspan="">Meter Issue</th>
                         <th colspan="">Pipework Issue</th>
@@ -233,7 +233,7 @@
 
           <div style="padding:0 22px 10px 22px; width: 97%; text-align: center; ">
                 <div style="width: 49%; float: left;">
-                  <h3 style="text-align: left;  background-color: #00935f; font-weight: bold; padding: 10px; padding-bottom: 10px; color: #FFFFFF; margin-top: 0;margin-bottom: 0;">
+                  <h3 style="text-align: left;  background-color: #FFF200; font-weight: bold; padding: 10px; padding-bottom: 10px; color: #000; margin-top: 0;margin-bottom: 0;">
                     RIDDOR* REPORTING
                   </h3>
                   <table style="width: 100%; border-collapse: collapse;">
@@ -262,7 +262,7 @@
                 </div>
 
                 <div style="width: 49%; float: right;">
-                  <h3 style="text-align: left;  background-color: #00935f; font-weight: bold; padding: 10px; padding-bottom: 10px; color: #FFFFFF; margin-top: 0;margin-bottom: 0;">
+                  <h3 style="text-align: left;  background-color: #FFF200; font-weight: bold; padding: 10px; padding-bottom: 10px; color: #000; margin-top: 0;margin-bottom: 0;">
                     RIDDOR* REPORTING
                   </h3>
                   <table style="width: 100%; border-collapse: collapse;">
@@ -309,21 +309,21 @@
           <div style="padding:10px 22px 10px 22px; width: 100%; text-align: center;">
             <div style="width: 100%; ">
 
-                <h3 style="text-align: left;  background-color: #00935f; font-weight: bold; padding: 10px; padding-bottom: 10px; color: #FFFFFF; margin-top: 0;margin-bottom: 0;">
+                <h3 style="text-align: left;  background-color: #FFF200; font-weight: bold; padding: 10px; padding-bottom: 10px; color: #000; margin-top: 0;margin-bottom: 0;">
                     DESCRIBE FAULT(S) ON GAS EQUIPMENT
                   </h3>
                 <div style="width: 100% ">
 
                   <ul style="list-style: decimal;    margin: 0;">
-                    <li style="  border-bottom:1px solid #00935f;padding: 10px; text-align:left">
+                    <li style="  border-bottom:1px solid #000000;padding: 10px; text-align:left">
                             {{ getvalue('describe_fault_1',$formData['form_part_4']) }}</li>
-                      <li style="border-bottom: 1px solid #00935f; padding: 10px; text-align:left">
+                      <li style="border-bottom: 1px solid #000000; padding: 10px; text-align:left">
                             {{ getvalue('describe_fault_2',$formData['form_part_4']) }}
                       </li>
-                       <li style="border-bottom: 1px solid #00935f; padding: 10px; text-align:left">
+                       <li style="border-bottom: 1px solid #000000; padding: 10px; text-align:left">
                              {{ getvalue('describe_fault_3',$formData['form_part_4']) }}
                         </li>
-                         <li style="border-bottom: 1px solid #00935f;padding: 10px; text-align:left">
+                         <li style="border-bottom: 1px solid #000000;padding: 10px; text-align:left">
                           {{ getvalue('describe_fault_4',$formData['form_part_4']) }}
                         </li>
                   </ul>
@@ -342,21 +342,21 @@
 
          <div style="padding:10px 22px 10px 22px; width: 100%; text-align: center;">
            <div style="width: 100%; ">
-               <h3 style="text-align: left;  background-color: #00935f; font-weight: bold; padding: 10px; padding-bottom: 10px; color: #FFFFFF; margin-top: 0;margin-bottom: 0;">
+               <h3 style="text-align: left;  background-color: #FFF200; font-weight: bold; padding: 10px; padding-bottom: 10px; color: #000; margin-top: 0;margin-bottom: 0;">
                      DETAIL WHAT IS REQUIRED TO RECTIFY THE UNSAFE SITUATION
                 </h3>
                <div style="width: 100% ">
                     <ul style="list-style: decimal;margin: 0;">
-                        <li style="border-bottom: 1px solid #00935f;padding: 10px; text-align:left">
+                        <li style="border-bottom: 1px solid #000000;padding: 10px; text-align:left">
                             {{ getvalue('describe_watt_1',$formData['form_part_5']) }}
                         </li>
-                        <li style="border-bottom: 1px solid #00935f;padding: 10px; text-align:left">
+                        <li style="border-bottom: 1px solid #000000;padding: 10px; text-align:left">
                             {{ getvalue('describe_watt_2',$formData['form_part_5']) }}
                         </li>
-                        <li style="border-bottom: 1px solid #00935f; padding: 10px; text-align:left">
+                        <li style="border-bottom: 1px solid #000000; padding: 10px; text-align:left">
                             {{ getvalue('describe_watt_3',$formData['form_part_5']) }}
                         </li>
-                        <li style="border-bottom: 1px solid #00935f; padding: 10px; text-align:left">
+                        <li style="border-bottom: 1px solid #000000; padding: 10px; text-align:left">
                             {{ getvalue('describe_watt_4',$formData['form_part_5']) }}
                         </li>
                     </ul>
@@ -370,7 +370,7 @@
         <div style="clear: both;"></div>
 
         <div style="width: 100%;padding:10px 20px 10px 20px; margin-bottom: 5px; margin-top:10px;">
-            <div style="float: left; width: 60%;height: 150px; border: 1px solid #00935f; padding: 5px; ">
+            <div style="float: left; width: 60%;height: 150px; border: 1px solid #000000; padding: 5px; ">
               <p style="font-size: 13px;">I confirm that as the responsible person for the gas installation at the address detailed above I
                 have been served this Warning/Advisory Record. As a gas appliance/installation has been classified
                 as either ‘Immediately Dangerous’ or ‘At Risk’, as detailed above, continued use of the appliance/
@@ -395,7 +395,7 @@
                 </div>
             </div>
 
-            <div style="float: left; height: 150px; width: 37%;padding: 5px; border: 1px solid #00935f;background-color: #00935f;color:#fff;">
+            <div style="float: left; height: 150px; width: 37%;padding: 5px;border: 1px solid #000000;background-color: #FFF200;color:#000;">
               <p style="padding: 15px;">I confirm that the situations recorded above, have been
                 identified and brought to the attention of the Responsible
                 Person in accordance with the Gas Safety (Installation and
@@ -425,7 +425,27 @@
 
 
 
+        <htmlpagefooter name="formFooter">
+            <table style="width: 100%;">
+                <tr>
+                    <td style="width:85%;">Produced Using 360 Connect @</td>
+                    <td>  Page {PAGENO} Of</td>
+                    <td style="width: 25px;
+                    height: 25px;
+                    border: 1px solid;"> {nbpg} </td>
+                </tr>
+                    {{--
+                     <div style=" width: 25px; height: 25px;  border: 1px solid; margin-left: 10px; text-align: center; padding-top: 5px;">
+                        2
+                    </div>
+                    <div style="margin-top: 10px;width80px">
+                        Page 1 Of
+                    </div>
+                --}}
 
+            </table>
+            <div style="clear: both;"></div>
+        </htmlpagefooter>
     </div>
   </body>
 </html>
