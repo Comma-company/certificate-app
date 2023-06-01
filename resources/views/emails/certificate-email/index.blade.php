@@ -86,7 +86,7 @@
             }
             .footer img{
             width: 105px;
-            margin-right: 20px;
+            margin-right: 5px;
             }
         }
     </style>
@@ -121,7 +121,8 @@
             <p class="details">Engineer</p>
             <p class="footer">
                 <img src="{{ asset('email-certificate/360connect.png') }}" alt="360 connect logo" />
-                <a href="#"><span class="Certificate">360 Connect Certificate</span></a>
+                <a style="float: right" href="#"><span class="Certificate">360 Connect Certificate</span></a>
+                <div style="clear: both;"></div>
             </p>
         </div>
     </div>
