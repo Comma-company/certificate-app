@@ -182,7 +182,11 @@ class ProfileController extends Controller
     {
         $user_id = Auth::guard('sanctum')->user()->id;
         $user = User::where('id', $user_id)->first();
-        $prev_logo = $user->logo->file_url;
+
+        $prev_logo = false;
+        if($user->logo){
+            $prev_logo = $user->logo->file_url;
+        }
 
         if ($request->hasFile('logo')) {
             $logo = uploadImage($request->logo, 'user_logo');
@@ -193,6 +197,8 @@ class ProfileController extends Controller
                 'name_file' => $logo['name_file']
             ]);
         }
+
+
         if ($prev_logo && $request->hasFile('logo')) {
             Storage::disk('uploads')->delete($prev_logo);
         }
