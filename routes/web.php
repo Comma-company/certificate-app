@@ -35,8 +35,8 @@ Route::get('/', function () {
 Route::get('/get-pdf', function () {
 
     $data = Certificate::find(8);
-
     return $form = Eicr::openPdf($data);
+    
 });
 
 Route::get('/test-mail', function () {

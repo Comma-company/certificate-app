@@ -104,6 +104,6 @@ class LandlordHomeownerGasSafetyRecord
     {
         $file = Self::createPdf($certificate);
         $fileName = "C$certificate->id.pdf";
-        return $file->Output();
+        $file->Output($fileName,'I');
     }
 }
