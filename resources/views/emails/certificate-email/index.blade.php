@@ -79,6 +79,16 @@
         .Certificate{
             color: #3463D1;
          }
+
+         @media only screen and (max-width: 600px) {
+        .email-container{
+            padding-left: 20px;
+            }
+            .footer img{
+            width: 105px;
+            margin-right: 20px;
+            }
+        }
     </style>
 </head>
 <body>
