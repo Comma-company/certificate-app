@@ -59,6 +59,7 @@ class ProfileController extends Controller
         )
             ->where('id', $user_id)
             ->with('country')
+            ->with('logo')
             ->first();
         return responseJson(true, 'user details', $user);
     }
