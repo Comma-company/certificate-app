@@ -85,7 +85,14 @@ class RegisterController extends Controller
                 'vat_number' => $data['vat_number'],
                 'has_vat' => $data['has_vat'],
             ]);
+
             $user->forms()->attach($request->forms_id);
+            if ($request->hasFile('logo')) {
+                $logo = uploadImage($request->logo, 'user_logo');
+                $user->logo()->create($logo);
+            }
+
+            // $data->files()->create($image);
             DB::commit();
 
             return responseJson(true, 'success created user', $user);

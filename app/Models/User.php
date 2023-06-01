@@ -13,7 +13,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasFactory,HasApiTokens,  Notifiable, Billable, SoftDeletes;// FileableTrait
+    use HasFactory, HasApiTokens,  Notifiable, Billable, SoftDeletes; // FileableTrait
 
     /**
      * The attributes that are mass assignable.
@@ -124,19 +124,19 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
 
-  /*   public function deviceTokens()
+    /*   public function deviceTokens()
     {
         return $this->hasMany(DeviceToken::class);
     } */
 
-    public function forms(){
-       return $this->belongsToMany(Form::class,'forms_users')->withPivot('tax_id','price');
+    public function forms()
+    {
+        return $this->belongsToMany(Form::class, 'forms_users')->withPivot('tax_id', 'price');
     }
 
     public function certificate()
     {
-       return $this->hasMany(Certificate::class, 'user_id');
-
+        return $this->hasMany(Certificate::class, 'user_id');
     }
 
     public function getUrlAttribute(): string
@@ -160,17 +160,23 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     public function sendPasswordResetNotification($token)
-        {
-            $url = route('password.reset',$token);
+    {
+        $url = route('password.reset', $token);
 
-            $this->notify(new ResetPasswordNotification($url));
-        }
+        $this->notify(new ResetPasswordNotification($url));
+    }
+
+
+    public function logo(){
+        return $this->morphOne(File::class, 'file', 'model_type', 'model_id', 'id')
+        ->where('name_file', '=', 'user_logo');;
+    }
     /**
      * Specifies the user's FCM tokens
      *
      * @return string|array
      */
-   /*  public function routeNotificationForFcm($notification = null)
+    /*  public function routeNotificationForFcm($notification = null)
     {
         return $this->deviceTokens()->pluck('token')->toArray();
     } */
