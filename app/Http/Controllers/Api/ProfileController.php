@@ -190,12 +190,18 @@ class ProfileController extends Controller
 
         if ($request->hasFile('logo')) {
             $logo = uploadImage($request->logo, 'user_logo');
-            $user->logo()->update([
-                'file_url' => $logo['file_url'],
-                'size' => $logo['size'],
-                'type' => $logo['type'],
-                'name_file' => $logo['name_file']
-            ]);
+
+            if ($prev_logo) {
+                $user->logo()->update([
+                    'file_url' => $logo['file_url'],
+                    'size' => $logo['size'],
+                    'type' => $logo['type'],
+                    'name_file' => $logo['name_file']
+                ]);
+            }else{
+                $user->logo()->create($logo);
+            }
+
         }
 
 
