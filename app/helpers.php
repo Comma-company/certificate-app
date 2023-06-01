@@ -4,7 +4,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
 if (!function_exists('responseJson')) {
-    function responseJson($status, $message, $data, $statusCode = 200): \Illuminate\Http\JsonResponse
+    function responseJson($status, $message, $data=[], $statusCode = 200): \Illuminate\Http\JsonResponse
     {
         return response()->json(
             [

@@ -8,12 +8,14 @@ use App\Models\User;
 use App\Models\Certificate;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Mail\CertificateEmail;
 use Mpdf\Config\FontVariables;
 use App\Models\CertificateNote;
 use Mpdf\Config\ConfigVariables;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Storage;
 use App\Certificate\DomesticElectrical\Eicr;
@@ -383,16 +385,13 @@ class CertificateController extends Controller
             $form =  Eicr::getPdf($certificate);
         } elseif ($file_name == 'Landlord_Homeowner_Gas_Safety_Record') {
             $form =  LandlordHomeownerGasSafetyRecord::getPdf($certificate);
-
-         }elseif($file_name == 'Warning_Notice'){
+        } elseif ($file_name == 'Warning_Notice') {
             $form = WarningNoticeGas::getPdf($certificate);
-        }
-        elseif($file_name == 'Portable_Appliance_Testing'){
+        } elseif ($file_name == 'Portable_Appliance_Testing') {
             $form = PortableApplianceTesting::getPdf($certificate);
-        }
-        elseif($file_name == 'Electrical_Danger_Notification'){
+        } elseif ($file_name == 'Electrical_Danger_Notification') {
             $form = ElectricalDangerNotification::getPdf($certificate);
-        }elseif ($file_name == 'Domestic_Electrical_Installation_Certificate') {
+        } elseif ($file_name == 'Domestic_Electrical_Installation_Certificate') {
             $form = DomesticElectricalInstallationCertificate::getPdf($certificate);
         }
         return $form;
@@ -413,7 +412,11 @@ class CertificateController extends Controller
     }
 
 
-    public function createPdfForm($certificate, $pdf_form)
+    public function sendEmail($id)
     {
+        $user = Auth::guard('sanctum')->user();
+        $certificate = Certificate::where('user_id', $user->id)->find($id);
+        Mail::to($certificate->customer->email)->send(new CertificateEmail($user, $certificate));
+        return responseJson(true,'success send email');
     }
 }

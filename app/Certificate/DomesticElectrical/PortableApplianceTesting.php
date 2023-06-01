@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Certificate\DomesticElectrical;
+
 use Mpdf\Mpdf;
 use Mpdf\Config\FontVariables;
 use Mpdf\Config\ConfigVariables;
@@ -8,8 +9,9 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
 use Symfony\Component\Console\Output\Output;
 
-class PortableApplianceTesting{
-    public static function getPdf($certificate)
+class PortableApplianceTesting
+{
+    public static function createPdf($certificate)
     {
         define('_MPDF_TTFONTPATH', asset('admin/fonts/gnu-free-font'));
 
@@ -54,23 +56,45 @@ class PortableApplianceTesting{
 
         $invoice->WriteHTML($html);
 
-        //$invoice->Output();
+        return $invoice;
+    }
 
-        $fileName = "C$data->id.pdf";
+
+    public static function getPdf($certificate)
+    {
+        $file = Self::createPdf($certificate);
+        //dd($file);
+        $fileName = "C$certificate->id.pdf";
         $file_path =  public_path("uploads/certificate/" . $fileName);
+
         Storage::disk('uploads')->makeDirectory('certificate');
         if (Storage::disk('uploads')->exists('certificate/' . $fileName)) {
+
             Storage::disk('uploads')->delete('certificate/' . $fileName);
-            $invoice->Output($file_path, 'F');
+            $file->Output($file_path, 'F');
             return responseJson(true, 'pdf file for certificate', [
                 'url' => asset('uploads/certificate/' . $fileName)
             ]);
         } else {
-            $invoice->Output($file_path, 'F');
+
+            $file->Output($file_path, 'F');
             return responseJson(true, 'pdf file for certificate', [
                 'url' => asset('uploads/certificate/' . $fileName)
             ]);
         }
-        // return $invoice->Output();
+    }
+
+    public static function stringCode($certificate)
+    {
+        $file = Self::createPdf($certificate);
+        $fileName = "C$certificate->id.pdf";
+        return $file->Output($fileName, 's');
+    }
+
+    public static function openPdf($certificate)
+    {
+        $file = Self::createPdf($certificate);
+        $fileName = "C$certificate->id.pdf";
+        return $file->Output();
     }
 }

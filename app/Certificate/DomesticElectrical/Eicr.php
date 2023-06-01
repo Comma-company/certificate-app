@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 class Eicr
 {
 
-    public static function getPdf($certificate)
+    public static function createPdf($certificate)
     {
         define('_MPDF_TTFONTPATH', asset('admin/fonts/gnu-free-font'));
 
@@ -85,8 +85,9 @@ class Eicr
         ])->render();
 
         $pdf_form->WriteHTML($page_6);
+        return $pdf_form;
         //$pdf_form->Output();
-        $fileName = "C$certificate->id.pdf";
+        /*  $fileName = "C$certificate->id.pdf";
         $file_path =  public_path("uploads/certificate/" . $fileName);
 
         Storage::disk('uploads')->makeDirectory('certificate');
@@ -103,6 +104,44 @@ class Eicr
             return responseJson(true, 'pdf file for certificate', [
                 'url' => asset('uploads/certificate/' . $fileName)
             ]);
+        } */
+    }
+
+    public static function getPdf($certificate)
+    {
+        $file = Self::createPdf($certificate);
+        //dd($file);
+        $fileName = "C$certificate->id.pdf";
+        $file_path =  public_path("uploads/certificate/" . $fileName);
+
+        Storage::disk('uploads')->makeDirectory('certificate');
+        if (Storage::disk('uploads')->exists('certificate/' . $fileName)) {
+
+            Storage::disk('uploads')->delete('certificate/' . $fileName);
+            $file->Output($file_path, 'F');
+            return responseJson(true, 'pdf file for certificate', [
+                'url' => asset('uploads/certificate/' . $fileName)
+            ]);
+        } else {
+
+            $file->Output($file_path, 'F');
+            return responseJson(true, 'pdf file for certificate', [
+                'url' => asset('uploads/certificate/' . $fileName)
+            ]);
         }
+    }
+
+    public static function stringCode($certificate)
+    {
+        $file = Self::createPdf($certificate);
+        $fileName = "C$certificate->id.pdf";
+        return $file->Output($fileName, 's');
+    }
+
+    public static function openPdf($certificate)
+    {
+        $file = Self::createPdf($certificate);
+        $fileName = "C$certificate->id.pdf";
+        return $file->Output();
     }
 }

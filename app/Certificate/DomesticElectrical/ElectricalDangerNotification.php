@@ -12,7 +12,7 @@ use Symfony\Component\Console\Output\Output;
 
 class ElectricalDangerNotification
 {
-    public static function getPdf($certificate)
+    public static function createPdf($certificate)
     {
         define('_MPDF_TTFONTPATH', asset('admin/fonts/gnu-free-font'));
 
@@ -56,23 +56,44 @@ class ElectricalDangerNotification
         ])->render();
 
         $invoice->WriteHTML($html);
+        return $invoice;
+    }
 
-        //$invoice->Output();
-        $fileName = "C$data->id.pdf";
+    public static function getPdf($certificate)
+    {
+        $file = Self::createPdf($certificate);
+        //dd($file);
+        $fileName = "C$certificate->id.pdf";
         $file_path =  public_path("uploads/certificate/" . $fileName);
+
         Storage::disk('uploads')->makeDirectory('certificate');
         if (Storage::disk('uploads')->exists('certificate/' . $fileName)) {
+
             Storage::disk('uploads')->delete('certificate/' . $fileName);
-            $invoice->Output($file_path, 'F');
+            $file->Output($file_path, 'F');
             return responseJson(true, 'pdf file for certificate', [
                 'url' => asset('uploads/certificate/' . $fileName)
             ]);
         } else {
-            $invoice->Output($file_path, 'F');
+
+            $file->Output($file_path, 'F');
             return responseJson(true, 'pdf file for certificate', [
                 'url' => asset('uploads/certificate/' . $fileName)
             ]);
         }
-        // return $invoice->Output();
+    }
+
+    public static function stringCode($certificate)
+    {
+        $file = Self::createPdf($certificate);
+        $fileName = "C$certificate->id.pdf";
+        return $file->Output($fileName, 's');
+    }
+
+    public static function openPdf($certificate)
+    {
+        $file = Self::createPdf($certificate);
+        $fileName = "C$certificate->id.pdf";
+        return $file->Output();
     }
 }

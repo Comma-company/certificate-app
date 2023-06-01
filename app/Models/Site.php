@@ -9,10 +9,10 @@ class Site extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','address','street_num','city','country_id','customer_id','postal_code','user_id','lng','lat'];
+    protected $fillable = ['name', 'address', 'street_num', 'city', 'country_id', 'customer_id', 'postal_code', 'user_id', 'lng', 'lat'];
 
 
-    public function country() 
+    public function country()
     {
         return $this->belongsTo(Country::class, 'country_id');
     }
@@ -22,6 +22,8 @@ class Site extends Model
     {
         return $this->hasOne(SiteContact::class);
     }
+
+    
     public function customer()
     {
         return $this->belongsTo(Customer::class);
