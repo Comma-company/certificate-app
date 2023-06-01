@@ -84,7 +84,11 @@
 <body>
     <div class="email-container">
         <div class="logo">
-            <h1>Company Logo</h1>
+            <h1>
+                @if ($certificate->user->logo)
+                    <img width="200px" src="{{ $certificate->user->logo->url }}" alt="logo">
+                @endif
+            </h1>
         </div>
         <div class="email-body">
             @php

@@ -89,13 +89,14 @@ class RegisterController extends Controller
             $user->forms()->attach($request->forms_id);
             if ($request->hasFile('logo')) {
                 $logo = uploadImage($request->logo, 'user_logo');
+                $user->logo()->delete();
                 $user->logo()->create($logo);
             }
 
             // $data->files()->create($image);
             DB::commit();
 
-            return responseJson(true, 'success created user', $user);
+            return responseJson(true, 'success created user', $user->load(['logo','forms']));
         } catch (\Throwable $th) {
             DB::rollBack();
             throw $th;

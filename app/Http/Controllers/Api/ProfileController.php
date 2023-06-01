@@ -9,6 +9,7 @@ use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -74,8 +75,8 @@ class ProfileController extends Controller
         'postal_code','country_id',
         */
 
-        $user = authUser('sanctum');
-
+        $user_id = authUser('sanctum')->id;
+        $user = User::where('id', $user_id)->first();
         $user->update([
             'registered_address' => $request->registered_address,
             'number_street_name' => $request->number_street_name,
@@ -148,11 +149,14 @@ class ProfileController extends Controller
         $prev_image = $user->image;
         if ($request->hasFile('image')) {
             $image = uploadImage($request->image);
-            //file_url
+            $user->update([
+                'image' => $image['file_url']
+            ]);
         }
-        $user->update([
-            'image' => $image['file_url'] ?? $prev_image
-        ]);
+        if ($prev_image && $request->hasFile('image')) {
+            Storage::disk('uploads')->delete($prev_image);
+        }
+
         return responseJson(true, 'success updated', '');
     }
 
@@ -172,6 +176,28 @@ class ProfileController extends Controller
         return responseJson(true, 'password updated', '');
     }
 
+
+    public function updateLogo(Request $request)
+    {
+        $user_id = Auth::guard('sanctum')->user()->id;
+        $user = User::where('id', $user_id)->first();
+        $prev_logo = $user->logo->file_url;
+
+        if ($request->hasFile('logo')) {
+            $logo = uploadImage($request->logo, 'user_logo');
+            $user->logo()->update([
+                'file_url' => $logo['file_url'],
+                'size' => $logo['size'],
+                'type' => $logo['type'],
+                'name_file' => $logo['name_file']
+            ]);
+        }
+        if ($prev_logo && $request->hasFile('logo')) {
+            Storage::disk('uploads')->delete($prev_logo);
+        }
+
+        return responseJson(true, 'logo updated', $user->load('logo'));
+    }
     /**
      * Remove the specified resource from storage.
      *
