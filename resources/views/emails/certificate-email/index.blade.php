@@ -86,7 +86,7 @@
         <div class="logo">
             <h1>
                 @if ($certificate->user->logo)
-                    <img width="200px" src="{{ $certificate->user->logo->url }}" alt="logo">
+                    <img width="200px" src="{{ $certificate->user->logo->url }}" alt="">
                 @endif
             </h1>
         </div>
