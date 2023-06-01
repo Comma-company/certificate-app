@@ -416,9 +416,10 @@ class CertificateController extends Controller
     {
         $user = Auth::guard('sanctum')->user();
         $certificate = Certificate::where('user_id', $user->id)->find($id);
-        Mail::to($certificate->customer->email)->send(new CertificateEmail($user, $certificate));
+       $customer_email = $certificate->customer->contacts()->first()->email;
+        Mail::to($customer_email)->send(new CertificateEmail($user, $certificate));
         $data = [
-            'customer_email' =>$certificate->customer->email,
+            'customer_email' =>$customer_email,
             'user_email' => $user->email
         ];
         return responseJson(true,'success send email',$data);
