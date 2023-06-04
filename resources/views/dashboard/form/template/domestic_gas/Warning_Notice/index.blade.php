@@ -59,7 +59,9 @@
     <div style="margin: 10px 25px;  width: 100%;">
         <div style="float: left;width:40%;">
             <img src="{{ asset('certificate/image/gas_safe_logo.png') }}"  height="80px">
-            {{-- <img src="{{ asset('certificate/image/niceic-logo.png') }}" style="margin-left:35px" width="160px" height="60px"> --}}
+            @if ($data->user->logo)
+            <img src="{{ $data->user->logo->url }}" style="margin-left:35px" width="160px">
+            @endif
         </div>
         <div style="float: left; margin-right: 46px; height: 70px;width: 60%;">
             <table style="border: 1px solid #FFF200;padding: 10px;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #FFF200;">
@@ -388,7 +390,7 @@
                 <div style="clear: both;"></div>
                 <div style="float:right">
                     <h6 style="float: left; font-size: 13px;font-weight: 100;padding-right: 10px;font-weight: bold;margin: 0;margin-top:0px">
-                        Data : 
+                        Data :
                     </h6>
                   <span style="background-color: #f6f6f6; width: 310px; height: 30px; display: block; float: left;">{{ getvalue('customer_date',$formData['part_declaration']) }}</span>
                 </div>

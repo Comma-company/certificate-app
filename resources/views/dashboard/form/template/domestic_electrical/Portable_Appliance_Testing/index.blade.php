@@ -60,7 +60,10 @@
             <div style="margin: 10px 25px;  width: 100%;">
                 <div style="float: left;width:40%;">
                     {{-- <img src="{{ asset('certificate/image/niceic-logo.png') }}" width="160px" height="60px"> --}}
-                    <img src="{{ asset('certificate/image/niceic-logo.png') }}" style="margin-left:35px" width="160px" height="60px">
+                    <img src="{{ asset('certificate/image/niceic-logo.png') }}"  width="160px" height="60px">
+                    @if ($data->user->logo)
+                    <img src="{{ $data->user->logo->url }}" style="margin-left:35px" width="160px">
+                    @endif
                 </div>
                 <div style="float: left; margin-right: 46px; height: 70px;width: 60%;">
                     <table style="border: 1px solid #00935f;padding: 10px;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #00935f;">
@@ -391,7 +394,7 @@
                            0
                         </p>
                         @endif
-                        
+
                       </div>
                     </div>
 
@@ -399,7 +402,7 @@
                       <p style="width: 100%; text-align: center;margin: 0; padding: 5px 0 10px 0;color: #FFFFFF;">Failed Appliances</p>
                       <div style="background-color: #FFFFFF; text-align: center; font-weight: bold;">
                         @if (isset($formData['appliance_summary_data']))
-                        <p style="margin-top:22px;font-size:22px"> 
+                        <p style="margin-top:22px;font-size:22px">
                             {{ getvalue('appliance_failed', $formData['appliance_summary_data']) ?? 0 }}
                         </p>
                         @else
@@ -407,7 +410,7 @@
                            0
                         </p>
                         @endif
-                     
+
                       </div>
                     </div>
 

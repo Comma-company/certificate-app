@@ -34,17 +34,16 @@ Route::get('/', function () {
 
 Route::get('/get-pdf', function () {
 
-    $data = Certificate::find(8);
-    return $form = Eicr::openPdf($data);
-    
+    $data = Certificate::find(7);
+    return $form = WarningNoticeGas::openPdf($data);
+
 });
 
 Route::get('/test-mail', function () {
     $user = User::find(3);
     $certificate = Certificate::where('user_id', $user->id)->find(8);
-
-
     Mail::to($user->email)->send(new CertificateEmail($user, $certificate));
+
     // return $form = Eicr::openPdf($data);
 });
 

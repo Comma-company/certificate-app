@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
+
     <style>
             @page :first {
                 header: html_formHeader;
@@ -57,7 +57,9 @@
             <div style="margin: 10px 25px;  width: 100%;">
                 <div style="float: left;width:40%;">
                     <img src="{{ asset('certificate/image/niceic-logo.png') }}" width="160px" height="60px">
-                    {{-- <img src="{{ asset('certificate/image/niceic-logo.png') }}" style="margin-left:35px" width="160px" height="60px"> --}}
+                    @if ($data->user->logo)
+                    <img src="{{ $data->user->logo->url }}" style="margin-left:35px" width="160px">
+                    @endif
                 </div>
                 <div style="float: left; margin-right: 46px; height: 70px;width: 60%;">
                     <table style="border: 1px solid #00935f;padding: 10px;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #00935f;">
@@ -161,7 +163,9 @@
                 </h3>
                       <div style="width: 100%; float: left;">
                               <div style="padding:0 10px;">
+                                @if (isset($formData['form_part_1']))
                                 <h6 style="margin:5px;font-size: 12px;font-weight: 100;">Extent Of The Installation : <span style="font-weight: bold">{{ getvalue('extends_of_the_installation', $formData['form_part_1']) }} <span style="font-weight: bold"></h6>
+                                @endif
                                 <h6 style="margin:5px ;font-size: 12px;font-weight: 100;">Covered By This Certificate :</h6>
                                 <h6 style="margin:5px ;font-size: 12px;font-weight: 100;">The Installation Is: : </h6>
                               </div>
@@ -181,8 +185,10 @@
                 PART 3 : COMMENTS ON EXISTING INSTALLATION
               </h3>
             <div style="width: 100%; float: left; padding:5px 10px;">
+               @if (isset($formData['form_part_4']))
                 <span style="font-weight: bold"> {{ getvalue('comments_on_installation', $formData['form_part_4']) }}
                 </span>
+                @endif
             </div>
 
             </div>
@@ -202,7 +208,10 @@
                         <p style="padding: 0px 10px; margin: 0;font-weight: bold;"></p>
                         <div style="padding:0 10px;">
                         <h6 style="margin: 5px;font-size: 12px;font-weight: 100;">
-                            I RECOMWND That This Instanation Is Further Inspected And Tested After An Interval Ot Not Rnore Than : <span style="font-weight: bold">{{ getvalue('next_inspection', $formData['form_part_3']) }} </span>
+                            I RECOMWND That This Instanation Is Further Inspected And Tested After An Interval Ot Not Rnore Than :
+                            @if(isset($formData['form_part_3']))
+                                <span style="font-weight: bold">{{ getvalue('next_inspection', $formData['form_part_3']) }} </span>
+                            @endif
                         </h6>
                         </div>
                 </div>
@@ -220,13 +229,26 @@
                 <h3 style="background-color: #00935f; font-weight: bold; padding: 10px; padding-bottom: 10px; text-align: left; color: #FFFFFF; margin-top: 0;margin-bottom: 0;">
                     PART 5 : TEST INSTRUMENTS
                 </h3>
-                <p style="padding: 5px 5px 0px; margin: 0;font-weight: bold;">Details Of Tests Instruments Used (State Serial And/Or Asset Numbers): {{ getvalue('mft',$formData['form_part_10']) }}</p>
+                <p style="padding: 5px 5px 0px; margin: 0;font-weight: bold;">Details Of Tests Instruments Used (State Serial And/Or Asset Numbers):  @if (isset($formData['form_part_10'])){{ getvalue('mft',$formData['form_part_10']) }}@endif</p>
                       <div style="width: 49%; float: left;">
                         <div style="width: 100%;padding:0px;margin:0px;">
                             <div style="padding:0px;margin:0px;">
-                                <h6 style="margin:5px;font-size: 12px;font-weight: 100;">Mufti-Functionat  :  <span style="font-weight: bold">{{ getvalue('earth_fault_loop',$formData['form_part_10']) }}</span> </h6>
-                                <h6 style="margin:5px;font-size: 12px;font-weight: 100;">Insulation Resistance : <span style="font-weight: bold">{{ getvalue('Insulation_resistance',$formData['form_part_10']) }}</span></h6>
-                                <h6 style="margin:5px;font-size: 12px;font-weight: 100;">Continuity : <span style="font-weight: bold">{{ getvalue('continuity',$formData['form_part_10']) }}</span> </h6>
+                                <h6 style="margin:5px;font-size: 12px;font-weight: 100;">Mufti-Functionat  :
+                                    @if (isset($formData['form_part_10']))
+                                    <span style="font-weight: bold">{{ getvalue('earth_fault_loop',$formData['form_part_10']) }}</span>
+                                    @endif
+                                </h6>
+
+                                <h6 style="margin:5px;font-size: 12px;font-weight: 100;">Insulation Resistance :
+                                    @if (isset($formData['form_part_10']))
+                                    <span style="font-weight: bold">{{ getvalue('Insulation_resistance',$formData['form_part_10']) }}</span>
+                                    @endif
+                                </h6>
+                                <h6 style="margin:5px;font-size: 12px;font-weight: 100;">Continuity :
+                                    @if (isset($formData['form_part_10']))
+                                    <span style="font-weight: bold">{{ getvalue('continuity',$formData['form_part_10']) }}</span>
+                                    @endif
+                                </h6>
                             </div>
                         </div>
                       </div>
@@ -236,8 +258,16 @@
                         <div style="width: 100%; float: left;">
                             <div style="padding:0;margin:0px;">
                                 <h6 style="margin:5px;font-size: 12px;font-weight: 100;">Earth Electrode Resistance  : </h6>
-                                <h6 style="margin:5px;font-size: 12px;font-weight: 100;">Earth Fault Bop Impedance : <span style="font-weight: bold">{{ getvalue('earth_fault_loop',$formData['form_part_10']) }}</span> </h6>
-                                <h6 style="margin:5px;font-size: 12px;font-weight: 100;">RCD :  <span style="font-weight: bold">{{ getvalue('rcd',$formData['form_part_10']) }}</span> </h6>
+                                <h6 style="margin:5px;font-size: 12px;font-weight: 100;">Earth Fault Bop Impedance :
+                                    @if (isset($formData['form_part_10']))
+                                    <span style="font-weight: bold">{{ getvalue('earth_fault_loop',$formData['form_part_10']) }}</span>
+                                    @endif
+                                </h6>
+                                <h6 style="margin:5px;font-size: 12px;font-weight: 100;">RCD :
+                                    @if (isset($formData['form_part_10']))
+                                    <span style="font-weight: bold">{{ getvalue('rcd',$formData['form_part_10']) }}</span>
+                                    @endif
+                                </h6>
                             </div>
                         </div>
                       </div>
@@ -259,10 +289,10 @@
                               <p style="padding: 5px 10px; margin: 0;font-weight: bold;font-size: 11px;">l /we being the person(s) responsible for the design, construction, inspection and testing of the electrical installation (as indicated by my/our signatures below), particulars of which are described above, having exercised reasonable skill and care when carrying out the design, construction, inspection and testing, hereby certify that the design work for which l/we have been responsible is to the best of my/our knowledge and belief in accordance with bs 7671:2018, except for the departures, if any, detailed as follows.</p>
                               <div style="width: 100%;">
                                 <div style="padding:0 10px;">
-                                  <h6 style="margin: 0px;font-size: 12px;font-weight: 100; ">I RECOMWND That This Instanation Is Further Inspected And Tested After An Interval Ot Not Rnore Than : <span style="font-weight: bold">{{ getvalue('amended_to', $formData['form_part_2']) }}</span> </h6>
+                                  <h6 style="margin: 0px;font-size: 12px;font-weight: 100; ">I RECOMWND That This Instanation Is Further Inspected And Tested After An Interval Ot Not Rnore Than : <span style="font-weight: bold"> @if (isset($formData['form_part_2'])){{ getvalue('amended_to', $formData['form_part_2']) }}</span>@endif </h6>
                                   <hr style="color: #00935f;padding:0px;margin 0px;">
                                   <h6 style="margin:0px;font-size: 12px;font-weight: 100; float: right;clear: both; margin-right: 300px;">Risk Assessment Attached :</h6>
-                                  <h6 style="margin:0px;font-size: 12px;font-weight: 100;clear: both;"> Details Of Permitted Exceptions (Regulations 411.3.3): <span style="font-weight: bold"> {{ getvalue('as_amended', $formData['form_part_2']) }} </span> </h6>
+                                  <h6 style="margin:0px;font-size: 12px;font-weight: 100;clear: both;"> Details Of Permitted Exceptions (Regulations 411.3.3): <span style="font-weight: bold">@if (isset($formData['form_part_2'])) {{ getvalue('as_amended', $formData['form_part_2']) }} @endif </span> </h6>
                                   <hr style="color: #00935f;padding:0px;margin 0px;">
                                   <small>the extent of liability of the signatory/signatories is limited to the work described above as the subject of this certificate.</small>
                                   <h6 style="font-size: 13px;">for design, the construction, and the inspection and testing of the installation:</h6>
@@ -270,7 +300,7 @@
                                     @if ($data->customerSignature)
                                     <img width="120px" src="{{ asset('uploads/'.$data->customerSignature->file_url) }}" alt="">
                                     @endif
-                                    <span style="float: right;font-size: 12px; margin-right: 300px;">Date: {{ getvalue('date_reviewed_by', $formData['part_declaration']) }}</span>
+                                    <span style="float: right;font-size: 12px; margin-right: 300px;">Date: @if (isset($formData['part_declaration'])){{ getvalue('date_reviewed_by', $formData['part_declaration']) }}@endif</span>
                                 </h6>
                                 </div>
                         </div>

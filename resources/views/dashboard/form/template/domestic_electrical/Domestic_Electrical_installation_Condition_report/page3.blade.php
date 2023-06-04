@@ -6,7 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page 3</title>
     <style>
+        @page {
+            header: html_formHeader;
+            footer: html_formFooter2;
+            margin: 15px;
+            margin-bottom:0mm;
+            margin-top:80px;
+            margin-header:4mm;
+            size: landscape; /* <length>{1,2} | auto | portrait | landscape */
+            margin-footer:10mm;
 
+        }
         @font-face {
         font-family:fontawesome;
         src: url("{{ asset('admin/fonts/gnu-free-font/fa-solid-900.ttf') }}");
@@ -41,7 +51,7 @@
 
   <!-- part 7 -->
   <div width="100%"
-  style="border: 1px solid #00935f; padding: 0; border-collapse: collapse; margin-bottom: 6px;"
+  style="border: 1px solid #00935f; padding: 0; border-collapse: collapse; margin-bottom: 6px;margin-top:20px;"
   >
 
     <div  style="background:#00935f;padding-top: 10px; padding-bottom: 10px;text-align:left" colspan="3">
@@ -478,7 +488,7 @@
             </tr>
 
           </table>
-      
+
       </div>
 
     </div>
@@ -527,7 +537,7 @@
           </td>
         </tr>
       </table>
- 
+
     </div>
   </body>
 </html>

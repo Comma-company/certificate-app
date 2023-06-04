@@ -74,7 +74,9 @@
             <div style="margin: 10px 25px;  width: 100%;">
                 <div style="float: left;width:40%;">
                     <img src="{{ asset('certificate/image/gas_safe_logo.png') }}"  height="80px">
-                    {{-- <img src="{{ asset('certificate/image/niceic-logo.png') }}" style="margin-left:35px" width="160px" height="60px"> --}}
+                    @if ($data->user->logo)
+                    <img src="{{ $data->user->logo->url }}" style="margin-left:35px" width="160px">
+                    @endif
                 </div>
                 <div style="float: left; margin-right: 46px; height: 70px;width: 60%;">
                     <table style="border: 1px solid #FFF200;padding: 10px;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #FFF200;">
