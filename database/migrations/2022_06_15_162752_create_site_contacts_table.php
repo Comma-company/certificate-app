@@ -23,7 +23,7 @@ class CreateSiteContactsTable extends Migration
           $table->string('l_name');
           $table->string('phone');
           $table->string('email')->unique();
-          $table->enum('type', ['owner', 'tenant','service manager','other'])->nullable()->default('owner');
+          $table->enum('type', ['flat', 'house','studio','warehouse','office','others'])->nullable()->default('flat');
           $table->timestamps();
         });
     }

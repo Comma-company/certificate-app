@@ -14,6 +14,7 @@ class BillingDetail extends Model
         'street_num',
         'country_id',
         'city',
+        'state',
         'postal_code',
         'credit_limit',
         'payment_term_id',

@@ -17,7 +17,10 @@ class CustomerResource extends JsonResource
         $data = [
             'id' => $this->id,
             'name' => $this->name,
+            'first_name'=>$this->first_name,
+            'last_name'=>$this->last_name,
             'address' => $this->address,
+            'state'=>$this->state,
             'street_num' => $this->street_num,
             'email' =>$this->email,
             'phone' => $this->phone,
@@ -28,6 +31,7 @@ class CustomerResource extends JsonResource
                 'street_num' =>$this->billing->street_num,
                 'country' =>$this->billing->country->name,
                 'city' =>$this->billing->city,
+                'state'=>$this->billing->state,
                 'postal_code' =>$this->billing->postal_code,
                 'credit_limit' =>$this->billing->credit_limit,
                 'payment_term' =>$this->billing->paymentTerm,

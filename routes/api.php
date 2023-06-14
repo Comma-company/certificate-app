@@ -56,8 +56,10 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
     // customer routes
     Route::get('customers/get', [CustomerController::class, 'index'])->name('customers.get');
     Route::get('customers/{id}/customer', [CustomerController::class, 'show'])->name('customers.details');
+    Route::get('customers/{id}', [CustomerController::class, 'showAddress'])->name('customers.address');
     Route::post('customers/create', [CustomerController::class, 'store'])->name('customers.store');
-
+    Route::get('search/postal', [CustomerController::class, 'searchPost']);
+    Route::get('multi-search', [CustomerController::class, 'multiSearch']);
     Route::post('site-contact/create', [SiteContactController::class, 'store']);
     Route::put('site-contact/{site_id}/update', [SiteContactController::class, 'update']);
 
@@ -65,7 +67,7 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
     Route::post('contact/create', [ContactController::class, 'store']);
 
     // Form Template
-    Route::get('forms/templates', [FormTemplateController::class, 'index'])->middleware('auth:sanctum');
+    Route::get('forms/templates', [FormTemplateController::class, 'index'])->middleware('auth:sanctum')->name('template');
     Route::post('forms/templates/store', [FormTemplateController::class, 'store'])->middleware('auth:sanctum');
     Route::get('forms/templates/{id}/show', [FormTemplateController::class, 'show'])->middleware('auth:sanctum');
     Route::put('forms/templates/{id}/update', [FormTemplateController::class, 'update'])->middleware('auth:sanctum');

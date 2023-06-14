@@ -15,7 +15,7 @@ class CustomerTypeSeeder extends Seeder
     public function run()
     {
         $data =[
-            ['name' => 'individual'],['name' => 'commercial'],
+            ['name' => 'individual'],['name' => 'company'],
 
         ];
         foreach ($data as $key => $type) {

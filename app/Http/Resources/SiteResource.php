@@ -21,6 +21,7 @@ class SiteResource extends JsonResource
             "street_num"=> $this->street_num,
             "city"=> $this->city,
             "country" =>$this->country->name,
+            "state"=>$this->state,
             "postal_code"=> $this->postal_code,
             "user_id"=> $this->user_id,
             'site_contact' => $this->siteContact,
