@@ -1,13 +1,16 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-
+use Illuminate\Database\Query\Builder;
 use App\Models\Customer;
+use App\Models\Site;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\CustomerResource;
+
 
 class CustomerController extends Controller
 {
@@ -44,14 +47,17 @@ class CustomerController extends Controller
     public function validation(Request $request)
     {
         return  $request->validate([
-            'name' => 'required',
+            'first_name'=>'nullable',
+            'last_name'=>'nullable',
+            'name' => 'nullable',
             'address' => 'required',
-            'street_num' => 'required',
-            'city' => 'required',
-            'postal_code' => 'required',
-            'country_id' => 'required',
+            'street_num' => 'nullable',
+            'city' => 'nullable',
+            'state'=>'required',
+            'postal_code' => 'nullable',
+            'country_id' => ['nullable', 'exists:countries,id'],
             'type_id' => ['required', 'exists:customer_types,id'],
-            'tax_id' => ['required', 'exists:tax_settings,id'],
+            'tax_id' => ['nullable', 'exists:tax_settings,id'],
         ]);
     }
 
@@ -60,13 +66,16 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            //'address' => 'required',
-            'street_num' => 'required',
+            'type_id' => 'required',
+            'name' => 'required_if:type_id,==,2',
+            'first_name'=>'required_if:type_id,==,1',
+            'last_name'=>'required_if:type_id,==,1',
+            'address'=>'required_if:type_id,==,1|required_if:type_id,==,2',
+            'street_num' =>'required',
             'city' => 'required',
             'postal_code' => 'required',
-            'country_id' => 'required',
-            'type_id' => ['required',],
+            'country_id' => ['required', 'exists:countries,id'],
+            'state'=>'required',
         ]);
         $request->merge([
             'user_id' => Auth::guard('sanctum')->user()->id,
@@ -78,7 +87,7 @@ class CustomerController extends Controller
 
             DB::beginTransaction();
             //create customer
-            $customer = Customer::create($request->all());
+            $customer = Customer::create($request->only('type_id','country_id','postal_code','city','address','street_num','name','last_name','first_name','user_id'));
 
             // create billing details
             if ($request->billing_details == 'no') {
@@ -88,6 +97,7 @@ class CustomerController extends Controller
                         'street_num' => $request->billing_street_num,
                         'country_id' => $request->billing_country_id,
                         'city' => $request->billing_city,
+                        'state'=>$request->billing_state,
                         'postal_code' => $request->billing_postal_code,
                         'credit_limit' => $request->credit_limit,
                         'payment_term_id' => $request->payment_term_id,
@@ -100,6 +110,7 @@ class CustomerController extends Controller
                     'street_num' => $request->street_num,
                     'country_id' => $request->country_id,
                     'city' => $request->city,
+                    'state'=>$request->state,
                     'postal_code' => $request->postal_code,
                     'credit_limit' => $request->credit_limit,
                     'payment_term_id' => $request->payment_term_id,
@@ -124,6 +135,7 @@ class CustomerController extends Controller
                         "address" => $request->address,
                         "street_num" => $request->street_num,
                         "city" => $request->city,
+                        "state"=>$request->state,
                         "postal_code" => $request->postal_code,
                         "country_id" => $request->country_id,
                         "user_id" => $request->user_id,
@@ -134,6 +146,7 @@ class CustomerController extends Controller
                         "address" => $request->site_address,
                         "street_num" => $request->site_street_num,
                         "city" => $request->site_city,
+                        "state"=>$request->site_state,
                         "postal_code" => $request->site_postal_code,
                         "country_id" => $request->site_country_id,
                         "user_id" => $request->user_id,
@@ -173,4 +186,74 @@ class CustomerController extends Controller
             return $e;
         }
     }
+    public function showAddress($id){
+        $customer=Customer::where('id',$id)->first();
+        $site=Site::where('customer_id',$customer->id)->first();
+        if($customer->address==$site->address){
+            return response()->json([
+                'status' => true,
+                'message' => 'your address',
+                'postal_code'=>$customer->postal_code,
+                'country'=>$customer->country->name,
+                'city'=>$customer->city,
+                'state'=>$customer->state,
+                'street_num'=>$customer->street_num,
+                
+            ]);
+        }
+        else{
+            return response()->json([
+                'status' => true,
+                'message' => 'there is not match customer address',
+                
+            ]);
+        }
+
+    }
+    public function searchPost(Request $request){
+        $customer = Customer::where('user_id', authUser('sanctum')->id)
+        ->where('postal_code', 'Like', '%' . $request->q . '%')
+        ->first();
+        return response()->json([
+            'status' => true,
+            'postal_code'=>$customer->postal_code,
+            'street_num'=>$customer->street_num,
+            'city'=>$customer->city,
+            'country'=>$customer->country->name,
+            'state'=>$customer->state,
+            
+        ]);
+    }
+    public function multiSearch(Request $request){
+       
+        $contact = Contact::join('customers', 'contacts.customer_id', '=', 'customers.id')
+                         ->join('countries', 'customers.country_id', '=', 'countries.id')
+                        ->select( 'contacts.f_name', 'contacts.l_name', 'contacts.phone', 'customers.name','customers.street_num','customers.city','customers.state','countries.name AS country','customers.postal_code')
+                           ->where('contacts.user_id', authUser('sanctum')->id)
+                           ->where(function ($query) use ($request) {
+                              $query->where('contacts.phone', 'like', '%' . $request->q . '%')
+                                 ->orWhere('customers.name', 'like', '%' .  $request->q . '%')
+                                      ->orWhere('customers.postal_code', 'like', '%' .  $request->q . '%');
+    })
+    ->first();
+        if($contact){
+                return response()->json([
+                    'status' => true,
+                    'message' => 'Successfully',
+                    'data' => $contact,
+                    'choice' => route('template'),
+                ]);
+             
+        }
+        else{
+            return response()->json([
+                'status' => false,
+                'message' => 'there is no result',
+                'add customer'=>route('customers.store'),
+                
+            ]);
+        }
+
+    }
+    
 }

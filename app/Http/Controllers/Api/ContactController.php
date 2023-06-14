@@ -28,7 +28,8 @@ class ContactController extends Controller
             'f_name' => 'required',
             'l_name' => 'required',
             'phone' => 'required',
-            'type' => 'required',
+            'type' => 'required|in:owner,director,site Manager,landlord,agent,finance Manager',
+            'email'=>'required|email|unique:contacts,email',
         ]);
 
         $contact = Contact::create([

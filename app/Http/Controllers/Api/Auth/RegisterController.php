@@ -21,7 +21,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
             'business_type_id' => ['required', 'array'],
-            'phone' => ['required'],
+            'phone' => ['required','unique:users'],
         ]);
 
         if ($validated->fails()) {

@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Sanctum\Sanctum;
 
 class AuthController extends Controller
 {
@@ -83,7 +84,7 @@ class AuthController extends Controller
     public function ResendingVerificationEmail(Request $request)
     {
 
-        $request->guard('sanctum')->user()->sendEmailVerificationNotification();
+       auth('sanctum')->user()->sendEmailVerificationNotification();
         return responseJson(true, 'Verification link sent!', '');
     }
 }
