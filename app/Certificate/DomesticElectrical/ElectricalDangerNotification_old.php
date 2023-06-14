@@ -58,22 +58,7 @@ class ElectricalDangerNotification
         $invoice->WriteHTML($html);
 
         return $invoice;
-       /*  $fileName = "C$data->id.pdf";
-        $file_path =  public_path("uploads/certificate/" . $fileName);
-        Storage::disk('uploads')->makeDirectory('certificate');
-        if (Storage::disk('uploads')->exists('certificate/' . $fileName)) {
-            Storage::disk('uploads')->delete('certificate/' . $fileName);
-            $invoice->Output($file_path, 'F');
-            return responseJson(true, 'pdf file for certificate', [
-                'url' => asset('uploads/certificate/' . $fileName)
-            ]);
-        } else {
-            $invoice->Output($file_path, 'F');
-            return responseJson(true, 'pdf file for certificate', [
-                'url' => asset('uploads/certificate/' . $fileName)
-            ]);
-        }
-        return $invoice->Output(); */
+       
     }
 
     public static function getPdf($certificate)
