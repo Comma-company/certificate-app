@@ -21,7 +21,6 @@ class Eicr
         $defaultFontConfig = (new FontVariables())->getDefaults();
         $fontData = $defaultFontConfig['fontdata'];
 
-        //   $invoice = new Mpdf(['orientation' => 'L']);
 
         $pdf_form =  new Mpdf([
             'orientation' => 'L',
@@ -86,25 +85,6 @@ class Eicr
 
         $pdf_form->WriteHTML($page_6);
         return $pdf_form;
-        //$pdf_form->Output();
-        /*  $fileName = "C$certificate->id.pdf";
-        $file_path =  public_path("uploads/certificate/" . $fileName);
-
-        Storage::disk('uploads')->makeDirectory('certificate');
-        if (Storage::disk('uploads')->exists('certificate/' . $fileName)) {
-
-            Storage::disk('uploads')->delete('certificate/' . $fileName);
-            $pdf_form->Output($file_path, 'F');
-            return responseJson(true, 'pdf file for certificate', [
-                'url' => asset('uploads/certificate/' . $fileName)
-            ]);
-        } else {
-
-            $pdf_form->Output($file_path, 'F');
-            return responseJson(true, 'pdf file for certificate', [
-                'url' => asset('uploads/certificate/' . $fileName)
-            ]);
-        } */
     }
 
     public static function getPdf($certificate)
