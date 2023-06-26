@@ -98,8 +98,8 @@ class CustomerController extends Controller
 
             DB::beginTransaction();
             //create customer
-<<<<<<< HEAD
-            $customer = Customer::create($request->only('type_id','state','country_id','postal_code','city','address','street_num','name','last_name','first_name','user_id'));
+
+        $customer = Customer::create($request->only('type_id', 'country_id', 'postal_code', 'city', 'address', 'state', 'street_num', 'name', 'last_name', 'first_name', 'user_id'));
 
             // create billing details
             // if ($request->billing_details == 'no') {
@@ -129,38 +129,7 @@ class CustomerController extends Controller
             //         'send_statement' => $request->send_statement,
             //     ]);
             // }
-=======
-            $customer = Customer::create($request->only('type_id', 'country_id', 'postal_code', 'city', 'address', 'state', 'street_num', 'name', 'last_name', 'first_name', 'user_id'));
 
-            // create billing details
-            if ($request->billing_details == 'no') {
-                $customer->billing()->create(
-                    [
-                        'address' => $request->billing_address,
-                        'street_num' => $request->billing_street_num,
-                        'country_id' => $request->billing_country_id,
-                        'city' => $request->billing_city,
-                        'state' => $request->billing_state,
-                        'postal_code' => $request->billing_postal_code,
-                        'credit_limit' => $request->credit_limit,
-                        'payment_term_id' => $request->payment_term_id,
-                        'send_statement' => $request->send_statement,
-                    ]
-                );
-            } else {
-                $customer->billing()->create([
-                    'address' => $request->address,
-                    'street_num' => $request->street_num,
-                    'country_id' => $request->country_id,
-                    'city' => $request->city,
-                    'state' => $request->state,
-                    'postal_code' => $request->postal_code,
-                    'credit_limit' => $request->credit_limit,
-                    'payment_term_id' => $request->payment_term_id,
-                    'send_statement' => $request->send_statement,
-                ]);
-            }
->>>>>>> 177538bb8daf716c09de3dffe7ef7c0312102096
             //create client contact
             $customer->contacts()->create([
                 "f_name" => $request->client_f_name,
