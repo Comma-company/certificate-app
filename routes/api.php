@@ -8,7 +8,9 @@ use App\Http\Controllers\Api\ContactController;
 use App\Http\Controllers\Api\CountryController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\SettingController;
+use App\Http\Controllers\Api\SubscriptionController;
 use App\Http\Controllers\Api\CustomerController;
+use App\Http\Controllers\Api\SiteController;
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Api\SignatureController;
@@ -54,6 +56,8 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
 
     Route::get('search', [HomeController::class, 'search'])->middleware('auth:sanctum');
     // customer routes
+    Route::middleware('auth')->group(function () {
+
     Route::get('customers/get', [CustomerController::class, 'index'])->name('customers.get');
     Route::get('customers/{id}/customer', [CustomerController::class, 'show'])->name('customers.details');
     Route::get('customers/{id}', [CustomerController::class, 'showAddress'])->name('customers.address');
@@ -67,13 +71,16 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
     Route::post('contact/create', [ContactController::class, 'store']);
 
     // Form Template
-    Route::get('forms/templates', [FormTemplateController::class, 'index'])->middleware('auth:sanctum')->name('template');
-    Route::post('forms/templates/store', [FormTemplateController::class, 'store'])->middleware('auth:sanctum');
-    Route::get('forms/templates/{id}/show', [FormTemplateController::class, 'show'])->middleware('auth:sanctum');
-    Route::put('forms/templates/{id}/update', [FormTemplateController::class, 'update'])->middleware('auth:sanctum');
-    Route::post('forms/templates/{id}/make-default', [FormTemplateController::class, 'makeDefault'])->middleware('auth:sanctum');
-    Route::delete('forms/templates/{id}/delete', [FormTemplateController::class, 'destroy'])->middleware('auth:sanctum');
 
+    Route::get('forms/templates', [FormTemplateController::class, 'index'])->middleware(['auth:sanctum','user.subscribe'])->name('template');
+    Route::post('forms/templates/store', [FormTemplateController::class, 'store'])->middleware(['auth:sanctum','user.subscribe']);
+    Route::get('forms/templates/{id}/show', [FormTemplateController::class, 'show'])->middleware(['auth:sanctum','user.subscribe']);
+    Route::put('forms/templates/{id}/update', [FormTemplateController::class, 'update'])->middleware(['auth:sanctum','user.subscribe']);
+    Route::post('forms/templates/{id}/make-default', [FormTemplateController::class, 'makeDefault'])->middleware(['auth:sanctum','user.subscribe']);
+    Route::delete('forms/templates/{id}/delete', [FormTemplateController::class, 'destroy'])->middleware(['auth:sanctum','user.subscribe']);
+     //signature
+   Route::apiResource('signature', SignatureController::class)->middleware('auth:sanctum');
+  });
     //profile
     Route::get('profile', [ProfileController::class, 'index'])->middleware('auth:sanctum');
     Route::get('profile/other-data', [ProfileController::class, 'otherData'])->middleware('auth:sanctum');
@@ -83,17 +90,30 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
     Route::put('profile/update-password', [ProfileController::class, 'updatePassword'])->middleware('auth:sanctum');
     Route::put('profile/change-address', [ProfileController::class, 'updateAddress']);
 
-    //signature
-    Route::apiResource('signature', SignatureController::class)->middleware('auth:sanctum');
-
+   
     //settings
     Route::prefix('setting')->group(function () {
         Route::get('tax-setting', [TaxSettingController::class, 'index']);
         Route::put('tax-setting/{id}/change-default', [TaxSettingController::class, 'changeDefault']);
     });
+    // subscription
+    Route::post('create-customer', [SubscriptionController::class, 'createCustomer']);
+    Route::get('/showSubscription',[SubscriptionController::class,'showSubscription']);
+    Route::post('/subscriptions', [SubscriptionController::class,'createSubscription']);
+    Route::post('/cancel-subscription/{subscriptionId}',[SubscriptionController::class,'cancelSub']);
+    Route::post('/resume-subscription/{subscriptionId}',[SubscriptionController::class,'resumeSub']);
+    Route::post('/cancel/{plan}',[SubscriptionController::class, 'cancel'] );
+    Route::post('/resume/{plan}',[SubscriptionController::class, 'resume']);
+    Route::post('/change-subscription',[SubscriptionController::class, 'changeSubscription']);
+
+
+    Route::middleware('user.subscribe')->group(function () {
+    Route::post('/subscription/change',[SubscriptionController::class, 'changeSubscription']);
+    
+    });
 
     //
-    Route::prefix('certificates')->group(function () {
+    Route::prefix('certificates')->middleware('user.subscribe')->group(function () {
         Route::get('/', [CertificateController::class, 'index'])->middleware('auth:sanctum');
         Route::get('complete', [CertificateController::class, 'completeCertificate'])->middleware('auth:sanctum');
         Route::get('uncompleted', [CertificateController::class, 'uncompletedCertificate'])->middleware('auth:sanctum');
@@ -109,4 +129,8 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
         Route::post('send-email/{certificate_id}',[CertificateController::class,'sendEmail']);
         //Route::get('form-data/invoice', [FormDataController::class, 'invoice'])->middleware('auth:sanctum');
     });
+    //sites
+    Route::post('/create-sites', [SiteController::class, 'store'])->middleware('auth:sanctum');
+
+
 });

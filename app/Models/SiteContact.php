@@ -9,12 +9,17 @@ class SiteContact extends Model
 {
     use HasFactory;
 
-    protected $fillable=['site_id','type','f_name','l_name','phone','email','user_id','customer_id'];
+    protected $fillable=['site_id','type','f_name','phone','email','user_id','customer_id'];
 
 
     public function site()
     {
         return $this->belongsTo(Site::class, 'site_id');
+    }
+
+    public function contact()
+    {
+        return $this->belongsTo(Contact::class, 'contact_id');
     }
 
     public function user()
@@ -28,6 +33,6 @@ class SiteContact extends Model
     }
 
     public function getNameAttribute(){
-        return $this->f_name." ".$this->l_name;
+        return $this->f_name;
     }
 }

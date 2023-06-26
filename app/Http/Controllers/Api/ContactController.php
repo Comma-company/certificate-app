@@ -26,15 +26,15 @@ class ContactController extends Controller
       $user =  Auth::guard('sanctum')->user();
         $request->validate([
             'f_name' => 'required',
-            'l_name' => 'required',
+            //'l_name' => 'required',
             'phone' => 'required',
             'type' => 'required|in:owner,director,site Manager,landlord,agent,finance Manager',
-            'email'=>'required|email|unique:contacts,email',
+            'email'=>'required|email',
         ]);
 
         $contact = Contact::create([
         "f_name" => $request->f_name,
-        "l_name" => $request->l_name,
+        //"l_name" => $request->l_name,
         "phone" => $request->phone,
         "email" => $request->email,
         "type" => $request->type,

@@ -17,7 +17,7 @@ class CreateContactsTable extends Migration
             $table->id();
             $table->foreignId('customer_id')->nullable()->constrained('customers')->cascadeOnDelete();
             $table->string('f_name');
-            $table->string('l_name');
+            //$table->string('l_name');
             $table->string('phone');
             $table->enum('type',['owner','director','site Manager','landlord','agent','finance Manager']);
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();

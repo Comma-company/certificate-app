@@ -29,7 +29,7 @@ class CreateUsersTable extends Migration
             $table->string('city')->nullable();
             $table->string('postal_code')->nullable();
             $table->string('currency')->nullable();
-            $table->enum('has_vat',['yes','no'])->default('no');
+            $table->enum('has_vat',['yes','no'])->default('yes');
             $table->string('vat_number')->nullable();
             $table->string('website')->nullable();
             $table->string('mobile')->nullable();

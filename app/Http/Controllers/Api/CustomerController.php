@@ -87,40 +87,40 @@ class CustomerController extends Controller
 
             DB::beginTransaction();
             //create customer
-            $customer = Customer::create($request->only('type_id','country_id','postal_code','city','address','street_num','name','last_name','first_name','user_id'));
+            $customer = Customer::create($request->only('type_id','state','country_id','postal_code','city','address','street_num','name','last_name','first_name','user_id'));
 
             // create billing details
-            if ($request->billing_details == 'no') {
-                $customer->billing()->create(
-                    [
-                        'address' => $request->billing_address,
-                        'street_num' => $request->billing_street_num,
-                        'country_id' => $request->billing_country_id,
-                        'city' => $request->billing_city,
-                        'state'=>$request->billing_state,
-                        'postal_code' => $request->billing_postal_code,
-                        'credit_limit' => $request->credit_limit,
-                        'payment_term_id' => $request->payment_term_id,
-                        'send_statement' => $request->send_statement,
-                    ]
-                );
-            } else {
-                $customer->billing()->create([
-                    'address' => $request->address,
-                    'street_num' => $request->street_num,
-                    'country_id' => $request->country_id,
-                    'city' => $request->city,
-                    'state'=>$request->state,
-                    'postal_code' => $request->postal_code,
-                    'credit_limit' => $request->credit_limit,
-                    'payment_term_id' => $request->payment_term_id,
-                    'send_statement' => $request->send_statement,
-                ]);
-            }
+            // if ($request->billing_details == 'no') {
+            //     $customer->billing()->create(
+            //         [
+            //             'address' => $request->billing_address,
+            //             'street_num' => $request->billing_street_num,
+            //             'country_id' => $request->billing_country_id,
+            //             'city' => $request->billing_city,
+            //             'state'=>$request->billing_state,
+            //             'postal_code' => $request->billing_postal_code,
+            //             'credit_limit' => $request->credit_limit,
+            //             'payment_term_id' => $request->payment_term_id,
+            //             'send_statement' => $request->send_statement,
+            //         ]
+            //     );
+            // } else {
+            //     $customer->billing()->create([
+            //         'address' => $request->address,
+            //         'street_num' => $request->street_num,
+            //         'country_id' => $request->country_id,
+            //         'city' => $request->city,
+            //         'state'=>$request->state,
+            //         'postal_code' => $request->postal_code,
+            //         'credit_limit' => $request->credit_limit,
+            //         'payment_term_id' => $request->payment_term_id,
+            //         'send_statement' => $request->send_statement,
+            //     ]);
+            // }
             //create client contact
             $customer->contacts()->create([
                 "f_name" => $request->client_f_name,
-                "l_name" => $request->client_l_name,
+               // "l_name" => $request->client_l_name,
                 "phone" => $request->client_phone,
                 "email" => $request->client_email,
                 "type" => $request->client_type,
@@ -160,7 +160,6 @@ class CustomerController extends Controller
                         'site_id' =>  $site->id,
                         'type' => $request->site_contact_type,
                         'f_name' => $request->client_f_name,
-                        'l_name' => $request->client_l_name,
                         'phone' => $request->client_phone,
                         'email' => $request->client_email,
                         'user_id' => $request->user_id
@@ -170,7 +169,7 @@ class CustomerController extends Controller
                         'site_id' =>  $site->id,
                         'type' => $request->site_contact_type,
                         'f_name' => $request->site_contact_f_name,
-                        'l_name' => $request->site_contact_l_name,
+                        //'l_name' => $request->site_contact_l_name,
                         'phone' => $request->site_contact_phone,
                         'email' => $request->site_contact_email,
                         'user_id' => $request->user_id

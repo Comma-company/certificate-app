@@ -16,6 +16,9 @@ use App\Certificate\DomesticGas\LandlordHomeownerGasSafetyRecord;
 use App\Certificate\DomesticElectrical\ElectricalDangerNotification;
 use App\Certificate\DomesticElectrical\DomesticElectricalInstallationCertificate;
 use App\Http\Controllers\Web\CertificateController;
+use App\Http\Controllers\Web\SubscriptionController;
+
+use App\Models\Subscription;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,8 +49,12 @@ Route::get('/test-mail', function () {
 
     // return $form = Eicr::openPdf($data);
 });
-
-Route::get('certificate/{customer_id}/{certificate_id}/{created_at}/view', [CertificateController::class,'view'])->name('view.certificate');
+Route::post('subscription', [SubscriptionController::class, 'processSubscription'])->middleware(['auth'])->name("subscription.create");
+Route::get('checkout/{planId}', [SubscriptionController::class, 'checkout'])->middleware(['auth'])->name('user.checkout');
+Route::get('plans', [SubscriptionController::class, 'showPlans'])->middleware(['auth'])->name('plans');
+Route::get('cancel',[SubscriptionController::class, 'cancle'])->middleware(['auth','user.subscribe'])->name('plan.cancel');
+Route::get('resume',[SubscriptionController::class, 'resume'])->middleware(['auth','user.subscribe'])->name('plan.cancel');
+Route::get('certificate/{customer_id}/{certificate_id}/{created_at}/view', [CertificateController::class,'view'])->middleware(['user.subscribe'])->name('view.certificate');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
