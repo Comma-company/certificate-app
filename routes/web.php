@@ -35,7 +35,7 @@ Route::get('/', function () {
 Route::get('/get-pdf', function () {
 
     $data = Certificate::find(7);
-    return $form = WarningNoticeGas::openPdf($data);
+    return $form = DomesticElectricalInstallationCertificate::openPdf($data);
 
 });
 

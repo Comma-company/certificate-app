@@ -2,6 +2,7 @@
 
 namespace App\Certificate\DomesticElectrical;
 
+use App\Models\Certificate;
 use Mpdf\Mpdf;
 use Mpdf\Config\FontVariables;
 use Mpdf\Config\ConfigVariables;
@@ -40,7 +41,11 @@ class DomesticElectricalInstallationCertificate
         $pdf_form->shrink_tables_to_fit = 1;
         $pdf_form->SetTitle('Domestic_Electrical_Installation_Certificate');
 
-        $formData =  $certificate->data;
+        $formData = new Certificate();
+
+        if ($certificate) {
+            $formData =  $certificate->data;
+        }
 
         $pdf_form->fontdata["fontawesome"] = [
             'R' => "fa-solid-900.tff",
