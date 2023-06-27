@@ -81,7 +81,7 @@ class FormSeeder extends Seeder
             [
                 "name" => "Warning Notice ",
                 "type" => "Domestic Gas",
-                'status' => 'live',
+                'status' => 'coming_soon',
                 'file_name' => "Warning_Notice"
             ],
             [

@@ -56,6 +56,7 @@ class SiteController extends Controller
                            "state"=>$request->state,
                            "postal_code" => $request->postal_code,
                             "country_id" => $request->country_id,
+                            "property_type"=>$request->property_type,
                             'user_id' =>$request->user_id,
                         ]);
                      if ($request->has('name')) {

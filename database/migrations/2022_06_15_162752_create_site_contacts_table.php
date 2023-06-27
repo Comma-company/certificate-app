@@ -22,8 +22,6 @@ class CreateSiteContactsTable extends Migration
           $table->string('f_name');
          // $table->string('l_name');
           $table->string('phone');
-          $table->string('email')->unique();
-          $table->enum('type', ['flat', 'house','studio','warehouse','office','others'])->nullable()->default('flat');
           $table->timestamps();
         });
     }
