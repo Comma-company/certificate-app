@@ -25,6 +25,7 @@ class CustomerResource extends JsonResource
             'email' => $this->email,
             'phone' => $this->phone,
             'type' => $this->customerType->name,
+<<<<<<< HEAD
             'billing_details' => $this->billing_details,
             'billing_info' => [
                 'address' => $this->billing->address,
@@ -37,6 +38,20 @@ class CustomerResource extends JsonResource
                 'payment_term' => $this->billing->paymentTerm,
                 'send_statement'  => $this->billing->send_statement
             ],
+=======
+            // 'billing_details' => $this->billing_details,
+            // 'billing_info' => [
+            //     'address' => $this->billing->address,
+            //     'street_num' =>$this->billing->street_num,
+            //     'country' =>$this->billing->country->name,
+            //     'city' =>$this->billing->city,
+            //     'state'=>$this->billing->state,
+            //     'postal_code' =>$this->billing->postal_code,
+            //     'credit_limit' =>$this->billing->credit_limit,
+            //     'payment_term' =>$this->billing->paymentTerm,
+            //     'send_statement'  =>$this->billing->send_statement
+            // ],
+>>>>>>> ac4b9dd9bc94dcbeba5ed2f3a8f3419a9fa6c1fa
             'city' => $this->city,
             'postal_code' => $this->postal_code,
             'country_id' => $this->country->name,

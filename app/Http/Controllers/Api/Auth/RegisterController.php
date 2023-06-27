@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Models\User;
+use Stripe\Stripe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Validator;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\TrialRemainingDaysNotification;
 
 class RegisterController extends Controller
 {
@@ -18,7 +22,7 @@ class RegisterController extends Controller
         $validated = Validator::make($request->all(), [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required', 'string', 'min:8'],
             'business_type_id' => ['required', 'array'],
             'phone' => ['required','unique:users'],
@@ -39,14 +43,25 @@ class RegisterController extends Controller
                 'last_name' => $data['last_name'],
                 'phone' => $data['phone'],
                 'password' => Hash::make($data['password']),
+                
             ]);
 
             if (count($data['business_type_id']) > 0) {
                 $user->BusinessType()->attach($data['business_type_id']);
             }
+            Stripe::setApiKey(config('services.stripe.Secret_key'));
+            $stripeCustomer=$user->createAsStripeCustomer([
+                'description' => 'any desc',
+                'phone' => $data['phone'],
+                'metadata' => ['user_id' => $user->id,
+                'max_certificate'=>20,
+                //'trail_ends_at'=>Carbon::now()->addDay(7),
+        ],
+              ]);
             event(new Registered($user));
             DB::commit();
             return responseJson(true, 'success created user', $user);
+        
         } catch (\Throwable $th) {
             DB::rollBack();
             throw $th;
@@ -84,19 +99,23 @@ class RegisterController extends Controller
                 'country_id' => $data['country_id'],
                 'vat_number' => $data['vat_number'],
                 'has_vat' => $data['has_vat'],
+                'trail_ends_at'=>Carbon::now()->addDay(7),
             ]);
-
             $user->forms()->attach($request->forms_id);
+           
             if ($request->hasFile('logo')) {
                 $logo = uploadImage($request->logo, 'user_logo');
                 $user->logo()->delete();
                 $user->logo()->create($logo);
             }
 
+
             // $data->files()->create($image);
             DB::commit();
-
             return responseJson(true, 'success created user', $user->load(['logo','forms']));
+            $trialEndsAt = Carbon::parse($user->trial_ends_at);
+           $remainingDays = $trialEndsAt->diffInDays(Carbon::now());
+           Notification::send($user, new TrialRemainingDaysNotification($remainingDays));
         } catch (\Throwable $th) {
             DB::rollBack();
             throw $th;

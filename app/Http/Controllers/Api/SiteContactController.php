@@ -17,9 +17,9 @@ class SiteContactController extends Controller
             //'name' => 'required',
             'site_id' => 'required|exists:sites,id',
             'f_name' => 'required',
-            'l_name' => 'required',
+            //'l_name' => 'required',
             'phone' => 'required',
-            'email' => 'required|email|unique:site_contacts,email',
+            'email' => 'required|email',
             'type' => 'required|in:flat,studio,house,office,warehouse,others',
         ]);
         $user =  Auth::guard('sanctum')->user();
@@ -28,7 +28,7 @@ class SiteContactController extends Controller
             "site_id" => $request->site_id,
             "type" => $request->type,
             "f_name" => $request->f_name,
-            "l_name" => $request->l_name,
+            //"l_name" => $request->l_name,
             "phone" => $request->phone,
             "email" => $request->email,
             "user_id" => $user->id,

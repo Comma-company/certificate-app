@@ -20,10 +20,8 @@ class CreateSiteContactsTable extends Migration
           $table->foreignId('site_id')->nullable()->constrained('sites')->after('id');
           $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
           $table->string('f_name');
-          $table->string('l_name');
+         // $table->string('l_name');
           $table->string('phone');
-          $table->string('email')->unique();
-          $table->enum('type', ['flat', 'house','studio','warehouse','office','others'])->nullable()->default('flat');
           $table->timestamps();
         });
     }

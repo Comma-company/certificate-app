@@ -15,12 +15,13 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             StatusSeeder::class,
-            CountrySeeder::class,
-            BusinessTypeSeeder::class,
-            CustomerTypeSeeder::class,
+           CountrySeeder::class,
+           BusinessTypeSeeder::class,
+           CustomerTypeSeeder::class,
             PaymentTermsSeeder::class,
-            FormSeeder::class,
-            TaxSeeder::class
+           FormSeeder::class,
+            TaxSeeder::class,
+            PlanSeeder::class
            ]);
     }
 }

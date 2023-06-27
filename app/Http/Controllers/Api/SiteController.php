@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-
+use Illuminate\Support\Facades\DB;
 use App\Models\Site;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\SiteResource;
+use App\Models\Customer;
 use Illuminate\Support\Facades\Auth;
 
 class SiteController extends Controller
@@ -41,7 +42,63 @@ class SiteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      try{  
+                DB::beginTransaction();
+                $site=Site::create($request->all());
+                $customer= Customer::where(['id' => $request->customer_id,
+                     'user_id' => authUser('sanctum')->id
+                      ])->first();
+                       $site = $customer->sites()->create([
+                          "name" => $request->name,
+                          "address" => $request->address,
+                          "street_num" => $request->street_num,
+                           "city" => $request->city,
+                           "state"=>$request->state,
+                           "postal_code" => $request->postal_code,
+                            "country_id" => $request->country_id,
+                            "property_type"=>$request->property_type,
+                            'user_id' =>$request->user_id,
+                        ]);
+                     if ($request->has('name')) {
+                        if ($request->copy_contact == 'yes') {
+                            $con=$customer->contacts()->first();
+                            $sitecontact = $customer->siteContact()->create([
+                                'site_id' =>$site->id,
+                                'contact_id'=>$con->id,
+                                 'type' =>$request->type,
+                                 'copy' =>'yes',
+                                 'f_name' =>$con->f_name,
+                                 'phone' =>$con->phone,
+                                 'email' =>$con->email,
+                                  'user_id' =>authUser('sanctum')->id
+                          ]);
+
+
+                         // $sitecontact->contact->email
+                        }
+                        else{
+                            $sitecontact = $customer->siteContact()->create([
+                                'site_id' =>  $site->id,
+                                 'type' => $request->type,
+                                 'f_name' => $request->f_name,
+                                 'phone' => $request->phone,
+                                 'email' => $request->email,
+                                  'user_id' => authUser('sanctum')->id
+                          ]);
+                        }
+                    }
+
+                       
+                 $data = new SiteResource($site);
+           
+            DB::commit();
+            return responseJson(true, 'created successfuly',  $data);
+                        }
+            catch (\Exception $e) {
+                DB::rollBack();
+                return $e;
+            }
+   
     }
 
     /**

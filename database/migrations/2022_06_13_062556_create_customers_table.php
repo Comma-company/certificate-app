@@ -23,7 +23,7 @@ class CreateCustomersTable extends Migration
             $table->foreignId('country_id')->nullable()->constrained('countries');
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('type_id')->nullable()->constrained('customer_types')->nullOnDelete();
-            $table->enum('billing_details', ['yes', 'no'])->nullable()->default('yes');
+            //$table->enum('billing_details', ['yes', 'no'])->nullable()->default('yes');
             $table->softDeletes();
             $table->timestamps();
         });
