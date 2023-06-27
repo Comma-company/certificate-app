@@ -14,7 +14,7 @@ class AddEmailToSiteContactsTable extends Migration
     public function up()
     {
         Schema::table('site_contacts', function (Blueprint $table) {
-          $table->string('email')->nullable()->change();
+          $table->string('email')->nullable();
         });
     }
 
