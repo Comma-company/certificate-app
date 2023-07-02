@@ -45,7 +45,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'mobile_number',
         'image',
         'birth_date',
-        'type'
+        'type',
+        'trial_ends_at',
     ];
 
     public $appends = ['image_profile_url'];
@@ -66,6 +67,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'trial_ends_at'=>'datetime',
     ];
 
     public function BusinessType()
