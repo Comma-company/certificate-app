@@ -235,18 +235,18 @@ class CustomerController extends Controller
         ]);
     }
     public function multiSearch(Request $request){
-        $customer=Customer::with('sites')->where('user_id',authUser('sanctum')->id)
-        ->whereHas('contacts',function($query)use ($request){
+        $contact=Contact::where('user_id',authUser('sanctum')->id)
+        ->whereHas('customer',function($query)use ($request){
             $query->where('phone','like','%'.$request->q.'%')
-            ->orWhere('name','like','%'.$request->q.'%')
-            ->orWhere('postal_code','like'.'%',$request->q.'%');
+            ->orWhere('f_name','like','%'.$request->q.'%')
+            ->orWhere('postal_code','like','%'.$request->q.'%');
         })
     ->get();
-        if($customer){
+        if($contact){
                 return response()->json([
                     'status' => true,
                     'message' => 'Successfully',
-                    'data' => $customer,
+                    'data' => $contact,
                     'choice' => route('template'),
                 ]);
              
