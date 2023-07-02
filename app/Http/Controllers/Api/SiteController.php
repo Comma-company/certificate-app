@@ -57,6 +57,7 @@ class SiteController extends Controller
                            "postal_code" => $request->postal_code,
                             "country_id" => $request->country_id,
                             "property_type"=>$request->property_type,
+                            'other_value'=>$request->other_value,
                             'user_id' =>$request->user_id,
                         ]);
                      if ($request->has('name')) {
@@ -65,7 +66,7 @@ class SiteController extends Controller
                             $sitecontact = $customer->siteContact()->create([
                                 'site_id' =>$site->id,
                                 'contact_id'=>$con->id,
-                                 'type' =>$request->type,
+                                 'type' =>$con->type,
                                  'copy' =>'yes',
                                  'f_name' =>$con->f_name,
                                  'phone' =>$con->phone,

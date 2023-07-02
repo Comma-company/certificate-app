@@ -9,7 +9,7 @@ class Site extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'address', 'street_num', 'city','state' ,'country_id', 'customer_id', 'postal_code','property_type' ,'user_id'];
+    protected $fillable = ['name', 'address', 'street_num', 'city','state' ,'country_id', 'customer_id', 'postal_code','property_type','other_value' ,'user_id'];
 
 
     public function country()

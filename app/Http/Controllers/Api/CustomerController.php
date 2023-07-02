@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\CustomerResource;
+use Illuminate\Validation\Rule;
 
 
 class CustomerController extends Controller
@@ -58,6 +59,7 @@ class CustomerController extends Controller
             'country_id' => ['nullable', 'exists:countries,id'],
             'type_id' => ['required', 'exists:customer_types,id'],
             'tax_id' => ['nullable', 'exists:tax_settings,id'],
+            
         ]);
     }
 
@@ -76,6 +78,9 @@ class CustomerController extends Controller
             'postal_code' => 'required',
             'country_id' => ['required', 'exists:countries,id'],
             'state'=>'required',
+            'other_value' => ['nullable', Rule::requiredIf(function () use ($request) {
+                return $request->property_type === 'others';
+            })],
         ]);
         $request->merge([
             'user_id' => Auth::guard('sanctum')->user()->id,
@@ -139,6 +144,7 @@ class CustomerController extends Controller
                         "postal_code" => $request->postal_code,
                         "country_id" => $request->country_id,
                         "property_type"=>$request->property_type,
+                        "other_value"=>$request->other_value,
                         "user_id" => $request->user_id,
 
                     ]);
@@ -152,6 +158,7 @@ class CustomerController extends Controller
                         "postal_code" => $request->site_postal_code,
                         "country_id" => $request->site_country_id,
                         "property_type"=>$request->site_property_type,
+                        "other_value"=>$request->site_other_value,
                         "user_id" => $request->user_id,
                     ]);
                 }
