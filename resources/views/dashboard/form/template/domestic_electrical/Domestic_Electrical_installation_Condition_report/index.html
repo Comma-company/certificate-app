@@ -11,7 +11,7 @@
                 footer: html_formFooter;
                 margin: 15px;
                 margin-bottom:20px;
-                margin-top:60px;
+                margin-top:80px;
                 margin-header:4mm;
                 size: landscape; /* <length>{1,2} | auto | portrait | landscape */
                 margin-footer:5mm ;
@@ -21,7 +21,7 @@
                 footer: html_formFooter2;
                 margin: 15px;
                 margin-bottom:20px;
-                margin-top:60px;
+                margin-top:80px;
                 margin-header:4mm;
                 size: landscape; /* <length>{1,2} | auto | portrait | landscape */
                 margin-footer:5mm ;
@@ -44,24 +44,45 @@
     </style>
   </head>
   <body>
-    <div
-      class="table-container"
-      style="
-        font-family: 'Cairo', sans-serif;
-        font-family: 'Open Sans', sans-serif;
-        font-family: 'Poppins', sans-serif;
-        font-family: 'Tajawal', sans-serif;
-        font-family: 'FreeSans';
-      ">
+    <div class="table-container" style="font-family: 'FreeSans';">
         <htmlpageheader name="formHeader">
-            <table style="border: 1px solid #00935f;padding: 0;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #00935f;">
+            <div style="margin: 10px 25px;  width: 100%;">
+                <div style="float: left;width:40%;">
+                    <img src="{{ asset('certificate/image/niceic-logo.png') }}"  width="160px" height="60px">
+                    @if ($data->user->logo)
+                    <img src="{{ $data->user->logo->url }}" style="margin-left:35px" width="160px">
+                    @endif
+                </div>
+                <div style="float: left; margin-right: 46px; height: 70px;width: 60%;">
+                    <table style="border: 1px solid #00935f;padding: 10px;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #00935f;">
+                        <tr style="padding: 10px;">
+                            <th style="padding: 10px;">
+                                <div style="padding: 0 120px 0 0"><h3>{{$data->id ?? 0}}</h3></div>
+                            </th>
+                            <th bgcolor="#00935f" style="color: #fff; padding: 10px">
+                                <div style="padding: 0 140px 0 10px"><h3>NO</h3></div>
+                            </th>
+                        </tr>
+                    </table>
+                    <h2 style="color: #00935f; padding: 0; margin: 0; font-weight: 900;text-align: right">
+                        ELECTRICAL INSTALLATION CONDITION REPORT
+                    </h2>
+                    <p style="font-size: 10px; padding: 0; margin: 0; font-style: italic;text-align: right">
+                        Issued in accordance with BS 7671: 2018 – Requirements for Electrical
+                        Installations
+                    </p>
+                </div>
+                <div style="clear: both;"></div>
+              </div>
+
+           {{--  <table style="border: 1px solid #00935f;padding: 0;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #00935f;">
                 <tr>
-                <th>
-                    <div style="padding: 0 120px 0 0"><h3>26770979</h3></div>
-                </th>
-                <th bgcolor="#00935f" style="color: #fff; padding: 0">
-                    <div style="padding: 0 140px 0 10px"><h3>IPM18C</h3></div>
-                </th>
+                    <th style="padding: 10px;">
+                        <div style="padding: 0 120px 0 0"><h3>{{$data->id ?? 0}}</h3></div>
+                    </th>
+                    <th bgcolor="#00935f" style="color: #fff;">
+                        <div style="padding: 0 140px 0 10px"><h3>NO</h3></div>
+                    </th>
                 </tr>
             </table>
             <h2 style="color: #00935f; padding: 0; margin: 0; font-weight: 900;text-align: right">
@@ -70,7 +91,7 @@
             <p style="font-size: 10px; padding: 0; margin: 0; font-style: italic;text-align: right">
                 Issued in accordance with BS 7671: 2018 – Requirements for Electrical
                 Installations
-            </p>
+            </p> --}}
         </htmlpageheader>
       <table
         width="100%"
