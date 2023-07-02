@@ -19,7 +19,7 @@ class CreateContactsTable extends Migration
             $table->string('f_name');
             //$table->string('l_name');
             $table->string('phone');
-            $table->enum('type',['owner','director','site Manager','landlord','agent','finance Manager']);
+            $table->enum('type',['director','site Manager','landlord','agent','finance Manager']);
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
         });
