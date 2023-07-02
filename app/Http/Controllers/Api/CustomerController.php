@@ -145,7 +145,7 @@ class CustomerController extends Controller
                         "postal_code" => $request->postal_code,
                         "country_id" => $request->country_id,
                         "property_type"=>$request->property_type,
-                        "other_value"=>$request->other_vaue,
+                        "other_value"=>$request->other_value,
                         "user_id" => $request->user_id,
 
                     ]);
