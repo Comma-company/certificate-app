@@ -20,7 +20,7 @@ class EnsureUserIsSubscribed
             $user = Auth::user();
             if($user && (!$user->onTrial()||$user->certificate()->count() > $max_certificate)){
                 if(!$user->subscribed()){
-               
+
                 return redirect()->route('plans')->with('error', 'Please subscribe to access this feature.');
                 }
                 else{
