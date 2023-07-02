@@ -43,7 +43,7 @@ class RegisterController extends Controller
                 'last_name' => $data['last_name'],
                 'phone' => $data['phone'],
                 'password' => Hash::make($data['password']),
-
+                
             ]);
 
             if (count($data['business_type_id']) > 0) {
@@ -56,12 +56,12 @@ class RegisterController extends Controller
                 'metadata' => ['user_id' => $user->id,
                 'max_certificate'=>20,
                 //'trail_ends_at'=>Carbon::now()->addDay(7),
-                ],
+        ],
               ]);
             event(new Registered($user));
             DB::commit();
             return responseJson(true, 'success created user', $user);
-
+        
         } catch (\Throwable $th) {
             DB::rollBack();
             throw $th;
@@ -102,7 +102,7 @@ class RegisterController extends Controller
                 'trail_ends_at'=>Carbon::now()->addDay(7),
             ]);
             $user->forms()->attach($request->forms_id);
-
+           
             if ($request->hasFile('logo')) {
                 $logo = uploadImage($request->logo, 'user_logo');
                 $user->logo()->delete();

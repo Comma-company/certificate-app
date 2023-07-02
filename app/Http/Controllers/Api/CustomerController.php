@@ -60,6 +60,7 @@ class CustomerController extends Controller
             'type_id' => ['required', 'exists:customer_types,id'],
             'tax_id' => ['nullable', 'exists:tax_settings,id'],
             
+            
         ]);
     }
 
@@ -78,9 +79,9 @@ class CustomerController extends Controller
             'postal_code' => 'required',
             'country_id' => ['required', 'exists:countries,id'],
             'state'=>'required',
-            'other_value' => ['nullable', Rule::requiredIf(function () use ($request) {
+            'other_value' =>  Rule::requiredIf(function () use ($request) {
                 return $request->property_type === 'others';
-            })],
+            }),
         ]);
         $request->merge([
             'user_id' => Auth::guard('sanctum')->user()->id,
@@ -92,7 +93,7 @@ class CustomerController extends Controller
 
             DB::beginTransaction();
             //create customer
-            $customer = Customer::create($request->only('type_id','state','country_id','postal_code','city','address','street_num','name','last_name','first_name','user_id'));
+            $customer = Customer::create($request->only('type_id','state','country_id','postal_code','city','address','street_num','name','last_name','first_name','property_type','other_value','user_id'));
 
             // create billing details
             // if ($request->billing_details == 'no') {
@@ -144,7 +145,7 @@ class CustomerController extends Controller
                         "postal_code" => $request->postal_code,
                         "country_id" => $request->country_id,
                         "property_type"=>$request->property_type,
-                        "other_value"=>$request->other_value,
+                        "other_value"=>$request->other_vaue,
                         "user_id" => $request->user_id,
 
                     ]);
@@ -157,8 +158,8 @@ class CustomerController extends Controller
                         "state"=>$request->site_state,
                         "postal_code" => $request->site_postal_code,
                         "country_id" => $request->site_country_id,
-                        "property_type"=>$request->site_property_type,
-                        "other_value"=>$request->site_other_value,
+                        'property_type'=>$request->property_type,
+                        "other_value"=>$request->other_value,
                         "user_id" => $request->user_id,
                     ]);
                 }
