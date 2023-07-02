@@ -14,7 +14,7 @@ class AddTypeToSiteContactsTable extends Migration
     public function up()
     {
         Schema::table('site_contacts', function (Blueprint $table) {
-            $table->enum('type', ['landlord', 'agent','others'])->nullable()->default('landlord');
+            $table->enum('type', ['director','siteManager','landlord','agent','financeManager'])->nullable()->default('landlord');
         });
     }
 

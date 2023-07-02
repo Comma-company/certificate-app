@@ -14,7 +14,7 @@ class AddPropertyTypeToSitesTable extends Migration
     public function up()
     {
         Schema::table('sites', function (Blueprint $table) {
-            $table->enum('property_type', ['flat', 'house','studio','warehouse','office','others'])->nullable()->default('flat');
+            $table->enum('property_type', ['flat', 'house','studio','wareHouse','office','others'])->nullable()->default('flat');
         });
     }
 
