@@ -44,10 +44,11 @@ class SiteController extends Controller
     {
       try{  
                 DB::beginTransaction();
-                $site=Site::create($request->all());
+               // $site=Site::create($request->all());
                 $customer= Customer::where(['id' => $request->customer_id,
                      'user_id' => authUser('sanctum')->id
                       ])->first();
+                     
                        $site = $customer->sites()->create([
                           "name" => $request->name,
                           "address" => $request->address,
@@ -58,7 +59,7 @@ class SiteController extends Controller
                             "country_id" => $request->country_id,
                             "property_type"=>$request->property_type,
                             'other_value'=>$request->other_value,
-                            'user_id' =>$request->user_id,
+                            'user_id' =>Auth::guard('sanctum')->user()->id,
                         ]);
                      if ($request->has('name')) {
                         if ($request->copy_contact == 'yes') {
@@ -71,7 +72,7 @@ class SiteController extends Controller
                                  'f_name' =>$con->f_name,
                                  'phone' =>$con->phone,
                                  'email' =>$con->email,
-                                  'user_id' =>authUser('sanctum')->id
+                                  'user_id' =>authUser('sanctum')->id,
                           ]);
 
 
