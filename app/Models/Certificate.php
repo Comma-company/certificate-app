@@ -10,7 +10,7 @@ class Certificate extends Model
 {
     use HasFactory,FileableTrait;
 
-    protected $fillable = ['form_id', 'data', 'customer_id','user_id','tax_id', 'status_id'];
+    protected $fillable = ['form_id', 'data', 'customer_id','user_id','tax_id', 'status_id','site_id'];
 
     protected $casts = [
         'data' => 'array'

@@ -96,7 +96,8 @@ class CertificateController extends Controller
         $request->validate([
             'customer_id' => ['sometimes', 'required', 'exists:customers,id'],
             'form_id' => ['required', 'exists:forms,id'],
-            'data' => ['required']
+            'data' => ['required'],
+            'site_id'=>['required', 'exists:sites,id'],
         ]);
 
 
@@ -105,7 +106,9 @@ class CertificateController extends Controller
         $data->form_id = $request->form_id;
         $data->customer_id = $request->customer_id;
         $data->status_id = $request->status_id;
+        $data->site_id=$request->site_id;
         $data->data = $request->data;
+        $data->site_id=$request->site_id;
         $data->save();
 
         if ($request->form_images) {
@@ -288,6 +291,7 @@ class CertificateController extends Controller
         $user = authUser('sanctum');
         $data =  Certificate::where('user_id', $user->id)->findOrFail($id);
         $data->status_id = $request->status_id;
+        $data->site_id=$request->site_id;
         $data->data = $request->data;
         $data->save();
 
