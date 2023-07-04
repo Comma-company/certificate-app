@@ -90,7 +90,7 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
     Route::put('profile/update-password', [ProfileController::class, 'updatePassword'])->middleware('auth:sanctum');
     Route::put('profile/change-address', [ProfileController::class, 'updateAddress']);
 
-   
+
     //settings
     Route::prefix('setting')->group(function () {
         Route::get('tax-setting', [TaxSettingController::class, 'index']);
@@ -109,7 +109,7 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
 
     Route::middleware('user.subscribe')->group(function () {
     Route::post('/subscription/change',[SubscriptionController::class, 'changeSubscription']);
-    
+
     });
 
     //
@@ -129,6 +129,7 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
         Route::post('send-email/{certificate_id}',[CertificateController::class,'sendEmail']);
         //Route::get('form-data/invoice', [FormDataController::class, 'invoice'])->middleware('auth:sanctum');
     });
+    
     //sites
     Route::post('/create-sites', [SiteController::class, 'store'])->middleware('auth:sanctum');
 
