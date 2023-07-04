@@ -101,7 +101,11 @@ class RegisterController extends Controller
                 'has_vat' => $data['has_vat'],
                 'trail_ends_at'=>Carbon::now()->addDay(7),
             ]);
-            $user->forms()->attach($request->forms_id);
+            $user->categories()->attach($request->categories_id,[
+                'license_number'=>$request->license_number,
+                'gas_register_number'=>$request->gas_register_number,
+                'electric_board_id'=>$request->electric_board_id,
+            ]);
            
             if ($request->hasFile('logo')) {
                 $logo = uploadImage($request->logo, 'user_logo');
@@ -112,7 +116,7 @@ class RegisterController extends Controller
 
             // $data->files()->create($image);
             DB::commit();
-            return responseJson(true, 'success created user', $user->load(['logo','forms']));
+            return responseJson(true, 'success created user', $user->load(['logo','categories']));
             $trialEndsAt = Carbon::parse($user->trial_ends_at);
            $remainingDays = $trialEndsAt->diffInDays(Carbon::now());
            Notification::send($user, new TrialRemainingDaysNotification($remainingDays));

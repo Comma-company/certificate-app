@@ -16,7 +16,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        Commands\DailyUpdate::class
     ];
 
     /**
@@ -27,7 +27,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->job(new JobsNotifyTrialEndsTomorrow)->daily();
+        $schedule->command('day:update')
+                ->hourly();
     }
 
     /**

@@ -135,6 +135,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(Form::class, 'forms_users')->withPivot('tax_id', 'price');
     }
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class,'categories_users')->withPivot('electric_board_id','license_number','gas_register_number');
+    }
 
     public function certificate()
     {

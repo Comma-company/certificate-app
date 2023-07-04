@@ -60,7 +60,6 @@ class CustomerController extends Controller
             'type_id' => ['required', 'exists:customer_types,id'],
             'tax_id' => ['nullable', 'exists:tax_settings,id'],
             
-            
         ]);
     }
 

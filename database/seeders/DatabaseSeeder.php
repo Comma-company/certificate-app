@@ -21,7 +21,9 @@ class DatabaseSeeder extends Seeder
             PaymentTermsSeeder::class,
            FormSeeder::class,
             TaxSeeder::class,
-            PlanSeeder::class
+            PlanSeeder::class,
+            CategorySeeder::class,
+            ElectricBoardSeeder::class,
            ]);
     }
 }

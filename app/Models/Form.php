@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Form extends Model
 {
     use HasFactory;
-    protected $fillable = ['name','type','status','file_name'];
+    protected $fillable = ['name','type','status','file_name','category_id'];
 
    
     public function template(){
@@ -17,5 +17,9 @@ class Form extends Model
 
     public function users(){
         return  $this->belongsToMany(User::class,'forms_users')->withPivot('tax_id','price');
+    }
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }
