@@ -35,10 +35,11 @@ class HomeController extends Controller
     $remainingDays = now()->diffInDays($trialEnd, false);
      $certificateCount = $user->certificate()->count();
      $remainingCertificates = 20 - $certificateCount;
-
-    return response()->json([
+     $data=[
         'remaining_days' => $remainingDays,
         'remaining_certificates' => $remainingCertificates,
-    ]);
+     ];
+     return responseJson(true,'trial details data',$data);
+    
 }
 }
