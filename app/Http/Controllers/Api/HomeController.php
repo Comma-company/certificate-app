@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -28,4 +28,17 @@ class HomeController extends Controller
 
         return responseJson(true, 'search result', $data);
     }
+    public function getTrialDetails(Request $request)
+{
+    $user = Auth::guard('sanctum')->user();
+     $trialEnd = $user->trial_ends_at;
+    $remainingDays = now()->diffInDays($trialEnd, false);
+     $certificateCount = $user->certificate()->count();
+     $remainingCertificates = 20 - $certificateCount;
+
+    return response()->json([
+        'remaining_days' => $remainingDays,
+        'remaining_certificates' => $remainingCertificates,
+    ]);
+}
 }
