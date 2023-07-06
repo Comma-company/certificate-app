@@ -43,7 +43,7 @@ class TrialRemainingDaysNotification extends Notification
     public function toMail($notifiable)
     {
         $trialEndsAt = Carbon::parse(Auth::user()->trial_ends_at);
-        $remainingDays = $trialEndsAt->diffInDays(Carbon::now());
+        $remainingDays = $trialEndsAt->diffInDays(Carbon::now())+1;
         return (new MailMessage)->view('emails.trail.start', [
             'remainingDays' => $remainingDays,
         ]);
