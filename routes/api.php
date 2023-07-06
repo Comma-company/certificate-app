@@ -51,6 +51,7 @@ Route::get('/status', [StatusController::class, 'index']);
 Route::middleware(['auth:sanctum','verified'])->group(function () {
     Route::post('complete-register', [RegisterController::class, 'completeRegister']);
     Route::get('countries', [CountryController::class, 'index'])->middleware('auth:sanctum');
+    Route::get('getTrialDetails',[HomeController::class,'getTrialDetails'])->middleware('auth:sanctum');
 
     Route::get('payment-terms', [PaymentTermController::class, 'index'])->middleware('auth:sanctum');
 
@@ -90,7 +91,7 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
     Route::put('profile/update-password', [ProfileController::class, 'updatePassword'])->middleware('auth:sanctum');
     Route::put('profile/change-address', [ProfileController::class, 'updateAddress']);
 
-
+   
     //settings
     Route::prefix('setting')->group(function () {
         Route::get('tax-setting', [TaxSettingController::class, 'index']);
@@ -98,7 +99,7 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
     });
     // subscription
     Route::post('create-customer', [SubscriptionController::class, 'createCustomer']);
-    Route::get('/showSubscription',[SubscriptionController::class,'showSubscription']);
+    Route::get('/show-plans',[SubscriptionController::class,'showPlans']);
     Route::post('/subscriptions', [SubscriptionController::class,'createSubscription']);
     Route::post('/cancel-subscription/{subscriptionId}',[SubscriptionController::class,'cancelSub']);
     Route::post('/resume-subscription/{subscriptionId}',[SubscriptionController::class,'resumeSub']);
@@ -109,7 +110,7 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
 
     Route::middleware('user.subscribe')->group(function () {
     Route::post('/subscription/change',[SubscriptionController::class, 'changeSubscription']);
-
+    
     });
 
     //
@@ -129,7 +130,6 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
         Route::post('send-email/{certificate_id}',[CertificateController::class,'sendEmail']);
         //Route::get('form-data/invoice', [FormDataController::class, 'invoice'])->middleware('auth:sanctum');
     });
-    
     //sites
     Route::post('/create-sites', [SiteController::class, 'store'])->middleware('auth:sanctum');
 
