@@ -32,7 +32,7 @@ class HomeController extends Controller
 {
     $user = Auth::guard('sanctum')->user();
      $trialEnd = $user->trial_ends_at;
-    $remainingDays = now()->diffInDays($trialEnd, false);
+    $remainingDays = now()->diffInDays($trialEnd, false)+ 1;
      $certificateCount = $user->certificate()->count();
      $remainingCertificates = 20 - $certificateCount;
      $data=[

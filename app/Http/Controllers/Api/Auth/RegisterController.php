@@ -119,7 +119,7 @@ class RegisterController extends Controller
             DB::commit();
             return responseJson(true, 'success created user', $user->load(['logo','categories']));
             $trialEndsAt = Carbon::parse($user->trial_ends_at);
-           $remainingDays = $trialEndsAt->diffInDays(Carbon::now());
+           $remainingDays = $trialEndsAt->diffInDays(Carbon::now())+1;
            Notification::send($user, new TrialRemainingDaysNotification($remainingDays));
         } catch (\Throwable $th) {
             DB::rollBack();
