@@ -43,7 +43,7 @@ class RegisterController extends Controller
                 'last_name' => $data['last_name'],
                 'phone' => $data['phone'],
                 'password' => Hash::make($data['password']),
-                
+
             ]);
 
             if (count($data['business_type_id']) > 0) {
@@ -61,7 +61,7 @@ class RegisterController extends Controller
             event(new Registered($user));
             DB::commit();
             return responseJson(true, 'success created user', $user);
-        
+
         } catch (\Throwable $th) {
             DB::rollBack();
             throw $th;
@@ -100,21 +100,23 @@ class RegisterController extends Controller
                 'country_id' => $data['country_id'],
                 'vat_number' => $data['vat_number'],
                 'has_vat' => $data['has_vat'],
-                
+
             ]);
-            $user->categories()->attach($request->categories_id,[
+            foreach ($request->categories_id as $category) {
+
+            $user->categories()->attach($category,[
                 'license_number'=>$request->license_number,
                 'gas_register_number'=>$request->gas_register_number,
                 'electric_board_id'=>json_encode([$request->electric_board_id]),
             ]);
-           
+            }
             if ($request->hasFile('logo')) {
                 $logo = uploadImage($request->logo, 'user_logo');
                 $user->logo()->delete();
                 $user->logo()->create($logo);
             }
             $planId='price_1NSEkhE2sCQWSLCAGK6joBPt';
-            $trialDays = 7; 
+            $trialDays = 7;
             $limitedCertificateCount = 20;
             $user->createOrGetStripeCustomer(); // Create Stripe customer
                 $subscription = $user->newSubscription('free', $planId)->trialDays($trialDays)
@@ -124,7 +126,7 @@ class RegisterController extends Controller
             // $data->files()->create($image);
             DB::commit();
             return responseJson(true, 'success created user', $user->load(['logo','categories']));
-           
+
             $trialEndsAt = $subscription->trial_ends_at;
              $remainingDays = Carbon::now()->diffInDays($trialEndsAt->endOfDay(), false);
            Notification::send($user, new TrialRemainingDaysNotification($remainingDays));
