@@ -113,7 +113,7 @@ class RegisterController extends Controller
                 $user->logo()->delete();
                 $user->logo()->create($logo);
             }
-            $planId='price_1NKertIenO4vNmXth1HdVnnz';
+            $planId='price_1NSEkhE2sCQWSLCAGK6joBPt';
             $trialDays = 7; 
             $limitedCertificateCount = 20;
             $user->createOrGetStripeCustomer(); // Create Stripe customer
