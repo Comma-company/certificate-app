@@ -20,11 +20,12 @@ class CheckTrial
      */
     public function handle(Request $request, Closure $next)
     {
-        $user = Auth::user();
-        $trialEndsAt = $user->trial_ends_at;
+        $user = Auth::guard('sanctum')->user();
+        $subscription=$user->subscription('free');
+        $trialEndsAt = $subscription->trial_ends_at;
 
         if ($trialEndsAt) {
-            $remainingDays = Carbon::now()->diffInDays($trialEndsAt);
+            $remainingDays = Carbon::now()->diffInDays($trialEndsAt->endOfDay());
 
             if ($remainingDays === 1) {
                 Notification::send($user, new TrialEndNotification());

@@ -100,7 +100,7 @@ class RegisterController extends Controller
                 'country_id' => $data['country_id'],
                 'vat_number' => $data['vat_number'],
                 'has_vat' => $data['has_vat'],
-                'trial_ends_at'=>Carbon::now()->addDay(7),
+                
             ]);
             $user->categories()->attach($request->categories_id,[
                 'license_number'=>$request->license_number,
@@ -113,13 +113,20 @@ class RegisterController extends Controller
                 $user->logo()->delete();
                 $user->logo()->create($logo);
             }
-
+            $planId='price_1NKertIenO4vNmXth1HdVnnz';
+            $trialDays = 7; 
+            $limitedCertificateCount = 20;
+            $user->createOrGetStripeCustomer(); // Create Stripe customer
+                $subscription = $user->newSubscription('free', $planId)->trialDays($trialDays)
+                ->quantity($limitedCertificateCount)
+                ->create();
 
             // $data->files()->create($image);
             DB::commit();
             return responseJson(true, 'success created user', $user->load(['logo','categories']));
-            $trialEndsAt = Carbon::parse($user->trial_ends_at);
-           $remainingDays = $trialEndsAt->diffInDays(Carbon::now())+1;
+           
+            $trialEndsAt = $subscription->trial_ends_at;
+             $remainingDays = Carbon::now()->diffInDays($trialEndsAt->endOfDay(), false);
            Notification::send($user, new TrialRemainingDaysNotification($remainingDays));
         } catch (\Throwable $th) {
             DB::rollBack();

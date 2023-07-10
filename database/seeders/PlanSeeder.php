@@ -56,6 +56,13 @@ class PlanSeeder extends Seeder
                 'intrval'=>'yearly',
                 
             ],
+            [
+                'name' => 'free', 
+                'stripe_plan' => 'price_1NKertIenO4vNmXth1HdVnnz', 
+                'price' =>0.00,
+                
+                
+            ],
 
 
 

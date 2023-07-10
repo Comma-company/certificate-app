@@ -6,6 +6,7 @@ use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Certificate;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -31,15 +32,21 @@ class HomeController extends Controller
     public function getTrialDetails(Request $request)
 {
     $user = Auth::guard('sanctum')->user();
-     $trialEnd = $user->trial_ends_at;
-    $remainingDays = now()->diffInDays($trialEnd, false)+ 1;
-     $certificateCount = $user->certificate()->count();
-     $remainingCertificates = 20 - $certificateCount;
-     $data=[
-        'remaining_days' => $remainingDays,
-        'remaining_certificates' => $remainingCertificates,
-     ];
-     return responseJson(true,'trial details data',$data);
-    
+    $subscription = $user->subscription('free');
+
+    if ($subscription) {
+        $trialEnd = $subscription->trial_ends_at;
+        $remainingDays = Carbon::now()->diffInDays($trialEnd->endOfDay(), false);
+        $remainingCertificates = $subscription->quantity - $user->certificate()->count();
+
+        $data = [
+            'remaining_days' => $remainingDays,
+            'remaining_certificates' => $remainingCertificates,
+        ];
+
+        return responseJson(true, 'Trial details data', $data);
+    }
+
+    return responseJson(false, 'User is not subscribed to a plan');
 }
 }

@@ -57,7 +57,7 @@
             <div style="margin: 10px 25px;  width: 100%;">
                 <div style="float: left;width:40%;">
                     <img src="{{ asset('certificate/image/niceic-logo.png') }}" width="160px" height="60px">
-                    @if ($data && $data->user->logo)
+                    @if ($data->user->logo)
                     <img src="{{ $data->user->logo->url }}" style="margin-left:35px" width="160px">
                     @endif
                 </div>
@@ -99,15 +99,15 @@
                               <div style="padding:0 10px;">
                                   <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
                                     Trading Title:
-                                    <span style="font-weight: bold;padding:3px 20px">{{ $data->user->trading_name ??'' }}</span>
+                                    <span style="font-weight: bold;padding:3px 20px">{{ $data->user->trading_name }}</span>
                                   </h6>
                                   <h6 style="margin:5px 0px;font-size: 12px;font-weight: 100;">
                                     Address:
-                                  <span style="font-weight: bold;padding:3px 20px">{{ $data->user->registered_address ??'' }}</span>
+                                  <span style="font-weight: bold;padding:3px 20px">{{ $data->user->registered_address }}</span>
                                   </h6>
                                   <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
-                                    Postcode:<span style="font-weight: bold;padding:3px 20px">{{ $data->user->postal_code ?? ''}}</span>
-                                    <span>Tel No:<span style="font-weight: bold;padding:3px 20px">{{ $data->user->phone ?? '' }}</span></span>
+                                    Postcode:<span style="font-weight: bold;padding:3px 20px">{{ $data->user->postal_code }}</span>
+                                    <span>Tel No:<span style="font-weight: bold;padding:3px 20px">{{ $data->user->phone }}</span></span>
                                   </h6>
                               </div>
                       </div>
@@ -119,15 +119,15 @@
                                 (CRN):
                               </h6>
                               <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
-                                Name:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->name ??'' }}</span>
+                                Name:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->name }}</span>
                               </h6>
                               <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
-                                Address:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->address ??'' }}</span>
+                                Address:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->address }}</span>
 
                               </h6>
                               <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
-                                Postcode:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->postal_code ??'' }}</span>
-                                <span>Tel No:.<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->contacts->first()->phone  }}</span>.</span>
+                                Postcode:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->postal_code }}</span>
+                                <span>Tel No:.<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->contacts->first()->phone }}</span>.</span>
                               </h6>
                         </div>
 

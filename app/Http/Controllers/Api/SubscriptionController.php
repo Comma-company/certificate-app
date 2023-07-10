@@ -37,23 +37,20 @@ class SubscriptionController extends Controller
         return $plans;
     }
 
-    public function showSubscription()
+    public function showPlans()
     {
-        $user =Auth::guard('sanctum')->user();
-        $plans = $this->retrievePlans();
+        $plans = Plan::with('features')->get();
         return response()->json([
             'plans'=>$plans,
         ]);
-          
     }
-    
-   
 
     public function createToken(Request $request)
     {
-        Stripe::setApiKey(config('services.stripe.Secret key'));
+        Stripe::setApiKey(config('services.stripe.Publishable_key'));
 
         try {
+            $user = Auth::guard('sanctum')->user();
             $paymentMethod = PaymentMethod::create([
                 'type' => 'card',
                 'card' => [
@@ -62,11 +59,22 @@ class SubscriptionController extends Controller
                     'exp_year' => $request->input('card_exp_year'),
                     'cvc' => $request->input('card_cvc'),
                 ],
-            ]);
+                'billing_details' => [
+                    'name' => $request->input('card_name'),
+                    'email' => $request->input('email'),
+                    'address' => [
+                        'country' => $request->input('country'),
+                    ],
+                ],
 
-            return response()->json([
-                'token' => $paymentMethod->id,
             ]);
+            //  $user->createOrGetStripeCustomer();
+            //  $user->addPaymentMethod($paymentMethod->id);
+
+        return [
+            'message' => 'Payment method created and saved successfully',
+            'token' => $paymentMethod->id,
+        ];
         } catch (\Exception $e) {
             return response()->json([
                 'error' => $e->getMessage(),
@@ -76,7 +84,6 @@ class SubscriptionController extends Controller
    
     public function createCustomer(Request $request)
     {
-       
     Stripe::setApiKey(config('services.stripe.Secret_key'));
     $user= Auth::guard('sanctum')->user();
     $stripeCustomer=$user->createAsStripeCustomer([]);
@@ -89,10 +96,9 @@ class SubscriptionController extends Controller
         
     }
     public function cancel(Request $request,$plan)
-{
-    $user = Auth::user();
+ {
+    $user = Auth::guard('sanctum')->user();
     $plan = Plan::findOrFail($plan);
-    
     if ($user->subscribed($plan->stripe_plan)) {
         $subscription = $user->subscription($plan->stripe_plan);
         $subscription->cancel();
@@ -150,12 +156,34 @@ public function resume(Request $request,$plan)
      ]);
     }
 }
-public function createSubscription(Request $request)
-{
+public function processSubscription(Request $request)
+    {
+       $user = Auth::guard('sanctum')->user();
+        $pay=$this->createToken($request);
+       $paymentMethod = ($pay['token']);
+        $user->createOrGetStripeCustomer();
+        $user->addPaymentMethod($paymentMethod);
+        $plan = Plan::find($request->plan);
+         $subscription= $user->newSubscription($plan->name,$plan->stripe_plan)
+            ->create($paymentMethod, [
+           'email' => $user->email,
+           'collection_method' => 'charge_automatically',
+           'items' => [
+               [
+                 'price' => $plan->stripe_plan,
+                   'quantity' => 1,
+               ],
+           ],
+           
+       ]);
+       return response()->json([
+        'message'=>'you are subscription successfuly',
+        'subscription'=>$subscription,
+        'next_route'=>route('plans'),
+       ]);
     
+        }
 
-   
-}
 public function cancelSub(Request $request, $subscriptionId)
     {
         Stripe::setApiKey(config('services.stripe.secret'));

@@ -16,7 +16,6 @@ publishable-key="pk_test_51NJ039IenO4vNmXtb7O7Ur5uQeSg7DaslzpZlcQw9RFURButUFWzHq
                 console.error(result.error);
                 return;
             }
-
             const stripeToken = result.token.id;
 
         
