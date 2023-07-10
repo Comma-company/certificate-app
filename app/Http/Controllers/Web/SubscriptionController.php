@@ -10,12 +10,13 @@ use App\Notifications\TrialRemainingDaysNotification;
 use App\Notifications\TrialEndNotification;
 use Stripe\Stripe;
 use Stripe\Customer;
-use Stripe\Subscription;
+use App\Models\Subscription;
 use App\Models\SubscriptionItem;
 use Stripe\PaymentMethod;
 use App\Models\Plan;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
 
 class SubscriptionController extends Controller
@@ -127,7 +128,39 @@ class SubscriptionController extends Controller
 
            
         }
-        
+        public function handle(Request $request){
+            $payload = @file_get_contents('php://input');
+            $event = null;
+
+            try {
+                $event = \Stripe\Event::constructFrom(
+                 json_decode($payload, true)
+                 );
+            } catch(\UnexpectedValueException $e) {
+           // Invalid payload
+             echo '⚠️  Webhook error while parsing basic request.';
+             http_response_code(400);
+             exit();
+            }
+            Log::debug('Webhook subscription',[$event->type]);
+            switch($event->type){
+                case 'subscription_schedule.updated':
+                    $subscriptionId = $event->data->object->subscription;
+                    $newTrialEndsAt = $event->data->object->trial_end;
+                  $this->updateSubscriptionTrialEndsAt($subscriptionId, $newTrialEndsAt);
+                    break;
+                    
+            }
+            return response('Webhook handled successfully', 200);
+
+        }
+        private function updateSubscriptionTrialEndsAt($subscriptionId, $newTrialEndsAt)
+         {
+    
+               $subscription = Subscription::find($subscriptionId);
+               $subscription->trial_ends_at = $newTrialEndsAt;
+               $subscription->save();
+          }
         
 
 }
