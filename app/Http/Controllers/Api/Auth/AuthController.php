@@ -46,7 +46,7 @@ class AuthController extends Controller
             'user' => new UserResource($user)
         ];
 
-        if (count($user->forms) == 0) {
+        if (count($user->categories) == 0) {
            $data['isProfileComplete'] = false;
         }else{
             $data['isProfileComplete'] = true;
