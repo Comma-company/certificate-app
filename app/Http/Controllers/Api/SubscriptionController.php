@@ -59,8 +59,6 @@ class SubscriptionController extends Controller
     public function createToken(Request $request)
     {
         Stripe::setApiKey(config('services.stripe.Publishable_key'));
-
-        try {
             $user = Auth::guard('sanctum')->user();
             $paymentMethod = PaymentMethod::create([
                 'type' => 'card',
@@ -83,14 +81,9 @@ class SubscriptionController extends Controller
             //  $user->addPaymentMethod($paymentMethod->id);
 
         return [
-            'message' => 'Payment method created and saved successfully',
             'token' => $paymentMethod->id,
         ];
-        } catch (\Exception $e) {
-            return response()->json([
-                'error' => $e->getMessage(),
-            ], 400);
-        }
+       
     }
    
     public function createCustomer(Request $request)
@@ -187,11 +180,7 @@ public function processSubscription(Request $request)
            ],
            
        ]);
-       return response()->json([
-        'message'=>'you are subscription successfuly',
-        'subscription'=>$subscription,
-        'next_route'=>route('plans'),
-       ]);
+       return responseJson(true,'subscription details',$subscription);
     
         }
 
