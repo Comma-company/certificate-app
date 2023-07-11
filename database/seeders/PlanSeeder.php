@@ -15,6 +15,7 @@ class PlanSeeder extends Seeder
     {
         $plans = [
             [
+                'id'=>3,
                 'name' => 'Electrical Certificates', 
                 'stripe_plan' => 'price_1NSEnIE2sCQWSLCAuYftfKel', 
                 'price' => 6.99, 
@@ -22,6 +23,7 @@ class PlanSeeder extends Seeder
                 
             ],
             [
+                'id'=>4,
                 'name' => 'Electrical Certificates', 
                 'stripe_plan' => 'price_1NSEnvE2sCQWSLCA4qKRGbcm', 
                 'price' => 69.99, 
@@ -29,6 +31,7 @@ class PlanSeeder extends Seeder
                 
             ],
             [
+                'id'=>5,
                 'name' => 'Gas', 
                 'stripe_plan' => 'price_1NSEobE2sCQWSLCAADyyEHpA', 
                 'price' => 6.99, 
@@ -36,6 +39,7 @@ class PlanSeeder extends Seeder
                 
             ],
             [
+                'id'=>6,
                 'name' => 'Gas', 
                 'stripe_plan' => 'price_1NSEp5E2sCQWSLCAWst1M1Hp', 
                 'price' =>69.99,
@@ -43,6 +47,7 @@ class PlanSeeder extends Seeder
                 
             ],
             [
+                'id'=>7,
                 'name' => 'Gas & Electric', 
                 'stripe_plan' => 'price_1NSEpyE2sCQWSLCAsIUdLcKg', 
                 'price' =>10.49, 
@@ -50,6 +55,7 @@ class PlanSeeder extends Seeder
                 
             ],
             [
+                'id'=>8,
                 'name' => 'Gas & Electric', 
                 'stripe_plan' => 'price_1NSEqcE2sCQWSLCA1WvNFme4', 
                 'price' =>125.88,
@@ -57,6 +63,7 @@ class PlanSeeder extends Seeder
                 
             ],
             [
+                'id'=>9,
                 'name' => 'free', 
                 'stripe_plan' => 'price_1NSEkhE2sCQWSLCAGK6joBPt', 
                 'price' =>0.00,

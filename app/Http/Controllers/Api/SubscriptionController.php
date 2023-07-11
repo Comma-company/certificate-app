@@ -39,11 +39,22 @@ class SubscriptionController extends Controller
 
     public function showPlans()
     {
-        $plans = Plan::with('features')->get();
-        return response()->json([
-            'plans'=>$plans,
-        ]);
+        $data = Plan::with('features')->get();
+        return responseJson(true, 'Planss details data', $data);
     }
+    public function showIntervalPlans(){
+     $monthlyPlans = Plan::where('interval', 'monthly')->where('name', '!=', 'free')->with('features')->get();
+    $yearlyPlans = Plan::where('interval', 'yearly')->with('features')->get();
+
+    $data = [
+        'monthly_plans' => $monthlyPlans,
+        'yearly_plans' => $yearlyPlans,
+    ];
+
+    return responseJson(true, 'Plans details data', $data);
+    }
+
+
 
     public function createToken(Request $request)
     {

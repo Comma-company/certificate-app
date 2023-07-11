@@ -144,7 +144,7 @@ class SubscriptionController extends Controller
             }
             Log::debug('Webhook subscription',[$event->type]);
             switch($event->type){
-                case 'subscription_schedule.updated':
+                case 'customer.subscription.updated':
                     $subscriptionId = $event->data->object->subscription;
                     $newTrialEndsAt = $event->data->object->trial_end;
                   $this->updateSubscriptionTrialEndsAt($subscriptionId, $newTrialEndsAt);

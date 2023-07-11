@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\FeaturePlan;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -24,6 +25,8 @@ class DatabaseSeeder extends Seeder
             PlanSeeder::class,
             CategorySeeder::class,
             ElectricBoardSeeder::class,
+            FeatureSeeder::class,
+            FeaturePlanSeeder::class,
            ]);
     }
 }
