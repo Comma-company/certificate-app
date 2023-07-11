@@ -46,12 +46,22 @@ class AuthController extends Controller
             'user' => new UserResource($user)
         ];
 
-        if (count($user->forms) == 0) {
+        if (count($user->categories) == 0) {
            $data['isProfileComplete'] = false;
         }else{
             $data['isProfileComplete'] = true;
         }
 
+        if (!$user->subscribed('free')) {
+            $planId='price_1NSEkhE2sCQWSLCAGK6joBPt';
+            $trialDays = 7;
+            $limitedCertificateCount = 20;
+            $user->createOrGetStripeCustomer(); // Create Stripe customer
+                $subscription = $user->newSubscription('free', $planId)->trialDays($trialDays)
+                ->quantity($limitedCertificateCount)
+                ->create();
+        }
+        
         return responseJson(true, 'login Success', $data, 200);
 
     }

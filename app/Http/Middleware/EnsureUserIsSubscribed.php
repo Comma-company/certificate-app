@@ -18,10 +18,19 @@ class EnsureUserIsSubscribed
     {
         $max_certificate=20;
             $user = Auth::guard('sanctum')->user();
+            if (!$user->subscribed('free')) {
+                $planId='price_1NSEkhE2sCQWSLCAGK6joBPt';
+                $trialDays = 7;
+                $limitedCertificateCount = 20;
+                $user->createOrGetStripeCustomer(); // Create Stripe customer
+                    $subscription = $user->newSubscription('free', $planId)->trialDays($trialDays)
+                    ->quantity($limitedCertificateCount)
+                    ->create();
+            }
+            
             if($user && (!$user->subscription('free')->onTrial()||$user->certificate()->count() > $max_certificate)){
                 if(!$user->subscribed()){
-               
-                return redirect()->route('plans')->with('error', 'Please subscribe to access this feature.');
+                    return responseJson( false,'Please subscribe to access this feature.',[],422);
                 }
                 else{
                     return $next($request);
