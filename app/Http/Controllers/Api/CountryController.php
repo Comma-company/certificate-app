@@ -11,7 +11,7 @@ class CountryController extends Controller
 {
     public function index(Request $request){
 
-        $countries = Country::select('id','name')
+        $countries = Country::select('id','name','iso2')
         ->when($request->search, function($query,$value){
             $query->where('countries.name','LIKE',"%$value%");
         })
