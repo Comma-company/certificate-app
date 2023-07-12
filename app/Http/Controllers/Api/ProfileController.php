@@ -56,12 +56,19 @@ class ProfileController extends Controller
             'country_id',
             'vat_number',
             'has_vat',
+            'stripe_id',
         )
             ->where('id', $user_id)
             ->with('country')
             ->with('logo')
             ->first();
-        return responseJson(true, 'user details', $user);
+           $subscriptions=$user->subscriptions;
+           $data=[
+            'user'=>$user,
+            'subscribtions'=>$subscriptions,
+           ];
+
+        return responseJson(true, 'user details', $data);
     }
 
     /**
