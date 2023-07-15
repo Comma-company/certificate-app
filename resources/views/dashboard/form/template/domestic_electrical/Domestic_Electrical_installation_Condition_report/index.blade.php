@@ -325,7 +325,7 @@
           <td style="text-align: left">
             <p>
               Date:
-              <span style="font-weight: bold">{{Carbon\Carbon::parse( getvalue('inspected_date',$formData['eicr_declaration']) )->format('d-m-Y')   }}</span>
+              <span style="font-weight: bold">{{  getvalue('inspected_date',$formData['eicr_declaration'])  }}</span>
             </p>
           </td>
         </tr>
@@ -354,7 +354,7 @@
           <td style="text-align: left">
             <p>
               Date:
-              <span style="font-weight: bold">{{ Carbon\Carbon::parse(getvalue('report_date',$formData['eicr_declaration']))->format('d-m-Y') }}</span>
+              <span style="font-weight: bold">{{ getvalue('report_date',$formData['eicr_declaration']) }}</span>
             </p>
           </td>
         </tr>
