@@ -14,6 +14,7 @@ class CountryController extends Controller
         $countries = Country::select('id','name','iso2')
         ->when($request->search, function($query,$value){
             $query->where('countries.name','LIKE',"%$value%");
+            
         })
         ->get();
         $data = CountryResource::collection($countries);

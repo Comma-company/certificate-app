@@ -6,7 +6,7 @@ use App\Jobs\Jobs\NotifyTrialEndsTomorrow as JobsNotifyTrialEndsTomorrow;
 use App\Jobs\NotifyTrialEndsTomorrow;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-
+use Illuminate\Support\Facades\Artisan;
 
 class Kernel extends ConsoleKernel
 {
@@ -16,7 +16,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\DailyUpdate::class
+        \App\Console\Commands\DailyUpdate::class,
+        \App\Console\Commands\TransitionSubscription::class,
     ];
 
     /**
@@ -29,6 +30,12 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('day:update')
                 ->hourly();
+                $schedule->call(function () {
+                    $userId = auth()->id();
+                    if ($userId) {
+                        Artisan::call('subscriptions:transition', ['user_id' => $userId]);
+                    }
+                })->daily();
     }
 
     /**

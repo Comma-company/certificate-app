@@ -10,6 +10,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Stripe\Subscription;
+use Laravel\Cashier\Cashier;
+use Stripe\Stripe;
 
 class ProfileController extends Controller
 {
@@ -20,13 +23,25 @@ class ProfileController extends Controller
      */
     public function index()
     {
+        Stripe::setApiKey(config('services.stripe.Secret_key'));
         $user_id = Auth::guard('sanctum')->user()->id;
-        $user = User::select('id', 'first_name', 'last_name', 'email', 'phone', 'image', 'registered_address')
+         $user = User::select('id', 'first_name', 'last_name', 'email', 'phone', 'image', 'registered_address')
             ->where('id', $user_id)
-            ->with('userEmail')
+            ->with('userEmail','subscriptions')
             ->withCount('certificate')
             ->first();
-        return responseJson(true, 'user details', $user);
+             $subscriptionStatus = $user->status_subscription;
+             $data=[
+                'user'=>$user,
+                '$subscriptionStatus'=>$subscriptionStatus,
+
+             ];
+                
+                return responseJson(true, 'user details', $data);
+
+            
+            
+        
     }
 
     /**
@@ -59,14 +74,17 @@ class ProfileController extends Controller
             'stripe_id',
         )
             ->where('id', $user_id)
-            ->with('country')
+            ->with('country','subscriptions','categories')
             ->with('logo')
             ->first();
-           $subscriptions=$user->subscriptions;
-           $data=[
-            'user'=>$user,
-            'subscribtions'=>$subscriptions,
-           ];
+
+
+            $subscriptionStatus = $user->status_subscription;
+             $data=[
+                'user'=>$user,
+                '$subscriptionStatus'=>$subscriptionStatus,
+
+             ];
 
         return responseJson(true, 'user details', $data);
     }

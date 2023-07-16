@@ -17,6 +17,9 @@ use App\Models\Plan;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use App\Notifications\ChargeSucceededNotification;
+use Illuminate\Support\Facades\Artisan;
 
 
 class SubscriptionController extends Controller
@@ -143,13 +146,25 @@ class SubscriptionController extends Controller
              exit();
             }
             Log::debug('Webhook subscription',[$event->type]);
+            $user=Auth::guard('sanctum')->user();
             switch($event->type){
                 case 'customer.subscription.updated':
                     $subscriptionId = $event->data->object->subscription;
                     $newTrialEndsAt = $event->data->object->trial_end;
                   $this->updateSubscriptionTrialEndsAt($subscriptionId, $newTrialEndsAt);
                     break;
-                    
+                case 'charge.succeeded':
+                    $charge=$event->data->object;
+                    $user = User::find($charge->user_id);
+                     $chargeAmount = $charge->amount;
+                     $user->notify(new ChargeSucceededNotification($chargeAmount));     
+                    break;
+                case 'payment_intent.succeeded':
+                $paymentIntent = $event->data->object;
+            if ($paymentIntent->metadata->subscription_type === 'paid') {
+                $user=Auth::guard('sanctum')->user();
+                $this->scheduleTransitionToPaidSubscription($user);
+            }
             }
             return response('Webhook handled successfully', 200);
 
@@ -161,6 +176,18 @@ class SubscriptionController extends Controller
                $subscription->trial_ends_at = $newTrialEndsAt;
                $subscription->save();
           }
-        
 
+           
+          private function scheduleTransitionToPaidSubscription($user)
+        {
+            if ($user){
+                     if ($user->hasActiveFreeSubscription()) {
+                         $remainingDays = $user->getRemainingFreeTrialDays();
+                         $transitionDate = now()->addDays($remainingDays);
+                         Artisan::call('subscriptions:transition', [
+                              'user_id' => $user->id,
+                              ])->after($transitionDate);
+                        }
+                    }
+         }   
 }

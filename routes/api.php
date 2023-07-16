@@ -50,6 +50,7 @@ Route::get('/status', [StatusController::class, 'index']);
 
 Route::middleware(['auth:sanctum','verified'])->group(function () {
     Route::post('complete-register', [RegisterController::class, 'completeRegister']);
+    Route::post('complete-infos',[RegisterController::class,'completeInfoRegister']);
     Route::get('countries', [CountryController::class, 'index'])->middleware('auth:sanctum');
     Route::get('getTrialDetails',[HomeController::class,'getTrialDetails'])->middleware('auth:sanctum');
 

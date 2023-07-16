@@ -10,6 +10,9 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Notifications\ResetPasswordNotification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Stripe\Stripe;
+use Stripe\Subscription;
+use Illuminate\Support\Facades\Artisan;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -178,6 +181,47 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->morphOne(File::class, 'file', 'model_type', 'model_id', 'id')
         ->where('name_file', '=', 'user_logo');;
     }
+    public function getStatusSubscriptionAttribute()
+    {
+        Stripe::setApiKey(config('services.stripe.Secret_key'));
+        $subscriptionStatuses = [];
+
+        foreach ($this->subscriptions as $subscription) {
+            $stripeSubscription = Subscription::retrieve($subscription->stripe_id);
+            $subscriptionStatuses[] = $stripeSubscription->status;
+        }
+
+        return $subscriptionStatuses;
+    }
+    public function scheduleTransitionToPaidSubscription($remainingDays)
+    {
+        $delayInSeconds = $remainingDays * 24 * 60 * 60;
+        Artisan::call('subscriptions:transition', [
+            'user' => $this->id,
+            '--delay' => $delayInSeconds,
+        ]);
+    }
+    //أتأكد من الحالة
+    public function hasActiveFreeSubscription()
+    {
+       
+        return $this->subscriptions()->where('status', 'active')->where('type', 'free')->exists();
+    }
+    public function getRemainingFreeTrialDays()
+  {
+    $subscription = $this->subscriptions()->where('status', 'active')->where('type', 'free')->first();
+
+    if ($subscription) {
+        
+        $trialEndDate = $subscription->trial_ends_at;
+        $currentDate = now();
+        $remainingDays = $trialEndDate->diffInDays($currentDate);
+
+        return max(0, $remainingDays);
+    }
+
+    return 0;
+}
     /**
      * Specifies the user's FCM tokens
      *
