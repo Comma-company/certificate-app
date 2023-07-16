@@ -33,7 +33,7 @@ class ProfileController extends Controller
              $subscriptionStatus = $user->status_subscription;
              $data=[
                 'user'=>$user,
-                '$subscriptionStatus'=>$subscriptionStatus,
+                'subscription_status'=>$subscriptionStatus,
 
              ];
                 
@@ -78,11 +78,10 @@ class ProfileController extends Controller
             ->with('logo')
             ->first();
 
-
             $subscriptionStatus = $user->status_subscription;
              $data=[
                 'user'=>$user,
-                '$subscriptionStatus'=>$subscriptionStatus,
+                'subscription_status'=>$subscriptionStatus,
 
              ];
 
@@ -192,10 +191,8 @@ class ProfileController extends Controller
             'current_password' => ['required', new MatchPassword('sanctum')],
             'password' => 'required|confirmed'
         ]);
-
         $user_id = Auth::guard('sanctum')->user()->id;
         $user = User::where('id', $user_id)->first();
-
         $user->update([
             'password' => Hash::make($request->password),
         ]);
@@ -207,7 +204,6 @@ class ProfileController extends Controller
     {
         $user_id = Auth::guard('sanctum')->user()->id;
         $user = User::where('id', $user_id)->first();
-
         $prev_logo = false;
         if($user->logo){
             $prev_logo = $user->logo->file_url;
