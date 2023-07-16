@@ -52,15 +52,15 @@ class AuthController extends Controller
             $data['isProfileComplete'] = true;
         }
 
-        if (!$user->subscribed('free')) {
-            $planId='price_1NSEkhE2sCQWSLCAGK6joBPt';
-            $trialDays = 7;
-            $limitedCertificateCount = 20;
-            $user->createOrGetStripeCustomer(); // Create Stripe customer
-                $subscription = $user->newSubscription('free', $planId)->trialDays($trialDays)
-                ->quantity($limitedCertificateCount)
-                ->create();
-        }
+        // if (!$user->subscribed('free')) {
+        //     $planId='price_1NSEkhE2sCQWSLCAGK6joBPt';
+        //     $trialDays = 7;
+        //     $limitedCertificateCount = 20;
+        //     $user->createOrGetStripeCustomer(); // Create Stripe customer
+        //         $subscription = $user->newSubscription('free', $planId)->trialDays($trialDays)
+        //         ->quantity($limitedCertificateCount)
+        //         ->create();
+        // }
         
         return responseJson(true, 'login Success', $data, 200);
 
