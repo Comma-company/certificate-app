@@ -104,26 +104,30 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
     Route::get('/show-interval-plans',[SubscriptionController::class,'showIntervalPlans']);
     Route::post('/subscriptions', [SubscriptionController::class,'processSubscription']);
     Route::post('/createToken',[SubscriptionController::class,'createToken']);
-    Route::post('/cancel-subscription/{subscriptionId}',[SubscriptionController::class,'cancelSub']);
+    Route::post('/cancel-subscription/{subscriptionId}',[SubscriptionController::class,'cancelSubscription']);
     Route::post('/resume-subscription/{subscriptionId}',[SubscriptionController::class,'resumeSub']);
-    Route::post('/cancel/{plan}',[SubscriptionController::class, 'cancel'] );
-    Route::post('/resume/{plan}',[SubscriptionController::class, 'resume']);
-    Route::post('/change-subscription',[SubscriptionController::class, 'changeSubscription']);
+    Route::post('/cancel/{plan}',[SubscriptionController::class, 'cancel'])->middleware('auth:sanctum');
+    Route::get('/show-user-subscription',[SubscriptionController::class,'showUserSubscription'])->middleware('auth:sanctum');
+    //Route::post('/resume/{plan}',[SubscriptionController::class, 'resume']);
+   // Route::post('/change-subscription',[SubscriptionController::class, 'changeSubscription']);
 
 
     Route::middleware('user.subscribe')->group(function () {
     Route::post('/subscription/change',[SubscriptionController::class, 'changeSubscription']);
     
     });
-
-    //
-    Route::prefix('certificates')->middleware('user.subscribe')->group(function () {
-        Route::get('/', [CertificateController::class, 'index'])->middleware('auth:sanctum');
+    Route::prefix('certificates')->group(function () {
+    Route::get('/', [CertificateController::class, 'index'])->middleware('auth:sanctum');
         Route::get('complete', [CertificateController::class, 'completeCertificate'])->middleware('auth:sanctum');
         Route::get('uncompleted', [CertificateController::class, 'uncompletedCertificate'])->middleware('auth:sanctum');
         Route::get('count', [CertificateController::class, 'certificateCount'])->middleware('auth:sanctum');
         Route::get('{id}/view', [CertificateController::class, 'view'])->middleware('auth:sanctum');
         Route::get('{id}/pdf', [CertificateController::class, 'getPdfForm'])->middleware('auth:sanctum');
+
+
+});
+    Route::prefix('certificates')->middleware('user.subscribe')->group(function () {
+        
         Route::post('create', [CertificateController::class, 'store'])->middleware('auth:sanctum');
         Route::post('{id}/notes/create', [CertificateController::class, 'storeNote'])->middleware('auth:sanctum');
         Route::post('{note_id}/notes/update', [CertificateController::class, 'updateNote'])->middleware('auth:sanctum');
