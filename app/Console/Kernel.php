@@ -7,7 +7,8 @@ use App\Jobs\NotifyTrialEndsTomorrow;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Illuminate\Support\Facades\Artisan;
-
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 class Kernel extends ConsoleKernel
 {
     /**
@@ -30,12 +31,11 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('day:update')
                 ->hourly();
-                $schedule->call(function () {
-                    $userId = auth()->id();
-                    if ($userId) {
-                        Artisan::call('subscriptions:transition', ['user_id' => $userId]);
-                    }
-                })->daily();
+                $users=User::all();
+                foreach ($users as $user) {
+                    $schedule->command(TransitionSubscriptionCommand::class, ['user_id' => $user->id])
+                             ->daily(); 
+                }
     }
 
     /**

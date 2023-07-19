@@ -56,7 +56,8 @@ class RegisterController extends Controller
                 'phone' => $data['phone'],
                 'metadata' => ['user_id' => $user->id,
                 'max_certificate'=>20,
-                //'trail_ends_at'=>Carbon::now()->addDay(7),
+               'business_type_id'=>$data['business_type_id'],
+                
         ],
               ]);
             event(new Registered($user));
@@ -173,7 +174,7 @@ class RegisterController extends Controller
                 $subscription = $user->newSubscription('free', $planId)->trialDays($trialDays)
                 ->quantity($limitedCertificateCount)
                     ->create();
-                    $subscriptionItems = $subscription->items ?? [];
+                 $subscriptionItems = $subscription->items ?? [];
                     foreach ($subscriptionItems as $item) {
                         if ($item->plan && $item->plan->type === 'Gas') {
                             $item->update([

@@ -45,15 +45,15 @@ class TransitionSubscription extends Command
     public function handle()
     {
         $user=Auth::guard('sanctum')->user();
-        if($user){
-            
-        $paidSubscription = $user->subscriptions()->where('type', 'paid')->first();
-
-        if ($paidSubscription) {
-            $paidSubscription->activate();
-           Log::info('User transitioned to paid subscription: ' . $user->id);
+        if ($user->hasActiveFreeSubscription()) {
+            $user->subscription('free')->cancel();
+            $user->subscription('paid')->resume();
+            $this->info('Transition to paid subscription completed successfully.');
+        } else {
+            $this->error('User does not have an active free subscription.');
         }
     }
+      
 }
-}
+
 

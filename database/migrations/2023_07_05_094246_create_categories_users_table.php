@@ -18,7 +18,7 @@ class CreateCategoriesUsersTable extends Migration
             $table->integer('user_id');
             $table->integer('category_id');
             $table->string('license_number')->nullable();
-            $table->integer('gas_register_number')->nullable();
+            $table->string('gas_register_number')->nullable();
             $table->json('electric_board_id')->nullable();
             $table->timestamps();
         });

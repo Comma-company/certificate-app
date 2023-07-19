@@ -43,10 +43,18 @@ class HomeController extends Controller
             'remaining_days' => $remainingDays,
             'remaining_certificates' => $remainingCertificates,
         ];
-
         return responseJson(true, 'Trial details data', $data);
     }
+    else{
+    $remainingDays=0;
+    $remainingCertificates=0;
+    $extra=[
+        'remaining_days' => $remainingDays,
+            'remaining_certificates' => $remainingCertificates,
 
-    return responseJson(false, 'User is not subscribed to a plan');
+    ];
+
+    return responseJson(true, 'User is not subscribed to a plan',$extra);
+}
 }
 }

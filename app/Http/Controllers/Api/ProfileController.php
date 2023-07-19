@@ -82,7 +82,6 @@ class ProfileController extends Controller
              $data=[
                 'user'=>$user,
                 'subscription_status'=>$subscriptionStatus,
-
              ];
 
         return responseJson(true, 'user details', $data);

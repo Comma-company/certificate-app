@@ -11,6 +11,7 @@ use App\Models\Plan;
 use Stripe\Stripe;
 use Stripe\Customer;
 use Stripe\Subscription;
+use Stripe\Plan as StripePlan;
 use App\Models\SubscriptionItem;
 use Stripe\PaymentMethod;
 use App\Models\Subscription as LocalSubscription;
@@ -22,8 +23,8 @@ class SubscriptionController extends Controller
         $key = \config('services.stripe.Secret_key');
         $stripe = new StripeClient($key);
         $plansraw = $stripe->plans->all([
-            "active" => true,
-
+            'limit'=>15,
+            'active'=>true,
         ]);
         $plans = $plansraw->data;
 
@@ -33,14 +34,66 @@ class SubscriptionController extends Controller
                 []
             );
             $plan->product = $prod;
-        }
+            $features = isset($prod->metadata['features']) ? explode(',', $prod->metadata['features']) : [];
+            $plan->product->features = $features;
+            
+            
+       }
+       
         return $plans;
     }
 
     public function showPlans()
     {
-        $data = Plan::with('features')->get();
+        $data = $this->retrievePlans();
         return responseJson(true, 'Planss details data', $data);
+    }
+    public function showUserSubscription(Request $request){
+        $user = Auth::guard('sanctum')->user();
+        Stripe::setApiKey(config('services.stripe.Secret_key'));
+        try {
+            $subscriptions = Subscription::all(['customer' => $user->stripe_id]);
+    
+            if ($subscriptions->count() > 0) {
+                $subscription = $subscriptions->data[0];
+                $stripeSubscription = Subscription::retrieve($subscription->id);
+                $plan = StripePlan::retrieve($stripeSubscription->plan->id);
+                $product = \Stripe\Product::retrieve($plan->product);
+                $planPrice = $plan->amount / 100;
+                $planFeatures = !empty($plan->metadata['features']) ? explode(',', $plan->metadata['features']) : [];
+                $productFeatures = !empty($product->metadata['features']) ? explode(',', $product->metadata['features']) : [];
+                $productPrice = $product->metadata['price'] ?? 0;
+                $subscriptionDetails = [
+                    'id' => $stripeSubscription->id,
+                    'status' => $stripeSubscription->status,
+                    'current_period_start' => $stripeSubscription->current_period_start,
+                    'current_period_end' => $stripeSubscription->current_period_end,
+                    'plan' => [
+                        'id' => $plan->id,
+                        'name' => $plan->name,
+                        'price' => $planPrice,
+                        'currency' => $plan->currency,
+                        'features' => $planFeatures,
+                    ],
+                    'product' => [
+                        'id' => $product->id,
+                        'name' => $product->name,
+                        'description' => $product->description,
+                        'price' => $productPrice,
+                        'features' => $productFeatures,   
+
+                    ],
+                ];
+    
+                return responseJson(true, 'Subscription details retrieved successfully.', $subscriptionDetails);
+            } else {
+                return responseJson(false, 'You are not subscribed to any plan.');
+            }
+        } catch (\Exception $e) {
+            return responseJson(false, 'Failed to retrieve subscription details: ' . $e->getMessage());
+        }
+    
+
     }
     public function showIntervalPlans(){
      $monthlyPlans = Plan::where('interval', 'monthly')->where('name', '!=', 'free')->with('features')->get();
@@ -99,46 +152,78 @@ class SubscriptionController extends Controller
                           ]);
         
     }
-    public function cancel(Request $request,$plan)
+    public function cancel(Request $request,$subscriptionId)
  {
-    $user = Auth::guard('sanctum')->user();
-    $plan = Plan::findOrFail($plan);
-    if ($user->subscribed($plan->stripe_plan)) {
-        $subscription = $user->subscription($plan->stripe_plan);
-        $subscription->cancel();
-        return response()->json([
-            'status'=>'success',
-            'message' => 'Subscription canceled successfully.',
-        'next_toute'=>route('plans'),
-     ]);
-    } else {
-        return response()->json([
-            'status'=>'fail',
-            'message' => 'You are not subscribed to this plan.',
-        'next_toute'=>route('plans'),
-     ]);
-       
+      $user = Auth::guard('sanctum')->user();
+    Stripe::setApiKey(config('services.stripe.Secret_key'));
+     
+    try {
+       $subscription = LocalSubscription::where('user_id', $user->id)->where('stripe_id', $subscriptionId)->first();
+        if ($subscription) {
+          $stripeSubscription = Subscription::retrieve($subscription->stripe_id);
+            if ($stripeSubscription) {
+                $stripeSubscription->cancel();
+                return responseJson(true, 'Subscription canceled successfully.');
+            } else {
+                return responseJson(false, 'Subscription not found.');
+            }
+        } else {
+            return responseJson(false, 'You are not subscribed to this plan.');
+        }
+    } catch (\Exception $e) {
+        return responseJson(false, 'Failed to cancel subscription: ' . $e->getMessage());
     }
 }
-public function changeSubscription(Request $request)
+public function changeSubscriptionPlan(Request $request, $subscriptionId, $newPlanId)
 {
-    $user = Auth::user();
-    $newPlan = Plan::findOrFail($request->plan);
-    if ($user->subscribed($newPlan->stripe_plan)) {
-        return response()->json([
-            'status'=>'fail',
-            'message' => 'You are already subscribed to this plan.',
-        'next_toute'=>route('plans'),
-     ]);
+    $user = Auth::guard('sanctum')->user();
+    Stripe::setApiKey(config('services.stripe.Secret_key'));
+    try {
+         $subscription = LocalSubscription::where('user_id', $user->id)->where('stripe_id', $subscriptionId)->first();
+         
+        if ($subscription) {
+            $stripeSubscription =Subscription::retrieve($subscription->stripe_id);
+
+            if ($stripeSubscription) {
+                $newPlan = StripePlan::retrieve($newPlanId);
+                $prorationDate = time(); 
+                $prorationItems = [
+                    [
+                        'id' => $stripeSubscription->items->data[0]->id,
+                        'price' => $newPlan->id,
+                    ],
+                ];
+                
+                $invoice = \Stripe\Invoice::upcoming([
+                    'customer' => $user->stripe_id,
+                    'subscription' => $subscription->stripe_id,
+                    'subscription_items' => $prorationItems,
+                    'subscription_proration_date' => $prorationDate,
+                ]);
+                $stripeSubscription->items->data[0]->plan = $newPlanId;
+              $stripeSubscription->save();
+               
+                $paymentIntent = \Stripe\PaymentIntent::create([
+                    'customer' => $user->stripe_id,
+                    'amount' => $invoice->amount_due,
+                    'currency' => $invoice->currency,
+                ]);
+              $subscription->stripe_price = $newPlanId;
+                $subscription->save();
+
+                return responseJson(true, 'Subscription plan changed successfully.');
+            } else {
+                return responseJson(false, 'Subscription not found.');
+            }
+        } else {
+            return responseJson(false, 'You are not subscribed to this plan.');
+        }
+    } catch (\Exception $e) {
+        return responseJson(false, 'Failed to change subscription plan: ' . $e->getMessage());
     }
-    $user->subscription($user->subscription()->name)
-        ->swap($newPlan->stripe_plan);
-        return response()->json([
-            'status'=>'success',
-            'message' => 'Subscription changed successfully.',
-        'next_toute'=>route('plans'),
-     ]);
 }
+
+
 public function resume(Request $request,$plan)
 {
     $user = Auth::user();
@@ -183,24 +268,7 @@ public function processSubscription(Request $request)
        return responseJson(true,'subscription details',$subscription);
     
         }
-
-public function cancelSub(Request $request, $subscriptionId)
-    {
-        Stripe::setApiKey(config('services.stripe.secret'));
-        $subscription = Subscription::retrieve($subscriptionId);
-
-        if ($subscription->cancel_at_period_end) {
-            return response()->json([
-                'message' => 'Subscription is already scheduled for cancellation.',
-            ], 400);
-        }
-
-        $subscription->cancel(['cancel_at_period_end' => true]);
-
-        return response()->json([
-            'message' => 'Subscription has been canceled and will end at the next billing cycle.',
-        ]);
-    }
+    
     public function resumeSub(Request $request, $subscriptionId)
     {
         Stripe::setApiKey(config('services.stripe.secret'));

@@ -106,8 +106,9 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
     Route::post('/createToken',[SubscriptionController::class,'createToken']);
     Route::post('/cancel-subscription/{subscriptionId}',[SubscriptionController::class,'cancelSubscription']);
     Route::post('/resume-subscription/{subscriptionId}',[SubscriptionController::class,'resumeSub']);
-    Route::post('/cancel/{plan}',[SubscriptionController::class, 'cancel'])->middleware('auth:sanctum');
+    Route::post('/cancel/{subscriptionId}',[SubscriptionController::class, 'cancel'])->middleware('auth:sanctum');
     Route::get('/show-user-subscription',[SubscriptionController::class,'showUserSubscription'])->middleware('auth:sanctum');
+    Route::post('/subscriptions/{subscriptionId}/change-plan/{newPlanId}', [SubscriptionController::class, 'changeSubscriptionPlan'])->middleware('auth:sanctum');
     //Route::post('/resume/{plan}',[SubscriptionController::class, 'resume']);
    // Route::post('/change-subscription',[SubscriptionController::class, 'changeSubscription']);
 

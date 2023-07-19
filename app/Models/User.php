@@ -78,6 +78,8 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(BusinessType::class, 'user_business_type', 'user_id', 'business_type_id');
     }
+   
+    
 
 
     public function country()
@@ -127,6 +129,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function signature()
     {
         return $this->hasOne(Signature::class);
+    }
+    public function subscriptions()
+    {
+        return $this->hasMany(Subscription::class);
     }
 
 
