@@ -130,10 +130,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasOne(Signature::class);
     }
-    public function subscriptions()
-    {
-        return $this->hasMany(Subscription::class);
-    }
+    // public function subscriptions()
+    // {
+    //     return $this->hasMany(Subscription::class);
+    // }
 
 
     /*   public function deviceTokens()
