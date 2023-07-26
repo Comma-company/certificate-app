@@ -34,6 +34,7 @@ class RegisterController extends Controller
         }
 
         $data = $request->all();
+        $businessTypeIds = implode(',', $data['business_type_id']);
         DB::beginTransaction();
         try {
 
@@ -56,7 +57,7 @@ class RegisterController extends Controller
                 'phone' => $data['phone'],
                 'metadata' => ['user_id' => $user->id,
                 'max_certificate'=>20,
-               'business_type_id'=>$data['business_type_id'],
+               'business_type_id'=>$businessTypeIds,
                 
         ],
               ]);
@@ -238,6 +239,7 @@ class RegisterController extends Controller
                 });
             }
             $user->save();
+            if (!$user->subscribed('free')) {
             
             $subscription = $user->newSubscription('free', $planId)->trialDays($trialDays)
                 ->quantity($limitedCertificateCount)
@@ -245,6 +247,7 @@ class RegisterController extends Controller
             $trialEndsAt = $subscription->trial_ends_at;
             $remainingDays = Carbon::now()->diffInDays($trialEndsAt->endOfDay(), false);
             Notification::send($user, new TrialRemainingDaysNotification($remainingDays));
+            }
             return responseJson(true, 'success created user', $user->load('categories'));
          
     }
