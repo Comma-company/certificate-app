@@ -186,7 +186,7 @@ class SubscriptionController extends Controller
             $user=Auth::guard('sanctum')->user();
             switch($event->type){
                 case 'customer.subscription.updated':
-                    $subscriptionId = $event->data->object->subscription;
+                    $subscriptionId = $event->data->object->id;
                     $newTrialEndsAt = $event->data->object->trial_end;
                     $data= $this->updateSubscriptionTrialEndsAt($subscriptionId, $newTrialEndsAt);
                     break;
