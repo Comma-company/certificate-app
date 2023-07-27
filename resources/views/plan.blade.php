@@ -1,45 +1,53 @@
 @extends('layouts.app')
 @section('content')
-<script async src="https://js.stripe.com/v3/pricing-table.js"></script>
-<stripe-pricing-table pricing-table-id="prctbl_1NLm1wIenO4vNmXt6VZuBmWY"
-publishable-key="pk_test_51NJ039IenO4vNmXtb7O7Ur5uQeSg7DaslzpZlcQw9RFURButUFWzHqg7oNDeWYxg2awwvSjQsrUD6NBgE57WK99900pxVNLRmm">
-</stripe-pricing-table>
-<script src="https://js.stripe.com/v3/"></script>
-<script>
-    const subscribeButton = document.getElementById('subscribe-button');
-    subscribeButton.addEventListener('click', createSubscription);
-    function createSubscription() {
-        const planId = 'prctbl_1NLm1wIenO4vNmXt6VZuBmWY';
-        const stripe = Stripe('{{ config('services.stripe.Publishable_key') }}');
-        stripe.createToken().then(result => {
-            if (result.error) {
-                console.error(result.error);
-                return;
-            }
-            const stripeToken = result.token.id;
+{{-- <form action="/createSession" method="POST">
+    @csrf
+    <button type="submit">Checkout</button>
+  </form> --}}
 
-        
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST', '/api/subscriptions');
-            xhr.setRequestHeader('Content-Type', 'application/json');
-            xhr.setRequestHeader('X-CSRF-TOKEN', '{{ csrf_token() }}'); 
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 200) {
-                       
-                        const responseData = JSON.parse(xhr.responseText);
-                        console.log(responseData);
-                    } else {
-                        
-                        console.error('Subscription creation failed');
-                    }
-                }
-            };
-            xhr.send(JSON.stringify({
-                plan: planId,
-                stripe_id: stripeToken,
-            }));
-        });
-    }
-</script>
+
+<script async src="https://js.stripe.com/v3/pricing-table.js"></script>
+<stripe-pricing-table pricing-table-id="prctbl_1NSFfqE2sCQWSLCAAL7zhs2x"
+publishable-key="pk_test_51L2CilE2sCQWSLCAs2PLkSBFVUdLjzlW45ex0E2uBcjYBWDR2Xr0KZRKZ0h1oD3wkepHcW4ahC4FVl6dHQ0WeuyK00OyrEKJox"
+client-reference-id="{{ $CLIENT_REFERENCE_ID }}">
+</stripe-pricing-table>
+<script src="https://js.stripe.com/v3/" data-publishable-key="pk_test_51L2CilE2sCQWSLCAs2PLkSBFVUdLjzlW45ex0E2uBcjYBWDR2Xr0KZRKZ0h1oD3wkepHcW4ahC4FVl6dHQ0WeuyK00OyrEKJox"></script>
+
+<script>
+    // Replace 'YOUR_STRIPE_PUBLISHABLE_KEY' with your actual Stripe publishable key
+    const publishableKey = document.querySelector('script[data-publishable-key]').getAttribute('data-publishable-key');
+    const stripe = Stripe(publishableKey);
+    const pricingTable = document.querySelector('stripe-pricing-table');
+
+    // Event listener to handle plan selection and initiate checkout
+    pricingTable.addEventListener('select-plan', async (event) => {
+        const selectedPlan = event.detail.plan;
+
+        // You can now use the selectedPlan data to initiate the checkout process.
+        // For example, create a Checkout Session with the selected plan and redirect the user to the checkout page.
+        try {
+            const response = await fetch('/createSession', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ planId: selectedPlan.id }),
+            });
+
+            const data = await response.json();
+
+            // Redirect the user to the Stripe Checkout page
+            const { sessionId } = data;
+            const { error } = await stripe.redirectToCheckout({ sessionId });
+
+            if (error) {
+                console.error('Stripe Checkout Error:', error);
+                // Handle the error if necessary.
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            // Handle any unexpected errors if necessary.
+        }
+    });
+    </script>
 @endsection

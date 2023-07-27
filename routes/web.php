@@ -17,6 +17,7 @@ use App\Certificate\DomesticElectrical\ElectricalDangerNotification;
 use App\Certificate\DomesticElectrical\DomesticElectricalInstallationCertificate;
 use App\Http\Controllers\Web\CertificateController;
 use App\Http\Controllers\Web\SubscriptionController;
+use Illuminate\Http\Request;
 
 use App\Models\Subscription;
 
@@ -52,10 +53,40 @@ Route::get('/test-mail', function () {
 Route::post('subscription', [SubscriptionController::class, 'processSubscription'])->middleware(['auth'])->name("subscription.create");
 Route::get('checkout/{planId}', [SubscriptionController::class, 'checkout'])->middleware(['auth'])->name('user.checkout');
 Route::get('plans', [SubscriptionController::class, 'showPlans'])->middleware(['auth'])->name('plans');
+Route::get('all-plans', [SubscriptionController::class, 'plans'])->middleware(['auth'])->name('all-plans');
 Route::get('cancel',[SubscriptionController::class, 'cancle'])->middleware(['auth','user.subscribe'])->name('plan.cancel');
-Route::get('resume',[SubscriptionController::class, 'resume'])->middleware(['auth','user.subscribe'])->name('plan.cancel');
+Route::get('resume',[SubscriptionController::class, 'resume'])->middleware(['auth','user.subscribe'])->name('plan.resume');
 Route::get('certificate/{customer_id}/{certificate_id}/{created_at}/view', [CertificateController::class,'view'])->middleware(['user.subscribe'])->name('view.certificate');
 Route::any('stripe/webhook',[SubscriptionController::class,'handle']);
+Route::post('createSession', [SubscriptionController::class, 'createSession'])->name('createSession');
+Route::post('/create-checkout-session', function (Request $request) {
+    
+    $pricing_table_id = $request->input('pricing_table_id');
+
+    
+    try {
+        
+        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+
+        
+        $YOUR_DOMAIN = 'http://localhost:8000';
+        $checkout_session = \Stripe\Checkout\Session::create([
+            'line_items' => [[
+                'price' => $pricing_table_id,
+                'quantity' => 1,
+            ]],
+            'mode' => 'payment',
+            'success_url' => $YOUR_DOMAIN . '/success.html', 
+            'cancel_url' => $YOUR_DOMAIN . '/cancel.html',   
+            'automatic_tax' => [
+                'enabled' => true,
+            ],
+        ]);
+        return response()->json(['sessionId' => $checkout_session->id]);
+    } catch (\Exception $e) {
+        return response()->json(['error' => $e->getMessage()], 500);
+    }
+});
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

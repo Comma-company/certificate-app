@@ -8,6 +8,7 @@ use Laravel\Cashier\Cashier;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\TrialRemainingDaysNotification;
 use App\Notifications\TrialEndNotification;
+use Illuminate\Support\Facades\DB;
 use Stripe\Stripe;
 use Stripe\Customer;
 use App\Models\Subscription;
@@ -25,6 +26,42 @@ use Illuminate\Support\Facades\Artisan;
 
 class SubscriptionController extends Controller
 {
+    public function createSession(Request $request) {
+        $YOUR_DOMAIN = 'http://localhost:8000'; // Replace this with your actual domain URL
+
+        // Set your Stripe secret key
+        Stripe::setApiKey(config('services.stripe.Secret_key'));
+    
+        try {
+            $planId = $request->input('planId');
+    
+            // Create a Checkout Session using the Stripe API
+            $session = \Stripe\Checkout\Session::create([
+                'payment_method_types' => ['card'],
+                'line_items' => [
+                    [
+                        'price' => $planId,
+                        'quantity' => 1,
+                    ],
+                ],
+                'mode' => 'subscription',
+                'success_url' => $YOUR_DOMAIN . '/success.html',
+                'cancel_url' => $YOUR_DOMAIN . '/cancel.html',
+            ]);
+    
+            // Return the Checkout Session ID to the client-side
+            return response()->json(['sessionId' => $session->id]);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'An error occurred while creating the Checkout Session.'], 500);
+        }
+       
+    }
+    public function plans(){
+        $plans = Plan::whereNotIn('name', ['free'])->get();
+        return view('plans',[
+            'plans'=>$plans
+        ]);
+    }
 
     public function checkout($planId)
     {
@@ -90,13 +127,11 @@ class SubscriptionController extends Controller
     // }
         public function showPlans(Request $request)
     {
-
-       //$user= Auth::user();
-      // $plans = Plan::all();
-       //$currentPlan=$user->subscription($request->plan)->stripe_plan;
+       $user= Auth::guard('sanctum')->user();
+       $CLIENT_REFERENCE_ID= $user->id;
         return view('plan', [
-        //'plans' => $plans,
-           //'currentPlan'=>$currentPlan,
+            'CLIENT_REFERENCE_ID'=>$CLIENT_REFERENCE_ID,
+       
         ]);
         }
         public function resume(Request $request){
@@ -135,6 +170,7 @@ class SubscriptionController extends Controller
         public function handle(Request $request){
             $payload = @file_get_contents('php://input');
             $event = null;
+            $data =[];
 
             try {
                 $event = \Stripe\Event::constructFrom(
@@ -152,7 +188,7 @@ class SubscriptionController extends Controller
                 case 'customer.subscription.updated':
                     $subscriptionId = $event->data->object->subscription;
                     $newTrialEndsAt = $event->data->object->trial_end;
-                  $this->updateSubscriptionTrialEndsAt($subscriptionId, $newTrialEndsAt);
+                    $data= $this->updateSubscriptionTrialEndsAt($subscriptionId, $newTrialEndsAt);
                     break;
                 case 'charge.succeeded':
                     $charge=$event->data->object;
@@ -169,6 +205,51 @@ class SubscriptionController extends Controller
                             }
                     }
                   break;
+                  case 'checkout.session.completed':
+                    $session = $event->data->object;
+                    $checkoutSessionId = $session->id;
+                    $subscription = Subscription::where('stripe_id', $session->subscription)->first();
+                    if ($subscription) {
+                       
+                    } else {
+                       
+                        Subscription::create([
+                            'user_id' => $session->customer,
+                            'name' => $session->metadata->plan_name, 
+                            'stripe_id' => $session->subscription,
+                            'stripe_status' => 'active', 
+                            'stripe_price' => $session->metadata->plan_id, 
+                            'quantity' => $session->metadata->quantity, 
+                            'trial_ends_at' => null, 
+                            'ends_at' => date('Y-m-d H:i:s', $session->current_period_end),
+                        ]);
+                    }
+    
+                    break;
+                    case 'invoice.paid':
+                        $invoice = $event->data->object;
+                        $subscriptionId = $invoice->subscription;
+                        $customerId = $invoice->customer;
+                        $subscription = Subscription::where('stripe_id', $subscriptionId)->first();
+                        if ($subscription) {
+                            $subscription->update(['stripe_status' => 'paid']);
+                        }
+        
+                        break;
+                        case 'invoice.payment_failed':
+                            $invoice = $event->data->object;
+                            $subscriptionId = $invoice->subscription;
+                            $customerId = $invoice->customer;
+                            $subscription = Subscription::where('stripe_id', $subscriptionId)->first();
+                            if ($subscription) {
+                                $subscription->update([
+                                    'stripe_status' => 'payment_failed', 
+                                ]);
+                            }
+            
+                            break;
+        
+                    
             
             }
             return response('Webhook handled successfully', 200);
@@ -177,9 +258,15 @@ class SubscriptionController extends Controller
         private function updateSubscriptionTrialEndsAt($subscriptionId, $newTrialEndsAt)
          {
     
-               $subscription = Subscription::find($subscriptionId);
-               $subscription->trial_ends_at = $newTrialEndsAt;
-               $subscription->save();
+               //$subscription = Subscription::find($subscriptionId);
+               $date = Carbon::parse($newTrialEndsAt)->format('Y-m-d H:i:s');
+                 $subscription = DB::table('subscriptions')->where('stripe_id',$subscriptionId)->update([
+                     'trial_ends_at' => $date,
+                     'updated_at' => now()
+                ]);
+              // $subscription->trial_ends_at = $newTrialEndsAt;
+              // $subscription->save();
+              return $subscription;
           }
           private function scheduleTransitionToPaidSubscription($userId)
         {

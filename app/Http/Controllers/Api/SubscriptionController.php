@@ -153,10 +153,9 @@ class SubscriptionController extends Controller
         
     }
     public function cancel(Request $request,$subscriptionId)
- {
+  {
       $user = Auth::guard('sanctum')->user();
     Stripe::setApiKey(config('services.stripe.Secret_key'));
-     
     try {
        $subscription = LocalSubscription::where('user_id', $user->id)->where('stripe_id', $subscriptionId)->first();
         if ($subscription) {
@@ -200,15 +199,17 @@ public function changeSubscriptionPlan(Request $request, $subscriptionId, $newPl
                     'subscription_items' => $prorationItems,
                     'subscription_proration_date' => $prorationDate,
                 ]);
-                $stripeSubscription->items->data[0]->plan = $newPlanId;
-              $stripeSubscription->save();
-               
+               $stripeSubscription->items->data[0]->plan = $newPlanId;
+               $stripeSubscription->refresh();
+                $stripeSubscription->save();
+                 
                 $paymentIntent = \Stripe\PaymentIntent::create([
                     'customer' => $user->stripe_id,
                     'amount' => $invoice->amount_due,
                     'currency' => $invoice->currency,
                 ]);
-              $subscription->stripe_price = $newPlanId;
+                
+               $subscription->stripe_price = $newPlanId;
                 $subscription->save();
 
                 return responseJson(true, 'Subscription plan changed successfully.');
