@@ -138,13 +138,14 @@ class RegisterController extends Controller
                 'electric_board_id'=>json_encode([$request->electric_board_id]),
             ]);
             $countryId = $data['country_id'];
-            $countryName = Country::where('id', $countryId)->pluck('name')->first();
+            $countryName = Country::where('id', $countryId)->pluck('iso2')->first();
                 $address=[
                     'line1' => $data['registered_address'],
                     'line2' => $data['number_street_name'],
                     'state'=> $data['state'],
                     'postal_code' => $data['postal_code'],
                     'city' => $data['city'],
+                    'country'=>$countryName,
                 ];
                  $user->createOrGetStripeCustomer([
                     'address'=>$address,
