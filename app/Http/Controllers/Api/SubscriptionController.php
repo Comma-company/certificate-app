@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Models\User;
-use Laravel\Cashier\Cashier;
-use Stripe\StripeClient;
-
-use App\Models\Plan;
 use Stripe\Stripe;
+use App\Models\Plan;
+use App\Models\User;
 use Stripe\Customer;
+use Stripe\StripeClient;
 use Stripe\Subscription;
+
+use Stripe\PaymentMethod;
+use Illuminate\Http\Request;
+use Laravel\Cashier\Cashier;
 use Stripe\Plan as StripePlan;
 use App\Models\SubscriptionItem;
-use Stripe\PaymentMethod;
+use Illuminate\Support\Facades\URL;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Subscription as LocalSubscription;
 
 class SubscriptionController extends Controller
@@ -45,10 +46,21 @@ class SubscriptionController extends Controller
     public function urlPlans()
     {
         $user = Auth::guard('sanctum')->user();
-        $planApiUrl = route('plans', [
+
+        $planApiUrl = URL::temporarySignedRoute(
+            'plans',
+            now()->addMinutes(60),
+            [
+                'CLIENT_REFERENCE_ID' => $user->id,
+                'email_user' => $user->email ?? ''
+            ]
+        );
+
+      /*   $planApiUrl = route('plans', [
             'CLIENT_REFERENCE_ID' => $user->id,
             'email_user' => $user->email ?? ''
-        ]);
+        ]); */
+
         return responsejson(true, 'plans', $planApiUrl);
     }
 
