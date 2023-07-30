@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\Api\Auth;
-
+use App\Models\BusinessType;
 use App\Models\User;
+use App\Models\Country;
 use Stripe\Stripe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -34,7 +35,9 @@ class RegisterController extends Controller
         }
 
         $data = $request->all();
-        $businessTypeIds = implode(',', $data['business_type_id']);
+        
+        $businessTypeIds = $data['business_type_id'];
+        $businessTypes = BusinessType::whereIn('id', $businessTypeIds)->pluck('name')->toArray();
         DB::beginTransaction();
         try {
 
@@ -51,15 +54,16 @@ class RegisterController extends Controller
             if (count($data['business_type_id']) > 0) {
                 $user->BusinessType()->attach($data['business_type_id']);
             }
+            $metadata = [
+                'user_id' => $user->id,
+                'max_certificate' => 20,
+                'business_type_id' => implode(',', $businessTypes),
+            ];
             Stripe::setApiKey(config('services.stripe.Secret_key'));
             $stripeCustomer=$user->createAsStripeCustomer([
                 'description' => 'any desc',
                 'phone' => $data['phone'],
-                'metadata' => ['user_id' => $user->id,
-                'max_certificate'=>20,
-               'business_type_id'=>$businessTypeIds,
-                
-        ],
+                'metadata' => $metadata,
               ]);
             event(new Registered($user));
             DB::commit();
@@ -133,8 +137,19 @@ class RegisterController extends Controller
                 'gas_register_number'=>$request->gas_register_number,
                 'electric_board_id'=>json_encode([$request->electric_board_id]),
             ]);
-           
-            $user->createOrGetStripeCustomer(); // Create Stripe customer
+            $countryId = $data['country_id'];
+            $countryName = Country::where('id', $countryId)->pluck('name')->first();
+                $address=[
+                    'line1' => $data['registered_address'],
+                    'line2' => $data['number_street_name'],
+                    'state'=> $data['state'],
+                    'postal_code' => $data['postal_code'],
+                    'city' => $data['city'],
+                ];
+                 $user->createOrGetStripeCustomer([
+                    'address'=>$address,
+                  ]);
+
                 $subscription = $user->newSubscription('free', $planId)->trialDays($trialDays)
                 ->quantity($limitedCertificateCount)
                 ->create();

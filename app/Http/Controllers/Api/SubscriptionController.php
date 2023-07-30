@@ -42,12 +42,17 @@ class SubscriptionController extends Controller
        
         return $plans;
     }
+    public function urlPlans(){
+        $planApiUrl = route('plans');
+        return responsejson(true,'plans',$planApiUrl);
+    }
 
     public function showPlans()
     {
         $data = $this->retrievePlans();
         return responseJson(true, 'Planss details data', $data);
     }
+
     public function showUserSubscription(Request $request){
         $user = Auth::guard('sanctum')->user();
         Stripe::setApiKey(config('services.stripe.Secret_key'));

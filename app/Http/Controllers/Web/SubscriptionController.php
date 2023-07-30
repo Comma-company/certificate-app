@@ -56,6 +56,17 @@ class SubscriptionController extends Controller
         }
        
     }
+    public function customerPortalSession(Request $request){
+        $YOUR_DOMAIN = 'http://localhost:8000';
+        Stripe::setApiKey(config('services.stripe.Secret_key'));
+        $user=Auth::guard('sanctum')->user();
+        $session = \Stripe\BillingPortal\Session::create([
+            'customer' => $user->stripe_id,
+            'return_url' => route('customer_page'),
+          ]);
+          return redirect()->away($session->url);
+
+    }
     public function plans(){
         $plans = Plan::whereNotIn('name', ['free'])->get();
         return view('plans',[
@@ -186,9 +197,11 @@ class SubscriptionController extends Controller
             $user=Auth::guard('sanctum')->user();
             switch($event->type){
                 case 'customer.subscription.updated':
+                    $subscription = $event->data->object;
                     $subscriptionId = $event->data->object->id;
                     $newTrialEndsAt = $event->data->object->trial_end;
                     $data= $this->updateSubscriptionTrialEndsAt($subscriptionId, $newTrialEndsAt);
+                    $this->handleSubscriptionUpdated($subscription);
                     break;
                 case 'charge.succeeded':
                     $charge=$event->data->object;
@@ -248,6 +261,24 @@ class SubscriptionController extends Controller
                             }
             
                             break;
+                            case 'customer.subscription.deleted':
+                                $subscription = $event->data->object;
+                                $subscriptionId = $subscription->id;
+                                $subscriptionModel = Subscription::where('stripe_id', $subscriptionId)->first();
+                                if ($subscriptionModel) {
+                                    
+                                    $subscriptionModel->update([
+                                        'stripe_status' => 'canceled',
+                                       
+                                    ]);
+                                }
+                                break;
+                                case 'customer.subscription.created':
+                                  $subscription = $event->data->object;
+                                  $data = $this->handleSubscriptionCreated($subscription);
+                                    break;
+
+
         
                     
             
@@ -257,17 +288,82 @@ class SubscriptionController extends Controller
         }
         private function updateSubscriptionTrialEndsAt($subscriptionId, $newTrialEndsAt)
          {
-    
-               //$subscription = Subscription::find($subscriptionId);
                $date = Carbon::parse($newTrialEndsAt)->format('Y-m-d H:i:s');
                  $subscription = DB::table('subscriptions')->where('stripe_id',$subscriptionId)->update([
                      'trial_ends_at' => $date,
                      'updated_at' => now()
                 ]);
-              // $subscription->trial_ends_at = $newTrialEndsAt;
-              // $subscription->save();
               return $subscription;
           }
+          private function handleSubscriptionCreated(Subscription $subscription)
+          {
+            $subscriptionId = $subscription->id;
+            $customerId = $subscription->customer;
+            $planId = $subscription->items->data[0]->price->id;
+            $status = $subscription->status;
+            $quantity = $subscription->items->data[0]->quantity;
+            $trialEndsAt = $subscription->trial_end;
+            $endsAt = $subscription->current_period_end;
+            $planName = $subscription->items->data[0]->price->nickname;
+            $newSubscription = Subscription::create([
+                'user_id' => $customerId,
+                'name' => $planName, 
+                'stripe_id' => $subscriptionId,
+                'stripe_status' => $status,
+                'stripe_price' => $planId,
+                'quantity' => $quantity,
+                'trial_ends_at' => $trialEndsAt,
+                'ends_at' => date('Y-m-d H:i:s', $endsAt),
+            ]);
+            return $subscription;
+          }
+          private function handleSubscriptionUpdated(Subscription $subscription){
+            $subscriptionId = $subscription->id;
+            $status = $subscription->status;
+            if ($status === 'canceled') {
+                $subscriptionModel = Subscription::where('stripe_id', $subscriptionId)->first();
+    
+                if ($subscriptionModel) {
+                    $subscriptionModel->update([
+                        'stripe_status' => 'canceled',
+                        'ends_at'=>now(),
+                        
+                    ]);
+                }
+            } elseif ($status === 'active') {
+                $previousPlanId = $subscription->metadata->previous_plan_id ?? null;
+                $currentPlanId = $subscription->items->data[0]->price->id;
+                if ($previousPlanId !== $currentPlanId) {
+                    Stripe::setApiKey(config('services.stripe.secret'));
+                    try {
+                        $updatedSubscription = \Stripe\Subscription::update(
+                            $subscription->id,
+                            ['items' => [['price' => $currentPlanId]]]
+                        );
+                    $subscriptionModel = Subscription::where('stripe_id', $subscriptionId)->first();
+    
+                    if ($subscriptionModel) {
+                       
+                        $subscriptionModel->update([
+                            'stripe_price' => $currentPlanId,
+                            
+                        ]);
+                    }
+                    Log::info('Subscription plan updated in Stripe API and database: ' . $subscriptionId);
+                    return $updatedSubscription;
+                }
+                catch (\Stripe\Exception\ApiErrorException $e) {
+                    Log::error('Failed to update subscription plan in Stripe API: ' . $e->getMessage());
+    
+                   
+                }
+            }
+        }
+        return null;
+           
+        }
+
+
           private function scheduleTransitionToPaidSubscription($userId)
         {
                 $user = User::find($userId);

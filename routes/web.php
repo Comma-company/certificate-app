@@ -59,34 +59,10 @@ Route::get('resume',[SubscriptionController::class, 'resume'])->middleware(['aut
 Route::get('certificate/{customer_id}/{certificate_id}/{created_at}/view', [CertificateController::class,'view'])->middleware(['user.subscribe'])->name('view.certificate');
 Route::any('stripe/webhook',[SubscriptionController::class,'handle']);
 Route::post('createSession', [SubscriptionController::class, 'createSession'])->name('createSession');
-Route::post('/create-checkout-session', function (Request $request) {
-    
-    $pricing_table_id = $request->input('pricing_table_id');
-
-    
-    try {
-        
-        \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
-
-        
-        $YOUR_DOMAIN = 'http://localhost:8000';
-        $checkout_session = \Stripe\Checkout\Session::create([
-            'line_items' => [[
-                'price' => $pricing_table_id,
-                'quantity' => 1,
-            ]],
-            'mode' => 'payment',
-            'success_url' => $YOUR_DOMAIN . '/success.html', 
-            'cancel_url' => $YOUR_DOMAIN . '/cancel.html',   
-            'automatic_tax' => [
-                'enabled' => true,
-            ],
-        ]);
-        return response()->json(['sessionId' => $checkout_session->id]);
-    } catch (\Exception $e) {
-        return response()->json(['error' => $e->getMessage()], 500);
-    }
-});
+Route::post('create-customer-portal-session',[SubscriptionController::class, 'customerPortalSession'])->name('customerPortalSession');
+Route::get('showCustomerPage',function(){
+    return view('customer');
+})->name('customer_page');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
