@@ -52,7 +52,7 @@ Route::get('/test-mail', function () {
 });
 Route::post('subscription', [SubscriptionController::class, 'processSubscription'])->middleware(['auth'])->name("subscription.create");
 Route::get('checkout/{planId}', [SubscriptionController::class, 'checkout'])->middleware(['auth'])->name('user.checkout');
-Route::get('plans', [SubscriptionController::class, 'showPlans'])->middleware(['auth'])->name('plans');
+Route::get('plans', [SubscriptionController::class, 'showPlans'])->name('plans');
 Route::get('all-plans', [SubscriptionController::class, 'plans'])->middleware(['auth'])->name('all-plans');
 Route::get('cancel',[SubscriptionController::class, 'cancle'])->middleware(['auth','user.subscribe'])->name('plan.cancel');
 Route::get('resume',[SubscriptionController::class, 'resume'])->middleware(['auth','user.subscribe'])->name('plan.resume');
