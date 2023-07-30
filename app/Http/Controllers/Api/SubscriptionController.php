@@ -51,7 +51,7 @@ class SubscriptionController extends Controller
             'plans',
             now()->addMinutes(60),
             [
-                'CLIENT_REFERENCE_ID' => $user->id,
+                'CLIENT_REFERENCE_ID' => $user->stripe_id,
                 'email_user' => $user->email ?? ''
             ]
         );
