@@ -31,10 +31,10 @@ class SubscriptionController extends Controller
 
         // Set your Stripe secret key
         Stripe::setApiKey(config('services.stripe.Secret_key'));
-    
+
         try {
             $planId = $request->input('planId');
-    
+
             // Create a Checkout Session using the Stripe API
             $session = \Stripe\Checkout\Session::create([
                 'payment_method_types' => ['card'],
@@ -48,13 +48,13 @@ class SubscriptionController extends Controller
                 'success_url' => $YOUR_DOMAIN . '/success.html',
                 'cancel_url' => $YOUR_DOMAIN . '/cancel.html',
             ]);
-    
+
             // Return the Checkout Session ID to the client-side
             return response()->json(['sessionId' => $session->id]);
         } catch (\Exception $e) {
             return response()->json(['error' => 'An error occurred while creating the Checkout Session.'], 500);
         }
-       
+
     }
     public function customerPortalSession(Request $request){
         $YOUR_DOMAIN = 'http://localhost:8000';
@@ -76,7 +76,7 @@ class SubscriptionController extends Controller
 
     public function checkout($planId)
     {
-       
+
         $plan=Plan::findOrFail($planId);
         $user=Auth::user();
          $currentPlan=$user->subscription($plan->stripe_plan)->stripe_plan ?? null;
@@ -112,11 +112,11 @@ class SubscriptionController extends Controller
         ],
        ]);
        return redirect()->route('plans')->with('success','Success creating subscription !');
-    
-    
-    
+
+
+
         }
-    
+
     // public function retrievePlans()
     // {
     //     $key = config('services.stripe.Secret_key');
@@ -142,7 +142,7 @@ class SubscriptionController extends Controller
        $CLIENT_REFERENCE_ID= $user->id;
         return view('plan', [
             'CLIENT_REFERENCE_ID'=>$CLIENT_REFERENCE_ID,
-       
+            'user' => $user
         ]);
         }
         public function resume(Request $request){
@@ -152,7 +152,7 @@ class SubscriptionController extends Controller
         }
         public function updateSubscripe(Request $request){
                  $user=Auth::user();
-           
+
                 $paymentMethod = $request->input('token');
                 $user->createOrGetStripeCustomer();
                 $user->addPaymentMethod($paymentMethod);
@@ -173,10 +173,10 @@ class SubscriptionController extends Controller
                    ],
                ],
            ]);
-              
+
            return redirect()->route('plans')->with('success','Success creating subscription !');
 
-           
+
         }
         public function handle(Request $request){
             $payload = @file_get_contents('php://input');
@@ -207,7 +207,7 @@ class SubscriptionController extends Controller
                     $charge=$event->data->object;
                     $user = User::find($charge->user_id);
                      $chargeAmount = $charge->amount;
-                     $user->notify(new ChargeSucceededNotification($chargeAmount));     
+                     $user->notify(new ChargeSucceededNotification($chargeAmount));
                     break;
                 case 'payment_intent.succeeded':
                 $paymentIntent = $event->data->object;
@@ -223,21 +223,21 @@ class SubscriptionController extends Controller
                     $checkoutSessionId = $session->id;
                     $subscription = Subscription::where('stripe_id', $session->subscription)->first();
                     if ($subscription) {
-                       
+
                     } else {
-                       
+
                         Subscription::create([
                             'user_id' => $session->customer,
-                            'name' => $session->metadata->plan_name, 
+                            'name' => $session->metadata->plan_name,
                             'stripe_id' => $session->subscription,
-                            'stripe_status' => 'active', 
-                            'stripe_price' => $session->metadata->plan_id, 
-                            'quantity' => $session->metadata->quantity, 
-                            'trial_ends_at' => null, 
+                            'stripe_status' => 'active',
+                            'stripe_price' => $session->metadata->plan_id,
+                            'quantity' => $session->metadata->quantity,
+                            'trial_ends_at' => null,
                             'ends_at' => date('Y-m-d H:i:s', $session->current_period_end),
                         ]);
                     }
-    
+
                     break;
                     case 'invoice.paid':
                         $invoice = $event->data->object;
@@ -247,7 +247,7 @@ class SubscriptionController extends Controller
                         if ($subscription) {
                             $subscription->update(['stripe_status' => 'paid']);
                         }
-        
+
                         break;
                         case 'invoice.payment_failed':
                             $invoice = $event->data->object;
@@ -256,20 +256,20 @@ class SubscriptionController extends Controller
                             $subscription = Subscription::where('stripe_id', $subscriptionId)->first();
                             if ($subscription) {
                                 $subscription->update([
-                                    'stripe_status' => 'payment_failed', 
+                                    'stripe_status' => 'payment_failed',
                                 ]);
                             }
-            
+
                             break;
                             case 'customer.subscription.deleted':
                                 $subscription = $event->data->object;
                                 $subscriptionId = $subscription->id;
                                 $subscriptionModel = Subscription::where('stripe_id', $subscriptionId)->first();
                                 if ($subscriptionModel) {
-                                    
+
                                     $subscriptionModel->update([
                                         'stripe_status' => 'canceled',
-                                       
+
                                     ]);
                                 }
                                 break;
@@ -279,9 +279,9 @@ class SubscriptionController extends Controller
                                     break;
 
 
-        
-                    
-            
+
+
+
             }
             return response('Webhook handled successfully', 200);
 
@@ -307,7 +307,7 @@ class SubscriptionController extends Controller
             $planName = $subscription->items->data[0]->price->nickname;
             $newSubscription = Subscription::create([
                 'user_id' => $customerId,
-                'name' => $planName, 
+                'name' => $planName,
                 'stripe_id' => $subscriptionId,
                 'stripe_status' => $status,
                 'stripe_price' => $planId,
@@ -322,12 +322,12 @@ class SubscriptionController extends Controller
             $status = $subscription->status;
             if ($status === 'canceled') {
                 $subscriptionModel = Subscription::where('stripe_id', $subscriptionId)->first();
-    
+
                 if ($subscriptionModel) {
                     $subscriptionModel->update([
                         'stripe_status' => 'canceled',
                         'ends_at'=>now(),
-                        
+
                     ]);
                 }
             } elseif ($status === 'active') {
@@ -341,12 +341,12 @@ class SubscriptionController extends Controller
                             ['items' => [['price' => $currentPlanId]]]
                         );
                     $subscriptionModel = Subscription::where('stripe_id', $subscriptionId)->first();
-    
+
                     if ($subscriptionModel) {
-                       
+
                         $subscriptionModel->update([
                             'stripe_price' => $currentPlanId,
-                            
+
                         ]);
                     }
                     Log::info('Subscription plan updated in Stripe API and database: ' . $subscriptionId);
@@ -354,13 +354,13 @@ class SubscriptionController extends Controller
                 }
                 catch (\Stripe\Exception\ApiErrorException $e) {
                     Log::error('Failed to update subscription plan in Stripe API: ' . $e->getMessage());
-    
-                   
+
+
                 }
             }
         }
         return null;
-           
+
         }
 
 
@@ -374,6 +374,6 @@ class SubscriptionController extends Controller
     }
 }
 
-           
-        
+
+
 }

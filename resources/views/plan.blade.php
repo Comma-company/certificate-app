@@ -9,6 +9,7 @@
 <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
 <stripe-pricing-table pricing-table-id="prctbl_1NSFfqE2sCQWSLCAAL7zhs2x"
 publishable-key="pk_test_51L2CilE2sCQWSLCAs2PLkSBFVUdLjzlW45ex0E2uBcjYBWDR2Xr0KZRKZ0h1oD3wkepHcW4ahC4FVl6dHQ0WeuyK00OyrEKJox"
+customer-email="{{$user->email ?? ''}}"
 client-reference-id="{{ $CLIENT_REFERENCE_ID }}">
 </stripe-pricing-table>
 <script src="https://js.stripe.com/v3/" data-publishable-key="pk_test_51L2CilE2sCQWSLCAs2PLkSBFVUdLjzlW45ex0E2uBcjYBWDR2Xr0KZRKZ0h1oD3wkepHcW4ahC4FVl6dHQ0WeuyK00OyrEKJox"></script>
