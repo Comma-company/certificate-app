@@ -138,11 +138,11 @@ class SubscriptionController extends Controller
     // }
         public function showPlans(Request $request)
     {
-       $user= Auth::guard('sanctum')->user();
-       $CLIENT_REFERENCE_ID= $user->id;
+
+       //$CLIENT_REFERENCE_ID= $user->id;
         return view('plan', [
-            'CLIENT_REFERENCE_ID'=>$CLIENT_REFERENCE_ID,
-            'user' => $user
+           // 'CLIENT_REFERENCE_ID'=>$CLIENT_REFERENCE_ID,
+           // 'user' => $user
         ]);
         }
         public function resume(Request $request){
