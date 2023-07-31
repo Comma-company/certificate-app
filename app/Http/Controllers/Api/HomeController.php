@@ -46,7 +46,8 @@ class HomeController extends Controller
         if ($subscription) {
             $trialEnd = $subscription->trial_ends_at;
             $remainingDays = Carbon::now()->diffInDays($trialEnd->endOfDay(), false);
-            $remainingCertificates = $subscription->quantity - $user->certificate()->count();
+            //$remainingCertificates = $subscription->quantity - $user->certificate()->count();
+            $remainingCertificates = 20 - $user->certificate()->count();
 
             $data = [
                 'remaining_days' => $remainingDays,
