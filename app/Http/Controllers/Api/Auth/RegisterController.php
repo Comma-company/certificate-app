@@ -233,7 +233,7 @@ class RegisterController extends Controller
         }
 
         $data = $request->all();
-        $planId = 'price_1NSEkhE2sCQWSLCAGK6joBPt';
+        $planId = 'price_1NZunvE2sCQWSLCAyF0wfTn4';
         $trialDays = 7;
         $limitedCertificateCount = 20;
         $user = User::find(authUser('sanctum')->id);
