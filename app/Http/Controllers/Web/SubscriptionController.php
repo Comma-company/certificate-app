@@ -142,13 +142,34 @@ class SubscriptionController extends Controller
             abort(401);
         }
         */
-        //     $stripe = new StripeClient($key);
         $user = User::first();
         $key = config('services.stripe.Secret_key');
         \Stripe\Stripe::setApiKey($key);
+        $stripe = new \Stripe\StripeClient($key);
         // Authenticate your user.
+   /*      $conf = $stripe->billingPortal->configurations->create([
+            'business_profile' => [
+                'headline' => '360 Connect Inc partners with Stripe for simplified billing.',
+            ],
+            'features' => [
+                "customer_update" => [
+                    "allowed_updates" => [
+                        "email",
+                        "tax_id"
+                    ],
+                    "enabled" => false,
+                ],
+                "invoice_history" => ['enabled' => true],
+                "payment_method_update" => ['enabled' => true],
+                "subscription_cancel" => ['enabled' => true],
+                "subscription_update" => ['enabled' => true],
+
+            ],
+        ]); */
         $session = \Stripe\BillingPortal\Session::create([
             'customer' => $user->stripe_id,
+            //'configuration' => $conf->id,
+
             //'return_url' => 'https://360connect.app/account',
         ]);
         return $session;

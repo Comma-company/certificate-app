@@ -35,7 +35,7 @@ class RegisterController extends Controller
         }
 
         $data = $request->all();
-        
+
         $businessTypeIds = $data['business_type_id'];
         $businessTypes = BusinessType::whereIn('id', $businessTypeIds)->pluck('name')->toArray();
         DB::beginTransaction();
@@ -60,10 +60,14 @@ class RegisterController extends Controller
                 'business_type_id' => implode(',', $businessTypes),
             ];
             Stripe::setApiKey(config('services.stripe.Secret_key'));
+
+            $currency = 'GBP';
+
             $stripeCustomer=$user->createAsStripeCustomer([
                 'description' => 'any desc',
                 'phone' => $data['phone'],
                 'metadata' => $metadata,
+                'currency' => $currency,
               ]);
             event(new Registered($user));
             DB::commit();
@@ -116,7 +120,7 @@ class RegisterController extends Controller
                 $user->categories()->attach($categoriesId, [
                     'electric_board_id' => json_encode([$request->electric_board_id]),
                 ]);
-    
+
                 if ($request->hasFile('logo')) {
                     // Upload and update logo
                     $logo = uploadImage($request->logo, 'user_logo');
@@ -126,12 +130,12 @@ class RegisterController extends Controller
                 Notification::send($user, new NotCompleteRegisterNotification());
                 DB::commit();
                 return responseJson(true, 'Please enter both License Number and Gas Register Number to create the Certificate', $user->load(['logo', 'categories']));
-            } 
+            }
             $planId='price_1NSEkhE2sCQWSLCAGK6joBPt';
             $trialDays = 7;
             $limitedCertificateCount = 20;
             if (!empty($licenseNumber) && !empty($gasRegisterNumber)) {
-               
+
             $user->categories()->attach($categoriesId,[
                 'license_number'=>$request->license_number,
                 'gas_register_number'=>$request->gas_register_number,
@@ -156,7 +160,7 @@ class RegisterController extends Controller
                 ->create();
 
             } elseif (!empty($licenseNumber)) {
-    
+
                 // Apply subscription for Electrical categories
                 $user->categories()->attach($categoriesId, [
                     'license_number' => $licenseNumber,
@@ -177,17 +181,17 @@ class RegisterController extends Controller
                             ]);
                         }
                     }
-            
-    
-               
+
+
+
             } elseif (!empty($gasRegisterNumber)) {
-                
+
                 // Apply subscription for Gas categories
                 $user->categories()->attach($categoriesId, [
                     'gas_register_number' => $gasRegisterNumber,
                     'electric_board_id' => json_encode([$request->electric_board_id]),
                 ]);
-    
+
                 $subscription = $user->newSubscription('free', $planId)->trialDays($trialDays)
                 ->quantity($limitedCertificateCount)
                     ->create();
@@ -217,7 +221,7 @@ class RegisterController extends Controller
             DB::commit();
             return responseJson(true, 'success created user', $user->load(['logo','categories']));
 
-            
+
         } catch (\Throwable $th) {
             DB::rollBack();
             throw $th;
@@ -228,7 +232,7 @@ class RegisterController extends Controller
         $validated = Validator::make($request->all(), [
             'license_number' => ['required_without_all:gas_register_number', 'nullable'], // License number is required if gas register number is not provided
             'gas_register_number' => ['required_without_all:license_number', 'nullable'], // Gas register number is required if license number is not provided
-            
+
         ]);
 
         if ($validated->fails()) {
@@ -256,7 +260,7 @@ class RegisterController extends Controller
             }
             $user->save();
             if (!$user->subscribed('free')) {
-            
+
             $subscription = $user->newSubscription('free', $planId)->trialDays($trialDays)
                 ->quantity($limitedCertificateCount)
                     ->create();
@@ -265,7 +269,7 @@ class RegisterController extends Controller
             Notification::send($user, new TrialRemainingDaysNotification($remainingDays));
             }
             return responseJson(true, 'success created user', $user->load('categories'));
-         
+
     }
 
 }
