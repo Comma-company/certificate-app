@@ -150,7 +150,6 @@ class SubscriptionController extends Controller
         $session = \Stripe\BillingPortal\Session::create([
             'customer' => $user->stripe_id,
             //'configuration' => $conf->id,
-
             //'return_url' => 'https://360connect.app/account',
         ]);
         return $session;

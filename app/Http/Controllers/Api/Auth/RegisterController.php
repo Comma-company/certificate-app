@@ -156,7 +156,7 @@ class RegisterController extends Controller
                 ]);
 
                 $subscription = $user->newSubscription('free', $planId)->trialDays($trialDays)
-                    ->quantity($limitedCertificateCount)
+                    //->quantity($limitedCertificateCount)
                     ->create();
             } elseif (!empty($licenseNumber)) {
 
@@ -166,7 +166,7 @@ class RegisterController extends Controller
                     'electric_board_id' => json_encode([$request->electric_board_id]),
                 ]);
                 $subscription = $user->newSubscription('free', $planId)->trialDays($trialDays)
-                    ->quantity($limitedCertificateCount)
+                    //->quantity($limitedCertificateCount)
                     ->create();
 
                 $subscriptionItems = $subscription->items ?? [];
@@ -189,7 +189,7 @@ class RegisterController extends Controller
                 ]);
 
                 $subscription = $user->newSubscription('free', $planId)->trialDays($trialDays)
-                    ->quantity($limitedCertificateCount)
+                    //->quantity($limitedCertificateCount)
                     ->create();
                 $subscriptionItems = $subscription->items ?? [];
                 foreach ($subscriptionItems as $item) {
@@ -255,7 +255,7 @@ class RegisterController extends Controller
         if (!$user->subscribed('free')) {
 
             $subscription = $user->newSubscription('free', $planId)->trialDays($trialDays)
-                ->quantity($limitedCertificateCount)
+                //->quantity($limitedCertificateCount)
                 ->create();
             $trialEndsAt = $subscription->trial_ends_at;
             $remainingDays = Carbon::now()->diffInDays($trialEndsAt->endOfDay(), false);
