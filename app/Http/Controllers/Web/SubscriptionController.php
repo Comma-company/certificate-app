@@ -138,10 +138,20 @@ class SubscriptionController extends Controller
     public function showPlans(Request $request)
     {
 
-        if (!$request->hasValidSignature()) {
+        /*   if (!$request->hasValidSignature()) {
             abort(401);
         }
-
+        */
+        //     $stripe = new StripeClient($key);
+        $user = User::first();
+        $key = config('services.stripe.Secret_key');
+        \Stripe\Stripe::setApiKey($key);
+        // Authenticate your user.
+        $session = \Stripe\BillingPortal\Session::create([
+            'customer' => $user->stripe_id,
+            //'return_url' => 'https://360connect.app/account',
+        ]);
+        return $session;
         //$CLIENT_REFERENCE_ID= $user->id;
         return view('plan', [
             // 'CLIENT_REFERENCE_ID'=>$CLIENT_REFERENCE_ID,

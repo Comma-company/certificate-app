@@ -46,22 +46,29 @@ class SubscriptionController extends Controller
     public function urlPlans()
     {
         $user = Auth::guard('sanctum')->user();
-
-        $planApiUrl = URL::temporarySignedRoute(
+        $key = config('services.stripe.Secret_key');
+        \Stripe\Stripe::setApiKey($key);
+        // Authenticate your user.
+        $session = \Stripe\BillingPortal\Session::create([
+            'customer' => $user->stripe_id,
+            //'return_url' => 'https://360connect.app/account',
+        ]);
+        $customer_portal_link =  $session->url;
+        /*  $planApiUrl = URL::temporarySignedRoute(
             'plans',
             now()->addMinutes(60),
             [
                 'CLIENT_REFERENCE_ID' => $user->stripe_id,
                 'email_user' => $user->email ?? ''
             ]
-        );
+        ); */
 
-      /*   $planApiUrl = route('plans', [
+        /*   $planApiUrl = route('plans', [
             'CLIENT_REFERENCE_ID' => $user->id,
             'email_user' => $user->email ?? ''
         ]); */
 
-        return responsejson(true, 'plans', $planApiUrl);
+        return responsejson(true, 'plans', $customer_portal_link);
     }
 
     public function showPlans()
