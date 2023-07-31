@@ -52,17 +52,6 @@ class SubscriptionController extends Controller
         $session = \Stripe\BillingPortal\Session::create([
             'customer' => $user->stripe_id,
             //'return_url' => 'https://360connect.app/account',
-            'features' => [
-                "customer_update" => [
-                    "allowed_updates" => [
-                        "email",
-                        "tax_id"
-                      ],
-                      "enabled" => false
-                    ,
-                ]
-
-            ],
         ]);
         $customer_portal_link =  $session->url;
         /*  $planApiUrl = URL::temporarySignedRoute(

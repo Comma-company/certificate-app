@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api\Auth;
+
 use App\Models\BusinessType;
 use App\Models\User;
 use App\Models\Country;
@@ -27,7 +28,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required', 'string', 'min:8'],
             'business_type_id' => ['required', 'array'],
-            'phone' => ['required','unique:users'],
+            'phone' => ['required', 'unique:users'],
         ]);
 
         if ($validated->fails()) {
@@ -62,17 +63,16 @@ class RegisterController extends Controller
             Stripe::setApiKey(config('services.stripe.Secret_key'));
 
             $currency = 'GBP';
-
-            $stripeCustomer=$user->createAsStripeCustomer([
+            $stripeCustomer = $user->createAsStripeCustomer([
                 'description' => 'any desc',
                 'phone' => $data['phone'],
                 'metadata' => $metadata,
-                'currency' => $currency,
-              ]);
+                //'currency' => $currency,
+            ]);
+
             event(new Registered($user));
             DB::commit();
             return responseJson(true, 'success created user', $user);
-
         } catch (\Throwable $th) {
             DB::rollBack();
             throw $th;
@@ -107,7 +107,7 @@ class RegisterController extends Controller
                 'number_street_name' => $data['number_street_name'],
                 'city' => $data['city'],
                 'postal_code' => $data['postal_code'],
-                'state'=>$data['state'],
+                'state' => $data['state'],
                 'country_id' => $data['country_id'],
                 'vat_number' => $data['vat_number'],
                 'has_vat' => $data['has_vat'],
@@ -131,34 +131,33 @@ class RegisterController extends Controller
                 DB::commit();
                 return responseJson(true, 'Please enter both License Number and Gas Register Number to create the Certificate', $user->load(['logo', 'categories']));
             }
-            $planId='price_1NSEkhE2sCQWSLCAGK6joBPt';
+            $planId = 'price_1NSEkhE2sCQWSLCAGK6joBPt';
             $trialDays = 7;
             $limitedCertificateCount = 20;
             if (!empty($licenseNumber) && !empty($gasRegisterNumber)) {
 
-            $user->categories()->attach($categoriesId,[
-                'license_number'=>$request->license_number,
-                'gas_register_number'=>$request->gas_register_number,
-                'electric_board_id'=>json_encode([$request->electric_board_id]),
-            ]);
-            $countryId = $data['country_id'];
-            $countryName = Country::where('id', $countryId)->pluck('iso2')->first();
-                $address=[
+                $user->categories()->attach($categoriesId, [
+                    'license_number' => $request->license_number,
+                    'gas_register_number' => $request->gas_register_number,
+                    'electric_board_id' => json_encode([$request->electric_board_id]),
+                ]);
+                $countryId = $data['country_id'];
+                $countryName = Country::where('id', $countryId)->pluck('iso2')->first();
+                $address = [
                     'line1' => $data['registered_address'],
                     'line2' => $data['number_street_name'],
-                    'state'=> $data['state'],
+                    'state' => $data['state'],
                     'postal_code' => $data['postal_code'],
                     'city' => $data['city'],
-                    'country'=>$countryName,
+                    'country' => $countryName,
                 ];
-                 $user->createOrGetStripeCustomer([
-                    'address'=>$address,
-                  ]);
+                $user->createOrGetStripeCustomer([
+                    'address' => $address,
+                ]);
 
                 $subscription = $user->newSubscription('free', $planId)->trialDays($trialDays)
-                ->quantity($limitedCertificateCount)
-                ->create();
-
+                    ->quantity($limitedCertificateCount)
+                    ->create();
             } elseif (!empty($licenseNumber)) {
 
                 // Apply subscription for Electrical categories
@@ -167,23 +166,20 @@ class RegisterController extends Controller
                     'electric_board_id' => json_encode([$request->electric_board_id]),
                 ]);
                 $subscription = $user->newSubscription('free', $planId)->trialDays($trialDays)
-                ->quantity($limitedCertificateCount)
+                    ->quantity($limitedCertificateCount)
                     ->create();
 
-                      $subscriptionItems = $subscription->items ?? [];
-                    foreach ($subscriptionItems as $item) {
-                        if ($item->plan && $item->plan->type === 'Electric Certificate') {
-                            $item->update([
-                                'quantity' => 0,
-                                'metadata' => [
-                                    'free_for_electric' => true,
-                                ],
-                            ]);
-                        }
+                $subscriptionItems = $subscription->items ?? [];
+                foreach ($subscriptionItems as $item) {
+                    if ($item->plan && $item->plan->type === 'Electric Certificate') {
+                        $item->update([
+                            'quantity' => 0,
+                            'metadata' => [
+                                'free_for_electric' => true,
+                            ],
+                        ]);
                     }
-
-
-
+                }
             } elseif (!empty($gasRegisterNumber)) {
 
                 // Apply subscription for Gas categories
@@ -193,20 +189,19 @@ class RegisterController extends Controller
                 ]);
 
                 $subscription = $user->newSubscription('free', $planId)->trialDays($trialDays)
-                ->quantity($limitedCertificateCount)
+                    ->quantity($limitedCertificateCount)
                     ->create();
-                 $subscriptionItems = $subscription->items ?? [];
-                    foreach ($subscriptionItems as $item) {
-                        if ($item->plan && $item->plan->type === 'Gas') {
-                            $item->update([
-                                'quantity' => 0,
-                                'metadata' => [
-                                    'free_for_gas' => true,
-                                ],
-                            ]);
-                        }
+                $subscriptionItems = $subscription->items ?? [];
+                foreach ($subscriptionItems as $item) {
+                    if ($item->plan && $item->plan->type === 'Gas') {
+                        $item->update([
+                            'quantity' => 0,
+                            'metadata' => [
+                                'free_for_gas' => true,
+                            ],
+                        ]);
                     }
-
+                }
             }
             if ($request->hasFile('logo')) {
                 $logo = uploadImage($request->logo, 'user_logo');
@@ -215,13 +210,11 @@ class RegisterController extends Controller
             }
             // $data->files()->create($image);
             $trialEndsAt = $subscription->trial_ends_at;
-             $remainingDays = Carbon::now()->diffInDays($trialEndsAt->endOfDay(), false);
-           Notification::send($user, new TrialRemainingDaysNotification($remainingDays));
+            $remainingDays = Carbon::now()->diffInDays($trialEndsAt->endOfDay(), false);
+            Notification::send($user, new TrialRemainingDaysNotification($remainingDays));
 
             DB::commit();
-            return responseJson(true, 'success created user', $user->load(['logo','categories']));
-
-
+            return responseJson(true, 'success created user', $user->load(['logo', 'categories']));
         } catch (\Throwable $th) {
             DB::rollBack();
             throw $th;
@@ -240,36 +233,34 @@ class RegisterController extends Controller
         }
 
         $data = $request->all();
-        $planId='price_1NSEkhE2sCQWSLCAGK6joBPt';
-            $trialDays = 7;
-            $limitedCertificateCount = 20;
+        $planId = 'price_1NSEkhE2sCQWSLCAGK6joBPt';
+        $trialDays = 7;
+        $limitedCertificateCount = 20;
         $user = User::find(authUser('sanctum')->id);
-            $licenseNumber = $request->	license_number;
-            $gasRegisterNumber = $request->gas_register_number;
-            $categories = $user->categories;
-            if (!empty($licenseNumber) || !empty($gasRegisterNumber)) {
-                $categories->each(function ($category) use ($licenseNumber, $gasRegisterNumber) {
-                    if (!empty($licenseNumber)) {
-                        $category->pivot->license_number = $licenseNumber;
-                    }
-                    if (!empty($gasRegisterNumber)) {
-                        $category->pivot->gas_register_number = $gasRegisterNumber;
-                    }
-                    $category->pivot->save();
-                });
-            }
-            $user->save();
-            if (!$user->subscribed('free')) {
+        $licenseNumber = $request->license_number;
+        $gasRegisterNumber = $request->gas_register_number;
+        $categories = $user->categories;
+        if (!empty($licenseNumber) || !empty($gasRegisterNumber)) {
+            $categories->each(function ($category) use ($licenseNumber, $gasRegisterNumber) {
+                if (!empty($licenseNumber)) {
+                    $category->pivot->license_number = $licenseNumber;
+                }
+                if (!empty($gasRegisterNumber)) {
+                    $category->pivot->gas_register_number = $gasRegisterNumber;
+                }
+                $category->pivot->save();
+            });
+        }
+        $user->save();
+        if (!$user->subscribed('free')) {
 
             $subscription = $user->newSubscription('free', $planId)->trialDays($trialDays)
                 ->quantity($limitedCertificateCount)
-                    ->create();
+                ->create();
             $trialEndsAt = $subscription->trial_ends_at;
             $remainingDays = Carbon::now()->diffInDays($trialEndsAt->endOfDay(), false);
             Notification::send($user, new TrialRemainingDaysNotification($remainingDays));
-            }
-            return responseJson(true, 'success created user', $user->load('categories'));
-
+        }
+        return responseJson(true, 'success created user', $user->load('categories'));
     }
-
 }
