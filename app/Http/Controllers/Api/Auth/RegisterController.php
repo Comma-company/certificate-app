@@ -131,7 +131,7 @@ class RegisterController extends Controller
                 DB::commit();
                 return responseJson(true, 'Please enter both License Number and Gas Register Number to create the Certificate', $user->load(['logo', 'categories']));
             }
-            $planId = 'price_1NZunvE2sCQWSLCAyF0wfTn4';
+            $planId = env('Free_Plan','price_1NZunvE2sCQWSLCAyF0wfTn4');
             $trialDays = 7;
             $limitedCertificateCount = 20;
             if (!empty($licenseNumber) && !empty($gasRegisterNumber)) {
@@ -233,7 +233,9 @@ class RegisterController extends Controller
         }
 
         $data = $request->all();
-        $planId = 'price_1NZunvE2sCQWSLCAyF0wfTn4';
+        $planId = env('Free_Plan','price_1NZunvE2sCQWSLCAyF0wfTn4');
+
+        //$planId = 'price_1NZunvE2sCQWSLCAyF0wfTn4';
         $trialDays = 7;
         $limitedCertificateCount = 20;
         $user = User::find(authUser('sanctum')->id);
