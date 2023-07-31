@@ -189,6 +189,10 @@ class SubscriptionController extends Controller
 
         return redirect()->route('plans')->with('success', 'Success creating subscription !');
     }
+
+
+
+
     public function handle(Request $request)
     {
         $payload = @file_get_contents('php://input');
@@ -300,6 +304,7 @@ class SubscriptionController extends Controller
         ]);
         return $subscription;
     }
+    
     private function handleSubscriptionCreated(Subscription $subscription)
     {
         $subscriptionId = $subscription->id;

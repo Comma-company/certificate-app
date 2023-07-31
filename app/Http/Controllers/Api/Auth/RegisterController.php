@@ -131,7 +131,7 @@ class RegisterController extends Controller
                 DB::commit();
                 return responseJson(true, 'Please enter both License Number and Gas Register Number to create the Certificate', $user->load(['logo', 'categories']));
             }
-            $planId = 'price_1NSEkhE2sCQWSLCAGK6joBPt';
+            $planId = 'price_1NZunvE2sCQWSLCAyF0wfTn4';
             $trialDays = 7;
             $limitedCertificateCount = 20;
             if (!empty($licenseNumber) && !empty($gasRegisterNumber)) {
