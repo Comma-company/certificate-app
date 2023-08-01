@@ -304,8 +304,8 @@ class SubscriptionController extends Controller
         ]);
         return $subscription;
     }
-    
-    private function handleSubscriptionCreated(Subscription $subscription)
+
+    private function handleSubscriptionCreated($subscription)
     {
         $subscriptionId = $subscription->id;
         $customerId = $subscription->customer;
@@ -327,7 +327,7 @@ class SubscriptionController extends Controller
         ]);
         return $subscription;
     }
-    private function handleSubscriptionUpdated(Subscription $subscription)
+    private function handleSubscriptionUpdated($subscription)
     {
         $subscriptionId = $subscription->id;
         $status = $subscription->status;
