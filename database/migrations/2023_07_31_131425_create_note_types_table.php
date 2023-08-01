@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCertificateNotesTable extends Migration
+class CreateNoteTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateCertificateNotesTable extends Migration
      */
     public function up()
     {
-        Schema::create('certificate_notes', function (Blueprint $table) {
+        Schema::create('note_types', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('certificate_id')->constrained('certificates')->cascadeOnDelete();
-            $table->string('body');
+            $table->string('type');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateCertificateNotesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('certificate_notes');
+        Schema::dropIfExists('note_types');
     }
 }

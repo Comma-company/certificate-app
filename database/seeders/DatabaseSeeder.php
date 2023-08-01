@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             ElectricBoardSeeder::class,
             FeatureSeeder::class,
             FeaturePlanSeeder::class,
+            NoteTypeSeeder::class,
            ]);
     }
 }

@@ -13,6 +13,7 @@ use Mpdf\Config\FontVariables;
 use App\Models\CertificateNote;
 use Mpdf\Config\ConfigVariables;
 use Illuminate\Support\Facades\DB;
+use App\Models\CertificateAttachment;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -92,7 +93,7 @@ class CertificateController extends Controller
 
     public function store(Request $request)
     {
-        //return response()->json($request->job_id) ;
+        
         $request->validate([
             'customer_id' => ['sometimes', 'required', 'exists:customers,id'],
             'form_id' => ['required', 'exists:forms,id'],
@@ -108,18 +109,40 @@ class CertificateController extends Controller
         $data->status_id = $request->status_id;
         $data->site_id=$request->site_id;
         $data->data = $request->data;
-        $data->site_id=$request->site_id;
         $data->save();
-
-        if ($request->form_images) {
-            $images = $request->form_images;
-            foreach ($images as $key => $imageFile) {
+        // if ($request->form_images) {
+        //     $images = $request->form_images;
+        //     foreach ($images as $key => $imageFile) {
+        //         if (is_file($imageFile['image'])) {
+        //             $image = uploadImage($imageFile['image'], $imageFile['id']);
+        //             $data->files()->create($image);
+        //         }
+        //     }
+        // }
+        if ($request->form_attachments){
+                $images=$request->form_attachments;
+            foreach ($images as $key =>$imageFile){
+               // dd($imageFile);
                 if (is_file($imageFile['image'])) {
-                    $image = uploadImage($imageFile['image'], $imageFile['id']);
-                    $data->files()->create($image);
+                   $image = uploadImage($imageFile['image'], $imageFile['id']);
+                     $note = $imageFile['note'] ?? '';
+                     $exclude = $imageFile['exclude'] ?? '';
+                    $data->certificateAttachments()->create([
+                        'image' => $image['file_url'],
+                        'note' => $note,
+                        'exclude' => $exclude,
+                        // 'certificate_id'=>$data->id,
+                    ]);
+                     
+                  
+                   
+                   
                 }
+
             }
+           
         }
+        
         if ($request->customer_signature) {
             $customer_signature = $request->customer_signature;
             $image = uploadImage($customer_signature, 'customer_signature');
@@ -155,7 +178,7 @@ class CertificateController extends Controller
     public function storeNote($id, Request $request)
     {
         $request->validate([
-            'title' => ['required'],
+            'note_type_id' => ['required'],
             'body' => ['required'],
         ]);
         $user = authUser('sanctum');
@@ -165,36 +188,36 @@ class CertificateController extends Controller
         try {
             $note = $certificate->notes()->create([
                 'user_id' => $user->id,
-                'title' => $request->title,
+                'note_type_id' => $request->note_type_id,
                 'body' => $request->body,
             ]);
             $files_name = [];
-            if ($request->note_files) {
-                foreach ($request->note_files as $key =>  $file) {
-                    //dd($file);
-                    $file_name = strtotime(now()) . '_' . Str::random(6) . '.' . $file->extension();
-                    $files_name[$key]['name'] = $file_name;
+            // if ($request->note_files) {
+            //     foreach ($request->note_files as $key =>  $file) {
+            //         //dd($file);
+            //         $file_name = strtotime(now()) . '_' . Str::random(6) . '.' . $file->extension();
+            //         $files_name[$key]['name'] = $file_name;
 
-                    if ($file->extension() == 'jpeg' || $file->extension() == 'jpg' || $file->extension() == 'png') {
-                        $image = uploadImageAs($file, $file_name, 'image');
-                        $file = $note->files()->create($image);
-                        $files_name[$key]['id'] = $file->id;
-                        $files_name[$key]['url'] = $file->url;
-                        $files_name[$key]['type'] = 'image';
-                    } elseif ($file->extension() == 'mp4' || $file->extension() == 'vlc') {
+            //         if ($file->extension() == 'jpeg' || $file->extension() == 'jpg' || $file->extension() == 'png') {
+            //             $image = uploadImageAs($file, $file_name, 'image');
+            //             $file = $note->files()->create($image);
+            //             $files_name[$key]['id'] = $file->id;
+            //             $files_name[$key]['url'] = $file->url;
+            //             $files_name[$key]['type'] = 'image';
+            //         } elseif ($file->extension() == 'mp4' || $file->extension() == 'vlc') {
 
-                        $image = uploadImageAs($file, $file_name, 'video');
-                        $file = $note->files()->create($image);
-                        $files_name[$key]['id'] = $file->id;
-                        $files_name[$key]['url'] = $file->url;
-                        $files_name[$key]['type'] = 'video';
-                    }
-                }
-            }
+            //             $image = uploadImageAs($file, $file_name, 'video');
+            //             $file = $note->files()->create($image);
+            //             $files_name[$key]['id'] = $file->id;
+            //             $files_name[$key]['url'] = $file->url;
+            //             $files_name[$key]['type'] = 'video';
+            //         }
+            //     }
+            // }
 
             $body = [
                 "note" => $note,
-                "files" => $files_name
+                //"files" => $files_name
             ];
             DB::commit();
             return responseJson(true, 'success created', $body);
@@ -207,7 +230,7 @@ class CertificateController extends Controller
     public function updateNote($noteId, Request $request)
     {
         $request->validate([
-            'title' => ['required'],
+            'note_type_id' => ['required'],
             'body' => ['required'],
         ]);
 
@@ -220,7 +243,7 @@ class CertificateController extends Controller
         try {
             //code...
             $note->update([
-                'title' => $request->title,
+                'note_type_id' => $request->note_type_id,
                 'body' => $request->body,
             ]);
 
@@ -277,6 +300,35 @@ class CertificateController extends Controller
         $file->delete();
         return responseJson(true, 'success delete file', []);
     } */
+    public function deleteNote($id){
+        $user = authUser('sanctum');
+        $note =  CertificateNote::where('user_id', $user->id)->findOrFail($id);
+        $note->delete();
+        return responseJson(true, 'success delete Note', []);
+
+    }
+
+
+
+
+    public function deleteFileImage($id , $fileId){
+        $user_id = Auth::guard('sanctum')->user()->id;
+        $certificate = Certificate::where('user_id',$user_id)->findOrFail($id);
+        if (!$certificate) {
+            return responseJson(false, 'Certificate not found', '', 404);
+        }
+    
+        $certificateAttachment = $certificate->certificateAttachments()->where('id', $fileId)->first();
+    
+        if (!$certificateAttachment) {
+            return responseJson(false, 'Certificate attachment not found', '', 404);
+        }
+        Storage::delete($certificateAttachment->image);
+        $certificateAttachment->delete();
+    
+        return responseJson(true, 'Image deleted successfully');
+       
+    }
 
 
 
@@ -295,12 +347,32 @@ class CertificateController extends Controller
         $data->data = $request->data;
         $data->save();
 
-        if ($request->form_images) {
-            $images = $request->form_images;
-            foreach ($images as $key => $imageFile) {
+        // if ($request->form_images) {
+        //     $images = $request->form_images;
+        //     foreach ($images as $key => $imageFile) {
+        //         if (is_file($imageFile['image'])) {
+        //             $image = uploadImage($imageFile['image'], $imageFile['id']);
+        //             $data->files()->create($image);
+        //         }
+        //     }
+        // }
+        if ($request->form_attachments) {
+            $images = $request->form_attachments;
+            foreach ($images as $imageFile) {
+                $existingAttachment = CertificateAttachment::where('id', $imageFile['id'])->first();
+                if ($existingAttachment) {
+                    $existingAttachment->delete();
+                }
+                
                 if (is_file($imageFile['image'])) {
                     $image = uploadImage($imageFile['image'], $imageFile['id']);
-                    $data->files()->create($image);
+                    $note = $imageFile['note'] ?? '';
+                    $exclude = $imageFile['exclude'] ?? '';
+                    $data->certificateAttachments()->create([
+                        'image' => $image['file_url'],
+                        'note' => $note,
+                        'exclude' => $exclude,
+                    ]);
                 }
             }
         }
@@ -374,7 +446,15 @@ class CertificateController extends Controller
             return responseJson(false, 'certificate Not found ', null, 404);
         }
     }
-
+    public function viewNote($id, Request $request){
+        $user_id = Auth::guard('sanctum')->user()->id;
+        $data =  CertificateNote::where([
+            'user_id' => $user_id,
+            'id' => $id,
+        ])->first();
+    return responseJson(true, 'view Note ',$data);
+    }
+    
 
 
 
