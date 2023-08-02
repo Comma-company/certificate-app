@@ -301,11 +301,9 @@ class SubscriptionController extends Controller
     {
         $date = Carbon::parse($newTrialEndsAt)->format('Y-m-d H:i:s');
 
-        $stripe = new \Stripe\StripeClient(config('services.stripe.secret'));
-        $subscription =  $stripe->subscriptions->retrieve(
-            $subscriptionId,
-            []
-        );
+        $stripe = new \Stripe\StripeClient(config('services.stripe.Secret_key'));
+
+        $subscription =  $stripe->subscriptions->retrieve($subscriptionId,[]);
 
         // Get the product ID from the subscription
         $productId = $subscription->items->data[0]->price->product;
@@ -368,7 +366,7 @@ class SubscriptionController extends Controller
             $previousPlanId = $subscription->metadata->previous_plan_id ?? null;
             $currentPlanId = $subscription->items->data[0]->price->id;
             if ($previousPlanId !== $currentPlanId) {
-                Stripe::setApiKey(config('services.stripe.secret'));
+                Stripe::setApiKey(config('services.stripe.Secret_key'));
                 try {
                     $updatedSubscription = \Stripe\Subscription::update(
                         $subscription->id,
