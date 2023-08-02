@@ -32,6 +32,7 @@ return [
     'stripe'=>[
         'Publishable_key'=>env('STRIPE_KEY'),
         'Secret_key'=>env('STRIPE_SECRET'),
+        'Free_Plan'=>env('Free_Plan','price_1NZunvE2sCQWSLCAyF0wfTn4'),
     ],
 
 ];
