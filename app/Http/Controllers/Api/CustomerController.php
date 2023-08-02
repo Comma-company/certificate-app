@@ -264,7 +264,7 @@ class CustomerController extends Controller
     }
     public function getAllCustomerSites(Request $request){
         $user_id = Auth::guard('sanctum')->user()->id;
-        $customers = Customer::with('sites')->where('user_id',$user_id)->get();
+        $customers = Customer::with(['sites','contacts'])->where('user_id',$user_id)->get();
         return responseJson(true,"Customer with sites",$customers);
 
     }
