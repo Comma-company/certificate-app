@@ -2,26 +2,27 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Laravel\Cashier\Cashier;
-use Illuminate\Support\Facades\Notification;
-use App\Notifications\TrialRemainingDaysNotification;
-use App\Notifications\TrialEndNotification;
-use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 use Stripe\Stripe;
-use Stripe\Customer;
-use App\Models\Subscription;
-use App\Models\SubscriptionItem;
-use Stripe\PaymentMethod;
 use App\Models\Plan;
 use App\Models\User;
-use Carbon\Carbon;
+use Stripe\Customer;
+use Stripe\PaymentMethod;
+use Illuminate\Support\Str;
+use App\Models\Subscription;
+use Illuminate\Http\Request;
+use Laravel\Cashier\Cashier;
+use App\Models\SubscriptionItem;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-use App\Notifications\ChargeSucceededNotification;
 use Illuminate\Support\Facades\Artisan;
+use App\Notifications\TrialEndNotification;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\ChargeSucceededNotification;
+use App\Notifications\TrialRemainingDaysNotification;
 
 
 
@@ -326,7 +327,7 @@ class SubscriptionController extends Controller
             'trial_ends_at' => $trialEndsAt,
             'ends_at' => date('Y-m-d H:i:s', $endsAt),
         ]);
-        
+
         return $subscription;
     }
     private function handleSubscriptionUpdated($subscription)
@@ -354,10 +355,22 @@ class SubscriptionController extends Controller
                         ['items' => [['price' => $currentPlanId]]]
                     );
 
+                    // Fetch the subscription from Stripe
+                    $subscription = \Stripe\Subscription::retrieve($subscriptionId);
+                    // Get the product ID from the subscription
+                    $productId = $subscription->items->data[0]->price->product;
+
+                    // Fetch the product from Stripe
+                    $product = \Stripe\Product::retrieve($productId);
+
+                    // Get the product name
+                    $productName = $product->name;
+
                     $subscriptionModel = Subscription::where('stripe_id', $subscriptionId)->first();
 
                     if ($subscriptionModel) {
                         $subscriptionModel->update([
+                            'name' => Str::slug($productName) ,
                             'stripe_price' => $currentPlanId,
                             'stripe_status' => $$subscription->status,
 
