@@ -23,10 +23,7 @@ class CustomerContactResource extends JsonResource
             "type" => $this->type,
             "email" => $this->email,
             "created_at" => $this->created_at,
-            "customer" => [
-                $this->customer,
-                'sites' =>  $this->customer->sites
-            ]
+            "customer" => $this->customer,
         ];
     }
 }
