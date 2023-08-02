@@ -61,6 +61,7 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
     Route::middleware('auth')->group(function () {
 
     Route::get('customers/get', [CustomerController::class, 'index'])->name('customers.get');
+    Route::get('/all-customers-sites',[CustomerController::class,'getAllCustomerSites']);
     Route::get('customers/{id}/customer', [CustomerController::class, 'show'])->name('customers.details');
     Route::get('customers/{id}', [CustomerController::class, 'showAddress'])->name('customers.address');
     Route::post('customers/create', [CustomerController::class, 'store'])->name('customers.store');
@@ -128,7 +129,7 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
 
 
 });
-    Route::prefix('certificates')->middleware('user.subscribe')->group(function () {
+    Route::prefix('certificates')->group(function () {
         
         Route::post('create', [CertificateController::class, 'store'])->middleware('auth:sanctum');
         Route::post('{id}/notes/create', [CertificateController::class, 'storeNote'])->middleware('auth:sanctum');
