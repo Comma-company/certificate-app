@@ -218,7 +218,7 @@ class SubscriptionController extends Controller
                 $subscriptionId = $event->data->object->id;
                 $newTrialEndsAt = $event->data->object->trial_end;
                 $data = $this->updateSubscriptionTrialEndsAt($subscriptionId, $newTrialEndsAt);
-                $this->handleSubscriptionUpdated($subscription);
+               return $this->handleSubscriptionUpdated($subscription);
                 break;
             case 'charge.succeeded':
                 $charge = $event->data->object;
@@ -384,7 +384,8 @@ class SubscriptionController extends Controller
                         ]);
                     }
                     Log::info('Subscription plan updated in Stripe API and database: ' . $subscriptionId);
-                    return $updatedSubscription;
+                    $subscriptionModel->refresh();
+                    return $subscriptionModel;
                 } catch (\Stripe\Exception\ApiErrorException $e) {
                     Log::error('Failed to update subscription plan in Stripe API: ' . $e->getMessage());
                 }
