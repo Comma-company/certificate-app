@@ -218,8 +218,8 @@ class SubscriptionController extends Controller
                 $subscriptionId = $event->data->object->id;
                 $newTrialEndsAt = $event->data->object->trial_end;
                 $data = $this->updateSubscriptionTrialEndsAt($subscriptionId, $newTrialEndsAt);
-                dd($data);
-                return $this->handleSubscriptionUpdated($subscription);
+                //return($data);
+                 $this->handleSubscriptionUpdated($subscription);
                 break;
             case 'charge.succeeded':
                 $charge = $event->data->object;
@@ -309,7 +309,7 @@ class SubscriptionController extends Controller
         $productId = $subscription->items->data[0]->price->product;
 
         // Fetch the product from Stripe
-        return $product = \Stripe\Product::retrieve($productId);
+        $product = $stripe->products->retrieve($productId);
 
         // Get the product name
         $productName = $product->name;
