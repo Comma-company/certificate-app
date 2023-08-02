@@ -218,7 +218,7 @@ class SubscriptionController extends Controller
                 $subscriptionId = $event->data->object->id;
                 $newTrialEndsAt = $event->data->object->trial_end;
                 $data = $this->updateSubscriptionTrialEndsAt($subscriptionId, $newTrialEndsAt);
-               return $this->handleSubscriptionUpdated($subscription);
+                return $this->handleSubscriptionUpdated($subscription);
                 break;
             case 'charge.succeeded':
                 $charge = $event->data->object;
@@ -299,10 +299,22 @@ class SubscriptionController extends Controller
     private function updateSubscriptionTrialEndsAt($subscriptionId, $newTrialEndsAt)
     {
         $date = Carbon::parse($newTrialEndsAt)->format('Y-m-d H:i:s');
+        $subscription = \Stripe\Subscription::retrieve($subscriptionId);
+        // Get the product ID from the subscription
+        $productId = $subscription->items->data[0]->price->product;
+
+        // Fetch the product from Stripe
+        $product = \Stripe\Product::retrieve($productId);
+
+        // Get the product name
+        $productName = $product->name;
+
         $subscription = DB::table('subscriptions')->where('stripe_id', $subscriptionId)->update([
+            'name' => Str::slug($productName),
             'trial_ends_at' => $date,
             'updated_at' => now()
         ]);
+        
         return $subscription;
     }
 
@@ -339,6 +351,7 @@ class SubscriptionController extends Controller
 
             if ($subscriptionModel) {
                 $subscriptionModel->update([
+
                     'stripe_status' => 'canceled',
                     'ends_at' => now(),
 
@@ -370,7 +383,7 @@ class SubscriptionController extends Controller
 
                     if ($subscriptionModel) {
                         $subscriptionModel->update([
-                            'name' => Str::slug($productName) ,
+                            'name' => Str::slug($productName),
                             'stripe_price' => $currentPlanId,
                             'stripe_status' => $$subscription->status,
 
