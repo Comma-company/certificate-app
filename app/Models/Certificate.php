@@ -41,6 +41,10 @@ class Certificate extends Model
         return $this->morphMany(File::class, 'file', 'model_type', 'model_id', 'id')
             ->where('name_file', '!=', 'customer_signature');
     }
+    public function certificateAttachments()
+    {
+        return $this->hasMany(CertificateAttachment::class,'certificate_id');
+    }
 
     public function notes(){
         return $this->hasMany(CertificateNote::class,'certificate_id');
