@@ -319,6 +319,7 @@ class SubscriptionController extends Controller
             'name' => Str::slug($productName),
             'stripe_price' => $currentPlanId,
             'trial_ends_at' => $date,
+            'stripe_status' =>   $subscription->status,
             'updated_at' => now()
         ]);
 
