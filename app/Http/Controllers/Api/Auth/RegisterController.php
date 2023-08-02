@@ -226,8 +226,8 @@ class RegisterController extends Controller
     public function completeInfoRegister(Request $request)
     {
         $validated = Validator::make($request->all(), [
-            'license_number' => ['required_without_all:gas_register_number', 'nullable'], // License number is required if gas register number is not provided
-            'gas_register_number' => ['required_without_all:license_number', 'nullable'], // Gas register number is required if license number is not provided
+            'license_number' => ['required_without_all:gas_register_number', 'nullable','unique:categories_users'], // License number is required if gas register number is not provided
+            'gas_register_number' => ['required_without_all:license_number', 'nullable','unique:categories_users'], // Gas register number is required if license number is not provided
 
         ]);
 
