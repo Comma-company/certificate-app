@@ -313,10 +313,18 @@ class SubscriptionController extends Controller
 
         // Get the product name
         $productName = $product->name;
-
+        $currentPlanId = $subscription->items->data[0]->price->id;
+        $item_stripe_id = $subscription->items->data[0]->id;
         $subscription = DB::table('subscriptions')->where('stripe_id', $subscriptionId)->update([
             'name' => Str::slug($productName),
+            'stripe_price' => $currentPlanId,
             'trial_ends_at' => $date,
+            'updated_at' => now()
+        ]);
+
+        $subscription = DB::table('subscription_items')->where('stripe_id', $item_stripe_id)->update([
+            'stripe_price' => $currentPlanId,
+            'stripe_product' => $product->id,
             'updated_at' => now()
         ]);
 
@@ -333,6 +341,7 @@ class SubscriptionController extends Controller
         $trialEndsAt = $subscription->trial_end;
         $endsAt = $subscription->current_period_end;
         $planName = $subscription->items->data[0]->price->nickname;
+
         $newSubscription = Subscription::create([
             'user_id' => $customerId,
             'name' => $planName,
@@ -386,11 +395,18 @@ class SubscriptionController extends Controller
                     $subscriptionModel = Subscription::where('stripe_id', $subscriptionId)->first();
 
                     if ($subscriptionModel) {
-
                         $subscriptionModel->update([
                             'name' => Str::slug($productName),
                             'stripe_price' => $currentPlanId,
+                            'stripe_status' => $$subscription->status,
 
+                        ]);
+
+                        $items = $subscriptionModel->subscriptionItems()->first();
+                        $items->update([
+                            'stripe_product' => $subscription->plan->product,
+                            'stripe_price' => $subscription->plan->id,
+                            //'quantity',
                         ]);
                     }
                     Log::info('Subscription plan updated in Stripe API and database: ' . $subscriptionId);
