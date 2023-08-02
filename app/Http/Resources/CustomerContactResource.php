@@ -17,13 +17,16 @@ class CustomerContactResource extends JsonResource
         return [
             "user_id" => $this->user_id,
             "id" => $this->id,
-            "customer_id" =>$this->customer_id,
+            "customer_id" => $this->customer_id,
             "f_name" => $this->f_name,
             "phone" => $this->phone,
             "type" => $this->type,
             "email" => $this->email,
             "created_at" => $this->created_at,
-            "customer" => $this->customer()->load('sites')
+            "customer" => [
+                $this->customer,
+                'sites' =>  $this->customer->sites
+            ]
         ];
     }
 }
