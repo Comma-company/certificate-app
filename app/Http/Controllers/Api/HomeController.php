@@ -44,10 +44,9 @@ class HomeController extends Controller
         $subscription = $user->subscription('free');
 
         if ($subscription) {
-            //$remainingCertificates = $subscription->quantity - $user->certificate()->count();
-
             $trialEnd = $subscription->trial_ends_at;
             $remainingDays = Carbon::now()->diffInDays($trialEnd->endOfDay(), false);
+            //$remainingCertificates = $subscription->quantity - $user->certificate()->count();
             $remainingCertificates = 20 - $user->certificate()->count();
 
             $data = [
@@ -57,7 +56,7 @@ class HomeController extends Controller
             return responseJson(true, 'Trial details data', $data);
         } else {
             $remainingDays = 0;
-            $remainingCertificates = 'Unlimited';
+            $remainingCertificates = 0;
             $extra = [
                 'remaining_days' => $remainingDays,
                 'remaining_certificates' => $remainingCertificates,
