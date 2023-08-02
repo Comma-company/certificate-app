@@ -8,6 +8,7 @@ use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CustomerContactResource;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\CustomerResource;
 use Illuminate\Validation\Rule;
@@ -59,7 +60,7 @@ class CustomerController extends Controller
             'country_id' => ['nullable', 'exists:countries,id'],
             'type_id' => ['required', 'exists:customer_types,id'],
             'tax_id' => ['nullable', 'exists:tax_settings,id'],
-            
+
         ]);
     }
 
@@ -207,14 +208,14 @@ class CustomerController extends Controller
                 'city'=>$customer->city,
                 'state'=>$customer->state,
                 'street_num'=>$customer->street_num,
-                
+
             ]);
         }
         else{
             return response()->json([
                 'status' => true,
                 'message' => 'there is not match customer address',
-                
+
             ]);
         }
 
@@ -230,7 +231,7 @@ class CustomerController extends Controller
             'city'=>$customer->city,
             'country'=>$customer->country->name,
             'state'=>$customer->state,
-            
+
         ]);
     }
     public function multiSearch(Request $request){
@@ -239,27 +240,28 @@ class CustomerController extends Controller
             $query->where('phone','like','%'.$request->q.'%')
             ->orWhere('f_name','like','%'.$request->q.'%')
             ->orWhere('postal_code','like','%'.$request->q.'%');
-            
+
         })
         ->with('customer.sites')
     ->get();
 
     $siteData = [];
 
-    foreach ($contacts as $contact) {
+    /* foreach ($contacts as $contact) {
         $customerSites = $contact->customer->sites;
         $siteData[] = [
             'contact' => $contact,
             'sites' => $customerSites,
         ];
-    }
+    } */
     return response()->json([
         'status' => true,
         'message' => 'Successfully',
-        'data' => $siteData,
+        //'data' => $siteData,
+        'data' => CustomerContactResource::collection($contacts),
         'choice' => route('template'),
     ]);
-        
+
 
     }
     public function getAllCustomerSites(Request $request){
@@ -271,5 +273,5 @@ class CustomerController extends Controller
         return responseJson(true,"Customer with sites",$data);
 
     }
-    
+
 }
