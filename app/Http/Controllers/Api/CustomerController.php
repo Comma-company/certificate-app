@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api;
+
 use Illuminate\Database\Query\Builder;
 use App\Models\Customer;
 use App\Models\Site;
@@ -35,7 +36,7 @@ class CustomerController extends Controller
             ->with('customerType')
             ->latest()
             ->get();
-          //  $data = new CustomerResource($customers);
+        //  $data = new CustomerResource($customers);
         return responseJson(true, 'successfully', $customers);
     }
 
@@ -49,13 +50,13 @@ class CustomerController extends Controller
     public function validation(Request $request)
     {
         return  $request->validate([
-            'first_name'=>'nullable',
-            'last_name'=>'nullable',
+            'first_name' => 'nullable',
+            'last_name' => 'nullable',
             'name' => 'nullable',
             'address' => 'required',
             'street_num' => 'nullable',
             'city' => 'nullable',
-            'state'=>'required',
+            'state' => 'required',
             'postal_code' => 'nullable',
             'country_id' => ['nullable', 'exists:countries,id'],
             'type_id' => ['required', 'exists:customer_types,id'],
@@ -71,14 +72,14 @@ class CustomerController extends Controller
         $request->validate([
             'type_id' => 'required',
             'name' => 'required_if:type_id,==,2',
-            'first_name'=>'required_if:type_id,==,1',
-            'last_name'=>'required_if:type_id,==,1',
-            'address'=>'required_if:type_id,==,1|required_if:type_id,==,2',
-            'street_num' =>'required',
+            'first_name' => 'required_if:type_id,==,1',
+            'last_name' => 'required_if:type_id,==,1',
+            'address' => 'required_if:type_id,==,1|required_if:type_id,==,2',
+            'street_num' => 'required',
             'city' => 'required',
             'postal_code' => 'required',
             'country_id' => ['required', 'exists:countries,id'],
-            'state'=>'required',
+            'state' => 'required',
             'other_value' =>  Rule::requiredIf(function () use ($request) {
                 return $request->property_type === 'others';
             }),
@@ -93,7 +94,7 @@ class CustomerController extends Controller
 
             DB::beginTransaction();
             //create customer
-            $customer = Customer::create($request->only('type_id','state','country_id','postal_code','city','address','street_num','name','last_name','first_name','property_type','other_value','user_id'));
+            $customer = Customer::create($request->only('type_id', 'state', 'country_id', 'postal_code', 'city', 'address', 'street_num', 'name', 'last_name', 'first_name', 'property_type', 'other_value', 'user_id'));
 
             // create billing details
             // if ($request->billing_details == 'no') {
@@ -126,7 +127,7 @@ class CustomerController extends Controller
             //create client contact
             $customer->contacts()->create([
                 "f_name" => $request->client_f_name,
-               // "l_name" => $request->client_l_name,
+                // "l_name" => $request->client_l_name,
                 "phone" => $request->client_phone,
                 "email" => $request->client_email,
                 "type" => $request->client_type,
@@ -141,11 +142,11 @@ class CustomerController extends Controller
                         "address" => $request->address,
                         "street_num" => $request->street_num,
                         "city" => $request->city,
-                        "state"=>$request->state,
+                        "state" => $request->state,
                         "postal_code" => $request->postal_code,
                         "country_id" => $request->country_id,
-                        "property_type"=>$request->property_type,
-                        "other_value"=>$request->other_value,
+                        "property_type" => $request->property_type,
+                        "other_value" => $request->other_value,
                         "user_id" => $request->user_id,
 
                     ]);
@@ -155,11 +156,11 @@ class CustomerController extends Controller
                         "address" => $request->site_address,
                         "street_num" => $request->site_street_num,
                         "city" => $request->site_city,
-                        "state"=>$request->site_state,
+                        "state" => $request->site_state,
                         "postal_code" => $request->site_postal_code,
                         "country_id" => $request->site_country_id,
-                        'property_type'=>$request->property_type,
-                        "other_value"=>$request->other_value,
+                        'property_type' => $request->property_type,
+                        "other_value" => $request->other_value,
                         "user_id" => $request->user_id,
                     ]);
                 }
@@ -196,82 +197,83 @@ class CustomerController extends Controller
             return $e;
         }
     }
-    public function showAddress($id){
-        $customer=Customer::where('id',$id)->first();
-        $site=Site::where('customer_id',$customer->id)->first();
-        if($customer->address==$site->address){
+    public function showAddress($id)
+    {
+        $customer = Customer::where('id', $id)->first();
+        $site = Site::where('customer_id', $customer->id)->first();
+        if ($customer->address == $site->address) {
             return response()->json([
                 'status' => true,
                 'message' => 'your address',
-                'postal_code'=>$customer->postal_code,
-                'country'=>$customer->country->name,
-                'city'=>$customer->city,
-                'state'=>$customer->state,
-                'street_num'=>$customer->street_num,
+                'postal_code' => $customer->postal_code,
+                'country' => $customer->country->name,
+                'city' => $customer->city,
+                'state' => $customer->state,
+                'street_num' => $customer->street_num,
 
             ]);
-        }
-        else{
+        } else {
             return response()->json([
                 'status' => true,
                 'message' => 'there is not match customer address',
 
             ]);
         }
-
     }
-    public function searchPost(Request $request){
+    public function searchPost(Request $request)
+    {
         $customer = Customer::where('user_id', authUser('sanctum')->id)
-        ->where('postal_code', 'Like', '%' . $request->q . '%')
-        ->first();
+            ->where('postal_code', 'Like', '%' . $request->q . '%')
+            ->first();
         return response()->json([
             'status' => true,
-            'postal_code'=>$customer->postal_code,
-            'street_num'=>$customer->street_num,
-            'city'=>$customer->city,
-            'country'=>$customer->country->name,
-            'state'=>$customer->state,
+            'postal_code' => $customer->postal_code,
+            'street_num' => $customer->street_num,
+            'city' => $customer->city,
+            'country' => $customer->country->name,
+            'state' => $customer->state,
 
         ]);
     }
-    public function multiSearch(Request $request){
-        $contacts=Contact::where('user_id',authUser('sanctum')->id)
-        ->whereHas('customer.sites',function($query)use ($request){
-            $query->where('phone','like','%'.$request->q.'%')
-            ->orWhere('f_name','like','%'.$request->q.'%')
-            ->orWhere('postal_code','like','%'.$request->q.'%');
+    public function multiSearch(Request $request)
+    {
+        $contacts = Contact::where('user_id', authUser('sanctum')->id)
+            ->whereHas('customer.sites', function ($query) use ($request) {
+                $query->where('phone', 'like', '%' . $request->q . '%')
+                    ->orWhere('f_name', 'like', '%' . $request->q . '%')
+                    ->orWhere('postal_code', 'like', '%' . $request->q . '%');
+            })
+            ->with('customer.sites')
+            ->get();
 
-        })
-        ->with('customer.sites')
-    ->get();
+        //$siteData = [];
 
-    $siteData = [];
-
-    /* foreach ($contacts as $contact) {
+        /* foreach ($contacts as $contact) {
         $customerSites = $contact->customer->sites;
         $siteData[] = [
             'contact' => $contact,
             'sites' => $customerSites,
         ];
     } */
-    return response()->json([
-        'status' => true,
-        'message' => 'Successfully',
-        //'data' => $siteData,
-        'data' => CustomerContactResource::collection($contacts),
-        'choice' => route('template'),
-    ]);
-
-
+        return response()->json([
+            'status' => true,
+            'message' => 'Successfully',
+            //'data' => $siteData,
+            'data' => CustomerContactResource::collection($contacts),
+            'choice' => route('template'),
+        ]);
     }
-    public function getAllCustomerSites(Request $request){
+    public function getAllCustomerSites(Request $request)
+    {
         $user_id = Auth::guard('sanctum')->user()->id;
-        $customers = Customer::with(['sites','contacts'])->where('user_id',$user_id)->get();
-        $data =[
-            'cutomers'=>$customers,
-        ];
-        return responseJson(true,"Customer with sites",$data);
+        $customers = Customer::with(['sites', 'contacts'])->where('user_id', $user_id)->get();
 
+        $contacts = Contact::where('user_id', authUser('sanctum')->id)
+            ->whereHas('customer.sites')
+            ->with('customer.sites')
+            ->get();
+
+        $data = CustomerContactResource::collection($contacts);
+        return responseJson(true, "Customer with sites", $data);
     }
-
 }
