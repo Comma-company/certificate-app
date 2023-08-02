@@ -309,7 +309,7 @@ class SubscriptionController extends Controller
         $productId = $subscription->items->data[0]->price->product;
 
         // Fetch the product from Stripe
-        return $product = \Stripe\Product::retrieve($productId);
+        return $product = $stripe->products->retrieve($productId);
 
         // Get the product name
         $productName = $product->name;
