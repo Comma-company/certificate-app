@@ -178,6 +178,7 @@ class CertificateController extends Controller
     public function storeNote($id, Request $request)
     {
         $request->validate([
+            'title'=>'nullable',
             'note_type_id' => ['required'],
             'body' => ['required'],
         ]);
@@ -230,6 +231,7 @@ class CertificateController extends Controller
     public function updateNote($noteId, Request $request)
     {
         $request->validate([
+            'title'=>'nullable',
             'note_type_id' => ['required'],
             'body' => ['required'],
         ]);

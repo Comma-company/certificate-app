@@ -10,7 +10,7 @@ class CertificateNote extends Model
 {
     use HasFactory, FileableTrait;
 
-    protected $fillable = ['note_type_id', 'body', 'certificate_id','user_id'];
+    protected $fillable = ['note_type_id','title', 'body', 'certificate_id','user_id'];
 
     public function certificate()
     {
