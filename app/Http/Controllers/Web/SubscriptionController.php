@@ -218,6 +218,7 @@ class SubscriptionController extends Controller
                 $subscriptionId = $event->data->object->id;
                 $newTrialEndsAt = $event->data->object->trial_end;
                 $data = $this->updateSubscriptionTrialEndsAt($subscriptionId, $newTrialEndsAt);
+                dd($data);
                 return $this->handleSubscriptionUpdated($subscription);
                 break;
             case 'charge.succeeded':
@@ -299,12 +300,18 @@ class SubscriptionController extends Controller
     private function updateSubscriptionTrialEndsAt($subscriptionId, $newTrialEndsAt)
     {
         $date = Carbon::parse($newTrialEndsAt)->format('Y-m-d H:i:s');
-        $subscription = \Stripe\Subscription::retrieve($subscriptionId);
+
+        $stripe = new \Stripe\StripeClient(config('services.stripe.secret'));
+        $subscription =  $stripe->subscriptions->retrieve(
+            $subscriptionId,
+            []
+        );
+
         // Get the product ID from the subscription
         $productId = $subscription->items->data[0]->price->product;
 
         // Fetch the product from Stripe
-        $product = \Stripe\Product::retrieve($productId);
+        return $product = \Stripe\Product::retrieve($productId);
 
         // Get the product name
         $productName = $product->name;
@@ -314,7 +321,7 @@ class SubscriptionController extends Controller
             'trial_ends_at' => $date,
             'updated_at' => now()
         ]);
-        
+
         return $subscription;
     }
 
