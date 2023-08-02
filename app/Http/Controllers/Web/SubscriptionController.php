@@ -2,26 +2,27 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Laravel\Cashier\Cashier;
-use Illuminate\Support\Facades\Notification;
-use App\Notifications\TrialRemainingDaysNotification;
-use App\Notifications\TrialEndNotification;
-use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 use Stripe\Stripe;
-use Stripe\Customer;
-use App\Models\Subscription;
-use App\Models\SubscriptionItem;
-use Stripe\PaymentMethod;
 use App\Models\Plan;
 use App\Models\User;
-use Carbon\Carbon;
+use Stripe\Customer;
+use Stripe\PaymentMethod;
+use Illuminate\Support\Str;
+use App\Models\Subscription;
+use Illuminate\Http\Request;
+use Laravel\Cashier\Cashier;
+use App\Models\SubscriptionItem;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-use App\Notifications\ChargeSucceededNotification;
 use Illuminate\Support\Facades\Artisan;
+use App\Notifications\TrialEndNotification;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\ChargeSucceededNotification;
+use App\Notifications\TrialRemainingDaysNotification;
 
 
 
@@ -217,7 +218,8 @@ class SubscriptionController extends Controller
                 $subscriptionId = $event->data->object->id;
                 $newTrialEndsAt = $event->data->object->trial_end;
                 $data = $this->updateSubscriptionTrialEndsAt($subscriptionId, $newTrialEndsAt);
-                $this->handleSubscriptionUpdated($subscription);
+                dd($data);
+                return $this->handleSubscriptionUpdated($subscription);
                 break;
             case 'charge.succeeded':
                 $charge = $event->data->object;
@@ -298,10 +300,26 @@ class SubscriptionController extends Controller
     private function updateSubscriptionTrialEndsAt($subscriptionId, $newTrialEndsAt)
     {
         $date = Carbon::parse($newTrialEndsAt)->format('Y-m-d H:i:s');
+
+        $stripe = new \Stripe\StripeClient(config('services.stripe.Secret_key'));
+
+        $subscription =  $stripe->subscriptions->retrieve($subscriptionId,[]);
+
+        // Get the product ID from the subscription
+        $productId = $subscription->items->data[0]->price->product;
+
+        // Fetch the product from Stripe
+        return $product = \Stripe\Product::retrieve($productId);
+
+        // Get the product name
+        $productName = $product->name;
+
         $subscription = DB::table('subscriptions')->where('stripe_id', $subscriptionId)->update([
+            'name' => Str::slug($productName),
             'trial_ends_at' => $date,
             'updated_at' => now()
         ]);
+
         return $subscription;
     }
 
@@ -325,6 +343,7 @@ class SubscriptionController extends Controller
             'trial_ends_at' => $trialEndsAt,
             'ends_at' => date('Y-m-d H:i:s', $endsAt),
         ]);
+
         return $subscription;
     }
     private function handleSubscriptionUpdated($subscription)
@@ -336,6 +355,7 @@ class SubscriptionController extends Controller
 
             if ($subscriptionModel) {
                 $subscriptionModel->update([
+
                     'stripe_status' => 'canceled',
                     'ends_at' => now(),
 
@@ -345,23 +365,37 @@ class SubscriptionController extends Controller
             $previousPlanId = $subscription->metadata->previous_plan_id ?? null;
             $currentPlanId = $subscription->items->data[0]->price->id;
             if ($previousPlanId !== $currentPlanId) {
-                Stripe::setApiKey(config('services.stripe.secret'));
+                Stripe::setApiKey(config('services.stripe.Secret_key'));
                 try {
                     $updatedSubscription = \Stripe\Subscription::update(
                         $subscription->id,
                         ['items' => [['price' => $currentPlanId]]]
                     );
+
+                    // Fetch the subscription from Stripe
+                    $subscription = \Stripe\Subscription::retrieve($subscriptionId);
+                    // Get the product ID from the subscription
+                    $productId = $subscription->items->data[0]->price->product;
+
+                    // Fetch the product from Stripe
+                    $product = \Stripe\Product::retrieve($productId);
+
+                    // Get the product name
+                    $productName = $product->name;
+
                     $subscriptionModel = Subscription::where('stripe_id', $subscriptionId)->first();
 
                     if ($subscriptionModel) {
 
                         $subscriptionModel->update([
+                            'name' => Str::slug($productName),
                             'stripe_price' => $currentPlanId,
 
                         ]);
                     }
                     Log::info('Subscription plan updated in Stripe API and database: ' . $subscriptionId);
-                    return $updatedSubscription;
+                    $subscriptionModel->refresh();
+                    return $subscriptionModel;
                 } catch (\Stripe\Exception\ApiErrorException $e) {
                     Log::error('Failed to update subscription plan in Stripe API: ' . $e->getMessage());
                 }
