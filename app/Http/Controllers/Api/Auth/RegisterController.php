@@ -25,7 +25,7 @@ class RegisterController extends Controller
         $validated = Validator::make($request->all(), [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255'],
+            'email' => ['required', 'string', 'email','unique:users' ,'max:255'],
             'password' => ['required', 'string', 'min:8'],
             'business_type_id' => ['required', 'array'],
             'phone' => ['required', 'unique:users'],
@@ -134,7 +134,7 @@ class RegisterController extends Controller
                 DB::commit();
                 return responseJson(true, 'Please enter both License Number and Gas Register Number to create the Certificate', $user->load(['logo', 'categories']));
             }
-            $planId = config('services.stripe.Free_Plan');
+            $planId = env('Free_Plan','price_1NZunvE2sCQWSLCAyF0wfTn4');
             $trialDays = 7;
             $limitedCertificateCount = 20;
             if (!empty($licenseNumber) && !empty($gasRegisterNumber)) {
@@ -236,7 +236,7 @@ class RegisterController extends Controller
         }
 
         $data = $request->all();
-        $planId =  config('services.stripe.Free_Plan');
+        $planId = env('Free_Plan','price_1NZunvE2sCQWSLCAyF0wfTn4');
 
         //$planId = 'price_1NZunvE2sCQWSLCAyF0wfTn4';
         $trialDays = 7;

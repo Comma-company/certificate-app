@@ -341,7 +341,6 @@ class SubscriptionController extends Controller
         $trialEndsAt = $subscription->trial_end;
         $endsAt = $subscription->current_period_end;
         $planName = $subscription->items->data[0]->price->nickname;
-
         $newSubscription = Subscription::create([
             'user_id' => $customerId,
             'name' => $planName,
@@ -395,18 +394,11 @@ class SubscriptionController extends Controller
                     $subscriptionModel = Subscription::where('stripe_id', $subscriptionId)->first();
 
                     if ($subscriptionModel) {
+
                         $subscriptionModel->update([
                             'name' => Str::slug($productName),
                             'stripe_price' => $currentPlanId,
-                            'stripe_status' => $$subscription->status,
 
-                        ]);
-
-                        $items = $subscriptionModel->subscriptionItems()->first();
-                        $items->update([
-                            'stripe_product' => $subscription->plan->product,
-                            'stripe_price' => $subscription->plan->id,
-                            //'quantity',
                         ]);
                     }
                     Log::info('Subscription plan updated in Stripe API and database: ' . $subscriptionId);
