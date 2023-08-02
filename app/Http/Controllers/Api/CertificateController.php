@@ -178,7 +178,7 @@ class CertificateController extends Controller
     public function storeNote($id, Request $request)
     {
         $request->validate([
-            'title'=>'nullable',
+            'title'=>'required',
             'note_type_id' => ['required'],
             'body' => ['required'],
         ]);
@@ -189,6 +189,7 @@ class CertificateController extends Controller
         try {
             $note = $certificate->notes()->create([
                 'user_id' => $user->id,
+                'title'=>$request->title,
                 'note_type_id' => $request->note_type_id,
                 'body' => $request->body,
             ]);
@@ -231,7 +232,7 @@ class CertificateController extends Controller
     public function updateNote($noteId, Request $request)
     {
         $request->validate([
-            'title'=>'nullable',
+            'title'=>'required',
             'note_type_id' => ['required'],
             'body' => ['required'],
         ]);
@@ -247,6 +248,7 @@ class CertificateController extends Controller
             $note->update([
                 'note_type_id' => $request->note_type_id,
                 'body' => $request->body,
+                'title'=>$request->title,
             ]);
 
             $files_name = [];
