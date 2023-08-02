@@ -131,7 +131,7 @@ class RegisterController extends Controller
                 DB::commit();
                 return responseJson(true, 'Please enter both License Number and Gas Register Number to create the Certificate', $user->load(['logo', 'categories']));
             }
-            $planId = env('Free_Plan','price_1NZunvE2sCQWSLCAyF0wfTn4');
+            $planId = config('services.stripe.Free_Plan');
             $trialDays = 7;
             $limitedCertificateCount = 20;
             if (!empty($licenseNumber) && !empty($gasRegisterNumber)) {
@@ -233,7 +233,7 @@ class RegisterController extends Controller
         }
 
         $data = $request->all();
-        $planId = env('Free_Plan','price_1NZunvE2sCQWSLCAyF0wfTn4');
+        $planId =  config('services.stripe.Free_Plan');
 
         //$planId = 'price_1NZunvE2sCQWSLCAyF0wfTn4';
         $trialDays = 7;
