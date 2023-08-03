@@ -25,7 +25,7 @@ class RegisterController extends Controller
         $validated = Validator::make($request->all(), [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email','unique:users' ,'max:255'],
+            'email' => ['required', 'string', 'email', 'unique:users', 'max:255'],
             'password' => ['required', 'string', 'min:8'],
             'business_type_id' => ['required', 'array'],
             'phone' => ['required', 'unique:users'],
@@ -89,8 +89,8 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8'],
             'business_type_id' => ['required', 'array'],
             'phone' => ['required'], */
-           'gas_register_number' =>['nullable','unique:categories_users'],
-           'license_number' =>['nullable','unique:categories_users'],
+            'gas_register_number' => ['nullable', 'unique:categories_users'],
+            'license_number' => ['nullable', 'unique:categories_users'],
         ]);
 
         if ($validated->fails()) {
@@ -134,7 +134,8 @@ class RegisterController extends Controller
                 DB::commit();
                 return responseJson(true, 'Please enter both License Number and Gas Register Number to create the Certificate', $user->load(['logo', 'categories']));
             }
-            $planId = env('Free_Plan','price_1NZunvE2sCQWSLCAyF0wfTn4');
+            //$planId = env('Free_Plan','price_1NZunvE2sCQWSLCAyF0wfTn4');
+            $planId = config('services.stripe.Free_Plan');
             $trialDays = 7;
             $limitedCertificateCount = 20;
             if (!empty($licenseNumber) && !empty($gasRegisterNumber)) {
@@ -158,7 +159,7 @@ class RegisterController extends Controller
                     'address' => $address,
                 ]);
 
-                $subscription = $user->newSubscription('free', $planId)->trialDays($trialDays)
+                $subscription = $user->newSubscription('default', $planId)->trialDays($trialDays)
                     //->quantity($limitedCertificateCount)
                     ->create();
             } elseif (!empty($licenseNumber)) {
@@ -168,7 +169,7 @@ class RegisterController extends Controller
                     'license_number' => $licenseNumber,
                     'electric_board_id' => json_encode([$request->electric_board_id]),
                 ]);
-                $subscription = $user->newSubscription('free', $planId)->trialDays($trialDays)
+                $subscription = $user->newSubscription('default', $planId)->trialDays($trialDays)
                     //->quantity($limitedCertificateCount)
                     ->create();
 
@@ -191,7 +192,7 @@ class RegisterController extends Controller
                     'electric_board_id' => json_encode([$request->electric_board_id]),
                 ]);
 
-                $subscription = $user->newSubscription('free', $planId)->trialDays($trialDays)
+                $subscription = $user->newSubscription('default', $planId)->trialDays($trialDays)
                     //->quantity($limitedCertificateCount)
                     ->create();
                 $subscriptionItems = $subscription->items ?? [];
@@ -226,8 +227,8 @@ class RegisterController extends Controller
     public function completeInfoRegister(Request $request)
     {
         $validated = Validator::make($request->all(), [
-            'license_number' => ['required_without_all:gas_register_number', 'nullable','unique:categories_users'], // License number is required if gas register number is not provided
-            'gas_register_number' => ['required_without_all:license_number', 'nullable','unique:categories_users'], // Gas register number is required if license number is not provided
+            'license_number' => ['required_without_all:gas_register_number', 'nullable', 'unique:categories_users'], // License number is required if gas register number is not provided
+            'gas_register_number' => ['required_without_all:license_number', 'nullable', 'unique:categories_users'], // Gas register number is required if license number is not provided
 
         ]);
 
@@ -236,8 +237,8 @@ class RegisterController extends Controller
         }
 
         $data = $request->all();
-        $planId = env('Free_Plan','price_1NZunvE2sCQWSLCAyF0wfTn4');
-
+        //$planId = env('Free_Plan','price_1NZunvE2sCQWSLCAyF0wfTn4');
+        $planId = config('services.stripe.Free_Plan');
         //$planId = 'price_1NZunvE2sCQWSLCAyF0wfTn4';
         $trialDays = 7;
         $limitedCertificateCount = 20;
@@ -257,14 +258,17 @@ class RegisterController extends Controller
             });
         }
         $user->save();
-        if (!$user->subscribed('free')) {
-
-            $subscription = $user->newSubscription('free', $planId)->trialDays($trialDays)
-                //->quantity($limitedCertificateCount)
-                ->create();
-            $trialEndsAt = $subscription->trial_ends_at;
-            $remainingDays = Carbon::now()->diffInDays($trialEndsAt->endOfDay(), false);
-            Notification::send($user, new TrialRemainingDaysNotification($remainingDays));
+        if (!$user->subscribed('default')) {
+            $free_plan_id = config('services.stripe.Free_Plan');
+            if ($user->subscribedToPrice($free_plan_id, 'default')) {
+                $subscription = $user->newSubscription('default', $free_plan_id)->trialDays($trialDays)
+                    //->quantity($limitedCertificateCount)
+                    ->create();
+                $subscription = $user->subscription('default');
+                $trialEndsAt = $subscription->trial_ends_at;
+                $remainingDays = Carbon::now()->diffInDays($trialEndsAt->endOfDay(), false);
+                Notification::send($user, new TrialRemainingDaysNotification($remainingDays));
+            }
         }
         return responseJson(true, 'success created user', $user->load('categories'));
     }

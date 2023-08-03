@@ -41,29 +41,50 @@ class HomeController extends Controller
     public function getTrialDetails(Request $request)
     {
         $user = Auth::guard('sanctum')->user();
-        $subscription = $user->subscription('free');
+        $subscription = $user->subscription('default');
 
         if ($subscription) {
-            $trialEnd = $subscription->trial_ends_at;
-            $remainingDays = Carbon::now()->diffInDays($trialEnd->endOfDay(), false);
-            //$remainingCertificates = $subscription->quantity - $user->certificate()->count();
-            $remainingCertificates = 20 - $user->certificate()->count();
+            $free_plan_id = config('services.stripe.Free_Plan');
+            if ($user->subscribedToPrice($free_plan_id, 'default')) {
 
-            $data = [
-                'remaining_days' => $remainingDays,
-                'remaining_certificates' => $remainingCertificates,
-            ];
-            return responseJson(true, 'Trial details data', $data);
+                $trialEnd = $subscription->trial_ends_at;
+                $remainingDays = Carbon::now()->diffInDays($trialEnd->endOfDay(), false);
+                //$remainingCertificates = $subscription->quantity - $user->certificate()->count();
+                $remainingCertificates = 20 - $user->certificate()->count();
+
+                $data = [
+                    'remaining_days' => $remainingDays,
+                    'remaining_certificates' => $remainingCertificates,
+                ];
+                return responseJson(true, 'Trial details data', $data);
+            } else {
+                 $stripeSubscription = $subscription->asStripeSubscription();
+                /* ********* */
+                $current_period_end = $stripeSubscription->current_period_end;
+                $end_at = Carbon::createFromTimestamp($current_period_end);
+                $remainingDays = Carbon::now()->diffInDays($end_at, false);
+                /* ******** */
+                $remainingCertificates = 'Unlimited';
+                /* ***** */
+                $trialEnd = $subscription->trial_ends_at;
+                $remainingTrialDays = Carbon::now()->diffInDays($trialEnd, false);
+
+                $data = [
+                    'remaining_days' => $remainingDays,
+                    'remaining_trial_days' => $remainingTrialDays,
+                    'remaining_certificates' => $remainingCertificates,
+
+                ];
+                return responseJson(true, 'User has subscription', $data);
+            }
         } else {
-            $remainingDays = 0;
-            $remainingCertificates = 0;
-            $extra = [
-                'remaining_days' => $remainingDays,
-                'remaining_certificates' => $remainingCertificates,
+            $data = [
+                'remaining_days' => 0,
+                'remaining_certificates' => 0,
 
             ];
+            return responseJson(true, 'User is not subscribed to a plan', $data);
 
-            return responseJson(true, 'User is not subscribed to a plan', $extra);
         }
     }
 }
