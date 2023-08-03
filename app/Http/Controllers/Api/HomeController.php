@@ -58,7 +58,7 @@ class HomeController extends Controller
                 ];
                 return responseJson(true, 'Trial details data', $data);
             } else {
-                return $stripeSubscription = $subscription->asStripeSubscription();
+                 $stripeSubscription = $subscription->asStripeSubscription();
                 /* ********* */
                 $current_period_end = $stripeSubscription->current_period_end;
                 $end_at = Carbon::createFromTimestamp($current_period_end);
