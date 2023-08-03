@@ -286,7 +286,7 @@ class SubscriptionController extends Controller
 
                     $subscriptionModel->update([
                         'stripe_status' => 'canceled',
-
+                        'end_at' =>  $subscription->canceled_at
                     ]);
                 }
                 break;
@@ -310,13 +310,14 @@ class SubscriptionController extends Controller
 
         // Fetch the product from Stripe
         $product = $stripe->products->retrieve($productId);
-        
+
         $currentPlanId = $subscription->items->data[0]->price->id;
         $item_stripe_id = $subscription->items->data[0]->id;
         $subscription = DB::table('subscriptions')->where('stripe_id', $subscriptionId)->update([
             'name' => 'default',
             'stripe_price' => $currentPlanId,
             'trial_ends_at' => $date,
+            'ends_at' => $subscription->cancel_at,
             'stripe_status' =>   $subscription->status,
             'updated_at' => now()
         ]);
