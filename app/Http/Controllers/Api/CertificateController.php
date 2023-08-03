@@ -122,16 +122,17 @@ class CertificateController extends Controller
         if ($request->form_attachments){
                 $images=$request->form_attachments;
             foreach ($images as $key =>$imageFile){
-               // dd($imageFile);
-                if (is_file($imageFile['image'])) {
+               
+               if (isset($imageFile['image']) && is_file($imageFile['image'])) {
                    $image = uploadImage($imageFile['image'], $imageFile['id']);
+                  
                      $note = $imageFile['note'] ?? '';
                      $exclude = $imageFile['exclude'] ?? '';
-                    $data->certificateAttachments()->create([
+                     $data->certificateAttachments()->create([
                         'image' => $image['file_url'],
                         'note' => $note,
                         'exclude' => $exclude,
-                        // 'certificate_id'=>$data->id,
+                        
                     ]);
                      
                   
@@ -142,6 +143,7 @@ class CertificateController extends Controller
             }
            
         }
+        
         
         if ($request->customer_signature) {
             $customer_signature = $request->customer_signature;
@@ -250,7 +252,6 @@ class CertificateController extends Controller
                 'body' => $request->body,
                 'title'=>$request->title,
             ]);
-
             $files_name = [];
             if ($request->note_files) {
                 foreach ($request->note_files as $key =>  $file) {
