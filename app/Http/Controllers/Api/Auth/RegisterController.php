@@ -134,7 +134,8 @@ class RegisterController extends Controller
                 DB::commit();
                 return responseJson(true, 'Please enter both License Number and Gas Register Number to create the Certificate', $user->load(['logo', 'categories']));
             }
-            $planId = env('Free_Plan','price_1NZunvE2sCQWSLCAyF0wfTn4');
+            //$planId = env('Free_Plan','price_1NZunvE2sCQWSLCAyF0wfTn4');
+            $planId = config('services.stripe.Free_Plan');
             $trialDays = 7;
             $limitedCertificateCount = 20;
             if (!empty($licenseNumber) && !empty($gasRegisterNumber)) {
@@ -158,7 +159,7 @@ class RegisterController extends Controller
                     'address' => $address,
                 ]);
 
-                $subscription = $user->newSubscription('free', $planId)->trialDays($trialDays)
+                $subscription = $user->newSubscription('default', $planId)->trialDays($trialDays)
                     //->quantity($limitedCertificateCount)
                     ->create();
             } elseif (!empty($licenseNumber)) {
@@ -168,7 +169,7 @@ class RegisterController extends Controller
                     'license_number' => $licenseNumber,
                     'electric_board_id' => json_encode([$request->electric_board_id]),
                 ]);
-                $subscription = $user->newSubscription('free', $planId)->trialDays($trialDays)
+                $subscription = $user->newSubscription('default', $planId)->trialDays($trialDays)
                     //->quantity($limitedCertificateCount)
                     ->create();
 
@@ -191,7 +192,7 @@ class RegisterController extends Controller
                     'electric_board_id' => json_encode([$request->electric_board_id]),
                 ]);
 
-                $subscription = $user->newSubscription('free', $planId)->trialDays($trialDays)
+                $subscription = $user->newSubscription('default', $planId)->trialDays($trialDays)
                     //->quantity($limitedCertificateCount)
                     ->create();
                 $subscriptionItems = $subscription->items ?? [];
@@ -236,8 +237,8 @@ class RegisterController extends Controller
         }
 
         $data = $request->all();
-        $planId = env('Free_Plan','price_1NZunvE2sCQWSLCAyF0wfTn4');
-
+        //$planId = env('Free_Plan','price_1NZunvE2sCQWSLCAyF0wfTn4');
+        $planId = config('services.stripe.Free_Plan');
         //$planId = 'price_1NZunvE2sCQWSLCAyF0wfTn4';
         $trialDays = 7;
         $limitedCertificateCount = 20;
@@ -259,7 +260,7 @@ class RegisterController extends Controller
         $user->save();
         if (!$user->subscribed('free')) {
 
-            $subscription = $user->newSubscription('free', $planId)->trialDays($trialDays)
+            $subscription = $user->newSubscription('default', $planId)->trialDays($trialDays)
                 //->quantity($limitedCertificateCount)
                 ->create();
             $trialEndsAt = $subscription->trial_ends_at;

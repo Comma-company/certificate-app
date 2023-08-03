@@ -98,7 +98,7 @@ class SubscriptionController extends Controller
         $user->createOrGetStripeCustomer();
         $user->addPaymentMethod($paymentMethod);
         $plan = Plan::find($request->plan);
-        $user->newSubscription($plan->name, $plan->stripe_plan)
+        $user->newSubscription('default', $plan->stripe_plan)
             ->create($paymentMethod, [
                 'email' => $user->email,
                 'collection_method' => 'create_certificate',
@@ -171,7 +171,7 @@ class SubscriptionController extends Controller
         $user->createOrGetStripeCustomer();
         $user->addPaymentMethod($paymentMethod);
         $plan = Plan::find($request->plan);
-        $user->newSubscription($plan, $plan->stripe_plan)
+        $user->newSubscription('default', $plan->stripe_plan)
             ->create($paymentMethod, [
                 'email' => $user->email,
                 'collection_method' => 'create_certificate',
@@ -310,13 +310,11 @@ class SubscriptionController extends Controller
 
         // Fetch the product from Stripe
         $product = $stripe->products->retrieve($productId);
-
-        // Get the product name
-        $productName = $product->name;
+        
         $currentPlanId = $subscription->items->data[0]->price->id;
         $item_stripe_id = $subscription->items->data[0]->id;
         $subscription = DB::table('subscriptions')->where('stripe_id', $subscriptionId)->update([
-            'name' => Str::slug($productName),
+            'name' => 'default',
             'stripe_price' => $currentPlanId,
             'trial_ends_at' => $date,
             'stripe_status' =>   $subscription->status,
@@ -345,7 +343,7 @@ class SubscriptionController extends Controller
 
         $newSubscription = Subscription::create([
             'user_id' => $customerId,
-            'name' => $planName,
+            'name' => 'default',
             'stripe_id' => $subscriptionId,
             'stripe_status' => $status,
             'stripe_price' => $planId,

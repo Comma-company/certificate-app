@@ -29,10 +29,10 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
-    'stripe'=>[
-        'Publishable_key'=>env('STRIPE_KEY'),
-        'Secret_key'=>env('STRIPE_SECRET'),
-        'Free_Plan'=>env('Free_Plan','price_1NZunvE2sCQWSLCAyF0wfTn4'),
+    'stripe' => [
+        'Publishable_key' => env('STRIPE_KEY'),
+        'Secret_key' => env('STRIPE_SECRET'),
+        'Free_Plan' => env('Free_Plan', 'price_1NZunvE2sCQWSLCAyF0wfTn4'),
     ],
 
 ];
