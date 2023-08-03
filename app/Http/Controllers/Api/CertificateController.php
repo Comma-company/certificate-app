@@ -402,7 +402,7 @@ class CertificateController extends Controller
             'user_id' => $user_id,
             'id' => $id,
         ])
-            ->with(['status', 'notes.files', 'form', 'customer', 'customer.sites', 'customer.contacts', 'customer.country', 'customer.billing.paymentTerm'])
+            ->with(['status', 'notes.files', 'form', 'customer', 'customer.sites', 'customer.contacts', 'customer.country', 'certificateAttachments','customer.billing.paymentTerm'])
             ->first();
 
         if ($data) {
