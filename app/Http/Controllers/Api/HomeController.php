@@ -43,7 +43,7 @@ class HomeController extends Controller
         $user = Auth::guard('sanctum')->user();
         $subscription = $user->subscription('default');
 
-        if ($user->subscribed('default')) {
+        if ($user->subscribed('default') && (!$user->subscription('default')->ended() || !$user->subscription('default')->canceled())) {
             $free_plan_id = config('services.stripe.Free_Plan');
             if ($user->subscribedToPrice($free_plan_id, 'default')) {
 
