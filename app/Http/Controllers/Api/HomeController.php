@@ -43,7 +43,7 @@ class HomeController extends Controller
         $user = Auth::guard('sanctum')->user();
         $subscription = $user->subscription('default');
 
-        if ($user->subscribed('default') && (!$user->subscription('default')->ended() || !$user->subscription('default')->canceled())) {
+        if ($user->subscribed('default')) {
             $free_plan_id = config('services.stripe.Free_Plan');
             if ($user->subscribedToPrice($free_plan_id, 'default')) {
 
@@ -82,7 +82,7 @@ class HomeController extends Controller
                 'remaining_certificates' => 0,
 
             ];
-            return responseJson(true, 'User is not subscribed to a plan', $data);
+            return responseJson(false, 'User is not subscribed to a plan', $data);
 
         }
     }
