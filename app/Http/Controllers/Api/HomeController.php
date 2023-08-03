@@ -41,9 +41,9 @@ class HomeController extends Controller
     public function getTrialDetails(Request $request)
     {
         $user = Auth::guard('sanctum')->user();
-        $subscription = $user->subscribed('default');
+        $subscription = $user->subscription('default');
 
-        if ($subscription) {
+        if ($user->subscribed('default')) {
             $free_plan_id = config('services.stripe.Free_Plan');
             if ($user->subscribedToPrice($free_plan_id, 'default')) {
 
