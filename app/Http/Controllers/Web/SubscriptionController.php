@@ -279,7 +279,7 @@ class SubscriptionController extends Controller
 
                 break;
             case 'customer.subscription.deleted':
-                $subscription = $event->data->object;
+                return response()->json($subscription = $event->data->object);
                 $subscriptionId = $subscription->id;
                 $subscriptionModel = Subscription::where('stripe_id', $subscriptionId)->first();
                 if ($subscriptionModel) {
