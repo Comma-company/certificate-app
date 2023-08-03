@@ -284,10 +284,10 @@ class SubscriptionController extends Controller
                 $subscriptionModel = Subscription::where('stripe_id', $subscriptionId)->first();
                // return response()->json( $subscription->canceled_at );
                 if ($subscriptionModel) {
-
+                    $ends_at = Carbon::parse( $subscription->canceled_at)->format('Y-m-d H:i:s');
                     $subscriptionModel->update([
                         'stripe_status' => 'canceled',
-                        'ends_at' =>  $subscription->canceled_at
+                        'ends_at' =>  $ends_at
                     ]);
                 }
                 break;
