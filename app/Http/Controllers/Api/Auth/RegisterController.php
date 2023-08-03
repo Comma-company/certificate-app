@@ -25,7 +25,7 @@ class RegisterController extends Controller
         $validated = Validator::make($request->all(), [
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email','unique:users' ,'max:255'],
+            'email' => ['required', 'string', 'email', 'unique:users', 'max:255'],
             'password' => ['required', 'string', 'min:8'],
             'business_type_id' => ['required', 'array'],
             'phone' => ['required', 'unique:users'],
@@ -89,8 +89,8 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8'],
             'business_type_id' => ['required', 'array'],
             'phone' => ['required'], */
-           'gas_register_number' =>['nullable','unique:categories_users'],
-           'license_number' =>['nullable','unique:categories_users'],
+            'gas_register_number' => ['nullable', 'unique:categories_users'],
+            'license_number' => ['nullable', 'unique:categories_users'],
         ]);
 
         if ($validated->fails()) {
@@ -227,8 +227,8 @@ class RegisterController extends Controller
     public function completeInfoRegister(Request $request)
     {
         $validated = Validator::make($request->all(), [
-            'license_number' => ['required_without_all:gas_register_number', 'nullable','unique:categories_users'], // License number is required if gas register number is not provided
-            'gas_register_number' => ['required_without_all:license_number', 'nullable','unique:categories_users'], // Gas register number is required if license number is not provided
+            'license_number' => ['required_without_all:gas_register_number', 'nullable', 'unique:categories_users'], // License number is required if gas register number is not provided
+            'gas_register_number' => ['required_without_all:license_number', 'nullable', 'unique:categories_users'], // Gas register number is required if license number is not provided
 
         ]);
 
@@ -258,14 +258,17 @@ class RegisterController extends Controller
             });
         }
         $user->save();
-        if (!$user->subscribed('free')) {
-
-            $subscription = $user->newSubscription('default', $planId)->trialDays($trialDays)
-                //->quantity($limitedCertificateCount)
-                ->create();
-            $trialEndsAt = $subscription->trial_ends_at;
-            $remainingDays = Carbon::now()->diffInDays($trialEndsAt->endOfDay(), false);
-            Notification::send($user, new TrialRemainingDaysNotification($remainingDays));
+        if (!$user->subscribed('default')) {
+            $free_plan_id = config('services.stripe.Free_Plan');
+            if ($user->subscribedToPrice($free_plan_id, 'default')) {
+                $subscription = $user->newSubscription('default', $free_plan_id)->trialDays($trialDays)
+                    //->quantity($limitedCertificateCount)
+                    ->create();
+                $subscription = $user->subscription('default');
+                $trialEndsAt = $subscription->trial_ends_at;
+                $remainingDays = Carbon::now()->diffInDays($trialEndsAt->endOfDay(), false);
+                Notification::send($user, new TrialRemainingDaysNotification($remainingDays));
+            }
         }
         return responseJson(true, 'success created user', $user->load('categories'));
     }
