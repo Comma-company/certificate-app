@@ -282,6 +282,7 @@ class SubscriptionController extends Controller
                 $subscription = $event->data->object;
                 $subscriptionId = $subscription->id;
                 $subscriptionModel = Subscription::where('stripe_id', $subscriptionId)->first();
+                return response()->json( $subscription->canceled_at );
                 if ($subscriptionModel) {
 
                     $subscriptionModel->update([
