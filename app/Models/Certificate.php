@@ -20,6 +20,9 @@ class Certificate extends Model
     {
         return $this->belongsTo(Status::class, 'status_id');
     }
+    public function site(){
+        return $this->belongsTo(Site::class, 'site_id');
+    }
 
 
     public function form()
