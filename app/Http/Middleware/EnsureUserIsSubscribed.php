@@ -37,7 +37,7 @@ class EnsureUserIsSubscribed
             } else {
                 return $next($request);
             }
-        } else if ($user->subscription('default')->ended() && $user->subscription('default')->canceled()) {
+        } else if ($user->subscription('default')->ended() || $user->subscription('default')->canceled()) {
             return responseJson(false, 'Please subscribe to access this feature.', [], 422);
         } elseif ($user->subscription('default')->onGracePeriod()) {
             return $next($request);

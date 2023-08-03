@@ -73,7 +73,6 @@ class HomeController extends Controller
                     'remaining_days' => $remainingDays,
                     'remaining_trial_days' => $remainingTrialDays,
                     'remaining_certificates' => $remainingCertificates,
-
                 ];
                 return responseJson(true, 'User has subscription', $data);
             }
