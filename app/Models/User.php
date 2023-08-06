@@ -108,6 +108,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsTo(Site::class);
     }
+    public function certificateImages()
+    {
+        return $this->hasMany(CertificateImage::class, 'type_id')->where('type', 'user');
+    }
 
     public function sitecontact()
     {
