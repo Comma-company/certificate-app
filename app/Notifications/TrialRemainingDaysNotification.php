@@ -43,13 +43,13 @@ class TrialRemainingDaysNotification extends Notification
     public function toMail($notifiable)
     {
         $user=Auth::guard('sanctum')->user();
-        $subscription=$user->subscription('free');
+        $subscription=$user->subscription('default');
         $trialEndsAt = $subscription->trial_ends_at;
         $remainingDays = Carbon::now()->diffInDays($trialEndsAt->endOfDay(), false);
         return (new MailMessage)->view('emails.trail.start', [
             'remainingDays' => $remainingDays,
         ]);
-    
+
         // ->subject('Trial Period Remaining')
         // ->line("Your trial period is ending soon.")
         // ->line("You have " . $remainingDays . " days remaining in your trial period.")

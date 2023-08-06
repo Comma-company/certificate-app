@@ -136,6 +136,7 @@ class RegisterController extends Controller
             }
             //$planId = env('Free_Plan','price_1NZunvE2sCQWSLCAyF0wfTn4');
             $planId = config('services.stripe.Free_Plan');
+            
             $trialDays = 7;
             $limitedCertificateCount = 20;
             if (!empty($licenseNumber) && !empty($gasRegisterNumber)) {
@@ -213,6 +214,7 @@ class RegisterController extends Controller
                 $user->logo()->create($logo);
             }
             // $data->files()->create($image);
+            //dd($subscription);
             $trialEndsAt = $subscription->trial_ends_at;
             $remainingDays = Carbon::now()->diffInDays($trialEndsAt->endOfDay(), false);
             Notification::send($user, new TrialRemainingDaysNotification($remainingDays));
@@ -224,6 +226,9 @@ class RegisterController extends Controller
             throw $th;
         }
     }
+
+
+
     public function completeInfoRegister(Request $request)
     {
         $validated = Validator::make($request->all(), [
