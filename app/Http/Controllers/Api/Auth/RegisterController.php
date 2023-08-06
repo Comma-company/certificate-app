@@ -136,7 +136,7 @@ class RegisterController extends Controller
             }
             //$planId = env('Free_Plan','price_1NZunvE2sCQWSLCAyF0wfTn4');
             $planId = config('services.stripe.Free_Plan');
-            dd($planId);
+            
             $trialDays = 7;
             $limitedCertificateCount = 20;
             if (!empty($licenseNumber) && !empty($gasRegisterNumber)) {
