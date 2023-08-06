@@ -13,6 +13,8 @@ class CreateCertificateAttachmentsTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('certificate_attachments');
+        
         Schema::create('certificate_attachments', function (Blueprint $table) {
             $table->id();
             $table->integer('certificate_id');
@@ -22,7 +24,7 @@ class CreateCertificateAttachmentsTable extends Migration
             $table->text('note_body')->nullable();
             $table->integer('attachment_type_id');
             $table->timestamps();
-            
+
         });
     }
 
