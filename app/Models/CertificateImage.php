@@ -9,4 +9,9 @@ class CertificateImage extends Model
 {
     use HasFactory;
     protected $fillable = ['image', 'type', 'type_id'];
+
+public function attachment()
+    {
+        return $this->hasOne(CertificateAttachment::class, 'image_id');
+    }
 }

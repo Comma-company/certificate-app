@@ -21,8 +21,10 @@ use App\Http\Controllers\Api\SiteContactController;
 use App\Http\Controllers\Api\BusinessTypeController;
 use App\Http\Controllers\Api\FormTemplateController;
 use App\Http\Controllers\Api\Auth\RegisterController;
+use App\Http\Controllers\Api\CertificateAttachmentController;
 use App\Http\Controllers\Api\CertificateImageController;
-use App\Models\CertificateImage;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -142,6 +144,9 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
         Route::post('{id}/update-status', [CertificateController::class, 'updateStatus'])->middleware('auth:sanctum');
         Route::post('send-email/{certificate_id}',[CertificateController::class,'sendEmail']);
         //Route::get('form-data/invoice', [FormDataController::class, 'invoice'])->middleware('auth:sanctum');
+        Route::get('all-attachments',[CertificateAttachmentController::class, 'all'])->middleware('auth:sanctum');
+        Route::post('create/attachment',[CertificateAttachmentController::class, 'store'])->middleware('auth:sanctum');
+        Route::post('attachment/{id}/update',[CertificateAttachmentController::class,'update'])->middleware('auth:sanctum');
     });
     Route::post('store-image',[CertificateImageController::class,'store'])->middleware('auth:sanctum');
     //sites

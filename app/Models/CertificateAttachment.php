@@ -9,7 +9,7 @@ use App\Traits\FileableTrait;
 class CertificateAttachment extends Model
 {
     use HasFactory,FileableTrait;
-    protected $fillable = ['certificate_id','image','note','exclude'];
+    protected $guarded = [];
     public function images()
     {
         return $this->morphMany(File::class, 'file', 'model_type', 'model_id', 'id')
@@ -18,6 +18,11 @@ class CertificateAttachment extends Model
     public function certificate()
     {
         return $this->belongsTo(Certificate::class);
+    }
+
+    public function image()
+    {
+        return $this->belongsTo(CertificateImage::class, 'image_id');
     }
 
 }
