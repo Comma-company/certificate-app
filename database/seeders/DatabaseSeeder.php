@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             FeatureSeeder::class,
             FeaturePlanSeeder::class,
             NoteTypeSeeder::class,
+            AttachmentTypeSeeder::class,
            ]);
     }
 }
