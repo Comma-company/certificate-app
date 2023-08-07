@@ -401,10 +401,21 @@ class CertificateController extends Controller
             'id' => $id,
         ])
             ->with(['status', 'notes.files', 'form', 'customer', 'site' => function ($query) {
-                $query->select(['id', 'name', 'address', 'street_num', 'city', 'country_id', 'user_id', 'customer_id', 'state', 'property_type', 'other_value']);
+                $query->select(['id', 'name', 'address', 'street_num', 'city','postal_code' ,'country_id', 'user_id', 'customer_id', 'state', 'property_type', 'other_value']);
             },
              'customer.contacts', 'customer.country', 'certificateAttachments','customer.billing.paymentTerm'])
             ->first();
+            if ($data && $data->site && isset($data->site->address) && isset($data->site->postal_code)) {
+              
+                if (strpos($data->site->address, $data->site->postal_code) !== false) {
+                    $data->site->address = str_replace($data->site->postal_code, '', $data->site->address);
+                    $data->site->address = trim($data->site->address);
+                }
+               
+        
+              
+                
+            }
 
         if ($data) {
 
