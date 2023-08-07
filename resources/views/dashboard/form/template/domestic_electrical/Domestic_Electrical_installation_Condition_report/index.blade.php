@@ -115,12 +115,17 @@
                 DETAILS OF THE CONTRACTOR
               </h5>
               <p style="margin: 15px">
-                Trading Title:
-                <span style="font-weight: bold;padding:3px 20px">{{ $data->user->trading_name }}</span>
+                Registration No:
+                <span style="font-weight: bold;padding:3px 20px">{{ $data->user->registration_number }}</span>
+              </p>
+
+              <p style="margin: 15px">
+                Company Name:
+                <span style="font-weight: bold;padding:3px 20px">{{ $data->user->company_name }}</span>
               </p>
               <p style="margin: 15px">
                 Address:
-              <span style="font-weight: bold;padding:3px 20px">{{ $data->user->registered_address }}</span>
+              <span style="font-weight: bold;padding:3px 20px">{{$data->user->number_street_name.', '.$data->user->city}}</span>
               </p>
               <p style="margin: 15px">
                 Postcode:<span style="font-weight: bold;padding:3px 20px">{{ $data->user->postal_code }}</span>
@@ -148,7 +153,7 @@
                 Name:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->name }}</span>
               </p>
               <p style="margin: 10px">
-                Address:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->address }}</span>
+                Address:<span style="font-weight: bold;padding:3px 20px">{{$data->customer->street_num.', '.$data->customer->city}}</span>
 
               </p>
               <p style="margin: 10px">
@@ -170,10 +175,10 @@
               DETAILS OF THE INSTALLATION
               </h5>
               <p style="margin: 15px">
-                Occupier:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->sites->first()->name }}</span>
+                Tenant Name:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->sites->first()->name }}</span>
               </p>
               <p style="margin: 15px">
-                Address:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->sites->first()->address }}</span>
+                Address:<span style="font-weight: bold;padding:3px 20px">{{$data->customer->sites->first()->street_num.', '.$data->customer->sites->first()->city}}</span>
 
               </p>
               <p style="margin: 15px">

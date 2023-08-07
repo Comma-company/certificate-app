@@ -149,6 +149,7 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
         Route::post('attachment/{id}/update',[CertificateAttachmentController::class,'update'])->middleware('auth:sanctum');
     });
     Route::post('store-image',[CertificateImageController::class,'store'])->middleware('auth:sanctum');
+    Route::post('delete-image/{id}',[CertificateImageController::class,'deleteImage'])->middleware('auth:sanctum');
     //sites
     Route::post('/create-sites', [SiteController::class, 'store'])->middleware('auth:sanctum');
 

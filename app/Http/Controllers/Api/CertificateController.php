@@ -100,8 +100,6 @@ class CertificateController extends Controller
             'data' => ['required'],
             'site_id'=>['required', 'exists:sites,id'],
         ]);
-
-
         $data = new Certificate();
         $data->user_id = authUser('sanctum')->id;
         $data->form_id = $request->form_id;
@@ -119,30 +117,30 @@ class CertificateController extends Controller
                 }
             }
         }
-        if ($request->form_attachments){
-                $images=$request->form_attachments;
-            foreach ($images as $key =>$imageFile){
+        // if ($request->form_attachments){
+        //         $images=$request->form_attachments;
+        //     foreach ($images as $key =>$imageFile){
                
-               if (isset($imageFile['image']) && is_file($imageFile['image'])) {
-                   $image = uploadImage($imageFile['image'], $imageFile['id']);
+        //        if (isset($imageFile['image']) && is_file($imageFile['image'])) {
+        //            $image = uploadImage($imageFile['image'], $imageFile['id']);
                   
-                     $note = $imageFile['note'] ?? '';
-                     $exclude = $imageFile['exclude'] ?? '';
-                     $data->certificateAttachments()->create([
-                        'image' => $image['file_url'],
-                        'note' => $note,
-                        'exclude' => $exclude,
+        //              $note = $imageFile['note'] ?? '';
+        //              $exclude = $imageFile['exclude'] ?? '';
+        //              $data->certificateAttachments()->create([
+        //                 'image' => $image['file_url'],
+        //                 'note' => $note,
+        //                 'exclude' => $exclude,
                         
-                    ]);
+        //             ]);
                      
                   
                    
                    
-                }
+        //         }
 
-            }
+        //     }
            
-        }
+        // }
         
         
         if ($request->customer_signature) {
@@ -361,26 +359,26 @@ class CertificateController extends Controller
                 }
             }
         }
-        if ($request->form_attachments) {
-            $images = $request->form_attachments;
-            foreach ($images as $imageFile) {
-                $existingAttachment = CertificateAttachment::where('id', $imageFile['id'])->first();
-                if ($existingAttachment) {
-                    $existingAttachment->delete();
-                }
+        // if ($request->form_attachments) {
+        //     $images = $request->form_attachments;
+        //     foreach ($images as $imageFile) {
+        //         $existingAttachment = CertificateAttachment::where('id', $imageFile['id'])->first();
+        //         if ($existingAttachment) {
+        //             $existingAttachment->delete();
+        //         }
                 
-                if (is_file($imageFile['image'])) {
-                    $image = uploadImage($imageFile['image'], $imageFile['id']);
-                    $note = $imageFile['note'] ?? '';
-                    $exclude = $imageFile['exclude'] ?? '';
-                    $data->certificateAttachments()->create([
-                        'image' => $image['file_url'],
-                        'note' => $note,
-                        'exclude' => $exclude,
-                    ]);
-                }
-            }
-        }
+        //         if (is_file($imageFile['image'])) {
+        //             $image = uploadImage($imageFile['image'], $imageFile['id']);
+        //             $note = $imageFile['note'] ?? '';
+        //             $exclude = $imageFile['exclude'] ?? '';
+        //             $data->certificateAttachments()->create([
+        //                 'image' => $image['file_url'],
+        //                 'note' => $note,
+        //                 'exclude' => $exclude,
+        //             ]);
+        //         }
+        //     }
+        // }
 
         if ($request->customer_signature) {
             $customer_signature = $request->customer_signature;
@@ -402,7 +400,10 @@ class CertificateController extends Controller
             'user_id' => $user_id,
             'id' => $id,
         ])
-            ->with(['status', 'notes.files', 'form', 'customer', 'site', 'customer.contacts', 'customer.country', 'certificateAttachments','customer.billing.paymentTerm'])
+            ->with(['status', 'notes.files', 'form', 'customer', 'site' => function ($query) {
+                $query->select(['id', 'name', 'address', 'street_num', 'city', 'country_id', 'user_id', 'customer_id', 'state', 'property_type', 'other_value']);
+            },
+             'customer.contacts', 'customer.country', 'certificateAttachments','customer.billing.paymentTerm'])
             ->first();
 
         if ($data) {

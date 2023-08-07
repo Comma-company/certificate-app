@@ -68,12 +68,12 @@
                             {{$user->registration_number}}
                         </div>
                       </div>
-                      <div style="margin-bottom: 5px;">
+                      {{-- <div style="margin-bottom: 5px;">
                         <label style="width: 35%; display: inline-block; ">Engineer:</label>
                         <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">{{$user->name}}</div>
-                      </div>
+                      </div> --}}
                       <div style="margin-bottom: 5px;">
-                        <label style="width: 35%; display: inline-block; ">Company:</label>
+                        <label style="width: 35%; display: inline-block; ">Company Name:</label>
                         <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">{{$user->company_name}}</div>
                       </div>
                       <div style="margin-bottom: 5px;">
