@@ -7,6 +7,7 @@ use App\Rules\MatchPassword;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ProfileResource;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -37,12 +38,12 @@ class ProfileController extends Controller
                 // 'subscription_status'=>$subscriptionStatus,
 
              ];
-                
+
                 return responseJson(true, 'user details', $data);
 
-            
-            
-        
+
+
+
     }
 
     /**
@@ -81,7 +82,7 @@ class ProfileController extends Controller
 
             $subscriptionStatus = $user->status_subscription;
              $data=[
-                'user'=>$user,
+                'user'=>new ProfileResource($user),
                 'subscription_status'=>$subscriptionStatus,
              ];
 
