@@ -22,11 +22,11 @@ class Subscription extends Model
 
     public function subscriptionItems()
     {
-        return $this->hasMany(SubscriptionItem::class);
+        return $this->hasMany(SubscriptionItem::class,'subscription_id ');
     }
     public function activate()
     {
-        
+
         $this->status = 'active';
         $this->save();
 

@@ -219,7 +219,7 @@ class SubscriptionController extends Controller
                 $newTrialEndsAt = $event->data->object->trial_end;
                 $data = $this->updateSubscriptionTrialEndsAt($subscriptionId, $newTrialEndsAt);
                 //return($data);
-                 $this->handleSubscriptionUpdated($subscription);
+                $this->handleSubscriptionUpdated($subscription);
                 break;
             case 'charge.succeeded':
                 $charge = $event->data->object;
@@ -282,9 +282,9 @@ class SubscriptionController extends Controller
                 $subscription = $event->data->object;
                 $subscriptionId = $subscription->id;
                 $subscriptionModel = Subscription::where('stripe_id', $subscriptionId)->first();
-               // return response()->json( $subscription->canceled_at );
+                // return response()->json( $subscription->canceled_at );
                 if ($subscriptionModel) {
-                    $ends_at = Carbon::parse( $subscription->canceled_at)->format('Y-m-d H:i:s');
+                    $ends_at = Carbon::parse($subscription->canceled_at)->format('Y-m-d H:i:s');
                     $subscriptionModel->update([
                         'stripe_status' => 'canceled',
                         'ends_at' =>  $ends_at
@@ -298,13 +298,14 @@ class SubscriptionController extends Controller
         }
         return response('Webhook handled successfully', 200);
     }
+    /* *********************** */
     private function updateSubscriptionTrialEndsAt($subscriptionId, $newTrialEndsAt)
     {
         $date = Carbon::parse($newTrialEndsAt)->format('Y-m-d H:i:s');
 
         $stripe = new \Stripe\StripeClient(config('services.stripe.Secret_key'));
 
-        $subscription =  $stripe->subscriptions->retrieve($subscriptionId,[]);
+        $subscription =  $stripe->subscriptions->retrieve($subscriptionId, []);
 
         // Get the product ID from the subscription
         $productId = $subscription->items->data[0]->price->product;
@@ -332,30 +333,48 @@ class SubscriptionController extends Controller
         return $subscription;
     }
 
+    /* **************************** */
     private function handleSubscriptionCreated($subscription)
     {
         $subscriptionId = $subscription->id;
         $customerId = $subscription->customer;
+
+        $user = User::where('stripe_id', $customerId)->first();
+
         $planId = $subscription->items->data[0]->price->id;
         $status = $subscription->status;
+
         $quantity = $subscription->items->data[0]->quantity;
+        $item_stripe_id = $subscription->items->data[0]->id;
+        $stripe_product = $subscription->items->data[0]->plan->product;
         $trialEndsAt = $subscription->trial_end;
         $endsAt = $subscription->current_period_end;
         $planName = $subscription->items->data[0]->price->nickname;
+        if ($user) {
+            $newSubscription = Subscription::create([
+                'user_id' => $user->id ,
+                'name' => 'default',
+                'stripe_id' => $subscriptionId,
+                'stripe_status' => $status,
+                'stripe_price' => $planId,
+                'quantity' => $quantity,
+                'trial_ends_at' => $trialEndsAt,
+            ]);
 
-        $newSubscription = Subscription::create([
-            'user_id' => $customerId,
-            'name' => 'default',
-            'stripe_id' => $subscriptionId,
-            'stripe_status' => $status,
-            'stripe_price' => $planId,
-            'quantity' => $quantity,
-            'trial_ends_at' => $trialEndsAt,
-            'ends_at' => date('Y-m-d H:i:s', $endsAt),
-        ]);
+            $newSubscription->subscriptionItems()->create([
+                'stripe_id' => $item_stripe_id,
+                'stripe_product' => $stripe_product,
+                'stripe_price' => $planId,
+                'quantity' => $quantity,
+            ]);
+
+            return  $newSubscription->load('subscriptionItems');
+        }
 
         return $subscription;
     }
+
+    /* *********************** */
     private function handleSubscriptionUpdated($subscription)
     {
         $subscriptionId = $subscription->id;
@@ -421,7 +440,7 @@ class SubscriptionController extends Controller
         return null;
     }
 
-
+    /* ********************** */
     private function scheduleTransitionToPaidSubscription($userId)
     {
         $user = User::find($userId);
