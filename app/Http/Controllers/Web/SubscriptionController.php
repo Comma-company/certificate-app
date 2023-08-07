@@ -351,22 +351,30 @@ class SubscriptionController extends Controller
         $endsAt = $subscription->current_period_end;
         $planName = $subscription->items->data[0]->price->nickname;
         if ($user) {
-            $newSubscription = Subscription::create([
-                'user_id' => $user->id ,
-                'name' => 'default',
-                'stripe_id' => $subscriptionId,
-                'stripe_status' => $status,
-                'stripe_price' => $planId,
-                'quantity' => $quantity,
-                'trial_ends_at' => $trialEndsAt,
-            ]);
+            DB::beginTransaction();
+            try {
 
-            $newSubscription->subscriptionItems()->create([
-                'stripe_id' => $item_stripe_id,
-                'stripe_product' => $stripe_product,
-                'stripe_price' => $planId,
-                'quantity' => $quantity,
-            ]);
+                $newSubscription = Subscription::create([
+                    'user_id' => $user->id,
+                    'name' => 'default',
+                    'stripe_id' => $subscriptionId,
+                    'stripe_status' => $status,
+                    'stripe_price' => $planId,
+                    'quantity' => $quantity,
+                    'trial_ends_at' => $trialEndsAt,
+                ]);
+
+                $newSubscription->subscriptionItems()->create([
+                    'stripe_id' => $item_stripe_id,
+                    'stripe_product' => $stripe_product,
+                    'stripe_price' => $planId,
+                    'quantity' => $quantity,
+                ]);
+                DB::commit();
+            } catch (\Throwable $th) {
+                DB::rollBack();
+                throw $th;
+            }
 
             return  $newSubscription->load('subscriptionItems');
         }
