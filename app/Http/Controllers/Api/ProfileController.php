@@ -7,7 +7,6 @@ use App\Rules\MatchPassword;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\ProfileResource;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -26,19 +25,24 @@ class ProfileController extends Controller
     {
         Stripe::setApiKey(config('services.stripe.Secret_key'));
         $user_id = Auth::guard('sanctum')->user()->id;
-        $user = User::select('id', 'first_name', 'last_name', 'email', 'phone', 'image', 'registered_address')
+         $user = User::select('id', 'first_name', 'last_name', 'email', 'phone', 'image', 'registered_address','trading_name','company_name','registration_number','number_street_name','city','postal_code','country_id','vat_number','has_vat')
             ->where('id', $user_id)
-            ->with('userEmail', 'subscriptions')
+            ->with('userEmail')
+            ->with('logo')
             ->withCount('certificate')
             ->first();
-        $subscriptionStatus = $user->status_subscription;
-        $data = [
-            'user' => $user,
-            'subscription_status' => $subscriptionStatus,
+            //  $subscriptionStatus = $user->status_subscription;
+             $data=[
+                'user'=>$user,
+                // 'subscription_status'=>$subscriptionStatus,
 
-        ];
+             ];
+                
+                return responseJson(true, 'user details', $data);
 
-        return responseJson(true, 'user details', $data);
+            
+            
+        
     }
 
     /**
@@ -71,15 +75,15 @@ class ProfileController extends Controller
             'stripe_id',
         )
             ->where('id', $user_id)
-            ->with('country', 'subscriptions', 'categories')
+            ->with('country','subscriptions','categories')
             ->with('logo')
             ->first();
-        // $subscription = $user->subscriptions()->active()->first();
-        $subscriptionStatus = $user->status_subscription;
-        $data = [
-            'user' => new ProfileResource($user),
-            'subscription_status' => $subscriptionStatus,
-        ];
+
+            $subscriptionStatus = $user->status_subscription;
+             $data=[
+                'user'=>$user,
+                'subscription_status'=>$subscriptionStatus,
+             ];
 
         return responseJson(true, 'user details', $data);
     }
@@ -201,7 +205,7 @@ class ProfileController extends Controller
         $user_id = Auth::guard('sanctum')->user()->id;
         $user = User::where('id', $user_id)->first();
         $prev_logo = false;
-        if ($user->logo) {
+        if($user->logo){
             $prev_logo = $user->logo->file_url;
         }
 
@@ -215,9 +219,10 @@ class ProfileController extends Controller
                     'type' => $logo['type'],
                     'name_file' => $logo['name_file']
                 ]);
-            } else {
+            }else{
                 $user->logo()->create($logo);
             }
+
         }
 
 
