@@ -78,8 +78,8 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->belongsToMany(BusinessType::class, 'user_business_type', 'user_id', 'business_type_id');
     }
-   
-    
+
+
 
 
     public function country()
@@ -195,7 +195,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         Stripe::setApiKey(config('services.stripe.Secret_key'));
         $subscriptionStatuses = [];
-
+        
         foreach ($this->subscriptions as $subscription) {
             $stripeSubscription = Subscription::retrieve($subscription->stripe_id);
             $subscriptionStatuses[] = $stripeSubscription->status;
@@ -214,7 +214,7 @@ class User extends Authenticatable implements MustVerifyEmail
     //أتأكد من الحالة
     public function hasActiveFreeSubscription()
     {
-       
+
         return $this->subscriptions()->where('status', 'active')->where('type', 'free')->exists();
     }
     public function getRemainingFreeTrialDays()
@@ -222,7 +222,7 @@ class User extends Authenticatable implements MustVerifyEmail
     $subscription = $this->subscriptions()->where('status', 'active')->where('type', 'free')->first();
 
     if ($subscription) {
-        
+
         $trialEndDate = $subscription->trial_ends_at;
         $currentDate = now();
         $remainingDays = $trialEndDate->diffInDays($currentDate);
