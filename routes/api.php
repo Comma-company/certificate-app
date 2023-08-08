@@ -144,11 +144,12 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
         Route::post('{id}/update-status', [CertificateController::class, 'updateStatus'])->middleware('auth:sanctum');
         Route::post('send-email/{certificate_id}',[CertificateController::class,'sendEmail']);
         //Route::get('form-data/invoice', [FormDataController::class, 'invoice'])->middleware('auth:sanctum');
-        Route::get('all-attachments',[CertificateAttachmentController::class, 'all'])->middleware('auth:sanctum');
+        Route::get('{id}/get-attachments',[CertificateAttachmentController::class, 'all'])->middleware('auth:sanctum');
         Route::post('create/attachment',[CertificateAttachmentController::class, 'store'])->middleware('auth:sanctum');
         Route::post('attachment/{id}/update',[CertificateAttachmentController::class,'update'])->middleware('auth:sanctum');
     });
     Route::post('store-image',[CertificateImageController::class,'store'])->middleware('auth:sanctum');
+    Route::post('delete-image/{id}',[CertificateImageController::class,'deleteImage'])->middleware('auth:sanctum');
     //sites
     Route::post('/create-sites', [SiteController::class, 'store'])->middleware('auth:sanctum');
 

@@ -112,13 +112,30 @@
                       <div style="width: 32.3%;float: left;">
                               <p style="padding: 0px 10px; margin: 0;font-weight: bold;color: #000;">DETAILS OF THE CONTRACTOR</p>
                               <div style="padding:0 10px;">
+                                @if ($data->user->categories->isNotEmpty())
+    @php
+        $firstCategory = $data->user->categories->firstWhere('pivot.category_id', 1);
+    @endphp
+    @if ($firstCategory)
+        <h6 style="margin: 5px 0px; font-size: 12px; font-weight: 100;">
+            Registration No:
+            <span style="font-weight: bold; padding: 3px 20px">
+                @if ($firstCategory->pivot->category_id == 1)
+                    {{ $firstCategory->pivot->license_number }}
+                @else
+                    {{ $firstCategory->pivot->gas_register_number }}
+                @endif
+            </span>
+        </h6>
+    @endif
+    @endif
                                   <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
-                                    Trading Title:
-                                    <span style="font-weight: bold;padding:3px 20px">{{ $data->user->trading_name }}</span>
+                                  Company Name:
+                                    <span style="font-weight: bold;padding:3px 20px">{{ $data->user->company_name }}</span>
                                   </h6>
                                   <h6 style="margin:5px 0px;font-size: 12px;font-weight: 100;">
                                     Address:
-                                  <span style="font-weight: bold;padding:3px 20px">{{ $data->user->registered_address }}</span>
+                                  <span style="font-weight: bold;padding:3px 20px">{{$data->user->number_street_name.', '.$data->user->city}}</span>
                                   </h6>
                                   <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
                                     Postcode:<span style="font-weight: bold;padding:3px 20px">{{ $data->user->postal_code }}</span>
@@ -129,15 +146,15 @@
                       <div style="width: 32.3%; float: left;">
                         <p style="padding: 0px 10px; margin: 0;font-weight: bold;color: #000;">DETAILS OF THE CLIENT</p>
                         <div style="padding:0 10px;">
-                              <h6 style="margin:0px ;font-size: 12px;font-weight: 100;">
+                              {{-- <h6 style="margin:0px ;font-size: 12px;font-weight: 100;">
                                 Contractor Reference Number
                                 (CRN):
-                              </h6>
+                              </h6> --}}
                               <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
                                 Name:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->name }}</span>
                               </h6>
                               <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
-                                Address:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->address }}</span>
+                                Address:<span style="font-weight: bold;padding:3px 20px">{{$data->customer->street_num.', '.$data->customer->city}}</span>
 
                               </h6>
                               <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
@@ -151,10 +168,10 @@
                         <p style="padding:0px 10px; margin: 0;font-weight: bold;color: #000;">DETAILS OF THE INSTALLATION</p>
                         <div style="padding:0 10px;">
                               <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
-                                Occupier:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->sites->first()->name }}</span>
+                                Tenant Name:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->sites->first()->name }}</span>
                               </h6>
                               <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
-                                Address:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->sites->first()->address }}</span>
+                                Address:<span style="font-weight: bold;padding:3px 20px">{{$data->customer->sites->first()->street_num.', '.$data->customer->sites->first()->city}}</span>
 
                               </h6>
                               <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">

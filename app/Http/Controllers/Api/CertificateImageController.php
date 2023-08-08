@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\CertificateImage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class CertificateImageController extends Controller
 {
@@ -32,6 +33,20 @@ class CertificateImageController extends Controller
          $certificateImage->save();
         return responseJson(true,'Certificate Images ',$certificateImage);
     }
+    public function deleteImage($id)
+{
+    $certificateImage = CertificateImage::find($id);
+
+    if (!$certificateImage) {
+        return responseJson(false ,'Certificate image not found');
+    }
+    Storage::disk('public')->delete($certificateImage->image);
+    
+    $certificateImage->delete();
+
+    return responseJson(true ,'Certificate image deleted successfully');
+}
 
    
+
 }

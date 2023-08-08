@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\CertificateAttachment;
 use Illuminate\Support\Facades\Validator;
@@ -11,8 +11,12 @@ use Illuminate\Http\Request;
 class CertificateAttachmentController extends Controller
 {
     
-        public function all(){
-            $cert_attachments = CertificateAttachment::all();
+        public function get ($id){
+            $user_id = Auth::guard('sanctum')->user()->id;
+            $cert_attachments = CertificateAttachment::where([
+                'user_id' => $user_id,
+                'certificate_id' => $id
+            ]);
             $data =[
                 'cert_attachments' => $cert_attachments,
             ];

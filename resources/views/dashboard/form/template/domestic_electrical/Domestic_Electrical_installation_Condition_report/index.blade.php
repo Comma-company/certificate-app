@@ -114,13 +114,31 @@
               <h5 style="color: #00935f;font-weight: bold;padding: 0 5px;margin: 0;">
                 DETAILS OF THE CONTRACTOR
               </h5>
+              @if ($data->user->categories->isNotEmpty())
+     @php
+        $firstCategory = $data->user->categories->firstWhere('pivot.category_id', 1);
+    @endphp
+    @if ($firstCategory)
+    <p style="margin: 15px">
+            Registration No:
+            <span style="font-weight: bold; padding: 3px 20px">
+                @if ($firstCategory->pivot->category_id == 1)
+                    {{ $firstCategory->pivot->license_number }}
+                @else
+                    {{ $firstCategory->pivot->gas_register_number }}
+                @endif
+            </span>
+          </p>
+    @endif
+    @endif
+
               <p style="margin: 15px">
-                Trading Title:
-                <span style="font-weight: bold;padding:3px 20px">{{ $data->user->trading_name }}</span>
+                Company Name:
+                <span style="font-weight: bold;padding:3px 20px">{{ $data->user->company_name }}</span>
               </p>
               <p style="margin: 15px">
                 Address:
-              <span style="font-weight: bold;padding:3px 20px">{{ $data->user->registered_address }}</span>
+              <span style="font-weight: bold;padding:3px 20px">{{$data->user->number_street_name.', '.$data->user->city}}</span>
               </p>
               <p style="margin: 15px">
                 Postcode:<span style="font-weight: bold;padding:3px 20px">{{ $data->user->postal_code }}</span>
@@ -140,15 +158,15 @@
               >
                 DETAILS OF THE CLIENT
               </h5>
-              <p style="margin: 10px">
+              {{-- <p style="margin: 10px">
                 Contractor Reference Number
                 (CRN):
-              </p>
+              </p> --}}
               <p style="margin: 10px">
                 Name:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->name }}</span>
               </p>
               <p style="margin: 10px">
-                Address:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->address }}</span>
+                Address:<span style="font-weight: bold;padding:3px 20px">{{$data->customer->street_num.', '.$data->customer->city}}</span>
 
               </p>
               <p style="margin: 10px">
@@ -170,10 +188,10 @@
               DETAILS OF THE INSTALLATION
               </h5>
               <p style="margin: 15px">
-                Occupier:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->sites->first()->name }}</span>
+                Tenant Name:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->sites->first()->name }}</span>
               </p>
               <p style="margin: 15px">
-                Address:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->sites->first()->address }}</span>
+                Address:<span style="font-weight: bold;padding:3px 20px">{{$data->customer->sites->first()->street_num.', '.$data->customer->sites->first()->city}}</span>
 
               </p>
               <p style="margin: 15px">
