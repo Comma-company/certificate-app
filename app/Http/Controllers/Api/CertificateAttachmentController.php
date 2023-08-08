@@ -11,16 +11,13 @@ use Illuminate\Http\Request;
 class CertificateAttachmentController extends Controller
 {
     
-        public function get ($id){
+        public function get($id){
             $user_id = Auth::guard('sanctum')->user()->id;
-            $cert_attachments = CertificateAttachment::where([
-                'user_id' => $user_id,
-                'certificate_id' => $id
-            ]);
-            $data =[
-                'cert_attachments' => $cert_attachments,
-            ];
-            return responseJson(true,'list of attachments',$data);
+            return $cert_attachments = CertificateAttachment::where([
+                'certificate_id' => $id,
+            ])->get();
+            
+            return responseJson(true,'list of attachments',$cert_attachments);
     
         }
         /**

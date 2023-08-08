@@ -14,8 +14,6 @@ class CertificateImageController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'type' => 'required|in:note,form,user',
-            'type_id' => 'required|integer',
         ]);
 
         if ($validator->fails()) {
@@ -26,16 +24,13 @@ class CertificateImageController extends Controller
 
         $certificateImage = new CertificateImage([
             'image' => $path,
-            'type' => $request->input('type'),
-            'type_id' => $request->input('type_id'),
         ]);
 
          $certificateImage->save();
-         return $imageUrl = Storage::disk('public')->url($path);
+          $imageUrl = Storage::disk('public')->url($path);
          $data = [
+            'id' => $certificateImage,
             'url' => $imageUrl,
-             'type' => $certificateImage->type,
-            'type_id' => $certificateImage->type_id,
          ];
          
         return responseJson(true,'Certificate Images ',$data);

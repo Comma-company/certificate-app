@@ -16,8 +16,5 @@ class CertificateNote extends Model
     {
         return $this->belongsTo(Certificate::class, 'certificate_id');
     }
-    public function certificateImages()
-    {
-        return $this->hasMany(CertificateImage::class, 'type_id')->where('type', 'note');
-    }
+    
 }

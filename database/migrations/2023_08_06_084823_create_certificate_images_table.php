@@ -16,10 +16,8 @@ class CreateCertificateImagesTable extends Migration
         Schema::create('certificate_images', function (Blueprint $table) {
             $table->id();
             $table->string('image');
-            $table->enum('type', ['note', 'form', 'user']);
-            $table->unsignedBigInteger('type_id');
             $table->timestamps();
-            $table->unique(['type', 'type_id']);
+            
 
             
         });

@@ -22,8 +22,5 @@ class Form extends Model
     {
         return $this->belongsTo(Category::class);
     }
-    public function certificateImages()
-    {
-        return $this->hasMany(CertificateImage::class, 'type_id')->where('type', 'form');
-    }
+    
 }
