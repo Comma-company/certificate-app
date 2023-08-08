@@ -31,7 +31,14 @@ class CertificateImageController extends Controller
         ]);
 
          $certificateImage->save();
-        return responseJson(true,'Certificate Images ',$certificateImage);
+         return $imageUrl = Storage::disk('public')->url($path);
+         $data = [
+            'url' => $imageUrl,
+             'type' => $certificateImage->type,
+            'type_id' => $certificateImage->type_id,
+         ];
+         
+        return responseJson(true,'Certificate Images ',$data);
     }
     public function deleteImage($id)
 {
