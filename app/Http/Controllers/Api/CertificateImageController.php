@@ -28,12 +28,6 @@ class CertificateImageController extends Controller
 
         $certificateImage->save();
         $data = $certificateImage;
-        
-       // $imageUrl = Storage::disk('public')->url($path);
-        /*  $data = [
-            'id' => $certificateImage,
-            'url' => $imageUrl,
-        ]; */
 
         return responseJson(true, 'Certificate Images ', $data);
     }
