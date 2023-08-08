@@ -59,7 +59,7 @@ Route::get('plans', [SubscriptionController::class, 'showPlans'])->middleware(['
 Route::get('all-plans', [SubscriptionController::class, 'plans'])->middleware(['auth'])->name('all-plans');
 Route::get('cancel',[SubscriptionController::class, 'cancle'])->middleware(['auth','user.subscribe'])->name('plan.cancel');
 Route::get('resume',[SubscriptionController::class, 'resume'])->middleware(['auth','user.subscribe'])->name('plan.resume');
-Route::get('certificate/{customer_id}/{certificate_id}/{created_at}/view', [CertificateController::class,'view'])->middleware(['user.subscribe'])->name('view.certificate');
+Route::get('certificate/{customer_id}/{certificate_id}/{created_at}/view', [CertificateController::class,'view'])->name('view.certificate');
 Route::any('stripe/webhook',[SubscriptionController::class,'handle']);
 Route::post('createSession', [SubscriptionController::class, 'createSession'])->name('createSession');
 Route::post('create-customer-portal-session',[SubscriptionController::class, 'customerPortalSession'])->name('customerPortalSession');
