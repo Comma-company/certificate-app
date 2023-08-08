@@ -25,13 +25,14 @@ class CertificateAttachmentController extends Controller
         
                 if ($image) {
                     $image_url = Storage::disk('public')->url($image->image);
+                    $attachment->image_url = $image_url;
                     $image_urls[] = $image_url;
                     
                 }
             }
             $data = [
                 'cert_attachments' => $cert_attachments,
-                'image_urls' => $image_urls,
+                
 
             ];
           
