@@ -112,7 +112,7 @@
             <p class="details-item">Address :<span>{{ $site->street_num }}, {{ $site->city }}, {{ $site->postal_code }}</span></p>
             <a disable-tracking=true href="{{ route('view.certificate',[$certificate->customer_id,$certificate->id, strtotime($certificate->created_at)]) }}" class="view-certifecate">
                 <p>
-                   <img width="30px" src="{{ asset('email-certificate/cartificate.png') }}" alt="certificate img" />
+                   <img width="30px" src="{{ asset('email-certificate/registration-form.png') }}" alt="View Certificate" />
                    View Certificate
                 </p>
             </a>
