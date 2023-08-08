@@ -26,29 +26,22 @@ class CertificateImageController extends Controller
             'image' => $path,
         ]);
 
-         $certificateImage->save();
-          $imageUrl = Storage::disk('public')->url($path);
-         $data = [
-            'id' => $certificateImage,
-            'url' => $imageUrl,
-         ];
-         
-        return responseJson(true,'Certificate Images ',$data);
+        $certificateImage->save();
+        $data = $certificateImage;
+
+        return responseJson(true, 'Certificate Images ', $data);
     }
     public function deleteImage($id)
-{
-    $certificateImage = CertificateImage::find($id);
+    {
+        $certificateImage = CertificateImage::find($id);
 
-    if (!$certificateImage) {
-        return responseJson(false ,'Certificate image not found');
+        if (!$certificateImage) {
+            return responseJson(false, 'Certificate image not found');
+        }
+        Storage::disk('public')->delete($certificateImage->image);
+
+        $certificateImage->delete();
+
+        return responseJson(true, 'Certificate image deleted successfully');
     }
-    Storage::disk('public')->delete($certificateImage->image);
-    
-    $certificateImage->delete();
-
-    return responseJson(true ,'Certificate image deleted successfully');
-}
-
-   
-
 }
