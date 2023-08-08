@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\CertificateAttachment;
+use App\Models\CertificateImage;
+use Illuminate\Support\Facades\Storage;
+
 use Illuminate\Support\Facades\Validator;
 
 use Illuminate\Http\Request;
@@ -13,11 +16,26 @@ class CertificateAttachmentController extends Controller
     
         public function get($id){
             $user_id = Auth::guard('sanctum')->user()->id;
-            return $cert_attachments = CertificateAttachment::where([
+            $image_urls = [];
+             $cert_attachments = CertificateAttachment::where([
                 'certificate_id' => $id,
             ])->get();
-            
-            return responseJson(true,'list of attachments',$cert_attachments);
+            foreach ($cert_attachments as $attachment) {
+                $image =CertificateImage::find($attachment->image_id);
+        
+                if ($image) {
+                    $image_url = Storage::disk('public')->url($image->image);
+                    $image_urls[] = $image_url;
+                    
+                }
+            }
+            $data = [
+                'cert_attachments' => $cert_attachments,
+                'image_urls' => $image_urls,
+
+            ];
+          
+            return responseJson(true,'list of attachments',$data);
     
         }
         /**
@@ -40,7 +58,6 @@ class CertificateAttachmentController extends Controller
             if ($validator->fails()) {
                 return response()->json(['error' => 'Validation failed', 'messages' => $validator->errors()], 422);
             }
-    
             $attachment = CertificateAttachment::create($request->all());
             $data = [
                 'attachment' => $attachment,
