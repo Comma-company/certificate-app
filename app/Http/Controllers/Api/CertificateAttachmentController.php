@@ -19,24 +19,24 @@ class CertificateAttachmentController extends Controller
             $image_urls = [];
              $cert_attachments = CertificateAttachment::where([
                 'certificate_id' => $id,
-            ])->get();
-            foreach ($cert_attachments as $attachment) {
-                $image =CertificateImage::find($attachment->image_id);
+            ])->with('image:image,id')->get();
+
+            // foreach ($cert_attachments as $attachment) {
+            //     $image =CertificateImage::find($attachment->image_id);
         
-                if ($image) {
-                    $image_url = Storage::disk('public')->url($image->image);
-                    $attachment->image_url = $image_url;
-                    $image_urls[] = $image_url;
-                    
-                }
-            }
-            $data = [
-                'cert_attachments' => $cert_attachments,
+            //     if ($image) {
+            //         $image_url = Storage::disk('public')->url($image->image);
+            //         $attachment->image_url = $image_url;
+            //         $image_urls[] = $image_url;
+            //     }
+            // }
+            // $data = [
+            //     'cert_attachments' => $cert_attachments,
                 
 
-            ];
+            // ];
           
-            return responseJson(true,'list of attachments',$data);
+            return responseJson(true,'list of attachments',$cert_attachments);
     
         }
         /**
@@ -49,10 +49,10 @@ class CertificateAttachmentController extends Controller
         public function store(Request $request){
             $validator = Validator::make($request->all(), [
                 'certificate_id' => 'required|integer',
-                'image_id' => 'required|integer',
+                'image_id' => 'required_if:attachment_type_id,==,1|integer',
                 'exclude' => 'nullable|string',
-                'note_title' => 'nullable|string',
-                'note_body' => 'nullable|string',
+                'note_title' => 'required_if:attachment_type_id,==,3|string',
+                'note_body' => 'required_if:attachment_type_id,==,2|required_if:attachment_type_id,==,3|string',
                 'attachment_type_id' => 'required|integer',
             ]);
     
