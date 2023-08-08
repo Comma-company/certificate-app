@@ -18,7 +18,7 @@ class CertificateImage extends Model
 
     public function getFileUrlAttribute(){
         $path = $this->image;
-        return $imageUrl = asset($path);
+        return $imageUrl = asset('storage/'.$path);
        // return $imageUrl = Storage::disk('public')->url($path);
     }
 }
