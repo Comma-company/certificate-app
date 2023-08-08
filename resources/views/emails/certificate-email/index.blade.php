@@ -102,8 +102,9 @@
         </div>
         <div class="email-body">
             @php
-            $site =  $certificate->customer->sites->first();
-        @endphp
+                $site =  $certificate->customer->sites->first();
+            @endphp
+
             <p class="email-title">Dear {{ $certificate->customer->name }},</p>
             <p class="note">Please see attached your certifcated for the <span>{{ $site->name }}</span> Property</p>
             <p class="details">Site Details:</p>
@@ -111,8 +112,8 @@
             <p class="details-item">Name : <span>{{ $site->name }}</span></p>
             <p class="details-item">Address :<span>{{ $site->street_num }}, {{ $site->city }}, {{ $site->postal_code }}</span></p>
             <a disable-tracking=true href="{{ route('view.certificate',[$certificate->customer_id,$certificate->id, strtotime($certificate->created_at)]) }}" class="view-certifecate">
-                <p>
-                   <img width="30px" src="{{ asset('email-certificate/registration-form.png') }}" alt="View Certificate" />
+                <p style="color: #E88219;">
+                   {{-- <img width="30px" src="{{ asset('email-certificate/registration-form.png') }}" alt="View Certificate" /> --}}
                    View Certificate
                 </p>
             </a>
