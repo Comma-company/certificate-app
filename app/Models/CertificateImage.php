@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class CertificateImage extends Model
 {
     use HasFactory;
-    protected $fillable = ['image', 'type', 'type_id'];
+    protected $fillable = ['image'];
 
 public function attachment()
     {
