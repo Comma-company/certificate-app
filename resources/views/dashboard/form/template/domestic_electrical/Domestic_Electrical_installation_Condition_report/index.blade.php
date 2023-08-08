@@ -114,10 +114,23 @@
               <h5 style="color: #00935f;font-weight: bold;padding: 0 5px;margin: 0;">
                 DETAILS OF THE CONTRACTOR
               </h5>
-              <p style="margin: 15px">
-                Registration No:
-                <span style="font-weight: bold;padding:3px 20px">{{ $data->user->registration_number }}</span>
-              </p>
+              @if ($data->user->categories->isNotEmpty())
+     @php
+        $firstCategory = $data->user->categories->firstWhere('pivot.category_id', 1);
+    @endphp
+    @if ($firstCategory)
+    <p style="margin: 15px">
+            Registration No:
+            <span style="font-weight: bold; padding: 3px 20px">
+                @if ($firstCategory->pivot->category_id == 1)
+                    {{ $firstCategory->pivot->license_number }}
+                @else
+                    {{ $firstCategory->pivot->gas_register_number }}
+                @endif
+            </span>
+          </p>
+    @endif
+    @endif
 
               <p style="margin: 15px">
                 Company Name:
@@ -145,10 +158,10 @@
               >
                 DETAILS OF THE CLIENT
               </h5>
-              <p style="margin: 10px">
+              {{-- <p style="margin: 10px">
                 Contractor Reference Number
                 (CRN):
-              </p>
+              </p> --}}
               <p style="margin: 10px">
                 Name:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->name }}</span>
               </p>

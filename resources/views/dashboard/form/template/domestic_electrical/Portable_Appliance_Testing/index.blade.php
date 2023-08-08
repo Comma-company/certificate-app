@@ -100,10 +100,23 @@
                           <div style="width: 32.3%;float: left;">
                                   <p style="padding: 0px 10px; margin: 0;font-weight: bold;color: #00935f;">DETAILS OF THE CONTRACTOR</p>
                                   <div style="padding:0 10px;">
-                                    <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
-                                      Registration No:
-                                      <span style="font-weight: bold;padding:3px 20px">{{ $data->user->registration_number }}</span>
-                                    </h6>
+                                    @if ($data->user->categories->isNotEmpty())
+    @php
+        $firstCategory = $data->user->categories->firstWhere('pivot.category_id', 1);
+    @endphp
+    @if ($firstCategory)
+        <h6 style="margin: 5px 0px; font-size: 12px; font-weight: 100;">
+            Registration No:
+            <span style="font-weight: bold; padding: 3px 20px">
+                @if ($firstCategory->pivot->category_id == 1)
+                    {{ $firstCategory->pivot->license_number }}
+                @else
+                    {{ $firstCategory->pivot->gas_register_number }}
+                @endif
+            </span>
+        </h6>
+    @endif
+    @endif
                                       <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
                                         Company Name:
                                         <span style="font-weight: bold;padding:3px 20px">{{ $data->user->company_name }}</span>
