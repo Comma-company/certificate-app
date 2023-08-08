@@ -55,7 +55,7 @@
             border: 2px solid #E88219;
             color: #E88219;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 18px;
             text-align: center;
             cursor: pointer;
             margin: 39px 0;
@@ -102,9 +102,9 @@
             </h1>
         </div>
         <div class="email-body">
-            @php
-                $site =  $certificate->customer->sites->first();
-            @endphp
+                @php
+                    $site =  $certificate->customer->sites->first();
+                @endphp
 
             <p class="email-title">Dear {{ $certificate->customer->name }},</p>
             <p class="note">Please see attached your certifcated for the <span>{{ $site->name }}</span> Property</p>
