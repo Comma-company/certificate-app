@@ -133,7 +133,7 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
 
 
 });
-    Route::prefix('certificates')->middleware('user.subscribe')->group(function () {
+    Route::prefix('certificates')->group(function () {
         
         Route::post('create', [CertificateController::class, 'store'])->middleware('auth:sanctum');
         Route::post('{id}/notes/create', [CertificateController::class, 'storeNote'])->middleware('auth:sanctum');
@@ -146,6 +146,7 @@ Route::middleware(['auth:sanctum','verified'])->group(function () {
         //Route::get('form-data/invoice', [FormDataController::class, 'invoice'])->middleware('auth:sanctum');
         Route::get('{id}/get-attachments',[CertificateAttachmentController::class, 'get'])->middleware('auth:sanctum');
         Route::post('create/attachment',[CertificateAttachmentController::class, 'store'])->middleware('auth:sanctum');
+        Route::post('delete/{id}/attachment',[CertificateAttachmentController::class, 'destroy'])->middleware('auth:sanctum');
         Route::post('attachment/{id}/update',[CertificateAttachmentController::class,'update'])->middleware('auth:sanctum');
     });
     Route::post('store-image',[CertificateImageController::class,'store'])->middleware('auth:sanctum');
