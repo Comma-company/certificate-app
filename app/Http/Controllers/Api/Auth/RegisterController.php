@@ -260,7 +260,7 @@ class RegisterController extends Controller
         $user->save();
         if (!$user->subscribed('default')) {
             $free_plan_id = config('services.stripe.Free_Plan');
-            if ($user->subscribedToPrice($free_plan_id, 'default')) {
+            if (!$user->subscribedToPrice($free_plan_id, 'default')) {
                 $subscription = $user->newSubscription('default', $free_plan_id)->trialDays($trialDays)
                     //->quantity($limitedCertificateCount)
                     ->create();

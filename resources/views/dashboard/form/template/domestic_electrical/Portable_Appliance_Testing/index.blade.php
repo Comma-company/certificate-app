@@ -50,12 +50,7 @@
     </style>
   </head>
   <body style="width: 100%; margin: 0; overflow-x: hidden;">
-    <div
-      class="table-container"
-      style="
-
-        font-family:'Arial';
-      ">
+    <div class="table-container" style="font-family:'Arial'; ">
          <htmlpageheader name="formHeader">
             <div style="margin: 10px 25px;  width: 100%;">
                 <div style="float: left;width:40%;">
