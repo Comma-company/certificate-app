@@ -26,7 +26,7 @@ class ModifyEnumType extends Migration
      */
     public function down()
     {
-        DB::statement("ALTER TABLE site_contacts MODIFY COLUMN type enum('director', 'siteManager', 'landlord', 'agent', 'financeManager', 'tenant')");
         DB::statement("ALTER TABLE contacts MODIFY COLUMN type enum('agent','landlord')");
+        DB::statement("ALTER TABLE site_contacts MODIFY COLUMN type enum('director', 'siteManager', 'landlord', 'agent', 'financeManager', 'tenant')");
     }
 }
