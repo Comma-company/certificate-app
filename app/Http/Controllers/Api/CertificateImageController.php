@@ -12,6 +12,7 @@ class CertificateImageController extends Controller
 {
     public function store(Request $request)
     {
+        
         $validator = Validator::make($request->all(), [
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);

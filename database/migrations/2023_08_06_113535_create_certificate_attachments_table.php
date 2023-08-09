@@ -18,7 +18,7 @@ class CreateCertificateAttachmentsTable extends Migration
         Schema::create('certificate_attachments', function (Blueprint $table) {
             $table->id();
             $table->integer('certificate_id');
-            $table->integer('image_id');
+            $table->integer('image_id')->nullable();
             $table->string('exclude')->nullable();
             $table->text('note_title')->nullable();
             $table->text('note_body')->nullable();

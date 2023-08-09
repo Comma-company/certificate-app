@@ -122,11 +122,7 @@
     <p style="margin: 15px">
             Registration No:
             <span style="font-weight: bold; padding: 3px 20px">
-                @if ($firstCategory->pivot->category_id == 1)
                     {{ $firstCategory->pivot->license_number }}
-                @else
-                    {{ $firstCategory->pivot->gas_register_number }}
-                @endif
             </span>
           </p>
     @endif

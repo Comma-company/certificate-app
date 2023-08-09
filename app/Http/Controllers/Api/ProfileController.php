@@ -7,7 +7,6 @@ use App\Rules\MatchPassword;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\ProfileResource;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -29,7 +28,7 @@ class ProfileController extends Controller
          $user = User::select('id', 'first_name', 'last_name', 'email', 'phone', 'image', 'registered_address','trading_name','company_name','registration_number','number_street_name','city','postal_code','country_id','vat_number','has_vat')
             ->where('id', $user_id)
             ->with('userEmail')
-            ->with('logo')
+            ->with('country','logo')
             ->withCount('certificate')
             ->first();
             //  $subscriptionStatus = $user->status_subscription;
@@ -38,12 +37,12 @@ class ProfileController extends Controller
                 // 'subscription_status'=>$subscriptionStatus,
 
              ];
-
+                
                 return responseJson(true, 'user details', $data);
 
-
-
-
+            
+            
+        
     }
 
     /**
@@ -82,7 +81,7 @@ class ProfileController extends Controller
 
             $subscriptionStatus = $user->status_subscription;
              $data=[
-                'user'=>new ProfileResource($user),
+                'user'=>$user,
                 'subscription_status'=>$subscriptionStatus,
              ];
 

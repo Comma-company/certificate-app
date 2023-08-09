@@ -105,15 +105,12 @@
                                     <h6 style="margin: 5px 0px; font-size: 12px; font-weight: 100;">
                                         Registration No:
                                         <span style="font-weight: bold; padding: 3px 20px">
-                                            @if ($firstCategory->pivot->category_id == 1)
                                                 {{ $firstCategory->pivot->license_number }}
-                                            @else
-                                                {{ $firstCategory->pivot->gas_register_number }}
-                                            @endif
                                         </span>
                                     </h6>
                                 @endif
                                 @endif
+                                
                                   <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
                                     Company Name:
                                     <span style="font-weight: bold;padding:3px 20px">{{ $data->user->company_name }}</span>
