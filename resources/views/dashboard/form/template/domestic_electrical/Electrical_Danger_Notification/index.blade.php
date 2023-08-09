@@ -156,7 +156,7 @@
                         <p style="padding:0px 10px; margin: 0;font-weight: bold;color: #00935f;">DETAILS OF THE INSTALLATION</p>
                         <div style="padding:0 10px;">
                               <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
-                                Tenant Name:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->sites->first()->name }}</span>
+                                Tenant Name:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->sites->first()->siteContact->f_name }}</span>
                               </h6>
                               <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
                                 Address:<span style="font-weight: bold;padding:3px 20px">{{$data->customer->sites->first()->street_num.', '.$data->customer->sites->first()->city}}</span>

@@ -184,7 +184,7 @@
               DETAILS OF THE INSTALLATION
               </h5>
               <p style="margin: 15px">
-                Tenant Name:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->sites->first()->name }}</span>
+                Tenant Name:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->sites->first()->siteContact->f_name }}</span>
               </p>
               <p style="margin: 15px">
                 Address:<span style="font-weight: bold;padding:3px 20px">{{$data->customer->sites->first()->street_num.', '.$data->customer->sites->first()->city}}</span>
