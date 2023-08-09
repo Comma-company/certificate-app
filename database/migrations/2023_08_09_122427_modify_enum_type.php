@@ -14,8 +14,8 @@ class ModifyEnumType extends Migration
      */
     public function up()
     {
-        DB::statement("ALTER TABLE site_contacts MODIFY type ENUM('director', 'siteManager', 'landlord', 'agent', 'financeManager', 'tenant')");
-        DB::statement("ALTER TABLE contacts MODIFY type ENUM('agent','landlord','siteManager')");
+        DB::statement("ALTER TABLE site_contacts MODIFY COLUMN `type` ENUM('director', 'siteManager', 'landlord', 'agent', 'financeManager', 'tenant')");
+        DB::statement("ALTER TABLE contacts MODIFY COLUMN `type` ENUM('agent','landlord','siteManager')");
     }
     /**
      * Reverse the migrations.
@@ -24,7 +24,7 @@ class ModifyEnumType extends Migration
      */
     public function down()
     {
-        DB::statement("ALTER TABLE site_contacts MODIFY type ENUM('director', 'siteManager', 'landlord', 'agent', 'financeManager', 'tenant')");
-        DB::statement("ALTER TABLE contacts MODIFY type ENUM('agent','landlord')");
+        DB::statement("ALTER TABLE site_contacts MODIFY COLUMN `type` ENUM('director', 'siteManager', 'landlord', 'agent', 'financeManager', 'tenant')");
+        DB::statement("ALTER TABLE contacts MODIFY COLUMN `type` ENUM('agent','landlord')");
     }
 }
