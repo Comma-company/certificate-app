@@ -114,17 +114,13 @@
                               <div style="padding:0 10px;">
                                 @if ($data->user->categories->isNotEmpty())
     @php
-        $firstCategory = $data->user->categories->firstWhere('pivot.category_id', 1);
+        $firstCategory = $data->user->categories->firstWhere('pivot.category_id', 2);
     @endphp
     @if ($firstCategory)
         <h6 style="margin: 5px 0px; font-size: 12px; font-weight: 100;">
             Registration No:
             <span style="font-weight: bold; padding: 3px 20px">
-                @if ($firstCategory->pivot->category_id == 1)
-                    {{ $firstCategory->pivot->license_number }}
-                @else
                     {{ $firstCategory->pivot->gas_register_number }}
-                @endif
             </span>
         </h6>
     @endif
