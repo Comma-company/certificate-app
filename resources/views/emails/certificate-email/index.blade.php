@@ -59,6 +59,7 @@
             cursor: pointer;
             margin: 39px 0;
             text-decoration: none;
+            text-align: center;
         }
         .name{
             color: #093358;
@@ -111,7 +112,11 @@
             <p class="details-item">Name : <span>{{ $site->name }}</span></p>
             <p class="details-item">Address :<span>{{ $site->street_num }}, {{ $site->city }}, {{ $site->postal_code }}</span></p>
             <a disable-tracking=true href="{{ route('view.certificate',[$certificate->customer_id,$certificate->id, strtotime($certificate->created_at)]) }}" class="view-certifecate">
+<<<<<<< HEAD
                 <p style="color: #E88219; text-align: center;">
+=======
+                <p style="color: #E88219;text-align: center">
+>>>>>>> 2313997943e91c07d00f8406a21d3261192b6997
                    {{-- <img width="30px" src="{{ asset('email-certificate/cartificate.png') }}" alt="certificate img" /> --}}
                    View Certificate
                 </p>
