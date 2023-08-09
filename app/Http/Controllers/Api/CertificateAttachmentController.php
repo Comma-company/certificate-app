@@ -89,6 +89,18 @@ class CertificateAttachmentController extends Controller
             ];
             return responseJson(true,'updated attachment successfuly',$data);
         }
+        public function destroy($id){
+            $attachment = CertificateAttachment::find($id);
+            if (!$attachment) {
+                return responseJson(false, 'Attachment not found', null, 404);
+            }
+            $attachment->delete();
+        
+            return responseJson(true, 'Attachment deleted successfully', null);
+
+
+
+        }
     
     
     
