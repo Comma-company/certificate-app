@@ -40,11 +40,18 @@ class NotCompleteRegisterNotification extends Notification
      */
     public function toMail($notifiable)
     {
+        /*
+        Hello,
+        Thank you for choosing our application. We noticed that your registration details are incomplete.
+        To take advantage of our free days and certificates, please ensure you enter your license or registration number.
+        Best regards,
+        360 Connect
+        */
         return (new MailMessage)
-                    ->line('Not Complete information about Your Registeration.')
-                    ->line('Thank you for using our application!')
-                    ->line('but sorry, you cannot benefit from the free days and certificates we have')
-                    ->line('You can benefit from them by entering the license number or registration number');
+            ->line('Thank you for choosing our application. We noticed that your registration details are incomplete')
+            ->line('To take advantage of our free days and certificates, please ensure you enter your license or registration number.');
+
+
     }
 
     /**
