@@ -3,6 +3,8 @@
 use Mpdf\Mpdf;
 use App\Models\User;
 use App\Models\Certificate;
+use App\Models\Subscription;
+use Illuminate\Http\Request;
 use App\Mail\CertificateEmail;
 use Mpdf\Config\FontVariables;
 use Mpdf\Config\ConfigVariables;
@@ -11,17 +13,16 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 use App\Certificate\DomesticElectrical\Eicr;
 use App\Certificate\DomesticGas\WarningNoticeGas;
+use App\Http\Controllers\Web\CertificateController;
+use App\Http\Controllers\Web\SubscriptionController;
+use App\Certificate\DomesticElectrical\MinorElectrical;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Certificate\DomesticElectrical\PortableApplianceTesting;
+
 use App\Certificate\DomesticGas\LandlordHomeownerGasSafetyRecord;
 use App\Certificate\DomesticElectrical\ElectricalDangerNotification;
 use App\Certificate\DomesticElectrical\DomesticElectricalInstallationCertificate;
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Web\CertificateController;
-use App\Http\Controllers\Web\SubscriptionController;
-use Illuminate\Http\Request;
-
-use App\Models\Subscription;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +43,7 @@ Route::get('/', function () {
 Route::get('/get-pdf', function () {
 
     $data = Certificate::find(7);
-    return $form = WarningNoticeGas::openPdf($data);
+    return $form = MinorElectrical::openPdf($data);
 
 });
 
