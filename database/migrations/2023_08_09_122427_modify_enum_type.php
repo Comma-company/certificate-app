@@ -1,0 +1,30 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
+
+class ModifyEnumType extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        DB::statement("ALTER TABLE site_contacts MODIFY type ENUM('director', 'siteManager', 'landlord', 'agent', 'financeManager', 'tenant')");
+        DB::statement("ALTER TABLE contacts MODIFY type ENUM('agent','landlord','siteManager')");
+    }
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        DB::statement("ALTER TABLE site_contacts MODIFY type ENUM('director', 'siteManager', 'landlord', 'agent', 'financeManager', 'tenant')");
+        DB::statement("ALTER TABLE contacts MODIFY type ENUM('agent','landlord')");
+    }
+}
