@@ -94,7 +94,7 @@ class CertificateController extends Controller
 
     public function store(Request $request)
     {
-        
+
         $request->validate([
             'customer_id' => ['sometimes', 'required', 'exists:customers,id'],
             'form_id' => ['required', 'exists:forms,id'],
@@ -150,9 +150,15 @@ class CertificateController extends Controller
             $data->files()->create($image);
         }
 
+        $body = [
+            "form_data" => $data,
+            // 'html_content' => $html
+        ];
+
+        return responseJson(true, 'success created', $body);
         $form = Form::findOrFail($request->form_id);
 
-        $folder_name = '';
+       /*  $folder_name = '';
         if ($form->type == 'Domestic Electrical') {
             $folder_name = 'domestic_electrical';
         } else if ($form->type == 'Domestic Gas') {
@@ -172,7 +178,7 @@ class CertificateController extends Controller
             return responseJson(true, 'success created', $body);
         } else {
             return responseJson(false, 'page not found', '', 404);
-        }
+        } */
     }
 
 
