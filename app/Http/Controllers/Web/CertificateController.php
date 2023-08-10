@@ -11,6 +11,7 @@ use App\Certificate\DomesticElectrical\PortableApplianceTesting;
 use App\Certificate\DomesticGas\LandlordHomeownerGasSafetyRecord;
 use App\Certificate\DomesticElectrical\ElectricalDangerNotification;
 use App\Certificate\DomesticElectrical\DomesticElectricalInstallationCertificate;
+use App\Certificate\DomesticElectrical\MinorElectrical;
 
 class CertificateController extends Controller
 {
@@ -34,6 +35,9 @@ class CertificateController extends Controller
         $form = ElectricalDangerNotification::openPdf($certificate);
     } elseif ($file_name == 'Domestic_Electrical_Installation_Certificate') {
         $form = DomesticElectricalInstallationCertificate::openPdf($certificate);
+    }
+    elseif ($file_name == 'Minor_Electrical_Installation_Works_Cert') {
+        $form = MinorElectrical::openPdf($certificate);
     }
     return $form;
    }
