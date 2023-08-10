@@ -79,6 +79,13 @@ class RegisterController extends Controller
         }
     }
 
+
+    /**
+     *
+     *complete  register
+     *
+     *
+     * */
     public function completeRegister(Request $request)
     {
         $validated = Validator::make($request->all(), [
@@ -224,6 +231,16 @@ class RegisterController extends Controller
             throw $th;
         }
     }
+
+
+
+
+    /**
+     *
+     *complete info register
+     *
+     *
+     * */
     public function completeInfoRegister(Request $request)
     {
         $validated = Validator::make($request->all(), [
@@ -264,6 +281,7 @@ class RegisterController extends Controller
                 $subscription = $user->newSubscription('default', $free_plan_id)->trialDays($trialDays)
                     //->quantity($limitedCertificateCount)
                     ->create();
+                $user->refresh();
                 $subscription = $user->subscription('default');
                 $trialEndsAt = $subscription->trial_ends_at;
                 $remainingDays = Carbon::now()->diffInDays($trialEndsAt->endOfDay(), false);
