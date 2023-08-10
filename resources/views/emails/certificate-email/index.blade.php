@@ -103,7 +103,7 @@
         <div class="email-body">
             @php
            // $site =  $certificate->customer->sites->first();
-           $site = $certificate->site;
+           $site = $certificate->site();
         @endphp
             <p class="email-title">Dear {{ $certificate->customer->name }},</p>
             <p class="note">Please see attached your certifcated for the <span>{{ $site->name }}</span> Property</p>
