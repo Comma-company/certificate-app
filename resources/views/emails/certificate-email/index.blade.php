@@ -59,7 +59,6 @@
             cursor: pointer;
             margin: 39px 0;
             text-decoration: none;
-            text-align: center;
         }
         .name{
             color: #093358;
@@ -103,7 +102,8 @@
         </div>
         <div class="email-body">
             @php
-            $site =  $certificate->customer->sites->first();
+           // $site =  $certificate->customer->sites->first();
+           $site = $certificate->site;
         @endphp
             <p class="email-title">Dear {{ $certificate->customer->name }},</p>
             <p class="note">Please see attached your certifcated for the <span>{{ $site->name }}</span> Property</p>
@@ -112,7 +112,6 @@
             <p class="details-item">Name : <span>{{ $site->name }}</span></p>
             <p class="details-item">Address :<span>{{ $site->street_num }}, {{ $site->city }}, {{ $site->postal_code }}</span></p>
             <a disable-tracking=true href="{{ route('view.certificate',[$certificate->customer_id,$certificate->id, strtotime($certificate->created_at)]) }}" class="view-certifecate">
-
                 <p style="color: #E88219; text-align: center;">
                    {{-- <img width="30px" src="{{ asset('email-certificate/cartificate.png') }}" alt="certificate img" /> --}}
                    View Certificate
