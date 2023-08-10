@@ -49,7 +49,7 @@ class MinorElectrical
         ];
 
 
-        $html = view('dashboard.form.template.domestic_electrical.Minor_Electrical.index', [
+        $html = view('dashboard.form.template.domestic_electrical.Minor_Electrical_Installation_Works_Cert.index', [
             'data' => $data,
             'formData' =>   $formData
         ])->render();
@@ -57,7 +57,7 @@ class MinorElectrical
         $certificate_pdf->WriteHTML($html);
 
         $certificate_pdf->AddPage('L');
-        $page_2 = view('dashboard.form.template.domestic_electrical.Minor_Electrical.note', [
+        $page_2 = view('dashboard.form.template.domestic_electrical.Minor_Electrical_Installation_Works_Cert.note', [
             'data' => $certificate,
             'formData' => $formData
         ])->render();

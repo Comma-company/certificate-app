@@ -93,7 +93,7 @@ class CertificateController extends Controller
 
     public function store(Request $request)
     {
-        
+
         $request->validate([
             'customer_id' => ['sometimes', 'required', 'exists:customers,id'],
             'form_id' => ['required', 'exists:forms,id'],
@@ -120,38 +120,44 @@ class CertificateController extends Controller
         // if ($request->form_attachments){
         //         $images=$request->form_attachments;
         //     foreach ($images as $key =>$imageFile){
-               
+
         //        if (isset($imageFile['image']) && is_file($imageFile['image'])) {
         //            $image = uploadImage($imageFile['image'], $imageFile['id']);
-                  
+
         //              $note = $imageFile['note'] ?? '';
         //              $exclude = $imageFile['exclude'] ?? '';
         //              $data->certificateAttachments()->create([
         //                 'image' => $image['file_url'],
         //                 'note' => $note,
         //                 'exclude' => $exclude,
-                        
+
         //             ]);
-                     
-                  
-                   
-                   
+
+
+
+
         //         }
 
         //     }
-           
+
         // }
-        
-        
+
+
         if ($request->customer_signature) {
             $customer_signature = $request->customer_signature;
             $image = uploadImage($customer_signature, 'customer_signature');
             $data->files()->create($image);
         }
 
+        $body = [
+            "form_data" => $data,
+            // 'html_content' => $html
+        ];
+
+        return responseJson(true, 'success created', $body);
         $form = Form::findOrFail($request->form_id);
 
-        $folder_name = '';
+       /*  $folder_name = '';
         if ($form->type == 'Domestic Electrical') {
             $folder_name = 'domestic_electrical';
         } else if ($form->type == 'Domestic Gas') {
@@ -171,7 +177,7 @@ class CertificateController extends Controller
             return responseJson(true, 'success created', $body);
         } else {
             return responseJson(false, 'page not found', '', 404);
-        }
+        } */
     }
 
 
@@ -320,17 +326,17 @@ class CertificateController extends Controller
         if (!$certificate) {
             return responseJson(false, 'Certificate not found', '', 404);
         }
-    
+
         $certificateAttachment = $certificate->certificateAttachments()->where('id', $fileId)->first();
-    
+
         if (!$certificateAttachment) {
             return responseJson(false, 'Certificate attachment not found', '', 404);
         }
         Storage::delete($certificateAttachment->image);
         $certificateAttachment->delete();
-    
+
         return responseJson(true, 'Image deleted successfully');
-       
+
     }
 
 
@@ -366,7 +372,7 @@ class CertificateController extends Controller
         //         if ($existingAttachment) {
         //             $existingAttachment->delete();
         //         }
-                
+
         //         if (is_file($imageFile['image'])) {
         //             $image = uploadImage($imageFile['image'], $imageFile['id']);
         //             $note = $imageFile['note'] ?? '';
@@ -406,15 +412,15 @@ class CertificateController extends Controller
              'customer.contacts', 'customer.country', 'certificateAttachments.image','customer.billing.paymentTerm'])
             ->first();
             if ($data && $data->site && isset($data->site->address) && isset($data->site->postal_code)) {
-              
+
                 if (strpos($data->site->address, $data->site->postal_code) !== false) {
                     $data->site->address = str_replace($data->site->postal_code, '', $data->site->address);
                     $data->site->address = trim($data->site->address);
                 }
-               
-        
-              
-                
+
+
+
+
             }
 
         if ($data) {
@@ -471,7 +477,7 @@ class CertificateController extends Controller
         ])->first();
     return responseJson(true, 'view Note ',$data);
     }
-    
+
 
 
 
