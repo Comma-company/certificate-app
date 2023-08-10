@@ -59,7 +59,8 @@ class ProfileController extends Controller
             'stripe_id',
         )
             ->where('id', $user_id)
-            ->with('subscriptions')
+            ->with('subscriptions', 'categories')
+
             ->first();
 
         $subscriptionStatus = $user->status_subscription;
