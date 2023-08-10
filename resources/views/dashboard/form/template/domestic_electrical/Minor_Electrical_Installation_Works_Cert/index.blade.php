@@ -156,6 +156,9 @@
         <tr>
           <th class="green-table-headers" colspan="3">
             PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION
+            @php
+        $firstCategory = $data->user->categories->firstWhere('pivot.category_id', 1);
+    @endphp
           </th>
         </tr>
         <tr style=" border: solid 1px #00935f;">
@@ -168,26 +171,32 @@
               </tr>
               <tr>
                 <th class="main-text">
+
+                  Registration No:{{ $firstCategory->pivot->license_number }}
+
                   Registration No:
 
                 </th>
               </tr>
               <tr>
                 <th colspan="2" class="main-text">
-                  Company Name:
+
+                  Company Name:{{ $data->user->company_name }}
                 </th>
               </tr>
               <tr>
                 <th colspan="2" class="main-text">
-                  Address:
+                  Address:{{$data->user->number_street_name.', '.$data->user->city}}
+
                 </th>
               </tr>
               <tr>
                 <th class="main-text">
-                  Postcode:
+                  Postcode:{{ $data->user->postal_code }}
                 </th>
                 <th class="main-text">
-                  Tel No:
+                  Tel No:{{ $data->user->phone }}
+
                 </th>
               </tr>
             </table>
@@ -201,20 +210,22 @@
               </tr>
               <tr>
                 <th colspan="2" class="main-text">
-                  Name:
+                  Name:{{ $data->customer->name }}
                 </th>
               </tr>
               <tr>
                 <th colspan="2" class="main-text">
-                  Address:
+                  Address:{{$data->customer->street_num.', '.$data->customer->city}}
+
                 </th>
               </tr>
               <tr>
                 <th class="main-text">
-                  Postcode:
+                  Postcode:{{ $data->customer->postal_code }}
                 </th>
                 <th class="main-text">
-                  Tel No:
+                  Tel No:{{ $data->customer->contacts->first()->phone }}
+
                 </th>
               </tr>
             </table>
@@ -228,21 +239,22 @@
               </tr>
               <tr>
                 <th colspan="2" class="main-text">
-                  Tenant Name:
+                  Tenant Name:{{ $data->site->siteContact->f_name }}
 
                 </th>
               </tr>
               <tr>
                 <th colspan="2" class="main-text">
-                  Address:
+                  Address:{{$data->site->street_num.', '.$data->site->city}}
+
                 </th>
               </tr>
               <tr>
                 <th class="main-text">
-                  Postcode:
+                  Postcode:{{ $data->site->postal_code }}
                 </th>
                 <th class="main-text">
-                  Tel No:
+                  Tel No:{{ $data->site->siteContact->phone }}
                 </th>
               </tr>
             </table>

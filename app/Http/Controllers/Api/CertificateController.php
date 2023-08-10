@@ -25,6 +25,7 @@ use App\Certificate\DomesticElectrical\PortableApplianceTesting;
 use App\Certificate\DomesticGas\LandlordHomeownerGasSafetyRecord;
 use App\Certificate\DomesticElectrical\ElectricalDangerNotification;
 use App\Certificate\DomesticElectrical\DomesticElectricalInstallationCertificate;
+use App\Certificate\DomesticElectrical\MinorElectrical;
 
 class CertificateController extends Controller
 {
