@@ -15,16 +15,10 @@
       }
     </style>
   </head>
-  @php
-  $certificate_attachments = $certificate->whereHas('certificateAttachments', function ($query) {
-    $query->where('exclude', '=', 'yes');
-})->with(['certificateAttachments' => function ($query) {
-    $query->where('exclude', '=', 'yes');
-}])->get();
-  @endphp
+  
   <body>
     <div class="page">
-      @foreach($certificate_attachmens as $one)
+      @foreach($cert_attachments as $one)
       <table class="border-table" style="width: 100%; margin-bottom: 15px">
         <tr>
           <th class="green-table-headers" colspan="2">

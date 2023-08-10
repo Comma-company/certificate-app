@@ -2,6 +2,8 @@
 
 namespace App\Certificate\DomesticElectrical;
 
+use App\Models\CertificateAttachment;
+use App\Models\CertificateImage;
 use Mpdf\Mpdf;
 use Mpdf\Config\FontVariables;
 use Mpdf\Config\ConfigVariables;
@@ -39,7 +41,11 @@ class MinorElectrical
         /* $invoice->AddPage('P'); */
         $certificate_pdf->shrink_tables_to_fit = 1;
         $certificate_pdf->use_kwt = true;
+        $cert_attachments = CertificateAttachment::where([
+            'certificate_id'=> $certificate->id,
+        ])->where('exclude', '!=', 'yes')->get();
         $data = $certificate;
+
 
         $formData =  $data->data;
 
@@ -49,15 +55,16 @@ class MinorElectrical
         ];
 
 
-        $html = view('dashboard.form.template.domestic_electrical.Minor_Electrical_Installation_Works_Cert.index', [
+        $html = view('dashboard.form.template.domestic_electrical.Minor_Electrical.index', [
             'data' => $data,
-            'formData' =>   $formData
+            'formData' =>   $formData,
+            'cert_attachments' =>$cert_attachments
         ])->render();
 
         $certificate_pdf->WriteHTML($html);
 
         $certificate_pdf->AddPage('L');
-        $page_2 = view('dashboard.form.template.domestic_electrical.Minor_Electrical_Installation_Works_Cert.note', [
+        $page_2 = view('dashboard.form.template.domestic_electrical.Minor_Electrical.note', [
             'data' => $certificate,
             'formData' => $formData
         ])->render();
