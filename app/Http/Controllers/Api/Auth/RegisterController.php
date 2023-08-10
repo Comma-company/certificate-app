@@ -282,7 +282,7 @@ class RegisterController extends Controller
                 $subscription = $user->newSubscription('default', $free_plan_id)->trialDays($trialDays)
                     //->quantity($limitedCertificateCount)
                     ->create();
-                $user->refresh();
+               // $user->refresh();
                 $subscription = $user->subscription('default');
                 $trialEndsAt = $subscription->trial_ends_at;
                 $remainingDays = Carbon::now()->diffInDays($trialEndsAt->endOfDay(), false);
