@@ -101,12 +101,9 @@
             </h1>
         </div>
         <div class="email-body">
-            @php
-           // $site =  $certificate->customer->sites->first();
-           $site = $certificate->site();
-        @endphp
+       
             <p class="email-title">Dear {{ $certificate->customer->name }},</p>
-            <p class="note">Please see attached your certifcated for the <span>{{ $certificate->site->name }}</span> Property</p>
+            <p class="note">We are pleased to provide you with the <span>{{ $certificate->site->name }}</span> Property.The details are as follows:</p>
             <p class="details">Site Details:</p>
 
             <p class="details-item">Name : <span>{{ $certificate->site->name }}</span></p>
@@ -117,9 +114,11 @@
                    View Certificate
                 </p>
             </a>
-            <p class="details">Kind Regards</p>
-            <p class="name">{{ $certificate->user->name }}</p>
-            <p class="details">Engineer</p>
+            <p class="details">Should you have any questions or require further assistance, feel free to reach out to us. We value your satisfaction and are
+                here to support you.
+            </p>
+            <p class="name">Warm Regards,</p>
+            <p class="details"> Engineer {{ $certificate->user->name }}</p>
             <p class="footer">
                 <img src="{{ asset('email-certificate/360connect.png') }}" alt="360 connect logo" />
                 <a style="float: right" href="#"><span class="Certificate">360 Connect Certificate</span></a>
