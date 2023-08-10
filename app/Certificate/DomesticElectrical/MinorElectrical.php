@@ -66,7 +66,8 @@ class MinorElectrical
         $certificate_pdf->AddPage('L');
         $page_2 = view('dashboard.form.template.domestic_electrical.Minor_Electrical_Installation_Works_Cert.note', [
             'data' => $certificate,
-            'formData' => $formData
+            'formData' => $formData,
+            'cert_attachments' =>$cert_attachments
         ])->render();
         $certificate_pdf->WriteHTML($page_2);
         return $certificate_pdf;

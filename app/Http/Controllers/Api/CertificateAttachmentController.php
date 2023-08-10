@@ -68,6 +68,9 @@ class CertificateAttachmentController extends Controller
 
         return responseJson(true, 'Attachment is created', $data);
     }
+
+
+
     public function update(Request $request, $id)
     {
         $attachment = CertificateAttachment::find($id);
@@ -93,9 +96,13 @@ class CertificateAttachmentController extends Controller
         $data = [
             'attachment' => $attachment,
         ];
-        
+
         return responseJson(true, 'updated attachment successfuly', $data);
     }
+
+
+
+    
     public function destroy($id)
     {
         $attachment = CertificateAttachment::find($id);
