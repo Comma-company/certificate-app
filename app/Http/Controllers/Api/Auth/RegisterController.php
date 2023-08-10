@@ -275,6 +275,7 @@ class RegisterController extends Controller
             });
         }
         $user->save();
+        $user->refresh();
         if (!$user->subscribed('default')) {
             $free_plan_id = config('services.stripe.Free_Plan');
             if (!$user->subscribedToPrice($free_plan_id, 'default')) {
