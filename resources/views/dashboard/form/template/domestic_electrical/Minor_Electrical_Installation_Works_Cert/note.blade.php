@@ -30,9 +30,11 @@
             {{ $one->note_body ? $one->note_body : ' ' }}
           </th>
           <th style="width: 50%; padding: 20px;">
-            <div class="image-container">
-                <img src="{{ $one->image_id ? asset('storage/'.$one->image->image) : ' ' }}" alt="">
-            </div>
+            @if ($one->image_id)
+                <div class="image-container">
+                    <img src="{{ $one->image_id ? asset('storage/'.$one->image->image) : ' ' }}" alt="">
+                </div>
+            @endif
           </th>
         </tr>
       </table>
