@@ -15,7 +15,7 @@
       }
     </style>
   </head>
-  
+
   <body>
     <div class="page">
       @foreach($cert_attachments as $one)
@@ -31,7 +31,7 @@
           </th>
           <th style="width: 50%; padding: 20px;">
             <div class="image-container">
-              {{ $one->image_id ? $one->image->image : ' ' }}
+                <img src="{{ $one->image_id ? asset('storage/'.$one->image->image) : ' ' }}" alt="">
             </div>
           </th>
         </tr>
