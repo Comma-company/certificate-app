@@ -184,15 +184,15 @@
               DETAILS OF THE INSTALLATION
               </h5>
               <p style="margin: 15px">
-                Tenant Name:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->sites->first()->siteContact->f_name }}</span>
+                Tenant Name:<span style="font-weight: bold;padding:3px 20px">{{ $data->site->siteContact->f_name }}</span>
               </p>
               <p style="margin: 15px">
-                Address:<span style="font-weight: bold;padding:3px 20px">{{$data->certificate->site->street_num.', '.$data->certificate->site->city}}</span>
+                Address:<span style="font-weight: bold;padding:3px 20px">{{$data->site->street_num.', '.$data->site->city}}</span>
 
               </p>
               <p style="margin: 15px">
-                Postcode:<span style="font-weight: bold;padding:3px 20px">{{ $data->certificate->site->postal_code }}</span>
-                <span>Tel No:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->sites->first()->siteContact->phone }}</span></span>
+                Postcode:<span style="font-weight: bold;padding:3px 20px">{{ $data->site->postal_code }}</span>
+                <span>Tel No:<span style="font-weight: bold;padding:3px 20px">{{ $data->site->siteContact->phone }}</span></span>
               </p>
             </div>
           </td>
