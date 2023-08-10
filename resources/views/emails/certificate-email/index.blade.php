@@ -106,7 +106,7 @@
            $site = $certificate->site();
         @endphp
             <p class="email-title">Dear {{ $certificate->customer->name }},</p>
-            <p class="note">Please see attached your certifcated for the <span>{{ $site->name }}</span> Property</p>
+            <p class="note">Please see attached your certifcated for the <span>{{ $certificate->site->name }}</span> Property</p>
             <p class="details">Site Details:</p>
 
             <p class="details-item">Name : <span>{{ $certificate->site->name }}</span></p>
