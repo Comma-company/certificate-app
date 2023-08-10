@@ -171,18 +171,23 @@
               </tr>
               <tr>
                 <th class="main-text">
+
                   Registration No:{{ $firstCategory->pivot->license_number }}
+
+                  Registration No:
 
                 </th>
               </tr>
               <tr>
                 <th colspan="2" class="main-text">
+
                   Company Name:{{ $data->user->company_name }}
                 </th>
               </tr>
               <tr>
                 <th colspan="2" class="main-text">
                   Address:{{$data->user->number_street_name.', '.$data->user->city}}
+
                 </th>
               </tr>
               <tr>
@@ -191,6 +196,7 @@
                 </th>
                 <th class="main-text">
                   Tel No:{{ $data->user->phone }}
+
                 </th>
               </tr>
             </table>
@@ -210,6 +216,7 @@
               <tr>
                 <th colspan="2" class="main-text">
                   Address:{{$data->customer->street_num.', '.$data->customer->city}}
+
                 </th>
               </tr>
               <tr>
@@ -218,6 +225,7 @@
                 </th>
                 <th class="main-text">
                   Tel No:{{ $data->customer->contacts->first()->phone }}
+
                 </th>
               </tr>
             </table>
@@ -238,6 +246,7 @@
               <tr>
                 <th colspan="2" class="main-text">
                   Address:{{$data->site->street_num.', '.$data->site->city}}
+
                 </th>
               </tr>
               <tr>
@@ -860,4 +869,3 @@
     </div>
   </body>
 </html>
-
