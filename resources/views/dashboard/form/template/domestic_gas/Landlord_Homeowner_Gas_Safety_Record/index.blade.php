@@ -164,15 +164,15 @@
                         <p style="padding:0px 10px; margin: 0;font-weight: bold;color: #000;">DETAILS OF THE INSTALLATION</p>
                         <div style="padding:0 10px;">
                               <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
-                                Tenant Name:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->sites->first()->siteContact->f_name }}</span>
+                                Tenant Name:<span style="font-weight: bold;padding:3px 20px">{{ $data->site->siteContact->f_name }}</span>
                               </h6>
                               <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
-                                Address:<span style="font-weight: bold;padding:3px 20px">{{$data->certificate->site->street_num.', '.$data->certificate->site->city}}</span>
+                                Address:<span style="font-weight: bold;padding:3px 20px">{{$data->site->street_num.', '.$data->site->city}}</span>
 
                               </h6>
                               <h6 style="margin:5px 0px ;font-size: 12px;font-weight: 100;">
-                                Postcode:<span style="font-weight: bold;padding:3px 20px">{{$data->certificate->site->postal_code }}</span>
-                                <span>Tel No:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->sites->first()->siteContact->phone }}</span></span>
+                                Postcode:<span style="font-weight: bold;padding:3px 20px">{{$data->site->postal_code }}</span>
+                                <span>Tel No:<span style="font-weight: bold;padding:3px 20px">{{ $data->site->siteContact->phone }}</span></span>
                               </h6>
                         </div>
                       </div>
