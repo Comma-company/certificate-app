@@ -27,7 +27,7 @@ class FormSeeder extends Seeder
             [
                 "name" => "Minor Electrical Installation Works Cert",
                 "type" => "Domestic Electrical",
-                'status' => 'coming_soon',
+                'status' => 'live',
                 'file_name' => "Minor_Electrical_Installation_Works_Cert",
                 'category_id' => '1',
             ],
@@ -71,13 +71,6 @@ class FormSeeder extends Seeder
                 "type" => "Domestic Electrical",
                 'status' => 'coming_soon',
                 'file_name' => "EMERGENCY_LIGHTING_SITE_COMPLIANCE_CERTIFICATE",
-                'category_id' => '1',
-            ],
-            [
-                "name" => "MINOR ELECTRICAL INSTALLATION WORKS CERTIFICATE",
-                "type" => "Domestic Electrical",
-                'status' => 'live',
-                'file_name' => "MINOR_ELECTRICAL",
                 'category_id' => '1',
             ],
 
