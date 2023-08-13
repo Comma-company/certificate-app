@@ -28,7 +28,7 @@ class FormSeeder extends Seeder
                 "name" => "Minor Electrical Installation Works Cert",
                 "type" => "Domestic Electrical",
                 'status' => 'live',
-                'file_name' => "Minor_Electrical_Installation_Works_Cert",
+                'file_name' => "Minor_Electrical",
                 'category_id' => '1',
             ],
             [

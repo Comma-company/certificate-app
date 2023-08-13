@@ -458,7 +458,7 @@ class CertificateController extends Controller
 
                 $form_data = collect($data);
                 $form_data->all();
-                $body = [
+                  $body = [
                     "form_data" => $form_data,
                     // 'html_content' => $html
                 ];

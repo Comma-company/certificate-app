@@ -55,7 +55,7 @@ class CertificateEmail extends Mailable
             $file = ElectricalDangerNotification::stringCode($certificate);
         } elseif ($file_name == 'Domestic_Electrical_Installation_Certificate') {
             $file = DomesticElectricalInstallationCertificate::stringCode($certificate);
-        }elseif ($file_name == 'Minor_Electrical_Installation_Works_Cert') {
+        }elseif ($file_name == 'Minor_Electrical') {
             $file = MinorElectrical::stringCode($certificate);
         }
 
