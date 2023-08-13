@@ -407,9 +407,7 @@ class CertificateController extends Controller
             'user_id' => $user_id,
             'id' => $id,
         ])
-            ->with(['status', 'notes.files', 'form', 'customer', 'site' => function ($query) {
-                $query->select(['id', 'name', 'address', 'street_num', 'city','postal_code' ,'country_id', 'user_id', 'customer_id', 'state', 'property_type', 'other_value']);
-            },
+            ->with(['status', 'notes.files', 'form', 'customer', 'site.country',
              'customer.contacts', 'customer.country', 'certificateAttachments.image','customer.billing.paymentTerm'])
             ->first();
             if ($data && $data->site && isset($data->site->address) && isset($data->site->postal_code)) {

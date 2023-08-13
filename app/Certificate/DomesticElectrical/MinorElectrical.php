@@ -69,7 +69,7 @@ class MinorElectrical
         ])->render();
 
         $certificate_pdf->WriteHTML($html);
-
+        if ($cert_attachments->count() > 0) {
         $certificate_pdf->AddPage('L');
         $page_2 = view('dashboard.form.template.domestic_electrical.Minor_Electrical.note', [
             'data' => $certificate,
@@ -78,6 +78,7 @@ class MinorElectrical
             'user'=>$user,
         ])->render();
         $certificate_pdf->WriteHTML($page_2);
+        }
         return $certificate_pdf;
     }
 
