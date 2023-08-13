@@ -36,7 +36,7 @@ class CertificateController extends Controller
     } elseif ($file_name == 'Domestic_Electrical_Installation_Certificate') {
         $form = DomesticElectricalInstallationCertificate::openPdf($certificate);
     }
-    elseif ($file_name == 'Minor_Electrical_Installation_Works_Cert') {
+    elseif ($file_name == 'Minor_Electrical') {
         $form = MinorElectrical::openPdf($certificate);
     }
     return $form;
