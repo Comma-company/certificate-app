@@ -31,7 +31,7 @@
           </th>
           <th style="width: 50%; padding: 20px;">
             <div class="image-container">
-              {{ $one->image_id ? $one->image->image : ' ' }}
+              <img src="{{ $one->image_id ? asset($one->image->image) : '' }}" alt="Image">
             </div>
           </th>
         </tr>

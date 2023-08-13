@@ -171,23 +171,17 @@
               </tr>
               <tr>
                 <th class="main-text">
-
                   Registration No:{{ $firstCategory->pivot->license_number }}
-
-                  Registration No:
-
                 </th>
               </tr>
               <tr>
                 <th colspan="2" class="main-text">
-
                   Company Name:{{ $data->user->company_name }}
                 </th>
               </tr>
               <tr>
                 <th colspan="2" class="main-text">
                   Address:{{$data->user->number_street_name.', '.$data->user->city}}
-
                 </th>
               </tr>
               <tr>
@@ -196,7 +190,6 @@
                 </th>
                 <th class="main-text">
                   Tel No:{{ $data->user->phone }}
-
                 </th>
               </tr>
             </table>
@@ -216,7 +209,6 @@
               <tr>
                 <th colspan="2" class="main-text">
                   Address:{{$data->customer->street_num.', '.$data->customer->city}}
-
                 </th>
               </tr>
               <tr>
@@ -225,7 +217,6 @@
                 </th>
                 <th class="main-text">
                   Tel No:{{ $data->customer->contacts->first()->phone }}
-
                 </th>
               </tr>
             </table>
@@ -240,13 +231,11 @@
               <tr>
                 <th colspan="2" class="main-text">
                   Tenant Name:{{ $data->site->siteContact->f_name }}
-
                 </th>
               </tr>
               <tr>
                 <th colspan="2" class="main-text">
                   Address:{{$data->site->street_num.', '.$data->site->city}}
-
                 </th>
               </tr>
               <tr>
@@ -275,7 +264,9 @@
               <tr>
                 <th style="padding-top: 5px" class="main-text">
                   Description of Minor
-                  Works:...
+                  Works: @if(isset($formData['description_minor_works']))
+                  {{ getvalue('description_minor_works',$formData)}}
+                  @endif
                 </th>
               </tr>
             </table>
@@ -285,18 +276,24 @@
                   style="padding-top: 5px; padding-right: 40px"
                   class="main-text"
                 >
-                  Date completed:...
+                  Date completed:@if(isset($formData['date_completed']))
+                                 {{ getvalue('date_completed',$formData)}}
+                                 @endif
                 </th>
                 <th
                   style="padding-top: 5px; padding-right: 40px"
                   class="main-text"
                 >
                   System type and earthing arrangements (e.g. TN C S / TN S /
-                  TT):...
+                  TT): @if(isset($formData['date_inspection_and_testing_a']))
+                      {{ getvalue('date_inspection_and_testing_a',$formData)}}
+                   @endif
                 </th>
                 <th style="padding-top: 5px" class="main-text">
                   Zs at Distribution Board / Consumer Unit supplying the final
-                  circuit:...
+                  circuit:@if(isset($formData['zs_distribution_board']))
+                  {{ getvalue('zs_distribution_board',$formData)  }}
+                  @endif
                 </th>
               </tr>
             </table>
@@ -312,31 +309,33 @@
                   style="padding-top: 5px; padding-right: 15px"
                   class="main-text"
                 >
-                  Earthing conductor:...
+                  Earthing conductor:@if(isset($formData['earthing_conductor']))
+                  {{ getvalue('earthing_conductor',$formData)}}
+                  @endif
                 </th>
                 <th
                   style="padding-top: 5px; padding-right: 10px"
                   class="main-text"
                 >
-                  Protective bonding conductor(s) to: Water (...)
+                  Protective bonding conductor(s) to: Water @if(isset($formData['water'])) {{ getvalue('water',$formData)}}@endif
                 </th>
                 <th
                   style="padding-top: 5px; padding-right: 10px"
                   class="main-text"
                 >
-                  Gas (...)
+                  Gas @if(isset($formData['gas'])) {{ getvalue('gas',$formData)}} @endif
                 </th>
                 <th
                   style="padding-top: 5px; padding-right: 10px"
                   class="main-text"
                 >
-                  Oil (...)
+                  Oil {{ getvalue('oil',$formData)}}
                 </th>
                 <th
                   style="padding-top: 5px; padding-right: 10px"
                   class="main-text"
                 >
-                  Other (state)...
+                  Other (state) @if(isset($formData['rotective_other'])){{ getvalue('rotective_other',$formData)}} @endif
                 </th>
               </tr>
             </table>
@@ -345,7 +344,7 @@
                 <th style="padding-top: 5px;" class="content-text">
                     Comments on existing installation (see Reg. 644.1.2):
                     <span  class="main-text">
-                        ...
+                      @if(isset($formData['comments_on_existing_installation'])){{ getvalue('comments_on_existing_installation',$formData)}} @endif
                     </span>
                 </th>
               </tr>
@@ -354,12 +353,12 @@
               <tr>
                 <th style="padding-top: 5px" class="main-text">
                   Details of any departures from BS 7671: 2018, as amended
-                  to:...
+                  to: @if(isset($formData['details_departures'])){{ getvalue('details_departures',$formData)}} @endif
                 </th>
                 <th style="padding-top: 5px" class="main-text">
                   (date) for the circuit altered or extended (Regulation 120.3,
                   133.1.3 &
-                  133.5):....
+                  133.5):@if(isset($formData['date_circuit_altered_or_extended'])){{ getvalue('date_circuit_altered_or_extended',$formData)}} @endif
                 </th>
               </tr>
             </table>
@@ -370,10 +369,10 @@
                   class="main-text"
                 >
                   Details of permitted exceptions (Regulation
-                  411.3.3):...
+                  411.3.3): @if(isset($formData['Details_of_permitted_exceptions'])) {{ getvalue('Details_of_permitted_exceptions',$formData)}} @endif
                 </th>
                 <th style="padding-top: 5px" class="main-text">
-                  Where applicable, risk assessment attached:
+                  Where applicable, risk assessment attached: @if(isset($formData['risk_assessment_attached_minor'])){{ getvalue('risk_assessment_attached_minor',$formData)}} @endif
                 </th>
               </tr>
             </table>
@@ -393,12 +392,12 @@
             style="padding: 5px 20px; border-bottom: 2px solid #00935f"
             class="main-text"
           >
-            DB/Consumer Unit: Ref No:
+            DB/Consumer Unit: Ref No: @if(isset($formData['db_consumer_unit'])){{ getvalue('db_consumer_unit',$formData)}}@endif
           </th>
           <th
             style="padding-top: 5px; border-bottom: 2px solid #00935f"
             class="main-text"
-          >Location and type
+          >Location and type :@if(isset($formData['location_and_type'])) {{ getvalue('location_and_type',$formData)}} @endif
           </th>
         </tr>
         <tr style=" border: solid 1px #00935f;text-align: left">
@@ -409,17 +408,17 @@
                   style="padding-top: 5px; padding-right: 10px"
                   class="content-text"
                 >
-                  Circuit
+                  Circuit: @if(isset($formData['circuit_number'])){{ getvalue('circuit_number',$formData)}} @endif
                 </th>
                 <th style="padding-top: 5px" class="main-text">
-                  Description and Ref No:
+                  Description and Ref No: @if(isset($formData['circuit_description'])){{ getvalue('circuit_description',$formData)}} @endif
                   ...
                 </th>
                 <th style="padding-top: 5px" class="main-text">
-                  nstallation reference method: ...
+                  installation reference method: @if(isset($formData['installation_reference_method'])){{ getvalue('installation_reference_method',$formData)}}@endif
                 </th>
                 <th style="padding-top: 5px" class="main-text">
-                  Number of conductors: ...
+                  Number of conductors: @if(isset($formData['Number_size_of_conductors'])) {{ getvalue('Number_size_of_conductors',$formData)}}@endif
                 </th>
                 <th
                   style="padding-top: 5px; padding-right: 10px"
@@ -428,10 +427,10 @@
                   Csa of conductors
                 </th>
                 <th style="padding-top: 5px" class="main-text">
-                  Live: ... mm2
+                  Live: @if(isset($formData['live'])) {{ getvalue('live',$formData)}} mm2 @endif
                 </th>
                 <th style="padding-top: 5px" class="main-text">
-                  cpc: ... mm2
+                  cpc: @if(isset($formData['cpc'])) {{ getvalue('cpc',$formData)}} mm2 @endif
                 </th>
               </tr>
             </table>
@@ -447,25 +446,25 @@
                   style="padding-top: 5px; padding-right: 10px"
                   class="content-text"
                 >
-                  RCD
+                  RCD:  @if(isset($formData['rcd_bs_en'])){{ getvalue('rcd_bs_en',$formData)}}@endif
                 </th>
                 <th
                   style="padding-top: 5px; padding-right: 150px"
                   class="main-text"
                 >
-                  BS EN:
+                  BS EN: @if(isset($formData['enovercurrent_bs_en'])) {{ getvalue('enovercurrent_bs_en',$formData)}}@endif
                 </th>
                 <th
                   style="padding-top: 5px; padding-right: 10px"
                   class="main-text"
                 >
-                  Type: ...
+                  Type: @if(isset($formData['overcurrent_type'])) {{ getvalue('overcurrent_type',$formData)}} @endif
                 </th>
                 <th
                   style="padding-top: 5px; padding-right: 10px"
                   class="main-text"
                 >
-                  Rating: ...(A)
+                  Rating: @if(isset($formData['overcurrent_rating'])) {{ getvalue('overcurrent_rating',$formData)}}(A)@endif
                 </th>
                 <th
                   style="padding-top: 5px; padding-right: 20px"
@@ -474,44 +473,39 @@
                   AFDD
                 </th>
                 <th style="padding-top: 5px" class="main-text">
-                  BS EN: ...
+                  BS EN:  @if(isset($formData['afdd_bs_en'])){{ getvalue('afdd_bs_en',$formData)}} @endif
                 </th>
                 <th
                   style="padding-top: 5px; padding-right: 10px"
                   class="main-text"
                 >
-                  Type: ...
+                  Type: @if(isset($formData['afdd_type'])){{ getvalue('afdd_type',$formData)}}@endif
                 </th>
                 <th
                   style="padding-top: 5px; padding-right: 10px"
                   class="main-text"
                 >
-                  Rating: ....(A)
+                  Rating: @if(isset($formData['afdd_rating'])) {{ getvalue('afdd_rating',$formData)}}(A)@endif
                 </th>
               </tr>
             </table>
             <table style="margin: 0px 7px">
               <tr>
                 <th style="padding-top: 5px" class="main-text">
-                  BS EN: ...
+                  BS EN: @if(isset($formData['spd_bs_en'])){{ getvalue('spd_bs_en',$formData)}}@endif
                 </th>
                 <th
                   style="padding-top: 5px; padding-right: 10px"
                   class="main-text"
                 >
-                  Type: ...............
+                  Type: @if(isset($formData['spd_type'])){{ getvalue('spd_type',$formData)}}@endif
                 </th>
-                <th
-                  style="padding-top: 5px; padding-right: 80px"
-                  class="main-text"
-                >
-                  Rating: ...(A)
-                </th>
+                
                 <th
                   style="padding-top: 5px; padding-right: 100px"
                   class="main-text"
                 >
-                  Rated residual operating current (I ∆ n): ... mA
+                  Rated residual operating current (I ∆ n): @if(isset($formData['spd_type'])){{ getvalue('spd_type',$formData)}} mA @endif
                 </th>
                 <th
                   style="padding-top: 5px; padding-right: 20px"
@@ -520,13 +514,13 @@
                   SPD
                 </th>
                 <th style="padding-top: 5px" class="main-text">
-                  BS EN: ...
+                  BS EN: @if(isset($formData['spd_bs_en'])){{ getvalue('spd_bs_en',$formData)}}@endif
                 </th>
                 <th
                   style="padding-top: 5px; padding-right: 10px"
                   class="main-text"
                 >
-                  Type: ....
+                  Type: @if(isset($formData['spd_type'])){{ getvalue('spd_type',$formData)}}@endif
                 </th>
               </tr>
             </table>
@@ -554,13 +548,13 @@
                         style="padding-top: 5px; padding-right: 90px"
                         class="content-text"
                       >
-                        Continuity
+                        Continuity: @if(isset($formData['continuity'])){{ getvalue('continuity',$formData)}}@endif
                       </th>
                       <th
                         style="padding-top: 5px; padding-right: 40px"
                         class="main-text"
                       >
-                        Protective conductor (R1 + R2): (...)Ω
+                        Protective conductor (R1 + R2): @if(isset($formData['protective_conductor_input'])){{ getvalue('protective_conductor_input',$formData)}}Ω @endif
                       </th>
                       <th
                         style="padding-top: 5px; padding-right: 50px"
@@ -569,7 +563,7 @@
                         or
                       </th>
                       <th style="padding-top: 5px" class="main-text">
-                        R2: (...)Ω
+                        R2: @if(isset($formData['protective_conductor_r'])){{ getvalue('protective_conductor_r',$formData)}}Ω @endif
                       </th>
                     </tr>
                   </table>
@@ -585,16 +579,16 @@
                         style="padding-top: 5px; padding-right: 30px"
                         class="main-text"
                       >
-                        L/L: (...)Ω
+                        L/L: @if(isset($formData['ring_ll'])){{ getvalue('ring_ll',$formData)}}Ω @endif
                       </th>
                       <th
                         style="padding-top: 5px; padding-right: 30px"
                         class="main-text"
                       >
-                        N/N: (...)Ω
+                        N/N: @if(isset($formData['ring_nn'])){{ getvalue('ring_nn',$formData)}}Ω @endif
                       </th>
                       <th style="padding-top: 5px" class="main-text">
-                        cpc/cpc: (...)Ω
+                        cpc/cpc: @if(isset($formData['ring_cpc'])) {{ getvalue('ring_cpc',$formData)}}Ω @endif
                       </th>
                     </tr>
                   </table>
@@ -610,16 +604,16 @@
                         style="padding-top: 5px; padding-right: 20px"
                         class="main-text"
                       >
-                        L/L: (...)MΩ
+                        L/L: @if(isset($formData['insulation_ring_ll'])){{ getvalue('insulation_ring_ll',$formData)}}MΩ @endif
                       </th>
                       <th
                         style="padding-top: 5px; padding-right: 20px"
                         class="main-text"
                       >
-                        L/L: (...)MΩ
+                        L/E:@if(isset($formData['insulation_ring_le'])) {{ getvalue('insulation_ring_le',$formData)}}MΩ @endif
                       </th>
                       <th style="padding-top: 5px" class="main-text">
-                        Test voltage: (...)V
+                        Test voltage:  @if(isset($formData['insulation_test_voltage'])) {{ getvalue('insulation_test_voltage',$formData)}}V @endif
                       </th>
                     </tr>
                   </table>
@@ -640,13 +634,13 @@
                         style="padding-top: 5px; padding-right: 20px"
                         class="main-text"
                       >
-                        Satisfactory: (...)
+                        Satisfactory: @if(isset($formData['polarity_satisfactory'])){{ getvalue('polarity_satisfactory',$formData)}} @endif
                       </th>
                       <th style="padding-top: 5px" class="content-text">
                         Maximum measured earth fault loop impedance Zs
                       </th>
                       <th style="padding-top: 5px" class="main-text">
-                        (...)Ω
+                        @if(isset($formData['earth_fault_loop_impedance_zs'])) {{ getvalue('earth_fault_loop_impedance_zs',$formData)}}Ω @endif
                       </th>
                     </tr>
                   </table>
@@ -660,22 +654,22 @@
                   <table style="margin: 7px">
                     <tr>
                       <th style="padding-top: 5px" class="main-text">
-                        RCD test button operation satisfactory: (...)
+                        RCD test button operation satisfactory:  @if(isset($formData['rcd_test'])) {{ getvalue('rcd_test',$formData)}} @endif
                       </th>
                       <th style="padding-top: 5px" class="main-text">
                         AFDD test button operation satisfactory (where
-                        provided):(...)
+                        provided): @if(isset($formData['afdd_test'])) {{ getvalue('afdd_test',$formData)}}@endif
                       </th>
                     </tr>
                   </table>
                   <table style="margin: 7px">
                     <tr>
                       <th style="padding-top: 5px" class="main-text">
-                        RCD disconnection time at I n:(...)ms
+                        RCD disconnection time at I n: @if(isset($formData['rcd_disconnection_time'])) {{ getvalue('rcd_disconnection_time',$formData)}} ms @endif
                       </th>
                       <th style="padding-top: 5px" class="main-text">
                         SPD functionality confirmed (where indicator is
-                        provided):(...)
+                        provided): @if(isset($formData['spd_functionality'])) {{ getvalue('spd_functionality',$formData)}}@endif
                       </th>
                     </tr>
                   </table>
@@ -685,16 +679,16 @@
                         style="padding-top: 5px; padding-right: 50px"
                         class="content-text"
                       >
-                        Test Instrument
+                        Test Instrument: @if(isset($formData['test_instrumentother'])) {{ getvalue('test_instrumentother',$formData)}}@endif
                       </th>
                       <th
                         style="padding-top: 5px; padding-right: 20px"
                         class="main-text"
                       >
-                        Multifunction:
+                        Multifunction: @if(isset($formData['multifunction'])){{ getvalue('multifunction',$formData)}}@endif
                       </th>
                       <th style="padding-top: 5px" class="main-text">
-                        Other(s)  (state):...
+                        Other(s)  (state):
                       </th>
                     </tr>
                   </table>
