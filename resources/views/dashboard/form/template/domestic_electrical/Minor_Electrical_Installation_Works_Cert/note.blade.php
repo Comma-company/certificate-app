@@ -15,24 +15,26 @@
       }
     </style>
   </head>
-  
+
   <body>
     <div class="page">
-      @foreach($cert_attachments as $one)
+      @foreach($cert_attachments as $attachment)
       <table class="border-table" style="width: 100%; margin-bottom: 15px">
         <tr>
           <th class="green-table-headers" colspan="2">
-            {{ $one->note_title ? $one->note_title : ' ' }}
+            {{ $attachment->note_title ? $attachment->note_title : ' ' }}
           </th>
         </tr>
         <tr style=" border: solid 1px #00935f;">
           <th style="width: 50%; padding: 5px 20px; line-height: 30px; padding-bottom: 5px;" class="main-text">
-            {{ $one->note_body ? $one->note_body : ' ' }}
+            {{ $attachment->note_body ? $attachment->note_body : ' ' }}
           </th>
           <th style="width: 50%; padding: 20px;">
-            <div class="image-container">
-              <img src="{{ $one->image_id ? asset($one->image->image) : '' }}" alt="Image">
-            </div>
+            @if ($attachment->image_id)
+                <div class="image-container">
+                    <img src="{{ $attachment->image_id ? asset('storage/'.$attachment->image->image) : ' ' }}" alt="">
+                </div>
+            @endif
           </th>
         </tr>
       </table>
