@@ -500,7 +500,7 @@
                 >
                   Type: @if(isset($formData['spd_type'])){{ getvalue('spd_type',$formData)}}@endif
                 </th>
-                
+
                 <th
                   style="padding-top: 5px; padding-right: 100px"
                   class="main-text"
@@ -548,13 +548,13 @@
                         style="padding-top: 5px; padding-right: 90px"
                         class="content-text"
                       >
-                        Continuity: @if(isset($formData['continuity'])){{ getvalue('continuity',$formData)}}@endif
+                        Continuity: @if(isset($formData['continuity'])){{ getvalue('continuity',$formData)}} Ω @endif
                       </th>
                       <th
                         style="padding-top: 5px; padding-right: 40px"
                         class="main-text"
                       >
-                        Protective conductor (R1 + R2): @if(isset($formData['protective_conductor_input'])){{ getvalue('protective_conductor_input',$formData)}}Ω @endif
+                        Protective conductor (R1 + R2): @if(isset($formData['protective_conductor_input'])){{ getvalue('protective_conductor_input',$formData)}} @endif
                       </th>
                       <th
                         style="padding-top: 5px; padding-right: 50px"
@@ -563,7 +563,7 @@
                         or
                       </th>
                       <th style="padding-top: 5px" class="main-text">
-                        R2: @if(isset($formData['protective_conductor_r'])){{ getvalue('protective_conductor_r',$formData)}}Ω @endif
+                        R2: @if(isset($formData['protective_conductor_r'])){{ getvalue('protective_conductor_r',$formData)}} @endif
                       </th>
                     </tr>
                   </table>
@@ -692,7 +692,7 @@
                       </th>
                     </tr>
                   </table>
-                 
+
                 </th>
               </tr>
             </table>
@@ -738,7 +738,7 @@
                   <table style="margin: 7px">
                     <tr>
                       <th style="padding-top: 5px" class="main-text">
-                        
+
                         Signature:
                         @if($data->user->signature)
                         <img width="120px" src="{{ asset('uploads/'.$data->user->signature->signature) }}" alt="">
