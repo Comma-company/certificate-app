@@ -285,8 +285,8 @@
                   class="main-text"
                 >
                   System type and earthing arrangements (e.g. TN C S / TN S /
-                  TT): @if(isset($formData['date_inspection_and_testing_a']))
-                      {{ getvalue('date_inspection_and_testing_a',$formData)}}
+                  TT): @if(isset($formData['system_type_and_earthing_arrangements']))
+                      {{ getvalue('system_type_and_earthing_arrangements',$formData)}}
                    @endif
                 </th>
                 <th style="padding-top: 5px" class="main-text">
@@ -692,31 +692,7 @@
                       </th>
                     </tr>
                   </table>
-                  <table style="margin: 7px">
-                    <tr>
-                      <th
-                        style="padding-top: 5px; padding-right: 50px"
-                        class="content-text"
-                      >
-                        (insert serial numbers)
-                      </th>
-                      <th
-                        style="padding-top: 5px; padding-right: 20px"
-                        class="main-text"
-                      >
-                        (...)
-                      </th>
-                      <th
-                        style="padding-top: 5px; padding-right: 20px"
-                        class="main-text"
-                      >
-                        (...)
-                      </th>
-                      <th style="padding-top: 5px" class="main-text">
-                        (...)
-                      </th>
-                    </tr>
-                  </table>
+                 
                 </th>
               </tr>
             </table>
@@ -755,15 +731,22 @@
                   <table style="margin: 7px">
                     <tr>
                       <th style="padding-top: 5px" class="main-text">
-                        Name
-                        (capitals):...
+                       Name :{{ getvalue('engineer_name',$formData['part_declaration'])}}
                       </th>
                     </tr>
                   </table>
                   <table style="margin: 7px">
                     <tr>
                       <th style="padding-top: 5px" class="main-text">
-                        Signature:....for
+                        @php
+                         $user_id = Auth::guard('sanctum')->user()->id;
+                         $user = User::where('id', $user_id)->first();
+                        @endphp
+                        Signature:
+                        @if($user->signature)
+                        <img width="120px" src="{{ asset('uploads/'.$user->signature->signature) }}" alt="">
+                        @endif
+                        .for
                         and on behalf of the Contractor identified in PART 1 of
                         this Certificate
                       </th>
@@ -775,10 +758,10 @@
                         style="padding-top: 5px; padding-right: 20px"
                         class="main-text"
                       >
-                        Position:...
+                        Position:{{ getvalue('engineer_position',$formData['part_declaration'])}}
                       </th>
                       <th style="padding-top: 5px" class="main-text">
-                        Date:...
+                        Date:{{ getvalue('engineer_date',$formData['part_declaration'])}}
                       </th>
                     </tr>
                   </table>
@@ -794,7 +777,7 @@
                     <tr>
                       <th style="padding-top: 5px" class="main-text">
                         Name
-                        (capitals):...
+                       {{ getvalue('customer_name', $formData['part_declaration']) }}
                       </th>
                     </tr>
                   </table>
@@ -804,10 +787,13 @@
                         style="padding-top: 5px; padding-right: 20px"
                         class="main-text"
                       >
-                        Signature:...
+                        Signature:
+                        @if ($data->customerSignature)
+                        <img width="120px" src="{{ asset('uploads/'.$data->customerSignature->file_url) }}" alt="">
+                        @endif
                       </th>
                       <th style="padding-top: 5px" class="main-text">
-                        Date:...
+                        Date:{{ getvalue('customer_date',$formData['part_declaration'])}}
                       </th>
                     </tr>
                   </table>
