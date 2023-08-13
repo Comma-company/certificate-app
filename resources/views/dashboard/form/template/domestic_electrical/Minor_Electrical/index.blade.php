@@ -740,8 +740,8 @@
                       <th style="padding-top: 5px" class="main-text">
                         
                         Signature:
-                        @if($user->signature)
-                        <img width="120px" src="{{ asset('uploads/'.$user->signature->signature) }}" alt="">
+                        @if($data->user->signature)
+                        <img width="120px" src="{{ asset('uploads/'.$data->user->signature->signature) }}" alt="">
                         @endif
                         .for
                         and on behalf of the Contractor identified in PART 1 of

@@ -25,8 +25,7 @@ class MinorElectrical
 
         $defaultFontConfig = (new FontVariables())->getDefaults();
         $fontData = $defaultFontConfig['fontdata'];
-        $user_id = Auth::guard('sanctum')->user()->id;
-        $user = User::where('id', $user_id)->first();
+        
 
         //   $invoice = new Mpdf(['orientation' => 'L']);
         $certificate_pdf =  new Mpdf([
@@ -65,7 +64,7 @@ class MinorElectrical
             'data' => $data,
             'formData' =>   $formData,
             'cert_attachments' =>$cert_attachments,
-            'user'=>$user,
+           
         ])->render();
 
         $certificate_pdf->WriteHTML($html);
@@ -75,7 +74,7 @@ class MinorElectrical
             'data' => $certificate,
             'formData' => $formData,
             'cert_attachments' =>$cert_attachments,
-            'user'=>$user,
+           
         ])->render();
         $certificate_pdf->WriteHTML($page_2);
         }
