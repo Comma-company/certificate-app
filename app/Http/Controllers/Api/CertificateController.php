@@ -501,7 +501,7 @@ class CertificateController extends Controller
             $form = ElectricalDangerNotification::getPdf($certificate);
         } elseif ($file_name == 'Domestic_Electrical_Installation_Certificate') {
             $form = DomesticElectricalInstallationCertificate::getPdf($certificate);
-        }elseif ($file_name == 'Minor_Electrical_Installation_Works_Cert') {
+        }elseif ($file_name == 'Minor_Electrical') {
             $form = MinorElectrical::getPdf($certificate);
         }
         return $form;
