@@ -231,7 +231,7 @@ class FormSeeder extends Seeder
             ],
             [
                 "name" => "Gas Service Breakdown",
-                "type" => " Domestic Gas",
+                "type" => "Domestic Gas",
                 'status' => 'live',
                 'file_name' => "Gas_Service_Breakdown",
                 'category_id' => '2',
