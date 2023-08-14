@@ -391,15 +391,10 @@
                 as either ‘Immediately Dangerous’ or ‘At Risk’, as detailed above, continued use of the appliance/
                 installation, after being advised not to do so, may be in breach of the Gas Safety Installation and confirm that as </p>
                 <div style="float:right;margin-top:5px; margin-bottom: 5px;">
-                  <h6 style="    float: left;
-                  font-size: 13px;
-                  font-weight: 100;
-                  margin: 0;
-
-                  padding-right: 10px;font-weight: bold;">Responsible person signature :
-                  @if ($data->customerSignature)
-                        <img width="120px" src="{{ asset('uploads/'.$data->customerSignature->file_url) }}" alt="">
-                   @endif 
+                  <h6 style="float: left;font-size: 13px; font-weight: 100;font-weight: 100; margin: 0; padding-right: 5px;font-weight: bold;">
+                           Responsible person signature :@if ($data->customerSignature)
+                        <img width="90px" src="{{ asset('uploads/'.$data->customerSignature->file_url) }}" alt="">
+                   @endif
                   </h6>
 
                   <span style="background-color: #f6f6f6; width: 225px; height: 30px; display: block; float: left;">{{ getvalue('customer_name',$formData['part_declaration']) }}</span>
