@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PDF Portable Appliance Test (PAT)</title>
     <style>
+      .page {
+      page-break-after: always; /* Add a page break after each attachment */
+    }
 
       .image-container{
         width: 100%;
