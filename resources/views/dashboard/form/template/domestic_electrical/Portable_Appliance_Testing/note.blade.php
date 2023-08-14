@@ -5,9 +5,118 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PDF Portable Appliance Test (PAT)</title>
     <style>
-      .page {
-      page-break-after: always; /* Add a page break after each attachment */
+      page :first {
+          header: html_formHeader;
+          footer: html_formFooter;
+          margin: 15px;
+          margin-bottom:0px;
+          margin-top:110px;
+          margin-header:0px 20px;
+          size: landscape; /* <length>{1,2} | auto | portrait | landscape */
+          margin-footer:5mm ;
+      }
+      @page{
+           header: html_formHeader;
+         footer: html_formFooter;
+          margin: 15px;
+          margin-bottom:20px;
+          margin-top:110px;
+          margin-header:20px;
+          size: landscape; /* <length>{1,2} | auto | portrait | landscape */
+          margin-footer:5mm ;
+      }
+
+      @font-face {
+      font-family:Arial;
+      src:'./Ayar/Arial.ttf';
     }
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  /* background-color: #EAEAEA; */
+}
+table {
+  border-collapse: collapse;
+}
+/*       .page {
+  width: 97%;
+  margin-left: 1.5%;
+  margin-top: 40px;
+  font-family: "Cairo", sans-serif;
+  font-family: "Open Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
+  font-family: "Tajawal", sans-serif;
+} */
+.header-table {
+  width: 100%;
+}
+.number-table tr td {
+  width: 50%;
+}
+.number-table {
+  border: solid 2px #00935f;
+  padding: 0 !important;
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 100;
+  margin-left: 85%;
+}
+p,
+h4 {
+  margin: 10px;
+  padding: 0;
+}
+.green-table-headers {
+  background-color: #00935f;
+  text-align: left;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 12px 15px;
+}
+.border-table {
+  border: solid 1px #00935f;
+}
+
+.sub-title-text {
+  font-size: 12px;
+  color: #00935f;
+  text-align: left;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+.main-text {
+  font-size: 12px;
+  font-weight: 100;
+  text-align: left;
+  padding-bottom: 10px;
+}
+.content-text {
+  font-size: 12px;
+  text-align: left;
+  padding-bottom: 10px;
+}
+.description-table tr th {
+  text-align: left;
+  padding: 5px;
+  font-size: 12px;
+}
+.not-bold {
+  font-weight: 100;
+}
+.page-number {
+  border: 1px solid #000;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+}
+</style>
+    <style>
 
       .image-container{
         width: 100%;
