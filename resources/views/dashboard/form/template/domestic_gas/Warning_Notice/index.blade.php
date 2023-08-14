@@ -396,7 +396,11 @@
                   font-weight: 100;
                   margin: 0;
 
-                  padding-right: 10px;font-weight: bold;">Responsible person signature : </h6>
+                  padding-right: 10px;font-weight: bold;">Responsible person signature :
+                  @if ($data->customerSignature)
+                        <img width="120px" src="{{ asset('uploads/'.$data->customerSignature->file_url) }}" alt="">
+                   @endif 
+                  </h6>
 
                   <span style="background-color: #f6f6f6; width: 225px; height: 30px; display: block; float: left;">{{ getvalue('customer_name',$formData['part_declaration']) }}</span>
                 </div>
@@ -422,7 +426,7 @@
                 <h6 style="float: left;font-size: 13px;font-weight: 100;padding-right: 5px;font-weight: bold;margin: 0;margin-top:5px">
                     Gas Engineer’s signature :
                     @if ($data->user->signature)
-                    <img width="90px" height="30px" src="{{ $data->user->signature->signature }}" alt="">
+                    <img width="90px" height="30px" src="{{ $data->user->signature->file_url }}" alt="">
                     @endif
                 </h6>
                 <span style="background-color: #f6f6f6; width: 250px; height: 30px; display: block; float: left;">{{ getvalue('engineer_name',$formData['part_declaration']) }}</span>
