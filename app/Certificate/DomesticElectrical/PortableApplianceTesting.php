@@ -58,9 +58,9 @@ class PortableApplianceTesting
             'formData' =>   $formData,
             'cert_attachments' =>$cert_attachments,
         ])->render();
+        $invoice->WriteHTML($html);
         if ($cert_attachments->count() > 0) {
                $invoice->AddPage('L');
-               $invoice->WriteHTML($html);
                $page_2 = view('dashboard.form.template.domestic_electrical.Portable_Appliance_Testing.note', [
                     'data' => $certificate,
                     'formData' => $formData,
