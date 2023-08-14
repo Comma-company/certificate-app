@@ -17,8 +17,8 @@
   </head>
 
   <body>
+    @foreach($cert_attachments as $attachment)
     <div class="page">
-      @foreach($cert_attachments as $attachment)
       <table class="border-table" style="width: 100%; margin-bottom: 15px">
         <tr>
           <th class="green-table-headers" colspan="2">
@@ -38,8 +38,8 @@
           </th>
         </tr>
       </table>
-      @endforeach
       {{-- <p class="main-text">@Copyright 360 Connect (2023 August)</p> --}}
     </div>
+    @endforeach
   </body>
 </html>
