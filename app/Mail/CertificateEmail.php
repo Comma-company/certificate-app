@@ -13,6 +13,7 @@ use App\Certificate\DomesticGas\LandlordHomeownerGasSafetyRecord;
 use App\Certificate\DomesticElectrical\ElectricalDangerNotification;
 use App\Certificate\DomesticElectrical\DomesticElectricalInstallationCertificate;
 use App\Certificate\DomesticElectrical\MinorElectrical;
+use App\Certificate\DomesticGas\GasServiceBreakdown;
 
 class CertificateEmail extends Mailable
 {
@@ -55,9 +56,12 @@ class CertificateEmail extends Mailable
             $file = ElectricalDangerNotification::stringCode($certificate);
         } elseif ($file_name == 'Domestic_Electrical_Installation_Certificate') {
             $file = DomesticElectricalInstallationCertificate::stringCode($certificate);
-        }elseif ($file_name == 'Minor_Electrical_Installation_Works_Cert') {
+        }elseif ($file_name == 'Minor_Electrical') {
             $file = MinorElectrical::stringCode($certificate);
+        }elseif ($file_name == 'Gas_Service_Breakdown') {
+            $file = GasServiceBreakdown::stringCode($certificate);
         }
+
 
         $fileName = "C$certificate->id.pdf";
         return $this->to($this->user->email)->subject($subject)

@@ -407,9 +407,7 @@ class CertificateController extends Controller
             'user_id' => $user_id,
             'id' => $id,
         ])
-            ->with(['status', 'notes.files', 'form', 'customer', 'site' => function ($query) {
-                $query->select(['id', 'name', 'address', 'street_num', 'city','postal_code' ,'country_id', 'user_id', 'customer_id', 'state', 'property_type', 'other_value']);
-            },
+            ->with(['status', 'notes.files', 'form', 'customer', 'site.country',
              'customer.contacts', 'customer.country', 'certificateAttachments.image','customer.billing.paymentTerm'])
             ->first();
             if ($data && $data->site && isset($data->site->address) && isset($data->site->postal_code)) {
@@ -458,7 +456,7 @@ class CertificateController extends Controller
 
                 $form_data = collect($data);
                 $form_data->all();
-                $body = [
+                  $body = [
                     "form_data" => $form_data,
                     // 'html_content' => $html
                 ];
@@ -501,7 +499,7 @@ class CertificateController extends Controller
             $form = ElectricalDangerNotification::getPdf($certificate);
         } elseif ($file_name == 'Domestic_Electrical_Installation_Certificate') {
             $form = DomesticElectricalInstallationCertificate::getPdf($certificate);
-        }elseif ($file_name == 'Minor_Electrical_Installation_Works_Cert') {
+        }elseif ($file_name == 'Minor_Electrical') {
             $form = MinorElectrical::getPdf($certificate);
         }
         return $form;

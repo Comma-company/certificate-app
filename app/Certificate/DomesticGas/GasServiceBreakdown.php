@@ -1,17 +1,14 @@
 <?php
 
-namespace App\Certificate\DomesticElectrical;
-
+namespace App\Certificate\DomesticGas;
 use Mpdf\Mpdf;
 use Mpdf\Config\FontVariables;
 use Mpdf\Config\ConfigVariables;
-use App\Models\CertificateAttachment;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
 use Symfony\Component\Console\Output\Output;
 
-class PortableApplianceTesting
-{
+class GasServiceBreakdown{
     public static function createPdf($certificate)
     {
         define('_MPDF_TTFONTPATH', asset('admin/fonts/gnu-free-font'));
@@ -40,9 +37,6 @@ class PortableApplianceTesting
         /* $invoice->AddPage('P'); */
         $invoice->shrink_tables_to_fit = 1;
         $invoice->use_kwt = true;
-        $cert_attachments = CertificateAttachment::where([
-            'certificate_id'=> $certificate->id,
-        ])->where('exclude', '!=', 'yes')->get();
         $data = $certificate;
 
         $formData =  $data->data;
@@ -53,26 +47,16 @@ class PortableApplianceTesting
         ];
 
 
-        $html = view('dashboard.form.template.domestic_electrical.Portable_Appliance_Testing.index', [
+        $html = view('dashboard.form.template.domestic_gas.Gas_Service_Breakdown.index', [
             'data' => $data,
-            'formData' =>   $formData,
-            'cert_attachments' =>$cert_attachments,
+            'formData' =>   $formData
         ])->render();
+
         $invoice->WriteHTML($html);
-        if ($cert_attachments->count() > 0) {
-               $invoice->AddPage('L');
-               $page_2 = view('dashboard.form.template.domestic_electrical.Portable_Appliance_Testing.note', [
-                    'data' => $certificate,
-                    'formData' => $formData,
-                    'cert_attachments' =>$cert_attachments,
-            
-                  ])->render();
-             $invoice->WriteHTML($page_2);
-        }
 
         return $invoice;
-    }
 
+    }
 
     public static function getPdf($certificate)
     {

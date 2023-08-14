@@ -383,7 +383,7 @@
         </div>
 
         <div style="clear: both;"></div>
-
+        <pagebreak></pagebreak>
         <div style="width: 100%;padding:5px 10px 5px 10px; margin-bottom: 5px; margin-top:5px;">
             <div style="float: left; width: 60%;height: 130px; border: 1px solid #000000; padding: 5px; ">
               <p style="padding:0px;font-size: 13px;margin-top:0px;">I confirm that as the responsible person for the gas installation at the address detailed above I
@@ -391,12 +391,11 @@
                 as either ‘Immediately Dangerous’ or ‘At Risk’, as detailed above, continued use of the appliance/
                 installation, after being advised not to do so, may be in breach of the Gas Safety Installation and confirm that as </p>
                 <div style="float:right;margin-top:5px; margin-bottom: 5px;">
-                  <h6 style="    float: left;
-                  font-size: 13px;
-                  font-weight: 100;
-                  margin: 0;
-
-                  padding-right: 10px;font-weight: bold;">Responsible person signature : </h6>
+                  <h6 style="float: left;font-size: 13px; font-weight: 100; margin: 0; padding-right: 5px;font-weight: bold;">
+                           Responsible person signature :@if ($data->customerSignature)
+                        <img width="90px" src="{{ asset('uploads/'.$data->customerSignature->file_url) }}" alt="">
+                   @endif
+                  </h6>
 
                   <span style="background-color: #f6f6f6; width: 225px; height: 30px; display: block; float: left;">{{ getvalue('customer_name',$formData['part_declaration']) }}</span>
                 </div>

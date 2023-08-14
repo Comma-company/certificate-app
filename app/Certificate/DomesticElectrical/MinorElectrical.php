@@ -5,11 +5,14 @@ namespace App\Certificate\DomesticElectrical;
 use App\Models\CertificateAttachment;
 use App\Models\CertificateImage;
 use Mpdf\Mpdf;
+use Illuminate\Support\Facades\Auth;
 use Mpdf\Config\FontVariables;
 use Mpdf\Config\ConfigVariables;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
 use Symfony\Component\Console\Output\Output;
+use App\Models\User;
+
 
 class MinorElectrical
 {
@@ -22,6 +25,7 @@ class MinorElectrical
 
         $defaultFontConfig = (new FontVariables())->getDefaults();
         $fontData = $defaultFontConfig['fontdata'];
+        
 
         //   $invoice = new Mpdf(['orientation' => 'L']);
         $certificate_pdf =  new Mpdf([
@@ -47,6 +51,7 @@ class MinorElectrical
         $data = $certificate;
 
 
+
         $formData =  $data->data;
 
         $certificate_pdf->fontdata["fontawesome"] = [
@@ -55,21 +60,24 @@ class MinorElectrical
         ];
 
 
-        $html = view('dashboard.form.template.domestic_electrical.Minor_Electrical_Installation_Works_Cert.index', [
+        $html = view('dashboard.form.template.domestic_electrical.Minor_Electrical.index', [
             'data' => $data,
             'formData' =>   $formData,
-            'cert_attachments' =>$cert_attachments
+            'cert_attachments' =>$cert_attachments,
+           
         ])->render();
 
         $certificate_pdf->WriteHTML($html);
-
+        if ($cert_attachments->count() > 0) {
         $certificate_pdf->AddPage('L');
-        $page_2 = view('dashboard.form.template.domestic_electrical.Minor_Electrical_Installation_Works_Cert.note', [
+        $page_2 = view('dashboard.form.template.domestic_electrical.Minor_Electrical.note', [
             'data' => $certificate,
             'formData' => $formData,
-            'cert_attachments' =>$cert_attachments
+            'cert_attachments' =>$cert_attachments,
+           
         ])->render();
         $certificate_pdf->WriteHTML($page_2);
+        }
         return $certificate_pdf;
     }
 
