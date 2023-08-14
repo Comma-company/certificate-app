@@ -228,7 +228,15 @@ class FormSeeder extends Seeder
                 'status' => 'coming_soon',
                 'file_name' => "Gas_Installation_Safety_Report",
                 'category_id' => '2',
-            ]
+            ],
+            [
+                "name" => "Gas Service Breakdown",
+                "type" => " Domestic Gas",
+                'status' => 'live',
+                'file_name' => "Gas_Service_Breakdown",
+                'category_id' => '2',
+            ],
+            
         ];
         // DB::table('forms')->truncate();
 
