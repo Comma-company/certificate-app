@@ -385,13 +385,13 @@
         <div style="clear: both;"></div>
 
         <div style="width: 100%;padding:5px 10px 5px 10px; margin-bottom: 5px; margin-top:5px;">
-            <div style="float: left; width: 60%;height: 130px; border: 1px solid #000000; padding: 5px; ">
+            <div style="float: left; width: 60%;height: 60px; border: 1px solid #000000; padding: 5px; ">
               <p style="padding:0px;font-size: 13px;margin-top:0px;">I confirm that as the responsible person for the gas installation at the address detailed above I
                 have been served this Warning/Advisory Record. As a gas appliance/installation has been classified
                 as either ‘Immediately Dangerous’ or ‘At Risk’, as detailed above, continued use of the appliance/
                 installation, after being advised not to do so, may be in breach of the Gas Safety Installation and confirm that as </p>
                 <div style="float:right;margin-top:5px; margin-bottom: 5px;">
-                  <h6 style="float: left;font-size: 13px; font-weight: 100;font-weight: 100; margin: 0; padding-right: 5px;font-weight: bold;">
+                  <h6 style="float: left;font-size: 13px; font-weight: 100; margin: 0; padding-right: 5px;font-weight: bold;">
                            Responsible person signature :@if ($data->customerSignature)
                         <img width="90px" src="{{ asset('uploads/'.$data->customerSignature->file_url) }}" alt="">
                    @endif
@@ -408,7 +408,7 @@
                 </div>
             </div>
 
-            <div style="float: left; height: 130px; width: 37%;padding:5px;border: 1px solid #000000;background-color: #FFF200;color:#000;">
+            <div style="float: left; height: 60px; width: 37%;padding:5px;border: 1px solid #000000;background-color: #FFF200;color:#000;">
               <p style="padding: 0px;margin-top:0px;">I confirm that the situations recorded above, have been
                 identified and brought to the attention of the Responsible
                 Person in accordance with the Gas Safety (Installation and
