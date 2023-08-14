@@ -31,12 +31,14 @@ class EnsureUserIsSubscribed
 
         $free_plan_id = config('services.stripe.Free_Plan');
 
-        if ($user && (($user->subscribedToPrice($free_plan_id, 'default') && !$user->subscription('default')->onTrial()) || $user->certificate()->count() > $max_certificate)) {
-            if (!$user->subscribed()) {
+        if ($user && (($user->subscribedToPrice($free_plan_id, 'default') && $user->subscription('default')->onTrial()) || $user->certificate()->count() < $max_certificate)) {
+            if (!$user->subscribed('default')) {
                 return responseJson(false, 'Please subscribe to access this feature.', [], 422);
             } else {
                 return $next($request);
             }
+        } else if ($user && (($user->subscribedToPrice($free_plan_id, 'default') && !$user->subscription('default')->onTrial()) || $user->certificate()->count() >= $max_certificate)) {
+            return responseJson(false, 'Please subscribe to access this feature.', [], 422);
         } else if ($user->subscription('default')->ended() || $user->subscription('default')->canceled()) {
             return responseJson(false, 'Please subscribe to access this feature.', [], 422);
         } elseif ($user->subscription('default')->onGracePeriod()) {
