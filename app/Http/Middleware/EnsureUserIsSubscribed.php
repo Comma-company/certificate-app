@@ -2,9 +2,9 @@
 
 namespace App\Http\Middleware;
 
-use Illuminate\Support\Facades\Auth;
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EnsureUserIsSubscribed
 {
@@ -19,29 +19,22 @@ class EnsureUserIsSubscribed
     {
         $max_certificate = 20;
         $user = Auth::guard('sanctum')->user();
-        // if (!$user->subscribed('free')) {
-        //     $planId='price_1NSEkhE2sCQWSLCAGK6joBPt';
-        //     $trialDays = 7;
-        //     $limitedCertificateCount = 20;
-        //     $user->createOrGetStripeCustomer(); // Create Stripe customer
-        //         $subscription = $user->newSubscription('free', $planId)->trialDays($trialDays)
-        //         ->quantity($limitedCertificateCount)
-        //         ->create();
-        // }
 
         $free_plan_id = config('services.stripe.Free_Plan');
 
-        if ($user && (($user->subscribedToPrice($free_plan_id, 'default') && $user->subscription('default')->onTrial()) || $user->certificate()->count() < $max_certificate)) {
+        if ($user && (($user->subscribedToPrice($free_plan_id, 'default') && $user->subscription('default')->onTrial()) && $user->certificate()->count() < $max_certificate)) {
             if (!$user->subscribed('default')) {
                 return responseJson(false, 'Please subscribe to access this feature.', [], 422);
             } else {
                 return $next($request);
             }
-        } else if ($user && (($user->subscribedToPrice($free_plan_id, 'default') && !$user->subscription('default')->onTrial()) || $user->certificate()->count() >= $max_certificate)) {
+        } else if ($user && (($user->subscribedToPrice($free_plan_id, 'default') && $user->subscription('default')->onTrial()) && $user->certificate()->count() >= $max_certificate)) {
             return responseJson(false, 'Please subscribe to access this feature.', [], 422);
-        } else if ($user->subscription('default')->ended() || $user->subscription('default')->canceled()) {
+        } else if ($user && (($user->subscribedToPrice($free_plan_id, 'default')) && (!$user->subscription('default')->onTrial() || $user->certificate()->count() >= $max_certificate))) {
             return responseJson(false, 'Please subscribe to access this feature.', [], 422);
-        } elseif ($user->subscription('default')->onGracePeriod()) {
+        } else if ($user->subscribed('default') && ($user->subscription('default')->ended() || $user->subscription('default')->canceled())) {
+            return responseJson(false, 'Please subscribe to access this feature.', [], 422);
+        } elseif ($user->subscribed('default') && $user->subscription('default')->onGracePeriod()) {
             return $next($request);
         } else {
             return $next($request);
