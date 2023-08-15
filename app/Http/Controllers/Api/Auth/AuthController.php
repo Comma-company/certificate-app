@@ -21,6 +21,9 @@ class AuthController extends Controller
         ->first();
         if (!$user || !Hash::check($request->password, $user->password)) {
             return responseJson(false, 'Invalid username and password combination', [], 401);
+        }else if (!$user->hasVerifiedEmail()) {
+            $user->sendEmailVerificationNotification();
+        return responseJson(false, 'Email not verified. A new verification link has been sent.', [], 403);
         }else if ($user && Hash::check($request->password, $user->password) && $user->trashed()){
 
             $final_day = Carbon::parse($user->deleted_at)->addWeek()->format('m-d-Y');
