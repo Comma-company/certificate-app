@@ -30,7 +30,7 @@ class EnsureUserIsSubscribed
             }
         } else if ($user && (($user->subscribedToPrice($free_plan_id, 'default') && $user->subscription('default')->onTrial()) && $user->certificate()->count() >= $max_certificate)) {
             return responseJson(false, 'Please subscribe to access this feature.', [], 422);
-        } else if ($user && (($user->subscribedToPrice($free_plan_id, 'default') && !$user->subscription('default')->onTrial()) || $user->certificate()->count() >= $max_certificate)) {
+        } else if ($user && (($user->subscribedToPrice($free_plan_id, 'default')) && (!$user->subscription('default')->onTrial() || $user->certificate()->count() >= $max_certificate))) {
             return responseJson(false, 'Please subscribe to access this feature.', [], 422);
         } else if ($user->subscribed('default') && ($user->subscription('default')->ended() || $user->subscription('default')->canceled())) {
             return responseJson(false, 'Please subscribe to access this feature.', [], 422);
