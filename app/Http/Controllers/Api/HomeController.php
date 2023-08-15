@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 use App\Models\Customer;
+use App\Models\Certificate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Certificate;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
