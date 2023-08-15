@@ -9,6 +9,7 @@ use App\Models\CertificateImage;
 use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Facade;
 
 use Illuminate\Http\Request;
 
@@ -24,7 +25,6 @@ class CertificateAttachmentController extends Controller
                  'certificate_id' => $id,
                  'user_id' =>$user_id,
             ])->with('image:image,id')->get();
-            
 
             // foreach ($cert_attachments as $attachment) {
             //     $image =CertificateImage::find($attachment->image_id);
@@ -52,20 +52,24 @@ class CertificateAttachmentController extends Controller
          */
     
         public function store(Request $request){
-            $validator = Validator::make($request->all(), [
+            
+             $validator = Validator::make($request->all(), [
                 'certificate_id' => 'required|integer',
                 'image_id' => 'required_if:attachment_type_id,==,1|integer',
                 'exclude' => 'nullable|string',
                 'note_title' => 'required_if:attachment_type_id,==,3|string',
                 'note_body' => 'required_if:attachment_type_id,==,2|required_if:attachment_type_id,==,3|string',
                 'attachment_type_id' => 'required|integer',
-                'user_id'=> authUser('sanctum')->id,
+                
             ]);
+           
     
             if ($validator->fails()) {
                 return response()->json(['error' => 'Validation failed', 'messages' => $validator->errors()], 422);
             }
-            $attachment = CertificateAttachment::create($request->all());
+            $validatedData = $validator->validated();
+            $validatedData['user_id'] = authUser('sanctum')->id;
+            $attachment = CertificateAttachment::create($validatedData);
             $data = [
                 'attachment' => $attachment,
             ];
@@ -83,14 +87,16 @@ class CertificateAttachmentController extends Controller
                 'note_title' => 'nullable|string',
                 'note_body' => 'nullable|string',
                 'attachment_type_id' => 'integer',
-                'user_id'=> authUser('sanctum')->id,
+                
             ]);
     
             if ($validator->fails()) {
                 return response()->json(['error' => 'Validation failed', 'messages' => $validator->errors()], 422);
             }
+            $validatedData = $validator->validated();
+            $validatedData['user_id'] = authUser('sanctum')->id;
     
-            $attachment->update($request->all());
+            $attachment->update($validatedData);
             $data = [
                 'attachment'=> $attachment,
             ];
