@@ -298,7 +298,7 @@ class RegisterController extends Controller
                 'customer' => $user->stripe_id,
             ]);
             $customer_portal_link =  $session->url;
-                Notification::send($user, new TrialRemainingDaysNotification($remainingDays));
+                Notification::send($user, new TrialRemainingDaysNotification($remainingDays,$customer_portal_link));
             }
         }
         return responseJson(true, 'success created user', $user->load('categories'));
