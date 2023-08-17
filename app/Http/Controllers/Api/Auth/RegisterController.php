@@ -286,6 +286,12 @@ class RegisterController extends Controller
                 $subscription = $user->subscription('default');
                 $trialEndsAt = $subscription->trial_ends_at;
                 $remainingDays = Carbon::now()->diffInDays($trialEndsAt->endOfDay(), false);
+                $key = config('services.stripe.Secret_key');
+                    \Stripe\Stripe::setApiKey($key);
+                 $session = \Stripe\BillingPortal\Session::create([
+                'customer' => $user->stripe_id,
+            ]);
+            $customer_portal_link =  $session->url;
                 Notification::send($user, new TrialRemainingDaysNotification($remainingDays));
             }
         }

@@ -12,6 +12,7 @@ class TrialRemainingDaysNotification extends Notification
 {
     use Queueable;
     public $remainingDays;
+    public $customer_portal_link;
 
 
     /**
@@ -19,9 +20,10 @@ class TrialRemainingDaysNotification extends Notification
      *
      * @return void
      */
-    public function __construct($remainingDays)
+    public function __construct($remainingDays,$customer_portal_link)
     {
         $this->remainingDays = $remainingDays;
+        $this->$customer_portal_link = $customer_portal_link;
     }
 
     /**
@@ -46,8 +48,15 @@ class TrialRemainingDaysNotification extends Notification
         $subscription=$user->subscription('default');
         $trialEndsAt = $subscription->trial_ends_at;
         $remainingDays = Carbon::now()->diffInDays($trialEndsAt->endOfDay(), false);
+        $key = config('services.stripe.Secret_key');
+                    \Stripe\Stripe::setApiKey($key);
+                 $session = \Stripe\BillingPortal\Session::create([
+                'customer' => $user->stripe_id,
+            ]);
+            $customer_portal_link =  $session->url;
         return (new MailMessage)->view('emails.trail.start', [
             'remainingDays' => $remainingDays,
+            'customer_portal_link' => $customer_portal_link,
         ]);
 
         // ->subject('Trial Period Remaining')
