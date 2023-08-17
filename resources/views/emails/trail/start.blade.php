@@ -35,7 +35,7 @@
     <tr>
 
         <td style="display:flex; justify-content: center; align-items:center; margin:0px auto;">
-            <a href="{{ route('plans') }}" disable-tracking=true
+            <a href="{{ route('urlPlans') }}" disable-tracking=true
                 style=" margin:0px auto; text-decoration: none; text-align: center; padding: 10px;background: #218BF4;color: #fff;display: inline-block; width: 150px;border-radius: 4px;border:none;font-size: 14px;line-height: 16px;">
                Upgrade Plan
             </a>
@@ -47,7 +47,7 @@
             <p style="padding:0px 20px;margin:0px; font-size: 14px; color: #05224C">
                 If you're having trouble clicking the "Upgrade Plan" button,
                 copy and paste the URL below into your web browser:
-                 <a disable-tracking=true href="{{route('plans') }}">{{route('plans')  }}</a>
+                 <a disable-tracking=true href="{{route('urlPlans') }}">{{route('urlPlans')  }}</a>
             </p>
 
         </td>
