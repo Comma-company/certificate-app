@@ -107,7 +107,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // subscription
     Route::post('create-customer', [SubscriptionController::class, 'createCustomer']);
     Route::get('/show-plans', [SubscriptionController::class, 'showPlans']);
-    Route::get('/urlPlans', [SubscriptionController::class, 'urlPlans'])->middleware('auth:sanctum')->name('urlPlans');
+    Route::get('/urlPlans', [SubscriptionController::class, 'urlPlans'])->name('urlPlans');
     Route::get('/show-interval-plans', [SubscriptionController::class, 'showIntervalPlans']);
     Route::post('/subscriptions', [SubscriptionController::class, 'processSubscription']);
     Route::post('/createToken', [SubscriptionController::class, 'createToken']);
