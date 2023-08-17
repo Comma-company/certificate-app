@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers\Api;
 
+use Stripe\Stripe;
 use App\Models\User;
+use Stripe\Subscription;
 use App\Rules\MatchPassword;
 use Illuminate\Http\Request;
+use Laravel\Cashier\Cashier;
 use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Resources\ProfileResource;
 use Illuminate\Support\Facades\Storage;
-use Stripe\Subscription;
-use Laravel\Cashier\Cashier;
-use Stripe\Stripe;
 
 class ProfileController extends Controller
 {
@@ -65,7 +66,7 @@ class ProfileController extends Controller
 
         $subscriptionStatus = $user->status_subscription;
         $data = [
-            'user' => $user,
+            'user' => new ProfileResource($user),
             'subscription_status' => $subscriptionStatus,
         ];
 
