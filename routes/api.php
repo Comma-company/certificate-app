@@ -51,10 +51,11 @@ Route::post('user-restore/{id}', [AuthController::class, 'restore'])
 
 Route::get('/business-type', [BusinessTypeController::class, 'index']);
 Route::get('/status', [StatusController::class, 'index']);
+Route::post('complete-infos', [RegisterController::class, 'completeInfoRegister']);
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::post('complete-register', [RegisterController::class, 'completeRegister']);
-    Route::post('complete-infos', [RegisterController::class, 'completeInfoRegister']);
+   
     Route::get('countries', [CountryController::class, 'index'])->middleware('auth:sanctum');
     Route::get('getTrialDetails', [HomeController::class, 'getTrialDetails'])->middleware('auth:sanctum');
 
