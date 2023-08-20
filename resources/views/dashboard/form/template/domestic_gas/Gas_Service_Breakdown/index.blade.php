@@ -40,47 +40,54 @@
                     </thead>
                     <tbody style="vertical-align: middle;"  >
                         <tr>
+                       @if ($data->user->categories->isNotEmpty())
+                                 @php
+                                    $firstCategory = $data->user->categories->firstWhere('pivot.category_id', 2);
+                                  @endphp
+                            @if ($firstCategory)
                             <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
                                 <span style="font-weight: 700;">Gaz Safe Number:</span>
-                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
+                                <span style="border-bottom: 1px dashed #000;"> {{ $firstCategory->pivot->gas_register_number }}</span>
                             </td>
+                            @endif
+                        @endif
                             <td style="padding-top:6px; padding-bottom:6px;">
-                                <span style="font-weight: 700;">Name:</span>
-                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
+                                <span style="font-weight: 700;"> Name:</span>
+                                <span style="border-bottom: 1px dashed #000;">{{ $data->customer->name }}</span>
                             </td>
                             <td style="padding-top:6px; padding-bottom:6px;">
                                 <span style="font-weight: 700;">Tenant Name:</span>
-                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
+                                <span style="border-bottom: 1px dashed #000;">{{ $data->site->siteContact->f_name }}</span>
                             </td>
                         </tr>
                         <tr>
                             <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
                                 <span style="font-weight: 700;">Company Name:</span>
-                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
+                                <span style="border-bottom: 1px dashed #000;">{{ $data->user->company_name }}</span>
                             </td>
                             <td style="padding-top:6px; padding-bottom:6px; line-height: 1.5;">
                                 <span style="font-weight: 700;">Address:</span>
-                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445kAMSfk!2445k </span>
+                                <span style="border-bottom: 1px dashed #000;">{{$data->user->number_street_name.', '.$data->user->city}}</span>
                             </td>
                             <td style="padding-top:6px; padding-bottom:6px; line-height: 1.5;">
                                 <span style="font-weight: 700;">Address:</span>
-                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445kAMSfk!2445k </span>
+                                <span style="border-bottom: 1px dashed #000;">{{$data->site->street_num.', '.$data->site->city}}</span>
                             </td>
                         </tr>
                         <tr>
                              <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px; line-height: 1.5;">
                                 <span style="font-weight: 700;">Address:</span>
-                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445kAMSfk!2445k </span>
+                                <span style="border-bottom: 1px dashed #000;">{{$data->customer->street_num.', '.$data->customer->city}}</span>
                             </td>
                             <td style="padding-top:6px; padding-bottom:6px;">
                                 <div style="width: 100%; display: block;">
                                 <div style="width: 48%; display: inline-block;">
                                 <span style="font-weight: 700;">Postcode:</span>
-                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
+                                <span style="border-bottom: 1px dashed #000;">{{ $data->user->postal_code }}</span>
                                 </div>
                                 <div style="width: 48%; display: inline-block;">
                                  <span style="font-weight: 700;">TEL No:</span>
-                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
+                                <span style="border-bottom: 1px dashed #000;">{{ $data->user->phone }}</span>
                                 </div>
                                 </div>
                             </td>
@@ -88,11 +95,11 @@
                                 <div style="width: 100%; display: block;">
                                 <div style="width: 48%; display: inline-block;">
                                 <span style="font-weight: 700;">Postcode:</span>
-                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
+                                <span style="border-bottom: 1px dashed #000;">{{ $data->customer->postal_code }}</span>
                                 </div>
                                 <div style="width: 48%; display: inline-block;">
                                  <span style="font-weight: 700;">TEL No:</span>
-                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
+                                <span style="border-bottom: 1px dashed #000;">{{ $data->customer->contacts->first()->phone }}</span>
                                 </div>
                                 </div>
                             </td>
@@ -102,11 +109,11 @@
                                 <div style="width: 100%; display: block;">
                                 <div style="width: 48%; display: inline-block;">
                                 <span style="font-weight: 700;">Postcode:</span>
-                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
+                                <span style="border-bottom: 1px dashed #000;">{{ $data->site->postal_code }}</span>
                                 </div>
                                 <div style="width: 48%; display: inline-block;">
                                  <span style="font-weight: 700;">TEL No:</span>
-                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
+                                <span style="border-bottom: 1px dashed #000;">{{ $data->site->siteContact->phone }}</span>
                                 </div>
                                 </div>
                             </td>
@@ -132,9 +139,8 @@
                         <tr style="background-color: yellow;">
                             <th colspan="3" style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">Appliance Details</th>
                         </tr>
-                      
                     </thead>
-                    <tbody  >
+                    <tbody >
                         <tr>
                             <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
                                 <span style="font-weight: 700;">CO/CO2 Ratio</span>
@@ -174,8 +180,6 @@
                                 <span style="font-weight: 700;">Appliance Serial Number:</span>
                                 <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
                             </td>
-                          
-                            
                         </tr>
                         <tr>
                           <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
@@ -185,16 +189,15 @@
                              <label>
                                   <input type="checkbox" class="radio" value="1" name="fooby" />Breakdown</label>
                             <label>
-                         </td>
+                        </td>
                       </tr>
-                      
                     </tbody> 
                 </table>
            </div>
         </div>
     </div>
   </div>
-
+<pagebreak></pagebreak>
   <!-- Table 3 & 4 -->
   <div style=" padding: 10px;">
   <div style="display: block; width: 100%; margin: auto;">
@@ -213,7 +216,7 @@
     </tbody>
     </table>
     </div>
-    <div style="display: inline-block; width: 100%;">
+    <div style="display: inline-block; width:100%;">
       <table style="width: 100%; border: 1px solid black;">
     <thead>
         <tr style="background-color: yellow;">
@@ -230,7 +233,7 @@
     </div>
 </div>
 </div>
-
+<pagebreak></pagebreak>
 <!-- Table 5 -->
 <div class="table-padding" style="padding: 10px;">
     <div class="table table-2" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
@@ -344,7 +347,7 @@
       </div>
   </div>
 </div>
-
+<pagebreak></pagebreak>
 <!-- Table 6 -->
 <div class="table-padding" style="padding: 10px;">
     <div class="table table-2" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
@@ -441,7 +444,7 @@
       </div>
   </div>
 </div>
-
+<pagebreak></pagebreak>
 <!-- Table 8 -->
 <div class="table-padding" style="padding: 10px;">
     <div class="table table-2" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
