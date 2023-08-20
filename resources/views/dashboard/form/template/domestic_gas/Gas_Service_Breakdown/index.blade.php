@@ -1,456 +1,516 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Link-4</title>
-    <link rel="stylesheet" href="{{asset('admin/forms/Gas_Testing_Purging/style.css')}}" media="all" />
-    <style>
-        body {
-            height: 49cm;
-            background-color: #EAF3FD;
-            /* padding: 0 40px; */
-        }
-        * {box-sizing: border-box !important;}
-    </style>
-     <style>
-      td {
-            width: calc(100% / 16) !important;
-        }
-        table, footer {
-    /* break-inside: avoid; */
-  }
-
-    </style>
-    <style type="text/css" media="print">
-      @page {
-  size: landscape;
-}
-
-@media print {
-  footer {
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-  }
-}
-  </style>
-  </head>
-  <body>
-    <header style="margin-bottom: 0;padding: 0;">
-      <div id="logo" style="margin: 0;">
-        <img src="{{asset('admin/forms/Gas_Testing_Purging/main-logo.png')}}" style="width: 150px; object-fit: contain;">
-        <img src="{{asset('admin/forms/Gas_Testing_Purging/Image 1.png')}}">
-      </div>
-      <div id="information">
-        <div class="btns">
-          <div>
-            <span style="font-weight: bold; text-align: left; direction: ltr;">EVM2C</span>
-            <span style="background-color: white; width: 150px ">DRAFT</span>
-          </div>
-        </div>
-        <p style="margin-top: 15px; font-size: 16px;">GAS TESTING AND PURGING - DOMESTIC (NG)</p>
-      </div>
-    </header>
-    <main style="padding: 10px;">
-      <table style="border-collapse: separate;
-      border-spacing: 0px 5px;">
-        <tbody>
-          <tr id="part-2" class="">
-            <td>
-              <div style="color: #FFFFFF;
-                          background-color: #2a98fc;
-                          font-size: 10px;
-                          font-weight: bold;
-                          padding: 10px;">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</div>
-              <div style="font-size: 0; background-color: white; padding: 10px;">
-                <div style="display: inline-block; width: 33.333333333%; padding: 0px 15px; font-size: 10px; border-right: 2px solid #2a98fc;">
-                  <p style="color: #2a98fc; font-weight: bold;">COMPANY/ENGINEER</p>
-                  <div style="margin-bottom: 5px;">
-                      <label style="width: 35%; display: inline-block; ">Company Name:</label>
-                      <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                  </div>
-                  <div style="margin-bottom: 5px;">
-                    <label style="width: 35%; display: inline-block; ">Gas Safe Register No:</label>
-                    <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                  </div>
-                  <div style="margin-bottom: 5px;">
-                    <label style="width: 35%; display: inline-block; ">Gas Safe Register Licence No:</label>
-                    <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                  </div>
-                  <div style="margin-bottom: 5px;">
-                    <label style="width: 35%; display: inline-block; ">Gas Safe Register License No:</label>
-                    <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                  </div>
-                  <div style="margin-bottom: 5px;">
-                    <label style="width: 35%; display: inline-block; ">Address:</label>
-                    <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px; height: 50px;">test</div>
-                  </div>
-                  <div style="margin-bottom: 5px; font-size: 0;">
-                    <div style="display: inline-block; width: 50%; ; font-size: 10px;">
-                      <label style="display: inline-block; ">Postcode:</label>
-                      <div style="display: inline-block; width: 93px; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                    </div>
-                    <div style="display: inline-block; width: 50%; ; font-size: 10px;">
-                      <label style="display: inline-block; ">Tel No:</label>
-                      <div style="display: inline-block; width: 107px; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                    </div>
-                  </div>
-                  <div style="margin-bottom: 5px;">
-                    <label style="width: 35%; display: inline-block; ">Email</label>
-                    <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                </div>
-                </div>
-                <div style="display: inline-block; width: 33.333333333%; padding: 0px 15px; font-size: 10px; vertical-align: top;  border-right: 2px solid #2a98fc; height: 263px;">
-                  <p style="color: #2a98fc; font-weight: bold;">JOB ADDRESS</p>
-                  <div style="margin-bottom: 5px;">
-                    <label style="width: 35%; display: inline-block; ">Address:</label>
-                    <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px; height: 50px;">test</div>
-                  </div>
-                  <div style="margin-bottom: 5px;">
-                    <label style="width: 35%; display: inline-block; ">Postcode:</label>
-                    <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                  </div>
-                  <div style="margin-bottom: 5px;">
-                    <label style="width: 35%; display: inline-block; ">Name:</label>
-                    <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                  </div>
-                  <div style="margin-bottom: 5px;">
-                    <label style="width: 35%; display: inline-block; ">Tel No:</label>
-                    <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                  </div>
-                  <div style="margin-bottom: 5px;">
-                    <label style="width: 35%; display: inline-block; ">Email:</label>
-                    <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                </div>
-                </div>
-                <div style="display: inline-block; width: 33.333333333%; padding: 0px 15px; font-size: 10px; vertical-align: top;">
-                  <p style="color: #2a98fc; font-weight: bold;">OWNER OF CARAVAN/BOAT BEING INSPECTED (OR AGENT WHERE APPROPRIATE)</p>
-                  <div style="margin-bottom: 5px;">
-                    <label style="width: 35%; display: inline-block; ">Name:</label>
-                    <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                  </div>
-                  <div style="margin-bottom: 5px;">
-                    <label style="width: 35%; display: inline-block; ">Company:</label>
-                    <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                  </div>
-                  <div style="margin-bottom: 5px;">
-                    <label style="width: 35%; display: inline-block; ">Address:</label>
-                    <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px; height: 50px;">test</div>
-                  </div>
-                  <div style="margin-bottom: 5px; font-size: 0;">
-                    <div style="display: inline-block; width: 50%; ; font-size: 10px;">
-                      <label style="display: inline-block; ">Postcode:</label>
-                      <div style="display: inline-block; width: 93px; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                    </div>
-                    <div style="display: inline-block; width: 50%; ; font-size: 10px;">
-                      <label style="display: inline-block; ">Tel No:</label>
-                      <div style="display: inline-block; width: 107px; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                    </div>
-                  </div>
-                  <div style="margin-bottom: 5px;">
-                    <label style="width: 35%; display: inline-block; ">Email:</label>
-                    <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                </div>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr style="background-color: white; font-size: 10px;">
-            <td>
-              <table style="border-collapse: collapse; width: 99%; margin:  5px auto;">
-                <thead>
-                  <tr style="background-color: #2a98fc; color: white;">
-                    <td style="border: 1px solid #2a98fc; text-align: left; vertical-align: middle; padding: 10px; font-weight: bold;">INSTALLATION DETAILS</td>
-                    <td style="border: 1px solid #2a98fc; text-align: center; vertical-align: middle; padding: 10px;">PASS/FAIL</td>
-                  </tr>
-                </thead>
-                <tbody style="background-color: white;">
-                  <tr>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;  width: 700px;">Indicate installation type</td>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;"></td>
-                  </tr>
-                  <tr>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;  width: 600px;">Meter size/type e.g. U6, E6, G4, U16 or G10</td>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;"></td>
-                  </tr>
-                  <tr>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;  width: 600px;">Is the meter installation medium pressure fed?</td>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;"></td>
-                  </tr>
-                  <tr>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;  width: 600px;">Record maximum installation pipework diameter installed</td>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;"></td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-          <tr style="background-color: white; font-size: 10px; break-inside: avoid;">
-            <td>
-              <table style="border-collapse: collapse; width: 99%; margin:  5px auto;">
-                <thead>
-                  <tr style="background-color: #2a98fc; color: white;">
-                    <td style="border: 1px solid #2a98fc; text-align: left; vertical-align: middle; padding: 10px; font-weight: bold;">CALCULATE INSTALLATION VOLUME (WHERE THE INSTALLATION VOLUME IS BELIEVED TO BE GRETER THAN 0.03M2)</td>
-                    <td style="border: 1px solid #2a98fc; text-align: center; vertical-align: middle; padding: 10px;">YES/NO</td>
-                  </tr>
-                </thead>
-                <tbody style="background-color: white;">
-                  <tr>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;  width: 600px;">Gas meter volume (m3)</td>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333; width: 150px;">(m3)</td>
-                  </tr>
-                  <tr>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;  width: 600px;">Volume of installation pipework (m3)</td>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;">(m3)</td>
-                  </tr>
-                  <tr>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;  width: 600px;">Total installation volume (m3)</td>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;">(m3)</td>
-                  </tr>
-                  <tr>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;  width: 600px;">Where the total installation volume is greater than 0.035m3 the installation needs to be tight in accordance with either IGE/UP/1A or IGE/UP/1</td>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;"></td>
-                  </tr>
-                  <tr>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;  width: 600px;">Tightness test(s) carried out</td>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;"></td>
-                  </tr>
-                  <tr>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;  width: 600px;">Operating pressure in mbars</td>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;"></td>
-                  </tr>
-                  <tr>
-                    <td colspan="2"  style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;">
-                      <div style="margin-bottom: 5px;">
-                        <label style="width: 15%; display: inline-block; font-weight: bold;">Reason for tightness test 1</label>
-                        <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                      </div>
-                      <div style="margin-bottom: 5px;">
-                        <label style="width: 15%; display: inline-block; ">Let-by test carried out</label>
-                        <div style="display: inline-block; width: 40%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                      </div>
-                      <div style="margin-bottom: 5px;">If Yes, Record what is included in the tightness test:</div>
-                      <div style="margin-bottom: 5px; font-size: 0;">
-                        <div style="display: inline-block; font-size: 10px; margin-right: 30px;">
-                          <label style="display: inline-block; ">Permissible pressure loss:</label>
-                          <div style="display: inline-block; width: 93px; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                          <span>mbar*</span>
-                        </div>
-                        <div style="display: inline-block;font-size: 10px; margin-right: 30px;">
-                          <label style="display: inline-block; ">Actual pressure loss:</label>
-                          <div style="display: inline-block; width: 107px; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                          <span>mbar*</span>
-                        </div>
-                        <div style="display: inline-block;font-size: 10px;">
-                          <label style="display: inline-block; ">Tightness test:</label>
-                          <div style="display: inline-block; width: 107px; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="2"  style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;">
-                      <div style="margin-bottom: 5px;">
-                        <label style="width: 15%; display: inline-block; font-weight: bold;">Reason for tightness test 2</label>
-                        <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                      </div>
-                      <div style="margin-bottom: 5px;">
-                        <label style="width: 15%; display: inline-block; ">Let-by test carried out</label>
-                        <div style="display: inline-block; width: 40%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                      </div>
-                      <div style="margin-bottom: 5px;">If Yes, Record what is included in the tightness test:</div>
-                      <div style="margin-bottom: 5px; font-size: 0;">
-                        <div style="display: inline-block; font-size: 10px; margin-right: 30px;">
-                          <label style="display: inline-block; ">Permissible pressure loss:</label>
-                          <div style="display: inline-block; width: 93px; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                          <span>mbar*</span>
-                        </div>
-                        <div style="display: inline-block;font-size: 10px; margin-right: 30px;">
-                          <label style="display: inline-block; ">Actual pressure loss:</label>
-                          <div style="display: inline-block; width: 107px; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                          <span>mbar*</span>
-                        </div>
-                        <div style="display: inline-block;font-size: 10px;">
-                          <label style="display: inline-block; ">Tightness test:</label>
-                          <div style="display: inline-block; width: 107px; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="2"  style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;">
-                      <div style="margin-bottom: 5px;">
-                        <label style="width: 15%; display: inline-block; font-weight: bold;">Reason for tightness test 3</label>
-                        <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                      </div>
-                      <div style="margin-bottom: 5px;">
-                        <label style="width: 15%; display: inline-block; ">Let-by test carried out</label>
-                        <div style="display: inline-block; width: 40%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                      </div>
-                      <div style="margin-bottom: 5px;">If Yes, Record what is included in the tightness test:</div>
-                      <div style="margin-bottom: 5px; font-size: 0;">
-                        <div style="display: inline-block; font-size: 10px; margin-right: 30px;">
-                          <label style="display: inline-block; ">Permissible pressure loss:</label>
-                          <div style="display: inline-block; width: 93px; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                          <span>mbar*</span>
-                        </div>
-                        <div style="display: inline-block;font-size: 10px; margin-right: 30px;">
-                          <label style="display: inline-block; ">Actual pressure loss:</label>
-                          <div style="display: inline-block; width: 107px; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                          <span>mbar*</span>
-                        </div>
-                        <div style="display: inline-block;font-size: 10px;">
-                          <label style="display: inline-block; ">Tightness test:</label>
-                          <div style="display: inline-block; width: 107px; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="2"  style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;">
-                      <div style="margin-bottom: 5px;">
-                        <label style="width: 15%; display: inline-block; font-weight: bold;">Reason for tightness test 4</label>
-                        <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                      </div>
-                      <div style="margin-bottom: 5px;">
-                        <label style="width: 15%; display: inline-block; ">Let-by test carried out</label>
-                        <div style="display: inline-block; width: 40%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                      </div>
-                      <div style="margin-bottom: 5px;">If Yes, Record what is included in the tightness test:</div>
-                      <div style="margin-bottom: 5px; font-size: 0;">
-                        <div style="display: inline-block; font-size: 10px; margin-right: 30px;">
-                          <label style="display: inline-block; ">Permissible pressure loss:</label>
-                          <div style="display: inline-block; width: 93px; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                          <span>mbar*</span>
-                        </div>
-                        <div style="display: inline-block;font-size: 10px; margin-right: 30px;">
-                          <label style="display: inline-block; ">Actual pressure loss:</label>
-                          <div style="display: inline-block; width: 107px; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                          <span>mbar*</span>
-                        </div>
-                        <div style="display: inline-block;font-size: 10px;">
-                          <label style="display: inline-block; ">Tightness test:</label>
-                          <div style="display: inline-block; width: 107px; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-          <tr style="background-color: white; font-size: 10px; break-inside: avoid;">
-            <td>
-              <table style="border-collapse: collapse; width: 99%; margin:  5px auto;">
-                <thead>
-                  <tr style="background-color: #2a98fc; color: white;">
-                    <td style="border: 1px solid #2a98fc; text-align: left; vertical-align: middle; padding: 10px; font-weight: bold;">PURGING DETAILS</td>
-                    <td style="border: 1px solid #2a98fc; text-align: center; vertical-align: middle; padding: 10px;"></td>
-                  </tr>
-                </thead>
-                <tbody style="background-color: white;">
-                  <tr>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;  width: 700px; font-weight: bold;">Calculate the installation purge volume below</td>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;"></td>
-                  </tr>
-                  <tr>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;  width: 700px;">For an E6/G4/U6 gas meter and installation pipework ≤ 28mm use</td>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;"></td>
-                  </tr>
-                  <tr>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;" colspan="2">For installation with E6/G4/U6 Gas meters and installation pipework ≥ 26mm to ≤ 35mm or G10/U16 meters with or without installation pipework, the purge volume needs to be calculated</td>
-                  </tr>
-                  <tr>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;  width: 700px;">A. Gas meter purge volume m3</td>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;"></td>
-                  </tr>
-                  <tr>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;  width: 700px;">B. Installation pipework volume m3 x 1.5</td>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;"></td>
-                  </tr>
-                  <tr>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;  width: 700px;">C. Total installation purge voulme = A + B</td>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;"></td>
-                  </tr>
-                  <tr>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;  width: 700px;">Has purge been completed satisfactorily</td>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;"></td>
-                  </tr>
-                  <tr>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;" colspan="2">Note: Where the calculated purge volume is greater than 0.02 m3 the purged mixture must be ignites at a burner as soon as possible either at an installed or a temporarily installed burner</td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-          <tr style="background-color: white; font-size: 10px;">
-            <td>
-              <table style="border-collapse: collapse; width: 99%; margin:  5px auto;">
-                <thead>
-                  <tr style="background-color: #2a98fc; color: white;">
-                    <td style="border: 1px solid #2a98fc; text-align: left; vertical-align: middle; padding: 10px; font-weight: bold;">PURGING DETAILS</td>
-                    <td style="border: 1px solid #2a98fc; text-align: center; vertical-align: middle; padding: 10px;"></td>
-                  </tr>
-                </thead>
-                <tbody style="background-color: white;">
-                  <tr>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;  width: 700px;">Record the operating pressure at the outlet of the gas meter (mbar) where applicable</td>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;">(m3)</td>
-                  </tr>
-                  <tr>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;  width: 700px;">Is the gas installation pipework satisfactory? (visual inspection)</td>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;">0.01m3 (0.35ft3)</td>
-                  </tr>
-                  <tr>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;  width: 700px;">Is the Emergency Control Valve (ECV)/Additional Emergency Control Valve (AECV) accessible?</td>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;">(m3)</td>
-                  </tr>
-                  <tr>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;  width: 700px;">Is equipotential bonding present and correctly positioned?</td>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;">(m3)</td>
-                  </tr>
-                  <tr>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;  width: 700px;">Has installation/appliance(s) been commissioned/put back into operation as appropriate?</td>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;">(m3)</td>
-                  </tr>
-                  <tr>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;  width: 700px;">Is gas installation safe for use?</td>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;"></td>
-                  </tr>
-                  <tr>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;  width: 700px;">If No. has a Warning/Advice Notice been issued?</td>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;"></td>
-                  </tr>
-                  <tr>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;  width: 700px;">If Yes. give Warning/Advice Notice Serial No.?</td>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;"></td>
-                  </tr>
-                  <tr>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;  width: 700px;">Have any disturbed joints e.g. pressure test point been tested with a suitable Leak Detection Fluid (LDF) or gas leak detector?</td>
-                    <td style="text-align: left; vertical-align: middle; padding: 5px; border: 1px solid #2a98fc; color: #333;"></td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-          <tr style="background-color: white; font-size: 10px;page-break-inside: avoid;">
-            <td style="padding: 10px;">
-              <div style="padding-left: 20px; display: inline-block; width: 45%;margin-bottom: 30px;">This Gas Testing and Purging form is issued by Signed:<span style="margin-left: 15px;"></span></div>
-              <div style="padding-left: 20px; display: inline-block; width: 45%;margin-bottom: 30px;">Date: <span style="margin-left: 15px;"></span></div>
-              <div style="padding-left: 20px; display: inline-block; width: 45%;margin-bottom: 10px;">Received by Tenant/Landlord/ Agent/Home Owner. Signed:<span style="margin-left: 15px;"></span></div>
-              <div style="padding-left: 20px; display: inline-block; width: 45%;margin-bottom: 10px;">The gas user was not present at the time of the visit: <span style="margin-left: 15px;"></span></div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </main>
-    <footer>
-      <div style="display: flex; align-items: center; justify-content: space-between;">
-        <img src="{{asset('admin/forms/Gas_Testing_Purging/footer-logo.png')}}" style="width: 250px; object-fit: contain;">
-        <!-- <div>
-          page 1 of <span style="border: 1px solid #DDDD; padding: 8px 12px; display: inline-block; margin-left: 5px;">1</span>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pdf</title>
+</head>
+<style>
+    body{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+</style>
+<body>
+    <!-- Heading of PDF -->
+    <div class="pdf-headings" style="padding: 10px; text-align: end;">
+        <h2 style=" font-size: 24px; font-weight: 700; line-height: 0;">Breakdown/Service Record INSTALLATION WORKS CERTIFICATE</h2>
+        <p style="font-size: 16px; color: #000; font-weight: 400;" >ssued in accordance with BS 7671: 2018+A2:2022 – Requirements for Gas Installations</p>
+    </div>
+    
+    <!-- Table 1 -->
+  <div class="table-padding" style="padding: 10px;">
+      <div class="table table-1" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
+        <!-- <div class="table-heading" style="display: block;  background-color: yellow; ">
+            <h3 style="color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</h3>
         </div> -->
+        <div class="table-content" style="padding: 0px;">
+           <div class="pdf-table" style="display: block; vertical-align: middle; ">
+                <table style="width: 100%;">
+                    <thead style="vertical-align: middle;">
+                        <tr style="background-color: yellow;">
+                            <th colspan="3" style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</th>
+                        </tr>
+                        <tr style="width: 100%;">
+                            <td style="text-align: left; padding-left: 6px; padding-top: 15px; padding-bottom:15px; font-weight: 700;">DETAILS OF THE CONTRACTOR</th>
+                            <td style="text-align: left; padding-top: 15px; padding-bottom:15px; font-weight: 700;">DETAILS OF THE CLIENT</th>
+                            <td style="text-align: left; padding-top: 15px; padding-bottom:15px; font-weight: 700;">DETAILS OF THE INSTALLATION</th>
+                        </tr>
+                    </thead>
+                    <tbody style="vertical-align: middle;"  >
+                        <tr>
+                            <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
+                                <span style="font-weight: 700;">Gaz Safe Number:</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
+                            </td>
+                            <td style="padding-top:6px; padding-bottom:6px;">
+                                <span style="font-weight: 700;">Name:</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
+                            </td>
+                            <td style="padding-top:6px; padding-bottom:6px;">
+                                <span style="font-weight: 700;">Tenant Name:</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
+                                <span style="font-weight: 700;">Company Name:</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
+                            </td>
+                            <td style="padding-top:6px; padding-bottom:6px; line-height: 1.5;">
+                                <span style="font-weight: 700;">Address:</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445kAMSfk!2445k </span>
+                            </td>
+                            <td style="padding-top:6px; padding-bottom:6px; line-height: 1.5;">
+                                <span style="font-weight: 700;">Address:</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445kAMSfk!2445k </span>
+                            </td>
+                        </tr>
+                        <tr>
+                             <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px; line-height: 1.5;">
+                                <span style="font-weight: 700;">Address:</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445kAMSfk!2445k </span>
+                            </td>
+                            <td style="padding-top:6px; padding-bottom:6px;">
+                                <div style="width: 100%; display: block;">
+                                <div style="width: 48%; display: inline-block;">
+                                <span style="font-weight: 700;">Postcode:</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
+                                </div>
+                                <div style="width: 48%; display: inline-block;">
+                                 <span style="font-weight: 700;">TEL No:</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
+                                </div>
+                                </div>
+                            </td>
+                              <td style="padding-top:6px; padding-bottom:6px;">
+                                <div style="width: 100%; display: block;">
+                                <div style="width: 48%; display: inline-block;">
+                                <span style="font-weight: 700;">Postcode:</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
+                                </div>
+                                <div style="width: 48%; display: inline-block;">
+                                 <span style="font-weight: 700;">TEL No:</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
+                                </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                              <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
+                                <div style="width: 100%; display: block;">
+                                <div style="width: 48%; display: inline-block;">
+                                <span style="font-weight: 700;">Postcode:</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
+                                </div>
+                                <div style="width: 48%; display: inline-block;">
+                                 <span style="font-weight: 700;">TEL No:</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
+                                </div>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+           </div>
+        </div>
+    </div>
+  </div>
+
+<!-- Table 2 -->
+  <div class="table-padding" style="padding: 10px;">
+      <div class="table table-2" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
+        <!-- <div class="table-heading" style="display: block;  background-color: yellow; ">
+            <h3 style="color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</h3>
+        </div> -->
+        <div class="table-content" style="padding: 0px;">
+           <div class="pdf-table" style="display: block; ">
+                <table style="width: 100%;">
+                    <thead>
+                        <tr style="background-color: yellow;">
+                            <th colspan="3" style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">Appliance Details</th>
+                        </tr>
+                      
+                    </thead>
+                    <tbody  >
+                        <tr>
+                            <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
+                                <span style="font-weight: 700;">CO/CO2 Ratio</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
+                            </td>
+                            <td style="padding-top:6px; padding-bottom:6px;">
+                                
+                            </td>
+                            <td style="padding-top:6px; padding-bottom:6px;">
+                               
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
+                                <span style="font-weight: 700;">Boiler Make:</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
+                            </td>
+                            <td style="padding-top:6px; padding-bottom:6px;">
+                                <span style="font-weight: 700;">Boiler Model:</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
+                            </td>
+                            <td style="padding-top:6px; padding-bottom:6px;">
+                                <span style="font-weight: 700;">Boiler Serial Number:</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
+                            </td>
+                        </tr>
+                        <tr>
+                             <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
+                                <span style="font-weight: 700;">Appliance Make:</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
+                            </td>
+                             <td style="padding-top:6px; padding-bottom:6px;">
+                                <span style="font-weight: 700;">Appliance Model:</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
+                            </td>
+                             <td style="padding-top:6px; padding-bottom:6px;">
+                                <span style="font-weight: 700;">Appliance Serial Number:</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
+                            </td>
+                          
+                            
+                        </tr>
+                        <tr>
+                          <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
+                            <span style="font-weight: 700;">Description of work: </span>
+                             <label>
+                                     <input type="checkbox" class="radio" value="1" name="foobye" />Service</label>
+                             <label>
+                                  <input type="checkbox" class="radio" value="1" name="fooby" />Breakdown</label>
+                            <label>
+                         </td>
+                      </tr>
+                      
+                    </tbody> 
+                </table>
+           </div>
+        </div>
+    </div>
+  </div>
+
+  <!-- Table 3 & 4 -->
+  <div style=" padding: 10px;">
+  <div style="display: block; width: 100%; margin: auto;">
+    <div style="display: inline-block; width: 49.8%;">
+    <table style="width: 100%; border: 1px solid black;">
+    <thead>
+        <tr style="background-color: yellow;">
+             <th  style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">Notes</th>
+                 
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="height: 150px; overflow: scroll;"></td>
+        </tr>
+    </tbody>
+    </table>
+    </div>
+    <div style="display: inline-block; width: 49.9%;">
+      <table style="width: 100%; border: 1px solid black;">
+    <thead>
+        <tr style="background-color: yellow;">
+             <th  style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">Parts/Spares Required</th>
+                 
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="height: 150px; overflow: scroll;"></td>
+        </tr>
+    </tbody>
+    </table>
+    </div>
+</div>
+</div>
+
+<!-- Table 5 -->
+<div class="table-padding" style="padding: 10px;">
+    <div class="table table-2" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
+      <!-- <div class="table-heading" style="display: block;  background-color: yellow; ">
+          <h3 style="color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</h3>
+      </div> -->
+      <div class="table-content" style="padding: 0px;">
+         <div class="pdf-table" style="display: block; ">
+              <table style="width: 100%;">
+                  <thead>
+                      <tr style="background-color: yellow;">
+                          <th  style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">Installation Satisfactorty?</th>
+                          <th  style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">Service Checks Satisfactory?</th>
+                          <th  style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">Appliance Details</th>
+                      </tr>
+                    
+                  </thead>
+                  <tbody style="vertical-align: middle;" >
+                     <tr>
+                        <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
+                            <label> <input type="checkbox" class="radio" value="1" name="" />Water/Fuel-Satisfactory</label>
+                        </td>
+                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                            <label> <input type="checkbox" class="radio" value="1" name="" />Heat Exchanger</label>
+                        </td>
+                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                            <label> <input type="checkbox" class="radio" value="1" name="" />Burner Washed & Cleaned</label>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
+                            <label> <input type="checkbox" class="radio" value="1" name="" />Ventilation Size H-L </label>
+                        </td>
+                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                            <label> <input type="checkbox" class="radio" value="1" name="" />Ignition</label>
+                        </td>
+                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                            <label> <input type="checkbox" class="radio" value="1" name="" />Pilot Assembly Cleaned & Adjusted</label>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
+                            <label> <input type="checkbox" class="radio" value="1" name="" />Electrically Fused </label>
+                        </td>
+                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                            <label> <input type="checkbox" class="radio" value="1" name="" />Gas Value</label>
+                        </td>
+                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                            <label> <input type="checkbox" class="radio" value="1" name="" />lgnition system Cleaned & Adjusted</label>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
+                            <label> <input type="checkbox" class="radio" value="1" name="" />Correct Valving Arrangements </label>
+                        </td>
+                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                            <label> <input type="checkbox" class="radio" value="1" name="" />Fan</label>
+                        </td>
+                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                            <label> <input type="checkbox" class="radio" value="1" name="" />Burner Fan & Airways Cleaned</label>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
+                            <label> <input type="checkbox" class="radio" value="1" name="" />Isolation Available-Electrical/Fuel (within 1mtr) </label>
+                        </td>
+                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                            <label> <input type="checkbox" class="radio" value="1" name="" />Safety Device</label>
+                        </td>
+                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                            <label> <input type="checkbox" class="radio" value="1" name="" />Heat Exchanger/Flueways Clean & Clear</label>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
+                          <label> <input type="checkbox" class="radio" value="1" name="" />Boiler/Plant Room Cleaner</label>
+                        </td>
+                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                            <label> <input type="checkbox" class="radio" value="1" name="" />Control Box</label>
+                        </td>
+                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                            <label> <input type="checkbox" class="radio" value="1" name="" />Fuel & Electrical Supply Connected Correctly</label>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
+                            
+                        </td>
+                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                            <label> <input type="checkbox" class="radio" value="1" name="" />Burners & Pilot</label>
+                        </td>
+                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                            <label> <input type="checkbox" class="radio" value="1" name="" />Interlocks Noted & in Place</label>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
+                            
+                        </td>
+                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                            <label> <input type="checkbox" class="radio" value="1" name="" />Fuel Pressure & Type</label>
+                        </td>
+                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                          
+                        </td>
+                     </tr>
+                    
+                  </tbody>
+              </table>
+         </div>
       </div>
-    </footer>
-  </body>
+  </div>
+</div>
+
+<!-- Table 6 -->
+<div class="table-padding" style="padding: 10px;">
+    <div class="table table-2" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
+      <!-- <div class="table-heading" style="display: block;  background-color: yellow; ">
+          <h3 style="color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</h3>
+      </div> -->
+      <div class="table-content" style="padding: 0px;">
+         <div class="pdf-table" style="display: block; ">
+              <table style="width: 100%;">
+                  <thead>
+                      <tr >
+                          <th  style="background-color: yellow; text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; width: 100px;">TIME</th>
+                          <th  style=" text-align: left; color: black; font-size: 20px; margin: 0; padding: 10px; ">
+                            <span style="font-weight: 700;">Arrival Time:</span>
+                            <span style="border-bottom: 1px dashed #000; font-weight: 400;">AMSfk!2445k</span>
+                        </th>
+                          <th  style=" text-align: left; color: black;  font-size: 20px; margin: 0; padding: 10px; ">
+                            <span style="font-weight: 700;">Departure Time:</span>
+                            <span style="border-bottom: 1px dashed #000; font-weight: 400;">AMSfk!2445k</span>
+                        </th>
+                      </tr>
+                    
+                  </thead>
+                 
+              </table>
+         </div>
+      </div>
+  </div>
+</div>
+
+
+<!-- Table 7 -->
+<div class="table-padding" style="padding: 10px;">
+    <div class="table table-2" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
+      <!-- <div class="table-heading" style="display: block;  background-color: yellow; ">
+          <h3 style="color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</h3>
+      </div> -->
+      <div class="table-content" style="padding: 0px;">
+         <div class="pdf-table" style="display: block; ">
+              <table style="width: 100%;">
+                  <thead>
+                      <tr >
+                          <th colspan="3"  style="background-color: yellow; text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px;">Issued By</th>
+                         
+                      </tr>
+                    
+                  </thead>
+                  <tbody>
+                    <tr>
+                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;">
+                            <span style="font-weight: 700;">Name(CAPITALS)</span>
+                            <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span></td>
+                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;">
+                            <span style="font-weight: 700;">Contractor</span>
+                            <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span></td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;">
+                            <span style="font-weight: 700;">Signture</span>
+                            <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span></td>
+                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;  line-height: 1.5;">
+                            <span style="font-weight: 700;">Address</span>
+                            <span style="border-bottom: 1px dashed #000;">AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k</span></td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;">
+                            <span style="font-weight: 700;">Position</span>
+                            <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span></td>
+                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;">
+                            <span style="font-weight: 700;">Date</span>
+                            <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span></td>
+                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;">
+                            <span style="font-weight: 700;">Gas Safe No</span>
+                            <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span></td>
+                    </tr>
+                    <tr>
+                        <td  style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px; font-weight: 700;">RECIVED BY:</td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;">
+                            <span style="font-weight: 700;">Name</span>
+                            <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span></td>
+                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;">
+                            <span style="font-weight: 700;">Date</span>
+                            <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span></td>
+                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;">
+                            <span style="font-weight: 700;">Signture</span>
+                            <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span></td>
+                    </tr>
+                  </tbody>
+                 
+              </table>
+         </div>
+      </div>
+  </div>
+</div>
+
+<!-- Table 8 -->
+<div class="table-padding" style="padding: 10px;">
+    <div class="table table-2" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
+      <!-- <div class="table-heading" style="display: block;  background-color: yellow; ">
+          <h3 style="color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</h3>
+      </div> -->
+      <div class="table-content" style="padding: 0px;">
+         <div class="pdf-table" style="display: block; ">
+              <table style="width: 100%;">
+                  <thead>
+                      <tr >
+                          <th colspan="2"  style="background-color: yellow; text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px;">Note</th>
+                         
+                      </tr>
+                    
+                  </thead>
+                  <tbody>
+                    <tr>
+                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px; width: 50%;">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                            laborum.   
+                        </td>
+                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px; width: 50%;">
+                            <img src="" alt="pdf-img" style="display: block; margin: auto;" >
+                    </tr>
+                 
+                  </tbody>
+                 
+              </table>
+         </div>
+      </div>
+  </div>
+</div>
+
+<!-- Table 9 -->
+<div class="table-padding" style="padding: 10px;">
+    <div class="table table-2" style=" width: 100%; display: block; margin: auto; ">
+      <!-- <div class="table-heading" style="display: block;  background-color: yellow; ">
+          <h3 style="color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</h3>
+      </div> -->
+      <div class="table-content" style="padding: 0px;">
+         <div class="pdf-table" style="display: block; ">
+              <table style="width: 100%;">
+                 
+                  <tbody style="vertical-align: middle;">
+                    <tr>
+                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px; width: 25%; ">
+                            @Copyright 360 Connect (2023 August)  
+                        </td>
+                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px; width: 50%; ">
+                          <p> **where relevant and practicable</p> 
+                          <p>his certificate is based on the model forms shown in Appendix 6 of BS 7671: 2018+A2:2022</p> 
+                          <p>@Copyright 360 Connect (2023 August)</p>
+                          </td>
+                          <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px; width: 25%; ">
+                       <p>     Enter a or value in the respective fields, as appropriate</p>
+                            <p>here an item is not applicable insert N/A </p>
+                          </td>
+                    </tr>
+                 
+                  </tbody>
+                 
+              </table>
+         </div>
+      </div>
+  </div>
+</div>
+</body>
 </html>
