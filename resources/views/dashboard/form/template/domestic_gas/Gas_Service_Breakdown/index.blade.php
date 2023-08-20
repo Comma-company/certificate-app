@@ -198,7 +198,7 @@
   <!-- Table 3 & 4 -->
   <div style=" padding: 10px;">
   <div style="display: block; width: 100%; margin: auto;">
-    <div style="display: inline-block; width: 49.8%;">
+    <div style="display: inline-block; width: 100%;">
     <table style="width: 100%; border: 1px solid black;">
     <thead>
         <tr style="background-color: yellow;">
@@ -213,7 +213,7 @@
     </tbody>
     </table>
     </div>
-    <div style="display: inline-block; width: 49.9%;">
+    <div style="display: inline-block; width: 100%;">
       <table style="width: 100%; border: 1px solid black;">
     <thead>
         <tr style="background-color: yellow;">
