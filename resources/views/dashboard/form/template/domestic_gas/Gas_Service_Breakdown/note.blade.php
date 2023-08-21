@@ -57,7 +57,7 @@ table {
   width: 50%;
 }
 .number-table {
-  border: solid 2px #00935f;
+  border: solid 2px #e6ff07;
   padding: 0 !important;
   width: 100px;
   height: 40px;
@@ -72,7 +72,7 @@ h4 {
   padding: 0;
 }
 .green-table-headers {
-  background-color: #00935f;
+  background-color: #e6ff07;
   text-align: left;
   color: #fff;
   font-weight: bold;
@@ -80,12 +80,12 @@ h4 {
   padding: 12px 15px;
 }
 .border-table {
-  border: solid 1px #00935f;
+  border: solid 1px #e6ff07;
 }
 
 .sub-title-text {
   font-size: 12px;
-  color: #00935f;
+  color:#e6ff07;
   text-align: left;
   font-weight: bold;
   padding-bottom: 10px;
