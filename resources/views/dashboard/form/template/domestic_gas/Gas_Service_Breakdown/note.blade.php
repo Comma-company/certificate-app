@@ -57,7 +57,7 @@ table {
   width: 50%;
 }
 .number-table {
-  border: solid 2px #e6ff07;
+  border: solid 2px yellow;
   padding: 0 !important;
   width: 100px;
   height: 40px;
@@ -72,7 +72,7 @@ h4 {
   padding: 0;
 }
 .green-table-headers {
-  background-color: #e6ff07;
+  background-color: yellow;
   text-align: left;
   color: #fff;
   font-weight: bold;
@@ -80,7 +80,7 @@ h4 {
   padding: 12px 15px;
 }
 .border-table {
-  border: solid 1px #e6ff07;
+  border: solid 1px yellow;
 }
 
 .sub-title-text {

@@ -185,9 +185,9 @@
                           <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
                             <span style="font-weight: 700;">Description of work: </span>
                              <label>
-                                     <input type="checkbox" class="radio" value="1" name="foobye" />Service</label>
+                                     <input type="checkbox" class="radio" value="{{ getvalue('service', $formData['form_part_1']) }}" name="foobye"{{ getvalue('service', $formData['form_part_1']) ? 'checked' : '' }} />Service</label>
                              <label>
-                                  <input type="checkbox" class="radio" value="1" name="fooby" />Breakdown</label>
+                                  <input type="checkbox" class="radio" value="{{ getvalue('Breakdown', $formData['form_part_1']) }}" name="fooby" {{ getvalue('Breakdown', $formData['form_part_1'])  ? 'checked' : ''}}/>Breakdown</label>
                             <label>
                         </td>
                       </tr>
@@ -202,6 +202,20 @@
   <div style=" padding: 10px;">
   <div style="display: block; width: 100%; margin: auto;">
     <div style="display: inline-block; width:100%;">
+        <table style="width: 100%; border: 1px solid black;">
+            <thead>
+                <tr style="background-color: yellow;">
+                     <th  style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">Notes</th>
+                         
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="height: 150px; overflow: scroll;"> {{ getvalue('additional_notes', $formData['form_part_2']) }}</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
       <table style="width: 100%; border: 1px solid black;">
     <thead>
         <tr style="background-color: yellow;">
@@ -443,42 +457,6 @@
 </div>
 <pagebreak></pagebreak>
 <!-- Table 8 -->
-<div class="table-padding" style="padding: 10px;">
-    <div class="table table-2" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
-      <!-- <div class="table-heading" style="display: block;  background-color: yellow; ">
-          <h3 style="color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</h3>
-      </div> -->
-      <div class="table-content" style="padding: 0px;">
-         <div class="pdf-table" style="display: block; ">
-              <table style="width: 100%;">
-                  <thead>
-                      <tr >
-                          <th colspan="2"  style="background-color: yellow; text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px;">Note</th>
-                         
-                      </tr>
-                    
-                  </thead>
-                  <tbody>
-                    <tr>
-                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px; width: 50%;">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                            laborum.   
-                        </td>
-                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px; width: 50%;">
-                            <img src="" alt="pdf-img" style="display: block; margin: auto;" >
-                    </tr>
-                 
-                  </tbody>
-                 
-              </table>
-         </div>
-      </div>
-  </div>
-</div>
-
 <!-- Table 9 -->
 <div class="table-padding" style="padding: 10px;">
     <div class="table table-2" style=" width: 100%; display: block; margin: auto; ">
