@@ -182,14 +182,14 @@
                             </td>
                         </tr>
                         <tr>
-                          <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-                            <span style="font-weight: 700;">Description of work: </span>
-                            <label>
-                                <input type="checkbox" class="radio" value="{{ getvalue('service', $formData['form_part_1']) }}" name="{{ getvalue('service', $formData['form_part_1']) }}" {{ getvalue('service', $formData['form_part_1']) === 'True' ? 'checked' : '' }} />Service</label>
-                        <label>
-                             <input type="checkbox" class="radio" value="{{ getvalue('Breakdown', $formData['form_part_1']) }}" name="{{ getvalue('Breakdown', $formData['form_part_1']) }}" {{ getvalue('Breakdown', $formData['form_part_1']) === 'True' ? 'checked' : ''}}/>Breakdown</label>
-                       <label>
-                        </td>
+                            <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
+                                <span style="font-weight: 700;">Description of work: </span>
+                                 <label>
+                                         <input type="checkbox" class="radio" value="{{ getvalue('service', $formData['form_part_1']) }}" name="{{ getvalue('service', $formData['form_part_1']) }}" {{ filter_var(getvalue('service', $formData['form_part_1']), FILTER_VALIDATE_BOOLEAN) ? 'checked' : '' }}/>Service</label>
+                                 <label>
+                                      <input type="checkbox" class="radio" value="{{ getvalue('Breakdown', $formData['form_part_1']) }}" name="{{ getvalue('Breakdown', $formData['form_part_1']) }}"  {{ filter_var(getvalue('Breakdown', $formData['form_part_1']), FILTER_VALIDATE_BOOLEAN) ? 'checked' : '' }}/>Breakdown</label>
+                                <label>
+                            </td>
                       </tr>
                     </tbody> 
                 </table>
