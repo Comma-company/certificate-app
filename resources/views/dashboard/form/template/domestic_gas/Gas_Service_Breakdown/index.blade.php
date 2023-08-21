@@ -182,14 +182,14 @@
                             </td>
                         </tr>
                         <tr>
-                          <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-                            <span style="font-weight: 700;">Description of work: </span>
-                             <label>
-                                     <input type="checkbox" class="radio" value="{{ getvalue('service', $formData['form_part_1']) }}" name="{{ getvalue('service', $formData['form_part_1']) }}" {{ filter_var(getvalue('service', $formData['form_part_1']), FILTER_VALIDATE_BOOLEAN) ? 'checked' : '' }}/>Service</label>
-                             <label>
-                                  <input type="checkbox" class="radio" value="{{ getvalue('Breakdown', $formData['form_part_1']) }}" name="{{ getvalue('Breakdown', $formData['form_part_1']) }}"  {{ filter_var(getvalue('Breakdown', $formData['form_part_1']), FILTER_VALIDATE_BOOLEAN) ? 'checked' : '' }}/>Breakdown</label>
-                            <label>
-                        </td>
+                            <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
+                                <span style="font-weight: 700;">Description of work: </span>
+                                 <label>
+                                         <input type="checkbox" class="radio" value="{{ getvalue('service', $formData['form_part_1']) }}" name="{{ getvalue('service', $formData['form_part_1']) }}" @if(getvalue('service', $formData['form_part_1']) == "True") checked="checked" @endif/>Service</label>
+                                 <label>
+                                      <input type="checkbox" class="radio" value="{{ getvalue('Breakdown', $formData['form_part_1']) }}" name="{{ getvalue('Breakdown', $formData['form_part_1']) }}"  @if(getvalue('Breakdown', $formData['form_part_1']) == "True") checked="checked" @endif/>Breakdown</label>
+                                <label>
+                            </td>
                       </tr>
                     </tbody> 
                 </table>
@@ -253,79 +253,68 @@
                   <tbody style="vertical-align: middle;" >
                      <tr>
                         <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
-                            <label> <input type="checkbox" class="radio" value="{{ getvalue('water_fuel_satisfactory', $formData['form_part_4']) }}" name="{{ getvalue('water_fuel_satisfactory', $formData['form_part_4']) }}" {{ getvalue('water_fuel_satisfactory', $formData['form_part_4']) ? 'checked' : '' }}/>Water/Fuel-Satisfactory</label>
+                            <label> <input type="checkbox" class="radio" value="{{ getvalue('water_fuel_satisfactory', $formData['form_part_4']) }}" name="{{ getvalue('water_fuel_satisfactory', $formData['form_part_4']) }}"  @if(getvalue('water_fuel_satisfactory', $formData['form_part_4']) == true) checked="checked" @endif/>Water/Fuel-Satisfactory</label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            <label> <input type="checkbox" class="radio" value="{{ getvalue('heat_exchanger', $formData['form_part_5']) }}" name="{{ getvalue('heat_exchanger', $formData['form_part_5']) }}" {{ getvalue('heat_exchanger', $formData['form_part_5'])? 'checked' : '' }}/>Heat Exchanger</label>
+                            <label> <input type="checkbox" class="radio" value="{{ getvalue('heat_exchanger', $formData['form_part_5']) }}" name="{{ getvalue('heat_exchanger', $formData['form_part_5']) }}" @if(getvalue('heat_exchanger', $formData['form_part_5']) == true) checked="checked" @endif />Heat Exchanger</label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            <label> <input type="checkbox" class="radio" value="{{ getvalue('burn_washer_cleaned', $formData['form_part_6']) }}" name="{{ getvalue('burn_washer_cleaned', $formData['form_part_6']) }}"{{ getvalue('burn_washer_cleaned', $formData['form_part_6']) ? 'checked' : ''}} />Burner Washed & Cleaned</label>
+                            <label> <input type="checkbox" class="radio" value="{{ getvalue('burn_washer_cleaned', $formData['form_part_6']) }}" name="{{ getvalue('burn_washer_cleaned', $formData['form_part_6']) }}"  @if(getvalue('burn_washer_cleaned', $formData['form_part_6']) == true) checked="checked" @endif/>Burner Washed & Cleaned</label>
                         </td>
                      </tr>
                      <tr>
                         <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
-                            <label> <input type="checkbox" class="radio" value="{{ getvalue('ventilation_size', $formData['form_part_4']) }}" name="{{ getvalue('ventilation_size', $formData['form_part_4']) }}" {{ getvalue('ventilation_size', $formData['form_part_4']) ? 'checked' : ''}}/>Ventilation Size H-L </label>
+                            <label> <input type="checkbox" class="radio" value="{{ getvalue('ventilation_size', $formData['form_part_4']) }}" name="{{ getvalue('ventilation_size', $formData['form_part_4']) }}"@if(getvalue('ventilation_size', $formData['form_part_4']) == true) checked="checked" @endif />Ventilation Size H-L </label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            <label> <input type="checkbox" class="radio" value="{{ getvalue('ignition', $formData['form_part_5']) }}" name="{{ getvalue('ignition', $formData['form_part_5']) }}" {{ getvalue('ignition', $formData['form_part_5']) ? 'checked' : '' }} />Ignition</label>
+                            <label> <input type="checkbox" class="radio" value="{{ getvalue('ignition', $formData['form_part_5']) }}" name="{{ getvalue('ignition', $formData['form_part_5']) }}" @if(getvalue('ignition', $formData['form_part_5']) == true) checked="checked" @endif  />Ignition</label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            <label> <input type="checkbox" class="radio" value="{{ getvalue('pilot_assembly', $formData['form_part_6']) }}" name="{{ getvalue('pilot_assembly', $formData['form_part_6']) }}" {{ getvalue('pilot_assembly', $formData['form_part_6']) ? 'checked' : '' }} />Pilot Assembly Cleaned & Adjusted</label>
+                            <label> <input type="checkbox" class="radio" value="{{ getvalue('pilot_assembly', $formData['form_part_6']) }}" name="{{ getvalue('pilot_assembly', $formData['form_part_6']) }}" @if(getvalue('pilot_assembly', $formData['form_part_6']) == true) checked="checked" @endif />Pilot Assembly Cleaned & Adjusted</label>
                         </td>
                      </tr>
                      <tr>
                         <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
-                            <label> <input type="checkbox" class="radio" value="{{ getvalue('electrically_fused', $formData['form_part_4']) }}" name="{{ getvalue('electrically_fused', $formData['form_part_4']) }}" {{ getvalue('electrically_fused', $formData['form_part_4'])  ? 'checked' : '' }} />Electrically Fused </label>
+                            <label> <input type="checkbox" class="radio" value="{{ getvalue('electrically_fused', $formData['form_part_4']) }}" name="{{ getvalue('electrically_fused', $formData['form_part_4']) }}"@if(getvalue('electrically_fused', $formData['form_part_4']) == true) checked="checked" @endif  />Electrically Fused </label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            <label> <input type="checkbox" class="radio" value="{{ getvalue('gas_valve', $formData['form_part_5']) }}" name="{{ getvalue('gas_valve', $formData['form_part_5']) }}" {{ getvalue('gas_valve', $formData['form_part_5']) ? 'checked' : ''  }}/>Gas Value</label>
+                            <label> <input type="checkbox" class="radio" value="{{ getvalue('gas_valve', $formData['form_part_5']) }}" name="{{ getvalue('gas_valve', $formData['form_part_5']) }}"@if(getvalue('gas_valve', $formData['form_part_5']) == true) checked="checked" @endif />Gas Value</label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            <label> <input type="checkbox" class="radio" value="{{ getvalue('ignition_system', $formData['form_part_6']) }}" name="{{ getvalue('ignition_system', $formData['form_part_6']) }}" {{ getvalue('ignition_system', $formData['form_part_6']) ? 'checked' : ''  }} />lgnition system Cleaned & Adjusted</label>
+                            <label> <input type="checkbox" class="radio" value="{{ getvalue('ignition_system', $formData['form_part_6']) }}" name="{{ getvalue('ignition_system', $formData['form_part_6']) }}" @if(getvalue('ignition_system', $formData['form_part_6']) == true) checked="checked" @endif />lgnition system Cleaned & Adjusted</label>
                         </td>
                      </tr>
                      <tr>
                         <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
-                            <label> <input type="checkbox" class="radio" value="{{ getvalue('correct_valving', $formData['form_part_4']) }}" name="{{ getvalue('correct_valving', $formData['form_part_4']) }}" {{ getvalue('correct_valving', $formData['form_part_4']) ? 'checked' : ''  }} />Correct Valving Arrangements </label>
+                            <label> <input type="checkbox" class="radio" value="{{ getvalue('correct_valving', $formData['form_part_4']) }}" name="{{ getvalue('correct_valving', $formData['form_part_4']) }}" @if(getvalue('correct_valving', $formData['form_part_4']) == true) checked="checked" @endif  />Correct Valving Arrangements </label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            <label> <input type="checkbox" class="radio" value="{{ getvalue('fan', $formData['form_part_5']) }}" name="{{ getvalue('fan', $formData['form_part_5']) }}" {{ getvalue('fan', $formData['form_part_5']) ? 'checked' : ''  }} />Fan</label>
+                            <label> <input type="checkbox" class="radio" value="{{ getvalue('fan', $formData['form_part_5']) }}" name="{{ getvalue('fan', $formData['form_part_5']) }}" @if(getvalue('fan', $formData['form_part_5']) == true) checked="checked" @endif />Fan</label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            <label> <input type="checkbox" class="radio" value="{{ getvalue('burner_fas', $formData['form_part_6']) }}" name="{{ getvalue('burner_fas', $formData['form_part_6']) }}"  {{ getvalue('burner_fas', $formData['form_part_6']) ? 'checked' : '' }}/>Burner Fan & Airways Cleaned</label>
+                            <label> <input type="checkbox" class="radio" value="{{ getvalue('burner_fas', $formData['form_part_6']) }}" name="{{ getvalue('burner_fas', $formData['form_part_6']) }}" @if(getvalue('burner_fas', $formData['form_part_6']) == true) checked="checked" @endif />Burner Fan & Airways Cleaned</label>
                         </td>
                      </tr>
                      <tr>
                         <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
-                            <label> <input type="checkbox" class="radio" value="{{ getvalue('isolation_available', $formData['form_part_4']) }}" name="{{ getvalue('isolation_available', $formData['form_part_4']) }}"  {{ getvalue('isolation_available', $formData['form_part_4']) ? 'checked' : ''  }}/>Isolation Available-Electrical/Fuel (within 1mtr) </label>
+                            <label> <input type="checkbox" class="radio" value="{{ getvalue('isolation_available', $formData['form_part_4']) }}" name="{{ getvalue('isolation_available', $formData['form_part_4']) }}" @if(getvalue('isolation_available', $formData['form_part_4']) == true) checked="checked" @endif  />Isolation Available-Electrical/Fuel (within 1mtr) </label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            <label> <input type="checkbox" class="radio" value="{{ getvalue('safety_device', $formData['form_part_5']) }}" name="{{ getvalue('safety_device', $formData['form_part_5']) }}"  {{ getvalue('safety_device', $formData['form_part_5'])  ? 'checked' : '' }}/>Safety Device</label>
+                            <label> <input type="checkbox" class="radio" value="{{ getvalue('safety_device', $formData['form_part_5']) }}" name="{{ getvalue('safety_device', $formData['form_part_5']) }}" @if(getvalue('safety_device', $formData['form_part_5']) == true) checked="checked" @endif />Safety Device</label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            <label> <input type="checkbox" class="radio" value="{{ getvalue('service_heat_exchanger', $formData['form_part_6']) }}" name="{{ getvalue('service_heat_exchanger', $formData['form_part_6']) }}"  {{ getvalue('service_heat_exchanger', $formData['form_part_6'])  ? 'checked' : '' }}/>Heat Exchanger/Flueways Clean & Clear</label>
+                            <label> <input type="checkbox" class="radio" value="{{ getvalue('service_heat_exchanger', $formData['form_part_6']) }}" name="{{ getvalue('service_heat_exchanger', $formData['form_part_6']) }}" @if(getvalue('service_heat_exchanger', $formData['form_part_6']) == true) checked="checked" @endif />Heat Exchanger/Flueways Clean & Clear</label>
                         </td>
                      </tr>
                      <tr>
                         <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
-                          <label> <input type="checkbox" class="radio" value="{{ getvalue('boiler_plant_room', $formData['form_part_4']) }}" name="{{ getvalue('boiler_plant_room', $formData['form_part_4']) }}"  {{ getvalue('boiler_plant_room', $formData['form_part_4']) ? 'checked' : ''  }}/>Boiler/Plant Room Cleaner</label>
+                          <label> <input type="checkbox" class="radio" value="{{ getvalue('boiler_plant_room', $formData['form_part_4']) }}" name="{{ getvalue('boiler_plant_room', $formData['form_part_4']) }}" @if(getvalue('boiler_plant_room', $formData['form_part_4']) == true) checked="checked" @endif />Boiler/Plant Room Cleaner</label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            <label> <input type="checkbox" class="radio" value="{{ getvalue('control_box', $formData['form_part_5']) }}" name="{{ getvalue('control_box', $formData['form_part_5']) }}"  {{ getvalue('control_box', $formData['form_part_5']) ? 'checked' : ''  }}/>Control Box</label>
+                            <label> <input type="checkbox" class="radio" value="{{ getvalue('control_box', $formData['form_part_5']) }}" name="{{ getvalue('control_box', $formData['form_part_5']) }}" @if(getvalue('control_box', $formData['form_part_5']) == true) checked="checked" @endif />Control Box</label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            <label> <input type="checkbox" class="radio" value="{{ getvalue('fuel_electrical', $formData['form_part_6']) }}" name="{{ getvalue('fuel_electrical', $formData['form_part_6']) }}"  {{ getvalue('fuel_electrical', $formData['form_part_6'])  ? 'checked' : ''}}/>Fuel & Electrical Supply Connected Correctly</label>
-                        </td>
-                     </tr>
-                     <tr>
-                        <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
-                            
-                        </td>
-                        <td style="padding-top: 6px; padding-bottom: 6px;">
-                            <label> <input type="checkbox" class="radio" value="{{ getvalue('burners_pilot', $formData['form_part_5']) }}" name="{{ getvalue('burners_pilot', $formData['form_part_5']) }}"  {{ getvalue('burners_pilot', $formData['form_part_5'])? 'checked' : '' }}/>Burners & Pilot</label>
-                        </td>
-                        <td style="padding-top: 6px; padding-bottom: 6px;">
-                            <label> <input type="checkbox" class="radio" value="{{ getvalue('interlocks_noted', $formData['form_part_6']) }}" name="{{ getvalue('interlocks_noted', $formData['form_part_6']) }}" {{ getvalue('interlocks_noted', $formData['form_part_6']) ? 'checked' : '' }}/>Interlocks Noted & in Place</label>
+                            <label> <input type="checkbox" class="radio" value="{{ getvalue('fuel_electrical', $formData['form_part_6']) }}" name="{{ getvalue('fuel_electrical', $formData['form_part_6']) }}"  @if(getvalue('fuel_electrical', $formData['form_part_6']) == true) checked="checked" @endif/>Fuel & Electrical Supply Connected Correctly</label>
                         </td>
                      </tr>
                      <tr>
@@ -333,7 +322,18 @@
                             
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            <label> <input type="checkbox" class="radio" value="{{ getvalue('fuel', $formData['form_part_5']) }}" name="{{ getvalue('fuel', $formData['form_part_5']) }}"  {{ getvalue('fuel', $formData['form_part_5']) ? 'checked' : '' }}/>Fuel Pressure & Type</label>
+                            <label> <input type="checkbox" class="radio" value="{{ getvalue('burners_pilot', $formData['form_part_5']) }}" name="{{ getvalue('burners_pilot', $formData['form_part_5']) }}"@if(getvalue('burners_pilot', $formData['form_part_5']) == true) checked="checked" @endif />Burners & Pilot</label>
+                        </td>
+                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                            <label> <input type="checkbox" class="radio" value="{{ getvalue('interlocks_noted', $formData['form_part_6']) }}" name="{{ getvalue('interlocks_noted', $formData['form_part_6']) }}"@if(getvalue('interlocks_noted', $formData['form_part_6']) == true) checked="checked" @endif />Interlocks Noted & in Place</label>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
+                            
+                        </td>
+                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                            <label> <input type="checkbox" class="radio" value="{{ getvalue('fuel', $formData['form_part_5']) }}" name="{{ getvalue('fuel', $formData['form_part_5']) }}" @if(getvalue('fuel', $formData['form_part_5']) == true) checked="checked" @endif/>Fuel Pressure & Type</label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
                           
