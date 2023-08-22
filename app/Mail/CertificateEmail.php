@@ -14,6 +14,7 @@ use App\Certificate\DomesticElectrical\ElectricalDangerNotification;
 use App\Certificate\DomesticElectrical\DomesticElectricalInstallationCertificate;
 use App\Certificate\DomesticElectrical\MinorElectrical;
 use App\Certificate\DomesticGas\GasServiceBreakdown;
+use App\Certificate\DomesticGas\ServiceMaintanceRecord;
 
 class CertificateEmail extends Mailable
 {
@@ -60,6 +61,8 @@ class CertificateEmail extends Mailable
             $file = MinorElectrical::stringCode($certificate);
         }elseif ($file_name == 'Gas_Service_Breakdown') {
             $file = GasServiceBreakdown::stringCode($certificate);
+        }elseif ($file_name == 'Service_Maintance_Record') {
+            $file = ServiceMaintanceRecord::stringCode($certificate);
         }
 
 

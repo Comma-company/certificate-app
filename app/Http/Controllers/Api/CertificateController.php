@@ -27,7 +27,7 @@ use App\Certificate\DomesticElectrical\ElectricalDangerNotification;
 use App\Certificate\DomesticElectrical\DomesticElectricalInstallationCertificate;
 use App\Certificate\DomesticElectrical\MinorElectrical;
 use App\Certificate\DomesticGas\GasServiceBreakdown;
-
+use App\Certificate\DomesticGas\ServiceMaintanceRecord;
 
 class CertificateController extends Controller
 {
@@ -506,7 +506,9 @@ class CertificateController extends Controller
         }elseif ($file_name == 'Gas_Service_Breakdown')	
         {
            $form = GasServiceBreakdown::getPdf($certificate);
-       }
+       }elseif ($file_name == 'Service_Maintance_Record') {
+        $form =ServiceMaintanceRecord::openPdf($certificate);
+    }
         return $form;
     }
 
