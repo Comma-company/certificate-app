@@ -11,6 +11,43 @@
         padding: 0;
         box-sizing: border-box;
     }
+    .checkbox-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.checkbox-input {
+    display: none;
+}
+
+.checkbox-custom {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    margin-right: 5px; 
+    position: relative;
+}
+
+.checkbox-custom::before {
+    content: "\2713"; /* Unicode character for checkmark */
+    position: absolute;
+    top: 2px;
+    left: 5px;
+    width: 12px;
+    height: 12px;
+    font-size: 12px;
+    color: transparent; 
+    transition: color 0.3s; 
+}
+
+.checkbox-input:checked + .checkbox-custom::before {
+    color: #007bff;
+}
+    
+
+
 </style>
 <body>
     <!-- Heading of PDF -->
@@ -184,10 +221,12 @@
                         <tr>
                             <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
                                 <span style="font-weight: 700;">Description of work: </span>
-                                 <label>
-                                         <input type="checkbox" class="radio" value="{{ getvalue('service', $formData['form_part_1']) }}" name="{{ getvalue('service', $formData['form_part_1']) }}" @if(getvalue('service', $formData['form_part_1']) == "True") checked="checked" @endif/>Service</label>
-                                 <label>
-                                      <input type="checkbox" class="radio" value="{{ getvalue('Breakdown', $formData['form_part_1']) }}" name="{{ getvalue('Breakdown', $formData['form_part_1']) }}"  @if(getvalue('Breakdown', $formData['form_part_1']) == "True") checked="checked" @endif/>Breakdown</label>
+                                 <label class="checkbox-label">
+                                         <input type="checkbox" class="checkbox-input" value="{{ getvalue('service', $formData['form_part_1']) }}" name="{{ getvalue('service', $formData['form_part_1']) }}" @if(getvalue('service', $formData['form_part_1']) == "True") checked="checked" @endif/><span class="checkbox-custom"></span>
+                                         Service</label>
+                                 <label class="checkbox-label">
+                                      <input type="checkbox" class="checkbox-input" value="{{ getvalue('Breakdown', $formData['form_part_1']) }}" name="{{ getvalue('Breakdown', $formData['form_part_1']) }}"  @if(getvalue('Breakdown', $formData['form_part_1']) == "True") checked="checked" @endif/><span class="checkbox-custom"></span>
+                                      Breakdown</label>
                                 <label>
                             </td>
                       </tr>
