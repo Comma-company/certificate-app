@@ -119,7 +119,7 @@ class FormSeeder extends Seeder
             [
                 "name" => "Service/Maintance Record",
                 "type" => "Domestic Gas",
-                'status' => 'coming_soon',
+                'status' => 'live',
                 'file_name' => "Service_Maintance_Record",
                 'category_id' => '2',
             ],
