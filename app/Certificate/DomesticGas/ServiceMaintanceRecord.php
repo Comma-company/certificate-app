@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\View;
 use Symfony\Component\Console\Output\Output;
 use App\Models\CertificateAttachment;
 
-class GasServiceBreakdown{
+class ServiceMaintanceRecord{
     public static function createPdf($certificate)
     {
         define('_MPDF_TTFONTPATH', asset('admin/fonts/gnu-free-font'));
@@ -51,7 +51,7 @@ class GasServiceBreakdown{
         ];
 
 
-        $html = view('dashboard.form.template.domestic_gas.Gas_Service_Breakdown.index', [
+        $html = view('dashboard.form.template.domestic_gas.Service_Maintance_Record.index', [
             'data' => $data,
             'formData' =>   $formData,
             'cert_attachments' =>$cert_attachments,
@@ -60,7 +60,7 @@ class GasServiceBreakdown{
         $invoice->WriteHTML($html);
         if ($cert_attachments->count() > 0) {
             $invoice->AddPage('L');
-            $page_2 = view('dashboard.form.template.domestic_gas.Gas_Service_Breakdown.note', [
+            $page_2 = view('dashboard.form.template.domestic_gas.Service_Maintance_Record.note', [
                 'data' => $certificate,
                 'formData' => $formData,
                 'cert_attachments' =>$cert_attachments,
