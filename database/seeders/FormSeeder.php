@@ -105,7 +105,7 @@ class FormSeeder extends Seeder
             [
                 "name" => "Gas Testing & Purging",
                 "type" => "Domestic Gas",
-                'status' => 'coming_soon',
+                'status' => 'live',
                 'file_name' => "Gas_Testing_Purging",
                 'category_id' => '2',
             ],

@@ -67,7 +67,7 @@
                   <p style="color: #2a98fc; font-weight: bold;">COMPANY/ENGINEER</p>
                   <div style="margin-bottom: 5px;">
                       <label style="width: 35%; display: inline-block; ">Company Name:</label>
-                      <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
+                      <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">{{ $data->user->company_name }}</div>
                   </div>
                   <div style="margin-bottom: 5px;">
                     <label style="width: 35%; display: inline-block; ">Gas Safe Register No:</label>
@@ -83,45 +83,45 @@
                   </div>
                   <div style="margin-bottom: 5px;">
                     <label style="width: 35%; display: inline-block; ">Address:</label>
-                    <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px; height: 50px;">test</div>
+                    <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px; height: 50px;">{{$data->user->number_street_name.', '.$data->user->city}}</div>
                   </div>
                   <div style="margin-bottom: 5px; font-size: 0;">
                     <div style="display: inline-block; width: 50%; ; font-size: 10px;">
                       <label style="display: inline-block; ">Postcode:</label>
-                      <div style="display: inline-block; width: 93px; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
+                      <div style="display: inline-block; width: 93px; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">{{ $data->user->postal_code }}</div>
                     </div>
                     <div style="display: inline-block; width: 50%; ; font-size: 10px;">
                       <label style="display: inline-block; ">Tel No:</label>
-                      <div style="display: inline-block; width: 107px; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
+                      <div style="display: inline-block; width: 107px; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">{{ $data->user->phone }}</div>
                     </div>
                   </div>
                   <div style="margin-bottom: 5px;">
                     <label style="width: 35%; display: inline-block; ">Email</label>
-                    <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
+                    <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">{{ $data->user->email }}</div>
                 </div>
                 </div>
                 <div style="display: inline-block; width: 50%; padding: 0px 15px; font-size: 10px; vertical-align: top;">
                   <p style="color: #2a98fc; font-weight: bold;">OWNER OF CARAVAN/BOAT BEING INSPECTED (OR AGENT WHERE APPROPRIATE)</p>
                   <div style="margin-bottom: 5px;">
                     <label style="width: 35%; display: inline-block; ">Name:</label>
-                    <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
+                    <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">{{ $data->customer->name }}</div>
                   </div>
                   <div style="margin-bottom: 5px;">
                     <label style="width: 35%; display: inline-block; ">Company:</label>
-                    <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
+                    <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">{{ $data->customer->user->company_name }}</div>
                   </div>
                   <div style="margin-bottom: 5px;">
                     <label style="width: 35%; display: inline-block; ">Address:</label>
-                    <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px; height: 50px;">test</div>
+                    <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px; height: 50px;">{{$data->customer->street_num.', '.$data->customer->city}}</div>
                   </div>
                   <div style="margin-bottom: 5px; font-size: 0;">
                     <div style="display: inline-block; width: 50%; ; font-size: 10px;">
                       <label style="display: inline-block; ">Postcode:</label>
-                      <div style="display: inline-block; width: 93px; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
+                      <div style="display: inline-block; width: 93px; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">{{ $data->customer->postal_code }}</div>
                     </div>
                     <div style="display: inline-block; width: 50%; ; font-size: 10px;">
                       <label style="display: inline-block; ">Tel No:</label>
-                      <div style="display: inline-block; width: 107px; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">test</div>
+                      <div style="display: inline-block; width: 107px; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">{{ $data->customer->contacts->first()->phone }}</div>
                     </div>
                   </div>
                   <div style="margin-bottom: 5px;">
