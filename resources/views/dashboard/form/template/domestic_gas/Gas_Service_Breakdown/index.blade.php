@@ -256,7 +256,7 @@
         </div>
     </div>
   </div>
-  <pagebreak></pagebreak>
+  
   <!-- Table 3 & 4 -->
   <div style=" padding: 10px;">
   <div style="display: block; width: 100%; margin: auto;">
@@ -292,7 +292,6 @@
     </div>
 </div>
 </div>
-<pagebreak></pagebreak>
 <!-- Table 5 -->
 <div class="table-padding" style="padding: 10px;">
     <div class="table table-2" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
@@ -314,15 +313,12 @@
                      <tr>
                         <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
                            <img src="{{ asset('certificate/image/check.png') }}" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" id="flue" value="{{ getvalue('water_fuel_satisfactory', $formData['form_part_4']) }}" name=""@if(getvalue('water_fuel_satisfactory', $formData['form_part_4']) == true) checked="checked" @endif />Water/Fuel-Satisfactory </label>
-
-
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
                             <img src="{{ asset('certificate/image/check.png') }}" style="display: inline;width:14px;" alt="check-img" style="display: block; margin: auto;" >  <label> <input type="checkbox" class="radio" value="{{ getvalue('heat_exchanger', $formData['form_part_5']) }}" name="" @if(getvalue('heat_exchanger', $formData['form_part_5']) == true) checked="checked" @endif/>Heat Exchanger</label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
                             <img src="{{ asset('certificate/image/check.png') }}" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('burn_washer_cleaned', $formData['form_part_6']) }}" name="" @if(getvalue('burn_washer_cleaned', $formData['form_part_6']) == true) checked="checked" @endif />Burner Washed & Cleaned</label>
-
                         </td>
                      </tr>
                      <tr>
@@ -394,13 +390,11 @@
                      </tr>
                      <tr>
                         <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
-                            
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
                             <img src="{{ asset('certificate/image/check.png') }}" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('fuel', $formData['form_part_5']) }}" name="" @if(getvalue('fuel', $formData['form_part_5']) == true) checked="checked" @endif/>Fuel Pressure & Type</label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                          
                         </td>
                      </tr>
                     
@@ -517,7 +511,7 @@
       </div>
   </div>
 </div>
-<pagebreak></pagebreak>
+
 
 <!-- Table 8 -->
 
