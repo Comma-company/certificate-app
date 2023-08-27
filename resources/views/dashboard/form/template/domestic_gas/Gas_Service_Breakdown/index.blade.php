@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.5">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>pdf</title>
 </head>
 <style>
@@ -10,7 +10,11 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+    }'
+    @page{
+        size: 8.5in 11in;
     }
+
 </style>
  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
