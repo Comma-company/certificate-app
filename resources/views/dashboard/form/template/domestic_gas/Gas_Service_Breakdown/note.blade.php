@@ -137,7 +137,7 @@ h4 {
             {{ $attachment->note_title ? $attachment->note_title : ' ' }}
           </th>
         </tr>
-        <tr style=" border: solid 1px #00935f;">
+        <tr style=" border: solid 1px yellow;">
           <th style="width: 50%; padding: 5px 20px; line-height: 30px; padding-bottom: 5px;" class="main-text">
             {{ $attachment->note_body ? $attachment->note_body : ' ' }}
           </th>

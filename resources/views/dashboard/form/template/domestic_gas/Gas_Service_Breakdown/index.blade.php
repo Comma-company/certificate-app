@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>pdf</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <style>
      @page :first {
@@ -50,8 +51,10 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+   
+
     <script>
-     $(function(){
+    $(document).ready(function(){
       formatUI();
     
     $('input[type="checkbox"]').on('click',function(){
@@ -60,16 +63,12 @@
     
     function formatUI()
     {
-        $.each($('input[type="checkbox"]'),function(){
-             if($(this).prop('checked'))
-             {
-                $(this).hide();
-               $(this).parent().prev('img').show();
-             }
-             else{
-            $(this).show();
-              $(this).parent().prev('img').hide();
-             }
+        $('input[type="checkbox"]').each(function() {
+            if ($(this).prop('checked')) {
+                $('#checkImage').show();
+            } else {
+                $('#checkImage').hide();
+            }
         });
     }
        
@@ -243,8 +242,8 @@
                         <tr>
                             <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
                                 <span style="font-weight: 700;">Description of work: </span>
-                                <img src="{{ asset('certificate/image/check.png') }}" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('service', $formData['form_part_1']) }}" name="one" @if(getvalue('service', $formData['form_part_1']) == "True") checked="checked" @endif/>Service</label>
-                                <img src="{{ asset('certificate/image/check.png') }}" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('Breakdown', $formData['form_part_1']) }}" name="two"@if(getvalue('Breakdown', $formData['form_part_1']) == "True") checked="checked" @endif />Breakdown</label>
+                                <img id="checkImage"src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:none; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('service', $formData['form_part_1']) }}" name="one" @if(getvalue('service', $formData['form_part_1']) == "True") checked="checked" @endif/>Service</label>
+                                <img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display: none; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('Breakdown', $formData['form_part_1']) }}" name="two"@if(getvalue('Breakdown', $formData['form_part_1']) == "True") checked="checked" @endif />Breakdown</label>
                                
                             
                                
@@ -353,69 +352,69 @@
                   <tbody style="vertical-align: middle;" >
                      <tr>
                         <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
-                           <img src="{{ asset('certificate/image/check.png') }}" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" id="flue" value="{{ getvalue('water_fuel_satisfactory', $formData['form_part_4']) }}" name=""@if(getvalue('water_fuel_satisfactory', $formData['form_part_4']) == true) checked="checked" @endif />Water/Fuel-Satisfactory </label>
+                           <img id="checkImage" src="{{ asset('certificate/image/check.png') }}" alt="check-img" style="display:none; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" id="flue" value="{{ getvalue('water_fuel_satisfactory', $formData['form_part_4']) }}" name=""@if(getvalue('water_fuel_satisfactory', $formData['form_part_4']) == true) checked="checked" @endif />Water/Fuel-Satisfactory </label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            <img src="{{ asset('certificate/image/check.png') }}" style="display: inline;width:14px;" alt="check-img" style="display: block; margin: auto;width:14px" >  <label> <input type="checkbox" class="radio" value="{{ getvalue('heat_exchanger', $formData['form_part_5']) }}" name="" @if(getvalue('heat_exchanger', $formData['form_part_5']) == true) checked="checked" @endif/>Heat Exchanger</label>
+                            <img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:none; margin: auto;width:14px" >  <label> <input type="checkbox" class="radio" value="{{ getvalue('heat_exchanger', $formData['form_part_5']) }}" name="" @if(getvalue('heat_exchanger', $formData['form_part_5']) == true) checked="checked" @endif/>Heat Exchanger</label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            <img src="{{ asset('certificate/image/check.png') }}" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('burn_washer_cleaned', $formData['form_part_6']) }}" name="" @if(getvalue('burn_washer_cleaned', $formData['form_part_6']) == true) checked="checked" @endif />Burner Washed & Cleaned</label>
+                            <img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display: none; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('burn_washer_cleaned', $formData['form_part_6']) }}" name="" @if(getvalue('burn_washer_cleaned', $formData['form_part_6']) == true) checked="checked" @endif />Burner Washed & Cleaned</label>
                         </td>
                      </tr>
                      <tr>
                         <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
-                           <img src="{{ asset('certificate/image/check.png') }}" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" > <label> <input type="checkbox" class="radio" value="{{ getvalue('ventilation_size', $formData['form_part_4']) }}" name="" @if(getvalue('ventilation_size', $formData['form_part_4']) == true) checked="checked" @endif/>Ventilation Size H-L </label>
+                           <img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:none; margin: auto;width:14px;" > <label> <input type="checkbox" class="radio" value="{{ getvalue('ventilation_size', $formData['form_part_4']) }}" name="" @if(getvalue('ventilation_size', $formData['form_part_4']) == true) checked="checked" @endif/>Ventilation Size H-L </label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            <img src="{{ asset('certificate/image/check.png') }}" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('ignition', $formData['form_part_5']) }}" name=""@if(getvalue('ignition', $formData['form_part_5']) == true) checked="checked" @endif />Ignition</label>
+                            <img  id="checkImage"src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display: none; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('ignition', $formData['form_part_5']) }}" name=""@if(getvalue('ignition', $formData['form_part_5']) == true) checked="checked" @endif />Ignition</label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            <img src="{{ asset('certificate/image/check.png') }}" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('pilot_assembly', $formData['form_part_6']) }}" name=""@if(getvalue('pilot_assembly', $formData['form_part_6']) == true) checked="checked" @endif />Pilot Assembly Cleaned & Adjusted</label>
+                            <img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:none; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('pilot_assembly', $formData['form_part_6']) }}" name=""@if(getvalue('pilot_assembly', $formData['form_part_6']) == true) checked="checked" @endif />Pilot Assembly Cleaned & Adjusted</label>
                         </td>
                      </tr>
                      <tr>
                         <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
-                            <img src="{{ asset('certificate/image/check.png') }}" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('electrically_fused', $formData['form_part_4']) }}" name="" @if(getvalue('electrically_fused', $formData['form_part_4']) == true) checked="checked" @endif/>Electrically Fused </label>
+                            <img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:none; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('electrically_fused', $formData['form_part_4']) }}" name="" @if(getvalue('electrically_fused', $formData['form_part_4']) == true) checked="checked" @endif/>Electrically Fused </label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            <img src="{{ asset('certificate/image/check.png') }}" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('gas_valve', $formData['form_part_5']) }}" name="" @if(getvalue('gas_valve', $formData['form_part_5']) == true) checked="checked" @endif />Gas Value</label>
+                            <img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:none; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('gas_valve', $formData['form_part_5']) }}" name="" @if(getvalue('gas_valve', $formData['form_part_5']) == true) checked="checked" @endif />Gas Value</label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                             <img src="{{ asset('certificate/image/check.png') }}" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px" ><label> <input type="checkbox" class="radio" value="{{ getvalue('ignition_system', $formData['form_part_6']) }}" name="" @if(getvalue('ignition_system', $formData['form_part_6']) == true) checked="checked" @endif/>lgnition system Cleaned & Adjusted</label>
+                             <img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:none; margin: auto;width:14px" ><label> <input type="checkbox" class="radio" value="{{ getvalue('ignition_system', $formData['form_part_6']) }}" name="" @if(getvalue('ignition_system', $formData['form_part_6']) == true) checked="checked" @endif/>lgnition system Cleaned & Adjusted</label>
                         </td>
                      </tr>
                      <tr>
                         <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
-                            <img src="{{ asset('certificate/image/check.png') }}" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('correct_valving', $formData['form_part_4']) }}" name="" @if(getvalue('correct_valving', $formData['form_part_4']) == true) checked="checked" @endif />Correct Valving Arrangements </label>
+                            <img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:none; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('correct_valving', $formData['form_part_4']) }}" name="" @if(getvalue('correct_valving', $formData['form_part_4']) == true) checked="checked" @endif />Correct Valving Arrangements </label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            <img src="{{ asset('certificate/image/check.png') }}" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('fan', $formData['form_part_5']) }}" name=""@if(getvalue('fan', $formData['form_part_5']) == true) checked="checked" @endif />Fan</label>
+                            <img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:none; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('fan', $formData['form_part_5']) }}" name=""@if(getvalue('fan', $formData['form_part_5']) == true) checked="checked" @endif />Fan</label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            <img src="{{ asset('certificate/image/check.png') }}" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('burner_fas', $formData['form_part_6']) }}" name="" @if(getvalue('burner_fas', $formData['form_part_6']) == true) checked="checked" @endif/>Burner Fan & Airways Cleaned</label>
+                            <img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display: none; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('burner_fas', $formData['form_part_6']) }}" name="" @if(getvalue('burner_fas', $formData['form_part_6']) == true) checked="checked" @endif/>Burner Fan & Airways Cleaned</label>
                         </td>
                      </tr>
                      <tr>
                         <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
-                            <img src="{{ asset('certificate/image/check.png') }}" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('isolation_available', $formData['form_part_4']) }}" name="" @if(getvalue('isolation_available', $formData['form_part_4']) == true) checked="checked" @endif />Isolation Available-Electrical/Fuel (within 1mtr) </label>
+                            <img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display: none; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('isolation_available', $formData['form_part_4']) }}" name="" @if(getvalue('isolation_available', $formData['form_part_4']) == true) checked="checked" @endif />Isolation Available-Electrical/Fuel (within 1mtr) </label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                             <img src="{{ asset('certificate/image/check.png') }}" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('safety_device', $formData['form_part_5']) }}" name=""@if(getvalue('safety_device', $formData['form_part_5']) == true) checked="checked" @endif />Safety Device</label>
+                             <img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:none; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('safety_device', $formData['form_part_5']) }}" name=""@if(getvalue('safety_device', $formData['form_part_5']) == true) checked="checked" @endif />Safety Device</label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            <img src="{{ asset('certificate/image/check.png') }}" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('service_heat_exchanger', $formData['form_part_6']) }}" name=""@if(getvalue('service_heat_exchanger', $formData['form_part_6']) == true) checked="checked" @endif />Heat Exchanger/Flueways Clean & Clear</label>
+                            <img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display: none; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('service_heat_exchanger', $formData['form_part_6']) }}" name=""@if(getvalue('service_heat_exchanger', $formData['form_part_6']) == true) checked="checked" @endif />Heat Exchanger/Flueways Clean & Clear</label>
                         </td>
                      </tr>
                      <tr>
                         <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
-                            <img src="{{ asset('certificate/image/check.png') }}" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('boiler_plant_room', $formData['form_part_4']) }}" name=""@if(getvalue('boiler_plant_room', $formData['form_part_4']) == true) checked="checked" @endif />Boiler/Plantroom Cleaner</label>
+                            <img id="checkImage"  src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display: none; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('boiler_plant_room', $formData['form_part_4']) }}" name=""@if(getvalue('boiler_plant_room', $formData['form_part_4']) == true) checked="checked" @endif />Boiler/Plantroom Cleaner</label>
                        
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            <img src="{{ asset('certificate/image/check.png') }}" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('control_box', $formData['form_part_5']) }}" name=""@if(getvalue('control_box', $formData['form_part_5']) == true) checked="checked" @endif />Control Box</label>
+                            <img id="checkImage"  src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:none; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('control_box', $formData['form_part_5']) }}" name=""@if(getvalue('control_box', $formData['form_part_5']) == true) checked="checked" @endif />Control Box</label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            <img src="{{ asset('certificate/image/check.png') }}" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('fuel_electrical', $formData['form_part_6']) }}" name="" @if(getvalue('fuel_electrical', $formData['form_part_6']) == true) checked="checked" @endif/>Fuel & Electrical Supply Connected Correctly</label>
+                            <img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:none; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('fuel_electrical', $formData['form_part_6']) }}" name="" @if(getvalue('fuel_electrical', $formData['form_part_6']) == true) checked="checked" @endif/>Fuel & Electrical Supply Connected Correctly</label>
                         </td>
                      </tr>
                      <tr>
@@ -423,17 +422,17 @@
                             
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                           <img src="{{ asset('certificate/image/check.png') }}" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" > <label> <input type="checkbox" class="radio" value="{{ getvalue('burners_pilot', $formData['form_part_5']) }}" name="" @if(getvalue('burners_pilot', $formData['form_part_5']) == true) checked="checked" @endif/>Burners & Pilot</label>
+                           <img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display: none; margin: auto;width:14px;" > <label> <input type="checkbox" class="radio" value="{{ getvalue('burners_pilot', $formData['form_part_5']) }}" name="" @if(getvalue('burners_pilot', $formData['form_part_5']) == true) checked="checked" @endif/>Burners & Pilot</label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            <img src="{{ asset('certificate/image/check.png') }}" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('interlocks_noted', $formData['form_part_6']) }}" name=""@if(getvalue('interlocks_noted', $formData['form_part_6']) == true) checked="checked" @endif />Interlocks Noted & in Place</label>
+                            <img id="checkImage"src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display: none; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('interlocks_noted', $formData['form_part_6']) }}" name=""@if(getvalue('interlocks_noted', $formData['form_part_6']) == true) checked="checked" @endif />Interlocks Noted & in Place</label>
                         </td>
                      </tr>
                      <tr>
                         <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            <img src="{{ asset('certificate/image/check.png') }}" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('fuel', $formData['form_part_5']) }}" name="" @if(getvalue('fuel', $formData['form_part_5']) == true) checked="checked" @endif/>Fuel Pressure & Type</label>
+                            <img id="checkImage"src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:none; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="{{ getvalue('fuel', $formData['form_part_5']) }}" name="" @if(getvalue('fuel', $formData['form_part_5']) == true) checked="checked" @endif/>Fuel Pressure & Type</label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
                         </td>
