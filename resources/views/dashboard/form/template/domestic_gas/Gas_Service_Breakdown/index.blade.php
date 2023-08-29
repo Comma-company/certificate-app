@@ -556,9 +556,7 @@
                           <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px; width: 25%; ">
                        <p>     Enter a or value in the respective fields, as appropriate</p>
                             <p>here an item is not applicable insert N/A </p>
-                            <p>ddd</p>
-                            @dd(getvalue('service', $formData['form_part_1']));
-                               @dd(getvalue('fuel', $formData['form_part_5']));
+                            
                           </td>
                     </tr>
                  
