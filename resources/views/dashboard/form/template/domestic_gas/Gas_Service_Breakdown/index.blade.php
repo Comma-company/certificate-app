@@ -69,12 +69,12 @@
                         </th>
                     </tr>
                 </table>
-                <h2 style="color: #000; padding: 0; margin: 0; font-weight: 900;text-align: right">
+                <h2 style="color: #000; padding: 0; margin: 0; font-weight: 700;text-align: right">
                     Breakdown/Service Record INSTALLATION WORKS CERTIFICATE
                 </h2>
-                <p style="font-size: 10px; padding: 0; margin: 0; font-style: italic;text-align: right">
+                {{-- <p style="font-size: 10px; padding: 0; margin: 0; font-style: italic;text-align: right">
                     Issued in accordance with BS 7671: 2018+A2:2022 – Requirements for Gas Installations
-                </p>
+                </p> --}}
             </div>
             <div style="clear: both;"></div>
           </div>
@@ -82,7 +82,7 @@
     
     
     <!-- Table 1 -->
-  <div class="table-padding" style="padding: 10px;">
+  <div class="table-padding" style="padding:20px;">
       <div class="table table-1" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
         <!-- <div class="table-heading" style="display: block;  background-color: #FFF200; ">
             <h3 style="color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</h3>
@@ -276,14 +276,13 @@
   </div>
   
   <!-- Table 3 & 4 -->
-  <div style=" padding: 10px;">
+  <div style=" padding: 0px;">
   <div style="display: block; width: 100%; margin: auto;">
     <div style="display: inline-block; width: 100%;">
     <table style="width: 100%; border: 1px solid black;">
     <thead>
         <tr style="background-color: #FFF200;">
              <th  style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">Notes</th>
-                 
         </tr>
     </thead>
     <tbody>
@@ -311,7 +310,7 @@
 </div>
 </div>
 <!-- Table 5 -->
-<div class="table-padding" style="padding: 10px;">
+<div class="table-padding" style="padding: 30px;">
     <div class="table table-2" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
       <!-- <div class="table-heading" style="display: block;  background-color: #FFF200; ">
           <h3 style="color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</h3>
@@ -424,11 +423,9 @@
 </div>
 <pagebreak></pagebreak>
 <!-- Table 6 -->
-<div class="table-padding" style="padding: 10px;">
+<div class="table-padding" style="padding: 30px;">
     <div class="table table-2" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
-      <!-- <div class="table-heading" style="display: block;  background-color: #FFF200; ">
-          <h3 style="color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</h3>
-      </div> -->
+      
       <div class="table-content" style="padding: 0px;">
          <div class="pdf-table" style="display: block; ">
               <table style="width: 100%;">
