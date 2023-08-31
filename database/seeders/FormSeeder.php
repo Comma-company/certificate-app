@@ -196,7 +196,7 @@ class FormSeeder extends Seeder
             [
                 "name" => "Landlord Gas Safety record for the Leisure Industry",
                 "type" => "Commercial Gas",
-                'status' => 'coming_soon',
+                'status' => 'live',
                 'file_name' => "Landlord_Gas_Safety_record_for_the_Leisure_Industry",
                 'category_id' => '2',
             ],

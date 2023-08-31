@@ -29,6 +29,7 @@ use App\Certificate\DomesticElectrical\MinorElectrical;
 use App\Certificate\DomesticGas\GasServiceBreakdown;
 use App\Certificate\DomesticGas\ServiceMaintanceRecord;
 use App\Certificate\DomesticGas\GasTestingPurging;
+use App\Certificate\CommercialGas\LeisureIndustryGasSafetyRecord;
 
 class CertificateController extends Controller
 {
@@ -508,10 +509,13 @@ class CertificateController extends Controller
         {
            $form = GasServiceBreakdown::getPdf($certificate);
        }elseif ($file_name == 'Service_Maintance_Record') {
-        $form =ServiceMaintanceRecord::openPdf($certificate);
+        $form =ServiceMaintanceRecord::getPdf($certificate);
     }elseif ($file_name == 'Gas_Testing_Purging') {
-        $form =GasTestingPurging::openPdf($certificate);
+        $form =GasTestingPurging::getPdf($certificate);
+    }elseif ($file_name == 'Landlord_Gas_Safety_record_for_the_Leisure_Industry') {
+        $form =LeisureIndustryGasSafetyRecord::getPdf($certificate);
     }
+
         return $form;
     }
 

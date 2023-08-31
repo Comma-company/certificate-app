@@ -16,6 +16,7 @@ use App\Certificate\DomesticElectrical\MinorElectrical;
 use App\Certificate\DomesticGas\GasServiceBreakdown;
 use App\Certificate\DomesticGas\ServiceMaintanceRecord;
 use App\Certificate\DomesticGas\GasTestingPurging;
+use App\Certificate\CommercialGas\LeisureIndustryGasSafetyRecord;
 class CertificateEmail extends Mailable
 {
     use Queueable, SerializesModels;
@@ -65,6 +66,8 @@ class CertificateEmail extends Mailable
             $file = ServiceMaintanceRecord::stringCode($certificate);
         }elseif ($file_name == 'Gas_Testing_Purging') {
             $form =GasTestingPurging::stringCode($certificate);
+        }elseif ($file_name == 'Landlord_Gas_Safety_record_for_the_Leisure_Industry') {
+            $file = LeisureIndustryGasSafetyRecord::stringCode($certificate);
         }
 
 
