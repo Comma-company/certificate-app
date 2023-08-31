@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,7 +65,7 @@
                         <th style="padding: 10px;">
                             <div style="padding: 0 120px 0 0"><h3>{{$data->id ?? 0}}</h3></div>
                         </th>
-                        <th bgcolor="#FFF200" style="color:#000 ; padding: 10px">
+                        <th  style="color:#000 ; padding: 10px;background-color: #FFF200;">
                             <div style="padding: 0 140px 0 10px"><h3>NO</h3></div>
                         </th>
                     </tr>
@@ -276,7 +277,7 @@
   <!-- Table 3 & 4 -->
   <div style=" padding: 10px;">
   <div style="display: block; width: 100%; margin: auto;">
-    <div style="display: inline-block; width: 100%;">
+    <div style=" width: 49.5%;float:left;margin-right:17px;">
     <table style="width: 100%; border: 1px solid black;">
     <thead>
         <tr style="background-color: #FFF200;">
@@ -290,7 +291,7 @@
     </tbody>
     </table>
     </div>
-    <div style="display: inline-block; width: 100%;">
+    <div style="width: 49.5%;float:left;">
       <table style="width: 100%; border: 1px solid black;">
     <thead>
         <tr style="background-color: #FFF200;">
@@ -300,7 +301,7 @@
     </thead>
     <tbody>
         <tr>
-            <td style="height: 50px; overflow: scroll;">{{ getvalue('spares_parts_required', $formData['form_part_3']) }}</td>
+            <td style="height: 50px; overflow: scroll; ">{{ getvalue('spares_parts_required', $formData['form_part_3']) }}</td>
         </tr>
     </tbody>
     </table>
