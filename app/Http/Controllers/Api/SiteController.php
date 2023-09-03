@@ -126,7 +126,7 @@ class SiteController extends Controller
         $request->validate([
             'type' => ['required'],
             'f_name' =>  ['required'],
-            'l_name' =>  ['required'],
+            // 'l_name' =>  ['required'],
             'phone' =>  ['required'],
             'email' =>  ['required'],
         ]);
@@ -135,7 +135,7 @@ class SiteController extends Controller
         $site->siteContact()->update([
             'type' => $request->type,
             'f_name' => $request->first_name,
-            'l_name' => $request->list_name,
+            // 'l_name' => $request->list_name,
             'phone' => $request->phone,
             'email' => $request->email,
         ]);
