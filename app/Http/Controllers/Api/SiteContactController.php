@@ -20,7 +20,7 @@ class SiteContactController extends Controller
             //'l_name' => 'required',
             'phone' => 'required',
             'email' => 'required|email',
-            'type' => 'required|in:flat,studio,house,office,warehouse,others',
+            'type' => 'required',
         ]);
         $user =  Auth::guard('sanctum')->user();
 
@@ -47,7 +47,7 @@ class SiteContactController extends Controller
         $site->siteContact()->update([
             'type' => $request->type,
             'f_name' => $request->first_name,
-            'l_name' => $request->last_name,
+            // 'l_name' => $request->last_name,
             'phone' => $request->phone,
             'email' => $request->email,
         ]);
