@@ -236,6 +236,14 @@ class FormSeeder extends Seeder
                 'file_name' => "Gas_Service_Breakdown",
                 'category_id' => '2',
             ],
+            [
+                "name" => "Electrical Isolation Form",
+                "type" => "Domestic Electrical",
+                "status" => 'live',
+                "file_name" =>"Electrical_Isolation_Form",
+                'category_id' => '1',
+            ],
+
             
         ];
         // DB::table('forms')->truncate();
