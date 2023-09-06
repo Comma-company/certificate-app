@@ -67,7 +67,7 @@
                   <p style="color: #2a98fc; font-weight: bold;">COMPANY/ENGINEER</p>
                   <div style="margin-bottom: 5px;">
                       <label style="width: 35%; display: inline-block; ">Company Name:</label>
-                      <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;">{{ $data->user->company_name }}</div>
+                      <div style="display: inline-block; width: 62%; margin-left: 4px; border: 1px solid #ddd; padding: 5px 10px;"></div>
                   </div>
                   <div style="margin-bottom: 5px;">
                     <label style="width: 35%; display: inline-block; ">Gas Safe Register No:</label>
