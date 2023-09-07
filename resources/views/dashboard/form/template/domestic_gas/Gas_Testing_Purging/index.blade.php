@@ -16,7 +16,7 @@
     <!-- Heading of PDF -->
     <div class="pdf-headings" style="padding: 10px; text-align: end;">
         <div class="pdf-headings" style="padding: 10px 0; justify-content: end; display: flex;align-items: baseline;">
-            <p style=" font-size: 16px;margin: 0; color: #000;font-weight: 400;padding: 12px 8px; line-height: 0;background-color: white; border: 3px solid yellow;">29</h2>
+            <p style=" font-size: 16px;margin: 0; color: #000;font-weight: 400;padding: 12px 8px; line-height: 0;background-color: white; border: 3px solid yellow;">{{ $data->id }}</h2>
             <p style="font-size: 16px;margin: 0; color: #000; font-weight: 400;padding: 5px; background-color: yellow; border: 1px solid yellow;" >NO</p>
         </div>
         <h2 style=" font-size: 24px; font-weight: 700; line-height: 0;">Gas Test & Purge INSTALLATION WORKS CERTIFICATE</h2>
