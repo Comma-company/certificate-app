@@ -31,4 +31,9 @@ class FormValidController extends Controller
       ];
         return responseJson(true,'success created',$data);
     }
+    public function getYears(Request $request){
+      $year_array =['1','3','5'];
+      return responseJson(true,'success array',$year_array);
+
+    }
 }
