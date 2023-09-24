@@ -27,10 +27,11 @@ use App\Certificate\DomesticElectrical\ElectricalDangerNotification;
 use App\Certificate\DomesticElectrical\DomesticElectricalInstallationCertificate;
 use App\Certificate\DomesticElectrical\MinorElectrical;
 use App\Certificate\DomesticGas\GasServiceBreakdown;
-use App\Certificate\DomesticGas\ServiceMaintanceRecord;
 use App\Certificate\DomesticGas\GasTestingPurging;
+use App\Certificate\DomesticGas\ServiceMaintanceRecord;
 use App\Certificate\CommercialGas\LeisureIndustryGasSafetyRecord;
 use App\Certificate\DomesticElectrical\ElectricalIsolationForm;
+use App\Models\FormValid;
 
 class CertificateController extends Controller
 {
@@ -99,13 +100,18 @@ class CertificateController extends Controller
 
     public function store(Request $request)
     {
-
+        
         $request->validate([
             'customer_id' => ['sometimes', 'required', 'exists:customers,id'],
             'form_id' => ['required', 'exists:forms,id'],
             'data' => ['required'],
             'site_id'=>['required', 'exists:sites,id'],
         ]);
+        $check = FormValid::where('form_id',$request->form_id)->first();
+        $years = (int)$check->years;
+        $currentDate = date('Y-m-d'); 
+        $daysToAdd = $years * 365;
+        $targetDate = date('Y-m-d', strtotime($currentDate . ' + ' . $daysToAdd . ' days'));
         $data = new Certificate();
         $data->user_id = authUser('sanctum')->id;
         $data->form_id = $request->form_id;
@@ -113,6 +119,7 @@ class CertificateController extends Controller
         $data->status_id = $request->status_id;
         $data->site_id=$request->site_id;
         $data->data = $request->data;
+        $data->expire = $targetDate;
         $data->save();
         if ($request->form_images) {
             $images = $request->form_images;
@@ -126,44 +133,38 @@ class CertificateController extends Controller
         // if ($request->form_attachments){
         //         $images=$request->form_attachments;
         //     foreach ($images as $key =>$imageFile){
-
+               
         //        if (isset($imageFile['image']) && is_file($imageFile['image'])) {
         //            $image = uploadImage($imageFile['image'], $imageFile['id']);
-
+                  
         //              $note = $imageFile['note'] ?? '';
         //              $exclude = $imageFile['exclude'] ?? '';
         //              $data->certificateAttachments()->create([
         //                 'image' => $image['file_url'],
         //                 'note' => $note,
         //                 'exclude' => $exclude,
-
+                        
         //             ]);
-
-
-
-
+                     
+                  
+                   
+                   
         //         }
 
         //     }
-
+           
         // }
-
-
+        
+        
         if ($request->customer_signature) {
             $customer_signature = $request->customer_signature;
             $image = uploadImage($customer_signature, 'customer_signature');
             $data->files()->create($image);
         }
 
-        $body = [
-            "form_data" => $data,
-            // 'html_content' => $html
-        ];
-
-        return responseJson(true, 'success created', $body);
         $form = Form::findOrFail($request->form_id);
 
-       /*  $folder_name = '';
+        $folder_name = '';
         if ($form->type == 'Domestic Electrical') {
             $folder_name = 'domestic_electrical';
         } else if ($form->type == 'Domestic Gas') {
@@ -183,7 +184,7 @@ class CertificateController extends Controller
             return responseJson(true, 'success created', $body);
         } else {
             return responseJson(false, 'page not found', '', 404);
-        } */
+        }
     }
 
 
@@ -248,7 +249,6 @@ class CertificateController extends Controller
             'note_type_id' => ['required'],
             'body' => ['required'],
         ]);
-
         $user = authUser('sanctum');
         $note = CertificateNote::where('user_id', $user->id)->find($noteId);
         if (!$note) {
@@ -332,17 +332,17 @@ class CertificateController extends Controller
         if (!$certificate) {
             return responseJson(false, 'Certificate not found', '', 404);
         }
-
+    
         $certificateAttachment = $certificate->certificateAttachments()->where('id', $fileId)->first();
-
+    
         if (!$certificateAttachment) {
             return responseJson(false, 'Certificate attachment not found', '', 404);
         }
         Storage::delete($certificateAttachment->image);
         $certificateAttachment->delete();
-
+    
         return responseJson(true, 'Image deleted successfully');
-
+       
     }
 
 
@@ -378,7 +378,7 @@ class CertificateController extends Controller
         //         if ($existingAttachment) {
         //             $existingAttachment->delete();
         //         }
-
+                
         //         if (is_file($imageFile['image'])) {
         //             $image = uploadImage($imageFile['image'], $imageFile['id']);
         //             $note = $imageFile['note'] ?? '';
@@ -401,6 +401,7 @@ class CertificateController extends Controller
 
         return responseJson(true, 'success update', $data);
     }
+    
 
 
 
@@ -412,20 +413,21 @@ class CertificateController extends Controller
             'user_id' => $user_id,
             'id' => $id,
         ])
-            ->with(['status', 'notes.files', 'form', 'customer', 'site.country',
+            ->with(['status', 'notes.files', 'form', 'customer', 'site.country' ,
              'customer.contacts', 'customer.country', 'certificateAttachments.image','customer.billing.paymentTerm'])
             ->first();
             if ($data && $data->site && isset($data->site->address) && isset($data->site->postal_code)) {
-
+              
                 if (strpos($data->site->address, $data->site->postal_code) !== false) {
                     $data->site->address = str_replace($data->site->postal_code, '', $data->site->address);
                     $data->site->address = trim($data->site->address);
                 }
-
-
-
-
+               
+        
+              
+                
             }
+            
 
         if ($data) {
 
@@ -440,18 +442,19 @@ class CertificateController extends Controller
                 $folder_name = 'commercial_gas';
             }
 
+
             // view page name
-            $page_path = 'dashboard.form.template.' . $folder_name . '.' . $form->file_name . '.index';
+           $page_path = 'dashboard.form.template.' . $folder_name . '.' . $form->file_name . '.index';
 
             if (View::exists($page_path)) {
 
 
-                $gaz_safety_data =  data_get($data->data, 'gaz_safety_data');
-                $final_result = data_get($data->data, 'gaz_safety_data.*.final_result');
+                // $gaz_safety_data =  data_get($data->data, 'gaz_safety_data');
+                // $final_result = data_get($data->data, 'gaz_safety_data.*.final_result');
 
 
 
-                $user = User::where('id', $user_id)->first();
+                // $user = User::where('id', $user_id)->first();
                 /*  $html = View::make($page_path, [
                     'form_data' => $data,
                     'data' => $data->data,
@@ -461,7 +464,7 @@ class CertificateController extends Controller
 
                 $form_data = collect($data);
                 $form_data->all();
-                  $body = [
+                $body = [
                     "form_data" => $form_data,
                     // 'html_content' => $html
                 ];
@@ -482,9 +485,6 @@ class CertificateController extends Controller
     return responseJson(true, 'view Note ',$data);
     }
 
-
-
-
     function getPdfForm($id)
     {
         $user = Auth::guard('sanctum')->user();
@@ -504,21 +504,20 @@ class CertificateController extends Controller
             $form = ElectricalDangerNotification::getPdf($certificate);
         } elseif ($file_name == 'Domestic_Electrical_Installation_Certificate') {
             $form = DomesticElectricalInstallationCertificate::getPdf($certificate);
-        }elseif ($file_name == 'Minor_Electrical') {
+        } elseif ($file_name == 'Minor_Electrical') {
             $form = MinorElectrical::getPdf($certificate);
         }elseif ($file_name == 'Gas_Service_Breakdown')	
-        {
-           $form = GasServiceBreakdown::getPdf($certificate);
-       }elseif ($file_name == 'Service_Maintance_Record') {
-        $form =ServiceMaintanceRecord::getPdf($certificate);
-    }elseif ($file_name == 'Gas_Testing_Purging') {
-        $form =GasTestingPurging::getPdf($certificate);
-    }elseif ($file_name == 'Landlord_Gas_Safety_record_for_the_Leisure_Industry') {
-        $form =LeisureIndustryGasSafetyRecord::getPdf($certificate);
-    }elseif ($file_name == 'Electrical_Isolation_Form') {
-        $form =ElectricalIsolationForm::getPdf($certificate);
-    }
-
+         {
+            $form = GasServiceBreakdown::getPdf($certificate);
+        }elseif ($file_name == 'Service_Maintance_Record') {
+            $form =ServiceMaintanceRecord::getPdf($certificate);
+        }elseif ($file_name == 'Gas_Testing_Purging') {
+            $form =GasTestingPurging::getPdf($certificate);
+        }elseif ($file_name == 'Landlord_Gas_Safety_record_for_the_Leisure_Industry') {
+            $form =LeisureIndustryGasSafetyRecord::getPdf($certificate);
+        }elseif ($file_name == 'Electrical_Isolation_Form') {
+            $form =ElectricalIsolationForm::getPdf($certificate);
+        }
 
         return $form;
     }

@@ -23,6 +23,7 @@ class FormSeeder extends Seeder
                 'status' => 'live',
                 'file_name' => "Portable_Appliance_Testing",
                 'category_id' => '1',
+                'valid' => ['1','3','5'],
             ],
             [
                 "name" => "Minor Electrical Installation Works Cert",
@@ -30,6 +31,7 @@ class FormSeeder extends Seeder
                 'status' => 'live',
                 'file_name' => "Minor_Electrical",
                 'category_id' => '1',
+                'valid' => ['1','3','5'],
             ],
             [
                 "name" => "Domestic Electrical Installation Certificate",
@@ -37,6 +39,7 @@ class FormSeeder extends Seeder
                 'status' => 'live',
                 'file_name' => "Domestic_Electrical_Installation_Certificate",
                 'category_id' => '1',
+                'valid' => ['1','3','5'],
             ],
             [
                 "name" => "Electrical Danger Notification",
@@ -44,6 +47,7 @@ class FormSeeder extends Seeder
                 'status' => 'live',
                 'file_name' => "Electrical_Danger_Notification",
                 'category_id' => '1',
+                'valid' => ['1','3','5'],
             ],
             [
                 "name" => "Domestic Electrical installation Condition report",
@@ -51,6 +55,7 @@ class FormSeeder extends Seeder
                 'status' => 'live',
                 'file_name' => "Domestic_Electrical_installation_Condition_report",
                 'category_id' => '1',
+                'valid' => ['3','5'],
             ],
             [
                 "name" => "G823 SSEG Installation Commissing Confirmation",
@@ -58,6 +63,7 @@ class FormSeeder extends Seeder
                 'status' => 'coming_soon',
                 'file_name' => "G823_SSEG_Installation_Commissing_Confirmation",
                 'category_id' => '1',
+                'valid' => ['1','3','5'],
             ],
             [
                 "name" => "Domestic visual condition report",
@@ -65,6 +71,7 @@ class FormSeeder extends Seeder
                 'status' => 'coming_soon',
                 'file_name' => "Domestic_visual_condition_report",
                 'category_id' => '1',
+                'valid' => ['1','3','5'],
             ],
             [
                 "name" => "EMERGENCY LIGHTING SITE COMPLIANCE CERTIFICATE",
@@ -72,6 +79,7 @@ class FormSeeder extends Seeder
                 'status' => 'coming_soon',
                 'file_name' => "EMERGENCY_LIGHTING_SITE_COMPLIANCE_CERTIFICATE",
                 'category_id' => '1',
+                'valid' => ['1','3','5'],
             ],
 
             [
@@ -80,6 +88,7 @@ class FormSeeder extends Seeder
                 'status' => 'live',
                 'file_name' => "Landlord_Homeowner_Gas_Safety_Record",
                 'category_id' => '1',
+                'valid' => ['1'],
             ],
             [
                 "name" => "Caravan/Boat Gas Safety Inspection Record",
@@ -87,6 +96,7 @@ class FormSeeder extends Seeder
                 'status' => 'coming_soon',
                 'file_name' => "Caravan_Boat_Gas_Safety_Inspection_Record",
                 'category_id' => '2',
+                'valid' => ['1'],
             ],
             [
                 "name" => "Warning Notice ",
@@ -94,6 +104,7 @@ class FormSeeder extends Seeder
                 'status' => 'coming_soon',
                 'file_name' => "Warning_Notice",
                 'category_id' => '2',
+                'valid' => ['1'],
             ],
             [
                 "name" => "Gas Inspection Record",
@@ -101,6 +112,7 @@ class FormSeeder extends Seeder
                 'status' => 'coming_soon',
                 'file_name' => "Gas_Inspection_Record",
                 'category_id' => '2',
+                'valid' => ['1'],
             ],
             [
                 "name" => "Gas Testing & Purging",
@@ -108,6 +120,7 @@ class FormSeeder extends Seeder
                 'status' => 'live',
                 'file_name' => "Gas_Testing_Purging",
                 'category_id' => '2',
+                'valid' => ['1'],
             ],
             [
                 "name" => "Fumes Investigation Report",
@@ -115,6 +128,7 @@ class FormSeeder extends Seeder
                 'status' => 'coming_soon',
                 'file_name' => "Fumes_Investigation_Report",
                 'category_id' => '2',
+                'valid' => ['1'],
             ],
             [
                 "name" => "Service/Maintance Record",
@@ -122,6 +136,7 @@ class FormSeeder extends Seeder
                 'status' => 'live',
                 'file_name' => "Service_Maintance_Record",
                 'category_id' => '2',
+                'valid' => ['1'],
             ],
             [
                 "name" => "Gas Boilier System Commission Checklist",
@@ -129,6 +144,7 @@ class FormSeeder extends Seeder
                 'status' => 'coming_soon',
                 'file_name' => "Gas_Boilier_System_Commission_Checklist",
                 'category_id' => '2',
+                'valid' => ['1'],
             ],
             [
                 "name" => "Flues In Voids",
@@ -136,6 +152,7 @@ class FormSeeder extends Seeder
                 'status' => 'coming_soon',
                 'file_name' => "Flues_In_Voids",
                 'category_id' => '2',
+                'valid' => ['1'],
             ],
             [
                 "name" => "Existing Concealed Room-Sealed Fanned Draught Boiler Chimney Assessment",
@@ -143,6 +160,7 @@ class FormSeeder extends Seeder
                 'status' => 'coming_soon',
                 'file_name' => "Existing_Concealed_Room_Sealed",
                 'category_id' => '2',
+                'valid' => ['1'],
             ],
             [
                 "name" => "Chimney, Fireplace & Hearth Commissioning Record",
@@ -150,6 +168,7 @@ class FormSeeder extends Seeder
                 'status' => 'coming_soon',
                 'file_name' => "Chimney_Fireplace_Hearth_Commissioning_Record",
                 'category_id' => '2',
+                'valid' => ['1'],
             ],
             [
                 "name" => "Visual Risk Assesment of Gas Appliances",
@@ -157,6 +176,7 @@ class FormSeeder extends Seeder
                 'status' => 'coming_soon',
                 'file_name' => "Visual_Risk_Assesment_of_Gas_Appliances",
                 'category_id' => '2',
+                'valid' => ['1'],
             ],
             [
                 "name" => "Central Heating commissioing Inspection Record",
@@ -164,6 +184,7 @@ class FormSeeder extends Seeder
                 'status' => 'coming_soon',
                 'file_name' => "Central_Heating_commissioing_Inspection_Record",
                 'category_id' => '2',
+                'valid' => ['1'],
             ],
             [
                 "name" => "Electrical Bonding Notice",
@@ -171,6 +192,7 @@ class FormSeeder extends Seeder
                 'status' => 'coming_soon',
                 'file_name' => "Electrical_Bonding_Notice",
                 'category_id' => '2',
+                'valid' => ['1'],
             ],
             [
                 "name" => "Gas Testing & Purging Non Domestic",
@@ -178,6 +200,7 @@ class FormSeeder extends Seeder
                 'status' => 'coming_soon',
                 'file_name' => "Gas_Testing_Purging_Non_Domestic",
                 'category_id' => '2',
+                'valid' => ['1'],
             ],
             [
                 "name" => "Commercial Catering Inspection",
@@ -185,6 +208,7 @@ class FormSeeder extends Seeder
                 'status' => 'coming_soon',
                 'file_name' => "Commercial_Catering_Inspection",
                 'category_id' => '2',
+                'valid' => ['1'],
             ],
             [
                 "name" => "Mobile Catering Vehicle/Trailer Safety Record",
@@ -192,6 +216,7 @@ class FormSeeder extends Seeder
                 'status' => 'coming_soon',
                 'file_name' => "Mobile_Catering_Vehicle_Trailer_Safety_Record",
                 'category_id' => '2',
+                'valid' => ['1'],
             ],
             [
                 "name" => "Landlord Gas Safety record for the Leisure Industry",
@@ -199,6 +224,7 @@ class FormSeeder extends Seeder
                 'status' => 'live',
                 'file_name' => "Landlord_Gas_Safety_record_for_the_Leisure_Industry",
                 'category_id' => '2',
+                'valid' => ['1'],
             ],
             [
                 "name" => "Non Domestic Inspection Record",
@@ -206,6 +232,7 @@ class FormSeeder extends Seeder
                 'status' => 'coming_soon',
                 'file_name' => "Non_Domestic_Inspection_Record",
                 'category_id' => '2',
+                'valid' => ['1'],
             ],
             [
                 "name" => "Plant Commissioning Servicing Record",
@@ -213,6 +240,7 @@ class FormSeeder extends Seeder
                 'status' => 'coming_soon',
                 'file_name' => "Plant_Commissioning_Servicing_Record",
                 'category_id' => '2',
+                'valid' => ['1'],
 
             ],
             [
@@ -221,6 +249,7 @@ class FormSeeder extends Seeder
                 'status' => 'coming_soon',
                 'file_name' => "Installation_commissioning_Decommissioning_Record",
                 'category_id' => '2',
+                'valid' => ['1'],
             ],
             [
                 "name" => "Gas Installation Safety Report",
@@ -228,6 +257,7 @@ class FormSeeder extends Seeder
                 'status' => 'coming_soon',
                 'file_name' => "Gas_Installation_Safety_Report",
                 'category_id' => '2',
+                'valid' => ['1'],
             ],
             [
                 "name" => "Gas Service Breakdown",
@@ -235,6 +265,7 @@ class FormSeeder extends Seeder
                 'status' => 'live',
                 'file_name' => "Gas_Service_Breakdown",
                 'category_id' => '2',
+                'valid' => ['1'],
             ],
             [
                 "name" => "Electrical Isolation Form",
@@ -242,8 +273,8 @@ class FormSeeder extends Seeder
                 "status" => 'live',
                 "file_name" =>"Electrical_Isolation_Form",
                 'category_id' => '1',
+                'valid' => ['1','3','5'],
             ],
-
             
         ];
         // DB::table('forms')->truncate();

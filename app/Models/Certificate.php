@@ -10,10 +10,11 @@ class Certificate extends Model
 {
     use HasFactory,FileableTrait;
 
-    protected $fillable = ['form_id', 'data', 'customer_id','user_id','tax_id', 'status_id','site_id'];
+    protected $fillable = ['form_id', 'data', 'customer_id','user_id','tax_id', 'status_id','site_id','expire'];
 
     protected $casts = [
-        'data' => 'array'
+        'data' => 'array',
+        'expire' => 'date'
     ];
 
     public function status()
@@ -58,4 +59,5 @@ class Certificate extends Model
         return $this->morphOne(File::class, 'file', 'model_type', 'model_id', 'id')
             ->where('name_file', 'customer_signature');
     }
+    
 }

@@ -146,7 +146,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::post('delete/{id}/attachment', [CertificateAttachmentController::class, 'destroy'])->middleware(['auth:sanctum', 'user.subscribe']);
         Route::post('attachment/{id}/update', [CertificateAttachmentController::class, 'update'])->middleware(['auth:sanctum', 'user.subscribe']);
         Route::post('form-valid/create',[FormValidController::class, 'createCertValid'])->middleware(['auth:sanctum']);
-        Route::get('get-years',[FormValidController::class,'getYears'])->middleware(['auth:sanctum']);
+        Route::get('get-years/form/{id}',[FormValidController::class,'getYears'])->middleware(['auth:sanctum']);
     });
     Route::post('store-image', [CertificateImageController::class, 'store'])->middleware('auth:sanctum');
     Route::post('delete-image/{id}', [CertificateImageController::class, 'deleteImage'])->middleware('auth:sanctum');

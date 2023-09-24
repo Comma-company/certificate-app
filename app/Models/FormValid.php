@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class FormValid extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id','form_id','days'];
+    protected $fillable = ['user_id','form_id','years'];
 
     public function user(){
         return $this->belongsTo(User::class,'user_id');

@@ -17,7 +17,7 @@ class CreateFormValidsTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('form_id');
-            $table->enum('years',['5','3','1']);
+             $table->string('years');
             $table->timestamps();
         });
     }
