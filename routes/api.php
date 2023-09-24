@@ -23,6 +23,7 @@ use App\Http\Controllers\Api\FormTemplateController;
 use App\Http\Controllers\Api\Auth\RegisterController;
 use App\Http\Controllers\Api\CertificateAttachmentController;
 use App\Http\Controllers\Api\CertificateImageController;
+use App\Http\Controllers\Api\FormValidController;
 
 
 
@@ -144,6 +145,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::post('create/attachment', [CertificateAttachmentController::class, 'store'])->middleware(['auth:sanctum', 'user.subscribe']);
         Route::post('delete/{id}/attachment', [CertificateAttachmentController::class, 'destroy'])->middleware(['auth:sanctum', 'user.subscribe']);
         Route::post('attachment/{id}/update', [CertificateAttachmentController::class, 'update'])->middleware(['auth:sanctum', 'user.subscribe']);
+        Route::post('form-valid/create',[FormValidController::class, 'createCertValid'])->middleware(['auth:sanctum']);
     });
     Route::post('store-image', [CertificateImageController::class, 'store'])->middleware('auth:sanctum');
     Route::post('delete-image/{id}', [CertificateImageController::class, 'deleteImage'])->middleware('auth:sanctum');

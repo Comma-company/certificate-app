@@ -2,9 +2,10 @@
 //Domestic_Electrical_installation_Condition_report
 
 namespace App\Certificate\DomesticElectrical;
-
+use App\Models\FormValid;
 use Mpdf\Mpdf;
 use Mpdf\Config\FontVariables;
+use Illuminate\Support\Facades\Auth;
 use Mpdf\Config\ConfigVariables;
 use Illuminate\Support\Facades\Storage;
 
@@ -39,6 +40,7 @@ class Eicr
         ]);
         $pdf_form->shrink_tables_to_fit = 1;
         $formData =  data_get($certificate->data, 'gaz_safety_data.0');
+        $valid = FormValid::where(['user_id' => Auth::guard('sanctum')->user()->id,'form_id' => $certificate->form->id])->first();
         $pdf_form->fontdata["fontawesome"] = [
             'R' => "fa-solid-900.tff",
             'I' => "fa-regular-400.ttf",
@@ -46,7 +48,8 @@ class Eicr
 
         $html = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_installation_Condition_report.index', [
             'data' => $certificate,
-            'formData' => $formData
+            'formData' => $formData,
+            'valid' => $valid,
         ])->render();
 
         $pdf_form->WriteHTML($html);
@@ -54,7 +57,8 @@ class Eicr
         $pdf_form->AddPage('L');
         $page_2 = view('dashboard.form.template.domestic_electrical.Domestic_Electrical_installation_Condition_report.page2', [
             'data' => $certificate,
-            'formData' => $formData
+            'formData' => $formData,
+            'valid' => $valid,
         ])->render();
         $pdf_form->WriteHTML($page_2);
 
