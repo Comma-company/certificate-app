@@ -6,23 +6,88 @@
     <title>pdf</title>
 </head>
 <style>
+    @page :first {
+                header: html_formHeader;
+                margin: 15px;
+                margin-bottom:0px;
+                margin-top:110px;
+                margin-header:20px;
+                size: landscape; /* <length>{1,2} | auto | portrait | landscape */
+               
+            }
+            .table-container {
+
+text-align: left;
+}
+.color-border tr td{
+border-color: #00935f;
+}
     body{
         margin: 0;
         padding: 0;
         box-sizing: border-box;
     }
 </style>
-<body>
-    <!-- Heading of PDF -->
-    <div class="pdf-headings" style="padding: 10px; text-align: end;">
-        <div class="pdf-headings" style="padding: 10px 0; justify-content: end; display: flex;align-items: baseline;">
-            <p style=" font-size: 16px;margin: 0; color: #000;font-weight: 400;padding: 12px 8px; line-height: 0;background-color: white; border: 3px solid green;">{{ $data->id }}</h2>
-            <p style="font-size: 16px;margin: 0; color: #000; font-weight: 400;padding: 5px; background-color: green; border: 1px solid green;" >NO</p>
-        </div>
-        <h2 style=" font-size: 24px; font-weight: 700; line-height: 0;">Electrical Isolation WORKS CERTIFICATE</h2>
-        <p style="font-size: 16px; color: #000; font-weight: 400;" >ssued in accordance with BS 7671: 2018+A2:2022 – Requirements for Electrical Installations</p>
-    </div>
+ <body style="width: 100%; margin: 0; overflow-x: hidden;">
+
+   <div
+      class="table-container"
+      style="font-family: 'FreeSans';">
+    <htmlpageheader name="formHeader">
+        <div style="margin: 10px 25px;  width: 100%;">
+            <div style="float: left;width:40%;">
+              @php
+              $firstCategory = $data->user->categories->firstWhere('pivot.category_id', 1);
+              $electricBoardIds = json_decode($firstCategory->pivot->electric_board_id, true);
+              $item =  App\Models\ElectricBoard::where('id',$electricBoardIds)->first();
+          @endphp
+          @if($item)
+          <img src="{{ asset('uploads/images/electric/'.$item->image) }}" width="160px" height="60px">
+          @endif
+              {{-- @if(in_array("1", $electricBoardIds))
+              <img src="{{ asset('uploads/images/electric/ELESSA.jpg') }}" width="160px" height="60px">
+               @elseif(in_array("2", $electricBoardIds))
+               <img src="{{ asset('uploads/images/electric/Stroma.png') }}" width="160px" height="60px">
+               @elseif(in_array("3", $electricBoardIds))
+               <img src="{{ asset('uploads/images/electric/Stroma.jpg') }}" width="160px" height="60px">
+               @elseif(in_array("4", $electricBoardIds))
+               <img src="{{ asset('uploads/images/electric/Stroma.jpg') }}" width="160px" height="60px">
+               @elseif(in_array("5", $electricBoardIds))
+               <img src="{{ asset('uploads/images/electric/Select.jpg') }}" width="160px" height="60px">
+               @elseif(in_array("6", $electricBoardIds))
+               <img src="{{ asset('uploads/images/electric/Napit.jpg') }}" width="160px" height="60px">
+               @else
+               <img src="{{ asset('uploads/images/electric/niceic-logo.jpg') }}" width="160px" height="60px">
+                @endif --}}
+
+                @if ($data->user->logo)
+                <img src="{{ $data->user->logo->url }}" style="margin-left:35px" width="160px">
+                @endif
+            </div>
+            <div style="float: left; margin-right: 46px; height: 70px;width: 60%;">
+                <table style="border: 1px solid #00935f;padding: 10px;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #00935f;">
+                    <tr style="padding: 10px;">
+                        <th style="padding: 10px;">
+                            <div style="padding: 0 120px 0 0"><h3>{{$data->id ?? 0}}</h3></div>
+                        </th>
+                        <th bgcolor="#00935f" style="color: #fff; padding: 10px">
+                            <div style="padding: 0 140px 0 10px"><h3>NO</h3></div>
+                        </th>
+                    </tr>
+                </table>
+                <h2 style="color: #00935f; padding: 0; margin: 0; font-weight: 900;text-align: right">
+                    Electrical Isolation WORKS CERTIFICATE
+                </h2>
+                <p style="font-size: 10px; padding: 0; margin: 0; font-style: italic;text-align: right">
+                    Issued in accordance with BS 7671: 2018 – Requirements for Electrical
+                    Installations
+                </p>
+            </div>
+            <div style="clear: both;"></div>
+          </div>
+    </htmlpageheader>
     
+    <div style="clear: both;"></div>
     <!-- Table 1 -->
   <div class="table-padding" style="padding: 10px;">
       <div class="table table-1" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
@@ -358,5 +423,6 @@
       </div>
   </div>
   </div>
+</div>
 </body>
 </html>

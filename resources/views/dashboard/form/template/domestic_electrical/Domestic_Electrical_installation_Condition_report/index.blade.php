@@ -48,10 +48,32 @@
         <htmlpageheader name="formHeader">
             <div style="margin: 10px 25px;  width: 100%;">
                 <div style="float: left;width:40%;">
-                    <img src="{{ asset('certificate/image/niceic-logo.png') }}"  width="160px" height="60px">
+                  @php
+                  $firstCategory = $data->user->categories->firstWhere('pivot.category_id', 1);
+                  $electricBoardIds = json_decode($firstCategory->pivot->electric_board_id, true);
+                  $item =  App\Models\ElectricBoard::where('id',$electricBoardIds)->first();
+                  @endphp
+                  @if($item)
+                  <img src="{{ asset('uploads/images/electric/'.$item->image) }}" width="160px" height="60px">
+                  @endif
+                  {{-- @if(in_array("1", $electricBoardIds))
+                  <img src="{{ asset('uploads/images/electric/ELESSA.jpg') }}" width="160px" height="60px">
+                   @elseif(in_array("2", $electricBoardIds))
+                   <img src="{{ asset('uploads/images/electric/Stroma.png') }}" width="160px" height="60px">
+                   @elseif(in_array("3", $electricBoardIds))
+                   <img src="{{ asset('uploads/images/electric/Stroma.jpg') }}" width="160px" height="60px">
+                   @elseif(in_array("4", $electricBoardIds))
+                   <img src="{{ asset('uploads/images/electric/Stroma.jpg') }}" width="160px" height="60px">
+                   @elseif(in_array("5", $electricBoardIds))
+                   <img src="{{ asset('uploads/images/electric/Select.jpg') }}" width="160px" height="60px">
+                   @elseif(in_array("6", $electricBoardIds))
+                   <img src="{{ asset('uploads/images/electric/Napit.jpg') }}" width="160px" height="60px">
+                   @else
+                   <img src="{{ asset('uploads/images/electric/niceic-logo.jpg') }}" width="160px" height="60px">
+                    @endif
                     @if ($data->user->logo)
                     <img src="{{ $data->user->logo->url }}" style="margin-left:35px" width="160px">
-                    @endif
+                    @endif --}}
                 </div>
                 <div style="float: left; margin-right: 46px; height: 70px;width: 60%;">
                     <table style="border: 1px solid #00935f;padding: 10px;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #00935f;">

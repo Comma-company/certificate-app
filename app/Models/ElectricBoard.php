@@ -9,7 +9,7 @@ class ElectricBoard extends Model
 {
     use HasFactory;
     protected $table='electric_boards';
-    protected $fillable = ['name'];
+    protected $fillable = ['name','image'];
     // public function category()
     // {
     //     return $this->hasMany(Category::class);

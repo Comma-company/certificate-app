@@ -332,7 +332,7 @@
         consideration any legislative or licensing requirements and the
         frequency and quality of maintenance that the installation can
         reasonably be expected to receive during its intended life. The period
-        should be agreed between relevant parties.
+        should be agreed between relevant parties.{{ $valid->years }}
       </p>
 
     </div>

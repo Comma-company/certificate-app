@@ -15,13 +15,25 @@ class ElectricBoardSeeder extends Seeder
     public function run()
     {
         $data=[
-            ['name' => 'ELECSA'],
-            ['name' => 'STROMA'],
-            ['name' => 'IET(Instituion of Engineering and Technology'],
-            ['name' => 'JIB(Joint Industry Board)'],
-            ['name' => 'SELECT(Scotland)'],
-            ['name' => 'NAPIT'],
-            ['name' => 'NICEIC'],
+            ['name' => 'ELECSA',
+             'image' => 'ELESSA.jpg',
+        ],
+            ['name' => 'STROMA',
+            'image' => 'Stroma.png',
+        ],
+            ['name' => 'IET(Instituion of Engineering and Technology',
+               'image' => 'Stroma.png'],
+            ['name' => 'JIB(Joint Industry Board)',
+             'image' => 'Stroma.png'
+        ],
+            ['name' => 'SELECT(Scotland)',
+            'image' => 'Select.png',
+        ],
+            ['name' => 'NAPIT',
+            'image' => 'Napit.png',
+        ],
+            ['name' => 'NICEIC',
+              'image' => 'niceic-logo.png'],
            
         ];
         foreach ($data as $key => $name) {
