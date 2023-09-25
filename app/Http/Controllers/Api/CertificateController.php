@@ -108,7 +108,12 @@ class CertificateController extends Controller
             'site_id'=>['required', 'exists:sites,id'],
         ]);
         $check = FormValid::where('form_id',$request->form_id)->first();
+        if($check == null){
+            $years = 1;
+        }else{
         $years = (int)$check->years;
+        }
+        
         $currentDate = date('Y-m-d'); 
         $daysToAdd = $years * 365;
         $targetDate = date('Y-m-d', strtotime($currentDate . ' + ' . $daysToAdd . ' days'));
