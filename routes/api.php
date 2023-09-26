@@ -53,6 +53,8 @@ Route::post('user-restore/{id}', [AuthController::class, 'restore'])
 Route::get('/business-type', [BusinessTypeController::class, 'index']);
 Route::get('/status', [StatusController::class, 'index']);
 Route::post('complete-infos', [RegisterController::class, 'completeInfoRegister']);
+Route::post('update-electricboard/{id}',[RegisterController::class,'updateElectricBoardId'])->middleware('auth:sanctum');
+Route::get('getLicenseDetails',[RegisterController::class,'getElectricBoardIdForCategory1'])->middleware('auth:sanctum');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::post('complete-register', [RegisterController::class, 'completeRegister']);

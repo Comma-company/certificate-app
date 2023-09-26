@@ -303,4 +303,38 @@ class RegisterController extends Controller
         }
         return responseJson(true, 'success created user', $user->load('categories'));
     }
+    public function getElectricBoardIdForCategory1()
+{
+    $user = authUser('sanctum');
+
+    if ($user) {
+        $category = $user->categories->firstWhere('name', 'Electrical Certificate');
+
+        if ($category) {
+            $electricBoardId = $category->pivot->electric_board_id;
+            return responseJson(true,'success',$electricBoardId);
+        } else {
+          return responseJson(false,'not found category',$category);
+           
+        }
+    } else {
+        
+        return responseJson(false,' not found category',$user);
+    }
+}
+
+    public function updateElectricBoardId($electricBoardId){
+        $user = authUser('sanctum');
+        $categoryId = 1;
+         $category = $user->categories()->find($categoryId);
+        if ($category) {
+            $category->pivot->electric_board_id = null;
+            $category->pivot->electric_board_id = json_encode([$electricBoardId]);
+            $data = $category->pivot->save();
+            return responseJson(true, 'success created user', $category);
+        }
+        return responseJson(false, 'Category not found', null);
+      
+        
+    }
 }
