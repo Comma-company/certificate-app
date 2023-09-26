@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>pdf</title>
 </head>
 <style>
-     @page :first {
+   @page :first {
                 header: html_formHeader;
                 margin: 15px;
                 margin-bottom:20px;
@@ -28,16 +29,27 @@
         font-family:fontawesome;
         src: url("{{ asset('admin/fonts/gnu-free-font/fa-solid-900.ttf') }}");
       }
+      
 
     body{
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        font-size: 12px;
+        
     }
     .table-container {
         padding: 10px;
         text-align: right;
       }
+      .checkImage {
+      width: 14px;
+      display: none;
+      margin: auto;
+    }
+      
+      
+
 </style>
  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -51,39 +63,64 @@
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-   
-
     
-<body style="width: 100%; margin: 0; overflow-y: hidden;">
+       {{-- <script>
+    $(document).ready(function() {
+      $('input[type="checkbox"]').on('click', function() {
+        formatUI($(this));
+      });
+
+      function formatUI(checkbox) {
+        var checkImage = checkbox.data('check-image');
+        var imgElement = $('#' + checkImage);
+        if (checkbox.prop('checked')) {
+          imgElement.css('display', 'inline');
+          checkbox.prop('disabled', true);
+          
+          
+        } else {
+          imgElement.css('display', 'none');
+          checkbox.prop('disabled', false);
+          
+          
+        }
+      }
+
+      
+      $('input[type="checkbox"]').each(function() {
+        formatUI($(this));
+      });
+    });
+     
+        </script> --}}
+    
+<body>
     <div class="table-container" style="font-family: 'FreeSans';">
-     <htmlpageheader name="formHeader">
+    <htmlpageheader name="formHeader">
         <div style="margin: 10px 25px;  width: 100%;">
             <div style="float: right; margin-right: 46px; height: 70px;width: 60%;">
-                <table style="border: 1px solid #FFF200;padding: 10px;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #FFF200;">
+                <table style="border: 1px solid #fff200;padding: 10px;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #FFF200;">
                     <tr style="padding: 10px;">
                         <th style="padding: 10px;">
                             <div style="padding: 0 120px 0 0"><h3>{{$data->id ?? 0}}</h3></div>
                         </th>
-                        <th bgcolor="#FFF200" style="color:#000 ; padding: 10px">
+                        <th bgcolor="#FFF200" style="color: #000; padding: 10px">
                             <div style="padding: 0 140px 0 10px"><h3>NO</h3></div>
                         </th>
                     </tr>
                 </table>
-                <h2 style="color: #000; padding: 0; margin: 0; font-weight: 700;text-align: right">
+                <h2 style="color: #000; padding: 0; margin: 0; font-weight: 900;text-align: right">
                     Breakdown/Service Record INSTALLATION WORKS CERTIFICATE
                 </h2>
-                {{-- <p style="font-size: 10px; padding: 0; margin: 0; font-style: italic;text-align: right">
+                <p style="font-size: 10px; padding: 0; margin: 0; font-style: italic;text-align: right">
                     Issued in accordance with BS 7671: 2018+A2:2022 – Requirements for Gas Installations
-                </p> --}}
+                </p>
             </div>
-            
-         </div>
+            <div style="clear: both;"></div>
+          </div>
     </htmlpageheader>
-      <div style="padding:10px;" >
-
-     </div>
     <!-- Table 1 -->
-  <div class="table-padding" style="padding:10px;">
+  <div class="table-padding" style="padding: 10px;">
       <div class="table table-1" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
         <!-- <div class="table-heading" style="display: block;  background-color: #FFF200; ">
             <h3 style="color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</h3>
@@ -103,56 +140,48 @@
                     </thead>
                     <tbody style="vertical-align: middle;"  >
                         <tr>
-                 @if ($data->user->categories->isNotEmpty())
-                            @php
-                               $firstCategory = $data->user->categories->firstWhere('pivot.category_id', 2);
-                             @endphp
-                       @if ($firstCategory)
+                            
                             <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
                                 <span style="font-weight: 700;">Gas Safe Number:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{ $firstCategory->pivot->gas_register_number }}</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
                             </td>
-                            @endif
-                 @endif
-
-
                             <td style="padding-top:6px; padding-bottom:6px;">
                                 <span style="font-weight: 700;">Name:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{ $data->site->siteContact->f_name }}</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
                             </td>
                             <td style="padding-top:6px; padding-bottom:6px;">
                                 <span style="font-weight: 700;">Tenant Name:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{ $data->customer->name }}</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
                             </td>
                         </tr>
                         <tr>
                             <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
                                 <span style="font-weight: 700;">Company Name:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{ $data->user->company_name }}</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
                             </td>
                             <td style="padding-top:6px; padding-bottom:6px; line-height: 1.5;">
                                 <span style="font-weight: 700;">Address:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{$data->user->number_street_name.', '.$data->user->city}} </span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445kAMSfk!2445k </span>
                             </td>
                             <td style="padding-top:6px; padding-bottom:6px; line-height: 1.5;">
                                 <span style="font-weight: 700;">Address:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{$data->site->street_num.', '.$data->site->city}} </span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445kAMSfk!2445k </span>
                             </td>
                         </tr>
                         <tr>
                              <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px; line-height: 1.5;">
                                 <span style="font-weight: 700;">Address:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{$data->customer->street_num.', '.$data->customer->city}}</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445kAMSfk!2445k </span>
                             </td>
                             <td style="padding-top:6px; padding-bottom:6px;">
                                 <div style="width: 100%; display: block;">
                                 <div style="width: 48%; display: inline-block;">
                                 <span style="font-weight: 700;">Postcode:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{ $data->user->postal_code }}</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
                                 </div>
                                 <div style="width: 48%; display: inline-block;">
                                  <span style="font-weight: 700;">TEL No:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{ $data->user->phone }}</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
                                 </div>
                                 </div>
                             </td>
@@ -160,11 +189,11 @@
                                 <div style="width: 100%; display: block;">
                                 <div style="width: 48%; display: inline-block;">
                                 <span style="font-weight: 700;">Postcode:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{ $data->site->postal_code }}</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
                                 </div>
                                 <div style="width: 48%; display: inline-block;">
                                  <span style="font-weight: 700;">TEL No:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{ $data->site->siteContact->phone }}</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
                                 </div>
                                 </div>
                             </td>
@@ -174,37 +203,29 @@
                                 <div style="width: 100%; display: block;">
                                 <div style="width: 48%; display: inline-block;">
                                 <span style="font-weight: 700;">Postcode:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{ $data->customer->postal_code }}</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
                                 </div>
                                 <div style="width: 48%; display: inline-block;">
                                  <span style="font-weight: 700;">TEL No:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{ $data->customer->contacts->first()->phone }}</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
                                 </div>
                                 </div>
                             </td>
                         </tr>
-                        <tr>
-                              <!-- <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-                               
-                                <span style="font-weight: 700;">Description of work: </span>
-                                 <label>
-                 <input type="checkbox" class="radio" value="1" name="foobye" />Service</label>
-                                 <label>
-                                      <input type="checkbox" class="radio" value="1" name="fooby" />Breakdown</label>
-  <label>
-                               
-                            </td> -->
-                        </tr>
+                        
                     </tbody>
                 </table>
            </div>
         </div>
     </div>
   </div>
-  <div style="clear: both;"></div>
+
 <!-- Table 2 -->
-  <div class="table-padding" style="padding:10px;">
+  <div class="table-padding" style="padding: 10px;">
       <div class="table table-2" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
+        <!-- <div class="table-heading" style="display: block;  background-color: #FFF200; ">
+            <h3 style="color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</h3>
+        </div> -->
         <div class="table-content" style="padding: 0px;">
            <div class="pdf-table" style="display: block; ">
                 <table style="width: 100%;">
@@ -218,15 +239,15 @@
                         <tr>
                             <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
                                 <span style="font-weight: 700;">Description of work: </span>
-                                @if(getvalue('service', $formData['form_part_1']) == "True")<label>  <img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Service</label> @else <label><input type="checkbox" class="radio" value="{{ getvalue('service', $formData['form_part_1']) }}" name="one" />Service</label>@endif
-                                @if(getvalue('Breakdown', $formData['form_part_1']) == "True")<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display: inline; margin: auto;width:14px;" >Breakdown</label>@else<label><input type="checkbox" class="radio" value="{{ getvalue('Breakdown', $formData['form_part_1']) }}" name="two"/>Breakdown</label>@endif
+                               @if($data->id !=Null) <img id="checkImage1" class="checkImage" src="check.png" style="display:inline"  alt="check-img">@else<label> <input type="checkbox" class="radio" value="1" name=""/>Service</label>@endif
+                                <img id="checkImage2" class="checkImage"src="check.png"  style="display:inline" alt="check-img"><label> <input type="checkbox" class="radio" value="1" name=""data-check-image="checkImage2"  />Breakdown</label>
                                
                             
                                
                             </td>
                             <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
                                 <span style="font-weight: 700;">CO/CO2 Ratio</span>
-                                <span style="border-bottom: 1px dashed #000;">{{ getvalue('co_co2_ratio', $formData['form_part_1']) }}</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
                             </td>
                             <td style="padding-top:6px; padding-bottom:6px;">
                                 
@@ -238,29 +259,29 @@
                         <tr>
                             <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
                                 <span style="font-weight: 700;">Boiler Make:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{ getvalue('boiler_make', $formData['form_part_1']) }}</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
                             </td>
                             <td style="padding-top:6px; padding-bottom:6px;">
                                 <span style="font-weight: 700;">Boiler Model:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{ getvalue('boiler_model', $formData['form_part_1']) }}</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
                             </td>
                             <td style="padding-top:6px; padding-bottom:6px;">
                                 <span style="font-weight: 700;">Boiler Serial Number:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{ getvalue('boiler_serial_num', $formData['form_part_1']) }}</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
                             </td>
                         </tr>
                         <tr>
                              <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
                                 <span style="font-weight: 700;">Appliance Make:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliances_make', $formData['form_part_1']) }}</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
                             </td>
                              <td style="padding-top:6px; padding-bottom:6px;">
                                 <span style="font-weight: 700;">Appliance Model:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliances_model', $formData['form_part_1']) }}</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
                             </td>
                              <td style="padding-top:6px; padding-bottom:6px;">
                                 <span style="font-weight: 700;">Appliance Serial Number:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliances_serial_num', $formData['form_part_1']) }}</span>
+                                <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span>
                             </td>
                           
                             
@@ -272,20 +293,21 @@
         </div>
     </div>
   </div>
-  <div style="clear: both;"></div>
+
   <!-- Table 3 & 4 -->
-  <div style=" padding: 10px;">
+  <div class="table-padding" style=" padding: 10px;">
   <div style="display: block; width: 100%; margin: auto;">
     <div style="display: inline-block; width: 100%;">
     <table style="width: 100%; border: 1px solid black;">
     <thead>
         <tr style="background-color: #FFF200;">
              <th  style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">Notes</th>
+                 
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td style="height: 50px; overflow: scroll;">{{ getvalue('additional_notes', $formData['form_part_2']) }}</td>
+            <td style="height: 50px; overflow: scroll;"></td>
         </tr>
     </tbody>
     </table>
@@ -300,14 +322,14 @@
     </thead>
     <tbody>
         <tr>
-            <td style="height: 50px; overflow: scroll;">{{ getvalue('spares_parts_required', $formData['form_part_3']) }}</td>
+            <td style="height: 50px; overflow: scroll;"></td>
         </tr>
     </tbody>
     </table>
     </div>
 </div>
 </div>
-<div style="clear: both;"></div>
+
 <!-- Table 5 -->
 <div class="table-padding" style="padding: 10px;">
     <div class="table table-2" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
@@ -328,69 +350,72 @@
                   <tbody style="vertical-align: middle;" >
                      <tr>
                         <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
-                            @if(getvalue('water_fuel_satisfactory', $formData['form_part_4']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}" alt="check-img" style="display:inline; margin: auto;width:14px;" >Water/Fuel-Satisfactory</label> @else<label><input type="checkbox" class="radio" id="flue" value="{{ getvalue('water_fuel_satisfactory', $formData['form_part_4']) }}" name="" />Water/Fuel-Satisfactory </label>@endif
+                           <img src="check.png" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" id="flue" value="" name="" /> Flue: Atmopheric/Fan assisted/Fan dilution</label>
+
+
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            @if(getvalue('heat_exchanger', $formData['form_part_5']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px" >Heat Exchanger</label>@else<label><input type="checkbox" class="radio" value="{{ getvalue('heat_exchanger', $formData['form_part_5']) }}" name=""/>Heat Exchanger</label>@endif
+                            <img src="check.png" style="display: inline;width:14px;" alt="check-img" style="display: block; margin: auto;" >  <label> <input type="checkbox" class="radio" value="" name="" />Heat Exchanger</label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            @if(getvalue('burn_washer_cleaned', $formData['form_part_6']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Burner Washed & Cleaned</label>@else<label><input type="checkbox" class="radio" value="{{ getvalue('burn_washer_cleaned', $formData['form_part_6']) }}" name=""/>Burner Washed & Cleaned</label> @endif 
+                            <img src="check.png" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="" name="" />Burner Washed & Cleaned</label>
+
                         </td>
                      </tr>
                      <tr>
                         <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
-                            @if(getvalue('ventilation_size', $formData['form_part_4']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Ventilation Size H-L</label>@else<label> <input type="checkbox" class="radio" value="{{ getvalue('ventilation_size', $formData['form_part_4']) }}" name=""/>Ventilation Size H-L </label>@endif
+                           <img src="check.png" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" > <label> <input type="checkbox" class="radio" value="1" name="" />Ventilation Size H-L </label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            @if(getvalue('ignition', $formData['form_part_5']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Ignition</label> @else<label><input type="checkbox" class="radio" value="{{ getvalue('ignition', $formData['form_part_5']) }}" name=""/>Ignition</label>@endif
+                            <img src="check.png" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="1" name="" />Ignition</label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            @if(getvalue('pilot_assembly', $formData['form_part_6']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Pilot Assembly Cleaned & Adjusted</label>@else<label><input type="checkbox" class="radio" value="{{ getvalue('pilot_assembly', $formData['form_part_6']) }}" name="" />Pilot Assembly Cleaned & Adjusted</label>@endif
+                            <img src="check.png" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="1" name="" />Pilot Assembly Cleaned & Adjusted</label>
                         </td>
                      </tr>
                      <tr>
                         <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
-                            @if(getvalue('electrically_fused', $formData['form_part_4']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Electrically Fused</label> @else<label> <input type="checkbox" class="radio" value="{{ getvalue('electrically_fused', $formData['form_part_4']) }}" name="" />Electrically Fused </label>@endif
+                            <img src="check.png" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="1" name="" />Electrically Fused </label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            @if(getvalue('gas_valve', $formData['form_part_5']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Gas Value</label> @else<label><input type="checkbox" class="radio" value="{{ getvalue('gas_valve', $formData['form_part_5']) }}" name=""/>Gas Value</label>@endif
+                            <img src="check.png" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="1" name="" />Gas Value</label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            @if(getvalue('ignition_system', $formData['form_part_6']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px" >lgnition system Cleaned & Adjusted</label>@else<label> <input type="checkbox" class="radio" value="{{ getvalue('ignition_system', $formData['form_part_6']) }}" name=""  />lgnition system Cleaned & Adjusted</label> @endif
+                             <img src="check.png" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;" ><label> <input type="checkbox" class="radio" value="1" name="" />lgnition system Cleaned & Adjusted</label>
                         </td>
                      </tr>
                      <tr>
                         <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
-                            @if(getvalue('correct_valving', $formData['form_part_4']) == true)<label> <img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Correct Valving Arrangements</label>@else<label> <input type="checkbox" class="radio" value="{{ getvalue('correct_valving', $formData['form_part_4']) }}" name="" />Correct Valving Arrangements </label>@endif
+                            <img src="check.png" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="1" name="" />Correct Valving Arrangements </label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            @if(getvalue('fan', $formData['form_part_5']) == true)<label> <img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Fan</label>@else<label> <input type="checkbox" class="radio" value="{{ getvalue('fan', $formData['form_part_5']) }}" name="" />Fan</label>@endif
+                            <img src="check.png" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="1" name="" />Fan</label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            @if(getvalue('burner_fas', $formData['form_part_6']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Burner Fan & Airways Cleaned</label>@else<label> <input type="checkbox" class="radio" value="{{ getvalue('burner_fas', $formData['form_part_6']) }}" name=""  />Burner Fan & Airways Cleaned</label> @endif
+                            <img src="check.png" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="1" name="" />Burner Fan & Airways Cleaned</label>
                         </td>
                      </tr>
                      <tr>
                         <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
-                            @if(getvalue('isolation_available', $formData['form_part_4']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Isolation Available-Electrical/Fuel (within 1mtr)</label>@else<label> <input type="checkbox" class="radio" value="{{ getvalue('isolation_available', $formData['form_part_4']) }}" name=""/>Isolation Available-Electrical/Fuel (within 1mtr) </label>@endif
+                            <img src="check.png" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="1" name="" />Isolation Available-Electrical/Fuel (within 1mtr) </label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            @if(getvalue('safety_device', $formData['form_part_5']) == true)<label> <img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Safety Device</label>@else<label> <input type="checkbox" class="radio" value="{{ getvalue('safety_device', $formData['form_part_5']) }}" name="" />Safety Device</label>@endif
+                             <img src="check.png" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;" ><label> <input type="checkbox" class="radio" value="1" name="" />Safety Device</label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            @if(getvalue('service_heat_exchanger', $formData['form_part_6']) == true)<label> <img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;">Heat Exchanger/Flueways Clean & Clear</label>@else<label> <input type="checkbox" class="radio" value="{{ getvalue('service_heat_exchanger', $formData['form_part_6']) }}" name="" />Heat Exchanger/Flueways Clean & Clear</label>@endif
+                            <img src="check.png" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;" ><label> <input type="checkbox" class="radio" value="1" name="" />Heat Exchanger/Flueways Clean & Clear</label>
                         </td>
                      </tr>
                      <tr>
                         <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
-                            @if(getvalue('boiler_plant_room', $formData['form_part_4']) == true)<label><img id="checkImage"  src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Boiler/Plantroom Cleaner</label>@else<label><input type="checkbox" class="radio" value="{{ getvalue('boiler_plant_room', $formData['form_part_4']) }}" name="" />Boiler/Plantroom Cleaner</label>@endif
+                            <img src="check.png" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="1" name="" />Boiler/Plantroom Cleaner</label>
                        
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            @if(getvalue('control_box', $formData['form_part_5']) == true)<label><img id="checkImage"  src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Control Box</label>@else<label> <input type="checkbox" class="radio" value="{{ getvalue('control_box', $formData['form_part_5']) }}" name=""/>Control Box</label>@endif
+                            <img src="check.png" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="1" name="" />Control Box</label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            @if(getvalue('fuel_electrical', $formData['form_part_6']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;">Fuel & Electrical Supply Connected Correctly</label>@else<label><input type="checkbox" class="radio" value="{{ getvalue('fuel_electrical', $formData['form_part_6']) }}" name="" />Fuel & Electrical Supply Connected Correctly</label>@endif
+                            <img src="check.png" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="1" name="" />Fuel & Electrical Supply Connected Correctly</label>
                         </td>
                      </tr>
                      <tr>
@@ -398,19 +423,21 @@
                             
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            @if(getvalue('burners_pilot', $formData['form_part_5']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Burners & Pilot</label>@else<label><input type="checkbox" class="radio" value="{{ getvalue('burners_pilot', $formData['form_part_5']) }}" name=""/>Burners & Pilot</label>@endif
+                           <img src="check.png" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" > <label> <input type="checkbox" class="radio" value="1" name="" />Burners & Pilot</label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            @if(getvalue('interlocks_noted', $formData['form_part_6']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Interlocks Noted & in Place</label>@else<label><input type="checkbox" class="radio" value="{{ getvalue('interlocks_noted', $formData['form_part_6']) }}" name=""/>Interlocks Noted & in Place</label>@endif
+                            <img src="check.png" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="1" name="" />Interlocks Noted & in Place</label>
                         </td>
                      </tr>
                      <tr>
                         <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
+                            
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
-                            @if(getvalue('fuel', $formData['form_part_5']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Fuel Pressure & Type</label>@else<label><input type="checkbox" class="radio" value="{{ getvalue('fuel', $formData['form_part_5']) }}" name=""/>Fuel Pressure & Type</label>@endif
+                            <img src="check.png" style="width:14px;display: inline;" alt="check-img" style="display: block; margin: auto;width:14px;" ><label> <input type="checkbox" class="radio" value="1" name="" />Fuel Pressure & Type</label>
                         </td>
                         <td style="padding-top: 6px; padding-bottom: 6px;">
+                          
                         </td>
                      </tr>
                     
@@ -420,14 +447,13 @@
       </div>
   </div>
 </div>
-<!-- Table 6 -->
 <pagebreak></pagebreak>
-<div style="padding:10px;" >
-
-</div>
+<!-- Table 6 -->
 <div class="table-padding" style="padding: 10px;">
     <div class="table table-2" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
-      
+      <!-- <div class="table-heading" style="display: block;  background-color: #FFF200; ">
+          <h3 style="color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</h3>
+      </div> -->
       <div class="table-content" style="padding: 0px;">
          <div class="pdf-table" style="display: block; ">
               <table style="width: 100%;">
@@ -436,11 +462,11 @@
                           <th  style="background-color: #FFF200; text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; width: 100px;">TIME</th>
                           <th  style=" text-align: left; color: black; font-size: 20px; margin: 0; padding: 10px; ">
                             <span style="font-weight: 700;">Arrival Time:</span>
-                            <span style="border-bottom: 1px dashed #000; font-weight: 400;">{{ getvalue('time_of_arrival', $formData['form_part_6']) }}</span>
+                            <span style="border-bottom: 1px dashed #000; font-weight: 400;">AMSfk!2445k</span>
                         </th>
                           <th  style=" text-align: left; color: black;  font-size: 20px; margin: 0; padding: 10px; ">
                             <span style="font-weight: 700;">Departure Time:</span>
-                            <span style="border-bottom: 1px dashed #000; font-weight: 400;">{{ getvalue('time_of_departure', $formData['form_part_6']) }}</span>
+                            <span style="border-bottom: 1px dashed #000; font-weight: 400;">AMSfk!2445k</span>
                         </th>
                       </tr>
                     
@@ -451,9 +477,10 @@
       </div>
   </div>
 </div>
-<div style="clear: both;"></div>
+
+
 <!-- Table 7 -->
-<div class="table-padding" style="padding: 10px;">
+<div class="table-padding" style="padding: 10px;"></div>
     <div class="table table-2" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
       <!-- <div class="table-heading" style="display: block;  background-color: #FFF200; ">
           <h3 style="color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</h3>
@@ -472,37 +499,29 @@
                     <tr>
                         <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;">
                             <span style="font-weight: 700;">Name(CAPITALS)</span>
-                            <span style="border-bottom: 1px dashed #000;">{{ getvalue('engineer_name', $formData['part_declaration']) }}</span></td>
+                            <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span></td>
                         <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;">
                             <span style="font-weight: 700;">Contractor</span>
-                            <span style="border-bottom: 1px dashed #000;">{{ getvalue('engineer_name', $formData['part_declaration']) }}</span></td>
+                            <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span></td>
                     </tr>
                     <tr>
                         <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;">
                             <span style="font-weight: 700;">Signture</span>
-                            @if($data->user->signature)
-                            <span style="border-bottom: 1px dashed #000;"> <img width="120px" src="{{ asset('uploads/'.$data->user->signature->signature) }}" alt="">
-                            </span>
-                            @endif</td>
+                            <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span></td>
                         <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;  line-height: 1.5;">
                             <span style="font-weight: 700;">Address</span>
-                            <span style="border-bottom: 1px dashed #000;"></span>{{$data->user->number_street_name.', '.$data->user->city}}</td>
+                            <span style="border-bottom: 1px dashed #000;">AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k AMSfk!2445k</span></td>
                     </tr>
                     <tr>
                         <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;">
                             <span style="font-weight: 700;">Position</span>
-                            <span style="border-bottom: 1px dashed #000;">{{ getvalue('engineer_position', $formData['part_declaration']) }}</span></td>
+                            <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span></td>
                         <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;">
                             <span style="font-weight: 700;">Date</span>
-                            <span style="border-bottom: 1px dashed #000;">{{ getvalue('engineer_date', $formData['part_declaration']) }}</span></td>
+                            <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span></td>
                         <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;">
                             <span style="font-weight: 700;">Gas Safe No</span>
-                            @php
-                            $firstCategory = $data->user->categories->firstWhere('pivot.category_id', 2);
-                          @endphp
-                          @if ($firstCategory)
-                            <span style="border-bottom: 1px dashed #000;">{{ $firstCategory->pivot->gas_register_number }}</span>
-                        @endif</td>
+                            <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span></td>
                     </tr>
                     <tr>
                         <td  style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px; font-weight: 700;">RECIVED BY:</td>
@@ -510,15 +529,13 @@
                     <tr>
                         <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;">
                             <span style="font-weight: 700;">Name</span>
-                            <span style="border-bottom: 1px dashed #000;">{{ getvalue('customer_name', $formData['part_declaration']) }}</span></td>
+                            <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span></td>
                         <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;">
                             <span style="font-weight: 700;">Date</span>
-                            <span style="border-bottom: 1px dashed #000;">{{ getvalue('customer_date', $formData['part_declaration']) }}</span></td>
+                            <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span></td>
                         <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;">
                             <span style="font-weight: 700;">Signture</span>
-                            @if ($data->customerSignature)
-                             <span style="border-bottom: 1px dashed #000;"><img width="120px" src="{{ asset('uploads/'.$data->customerSignature->file_url) }}" alt=""></span>
-                            @endif</td>
+                            <span style="border-bottom: 1px dashed #000;">AMSfk!2445k</span></td>
                     </tr>
                   </tbody>
                  
@@ -527,7 +544,44 @@
       </div>
   </div>
 </div>
-<div style="clear: both;"></div>
+
+<!-- Table 8 -->
+<div class="table-padding" style="padding: 10px;">
+    <div class="table table-2" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
+      <!-- <div class="table-heading" style="display: block;  background-color: #FFF200; ">
+          <h3 style="color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</h3>
+      </div> -->
+      <div class="table-content" style="padding: 0px;">
+         <div class="pdf-table" style="display: block; ">
+              <table style="width: 100%;">
+                  <thead>
+                      <tr >
+                          <th colspan="2"  style="background-color: #FFF200; text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px;">Note</th>
+                         
+                      </tr>
+                    
+                  </thead>
+                  <tbody>
+                    <tr>
+                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px; width: 50%;">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+                            laborum.   
+                        </td>
+                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px; width: 50%;">
+                            <img src="" alt="pdf-img" style="display: block; margin: auto;" >
+                    </tr>
+                 
+                  </tbody>
+                 
+              </table>
+         </div>
+      </div>
+  </div>
+</div>
+
 <!-- Table 9 -->
 <div class="table-padding" style="padding: 10px;">
     <div class="table table-2" style=" width: 100%; display: block; margin: auto; ">
@@ -552,10 +606,6 @@
                        <p>     Enter a or value in the respective fields, as appropriate</p>
                             <p>here an item is not applicable insert N/A </p>
                           </td>
-                          <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px; width: 25%; ">
-                            
-                                 <p>Expire At:{{ date('d-m-Y', strtotime($data->expire)) }} </p>
-                               </td>
                     </tr>
                  
                   </tbody>
@@ -565,6 +615,6 @@
       </div>
   </div>
 </div>
-    </div>
+</div>
 </body>
 </html>

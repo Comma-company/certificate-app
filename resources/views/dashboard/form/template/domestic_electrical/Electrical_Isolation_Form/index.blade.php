@@ -38,8 +38,8 @@ border-color: #00935f;
             <div style="float: left;width:40%;">
               @php
               $firstCategory = $data->user->categories->firstWhere('pivot.category_id', 1);
-              $electricBoardIds = json_decode($firstCategory->pivot->electric_board_id, true);
-              $item =  App\Models\ElectricBoard::where('id',$electricBoardIds)->first();
+              $electricBoardId = $firstCategory->pivot->electric_board_id;
+              $item =  App\Models\ElectricBoard::where('id',$electricBoardId)->first();
           @endphp
           @if($item)
           <img src="{{ asset('uploads/images/electric/'.$item->image) }}" width="160px" height="60px">
@@ -421,6 +421,9 @@ border-color: #00935f;
       </tbody>
       </table>
       </div>
+  </div>
+  <div>
+    <p>Expire At:{{ date('d-m-Y', strtotime($data->expire)) }} </p>
   </div>
   </div>
 </div>

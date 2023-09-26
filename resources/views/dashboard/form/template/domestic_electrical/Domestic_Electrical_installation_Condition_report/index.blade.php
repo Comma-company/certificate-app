@@ -50,8 +50,8 @@
                 <div style="float: left;width:40%;">
                   @php
                   $firstCategory = $data->user->categories->firstWhere('pivot.category_id', 1);
-                  $electricBoardIds = json_decode($firstCategory->pivot->electric_board_id, true);
-                  $item =  App\Models\ElectricBoard::where('id',$electricBoardIds)->first();
+                  $electricBoardId = $firstCategory->pivot->electric_board_id;
+                  $item =  App\Models\ElectricBoard::where('id',$electricBoardId)->first();
                   @endphp
                   @if($item)
                   <img src="{{ asset('uploads/images/electric/'.$item->image) }}" width="160px" height="60px">
@@ -429,6 +429,9 @@
             <td style="float: left;width: 30px;text-align: left;padding: 0px 5px;margin-left:5px;border: 1px solid #00935f;">
                 <p style="text-align: left;">{nbpg}</p>
             </td>
+            <td style="float: left;width: 30px;text-align: left;padding: 0px 5px;margin-left:5px;border: 1px solid #00935f;">
+              <p style="text-align: center;"> Expire At:{{ date('d-m-Y', strtotime($data->expire)) }}</p>
+          </td>
         </tr>
         </table>
 

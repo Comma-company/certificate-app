@@ -937,6 +937,9 @@
                     </tr>
                   </tbody>
               </table>
+              <div>
+                <p>Expire At:{{ date('d-m-Y', strtotime($data->expire)) }}</p>
+              </div>
          </div>
       </div>
   </div>

@@ -443,6 +443,7 @@
                     <td style="width: 25px;
                     height: 25px;
                     border: 1px solid;"> {nbpg} </td>
+                    <td>Expire At : {{ date('d-m-Y', strtotime($data->expire)) }}</td>
                 </tr>
                     {{--
                      <div style=" width: 25px; height: 25px;  border: 1px solid; margin-left: 10px; text-align: center; padding-top: 5px;">

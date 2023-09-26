@@ -58,8 +58,8 @@
                 <div style="float: left;width:40%;">
                   @php
                   $firstCategory = $data->user->categories->firstWhere('pivot.category_id', 1);
-                  $electricBoardIds = json_decode($firstCategory->pivot->electric_board_id, true);
-                  $item =  App\Models\ElectricBoard::where('id',$electricBoardIds)->first();
+                  $electricBoardId = $firstCategory->pivot->electric_board_id;
+                  $item =  App\Models\ElectricBoard::where('id',$electricBoardId)->first();
                   
               @endphp
               @if($item)
@@ -431,6 +431,10 @@
                 <td style="float:left; margin-top: 10px; width:70px;margin-left:10px;">
                   Page  Of {nbpg}
                 </td>
+                <td style="float:left; margin-top: 10px; width:70px;margin-left:10px;">
+                  Expire At :{{ date('d-m-Y', strtotime($data->expire)) }}
+                </td>
+
             </tr>
             </table>
         </htmlpagefooter>

@@ -6,23 +6,56 @@
     <title>pdf</title>
 </head>
 <style>
+  @page :first {
+                header: html_formHeader;
+                margin: 15px;
+                margin-bottom:20px;
+                margin-top:80px;
+                margin-header:4mm;
+                size: landscape; /* <length>{1,2} | auto | portrait | landscape */
+                margin-footer:5mm ;
+            }
+            @page{
+                header: html_formHeader;
+                margin: 15px;
+                margin-bottom:20px;
+                margin-top:80px;
+                margin-header:4mm;
+                size: landscape; /* <length>{1,2} | auto | portrait | landscape */
+                margin-footer:5mm ;
+            }
     body{
         margin: 0;
         padding: 0;
         box-sizing: border-box;
     }
+
 </style>
-<body>
-    <!-- Heading of PDF -->
-    <div class="pdf-headings" style="padding: 10px; text-align: end;">
-        <div class="pdf-headings" style="padding: 10px 0; justify-content: end; display: flex;align-items: baseline;">
-            <p style=" font-size: 16px;margin: 0; color: #000;font-weight: 400;padding: 12px 8px; line-height: 0;background-color: white; border: 3px solid yellow;">{{ $data->id }}</h2>
-            <p style="font-size: 16px;margin: 0; color: #000; font-weight: 400;padding: 5px; background-color: yellow; border: 1px solid yellow;" >NO</p>
-        </div>
-        <h2 style=" font-size: 24px; font-weight: 700; line-height: 0;">Gas/Service Maintenance INSTALLATION WORKS CERTIFICATE</h2>
-        <p style="font-size: 16px; color: #000; font-weight: 400;" >ssued in accordance with BS 7671: 2018+A2:2022 – Requirements for Electrical Installations</p>
-    </div>
-    
+<body style="width: 100%; margin: 0; overflow-y: hidden;">
+  <div class="table-container" style="font-family: 'FreeSans';">
+   <htmlpageheader name="formHeader">
+      <div style="margin: 10px 25px;  width: 100%;">
+          <div style="float: right; margin-right: 46px; height: 70px;width: 60%;">
+              <table style="border: 1px solid #FFF200;padding: 10px;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #FFF200;">
+                  <tr style="padding: 10px;">
+                      <th style="padding: 10px;">
+                          <div style="padding: 0 120px 0 0"><h3>{{$data->id ?? 0}}</h3></div>
+                      </th>
+                      <th bgcolor="#FFF200" style="color:#000 ; padding: 10px">
+                          <div style="padding: 0 140px 0 10px"><h3>NO</h3></div>
+                      </th>
+                  </tr>
+              </table>
+              <h2 style="color: #000; padding: 0; margin: 0; font-weight: 700;text-align: right">
+                  Service/Maintenace Record INSTALLATION WORKS CERTIFICATE
+              </h2>
+               <p style="font-size: 10px; padding: 0; margin: 0; font-style: italic;text-align: right">
+                  Issued in accordance with BS 7671: 2018+A2:2022 – Requirements for Gas Installations
+              </p>
+          </div>
+          
+       </div>
+  </htmlpageheader>
        <!-- Table 1 -->
   <div class="table-padding" style="padding: 10px;">
     <div class="table table-1" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
@@ -163,17 +196,29 @@
                               <span style="font-weight: 700;">Appliance Location</span>
                               <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_location', $formData['form_part_1']) }}</span>
                               </div>
+                              <div>
+
+                              </div>
                               <div style="width: 23%; display: inline-block;">
                                <span style="font-weight: 700;">Appliance Type</span>
                               <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_type', $formData['form_part_1']) }}</span>
+                              </div>
+                              <div>
+                                
                               </div>
                               <div style="width: 23%; display: inline-block;">
                                <span style="font-weight: 700;">Appliance Make</span>
                               <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_make', $formData['form_part_1']) }}</span>
                               </div>
+                              <div>
+                                
+                              </div>
                               <div style="width: 23%; display: inline-block;">
                                <span style="font-weight: 700;">Appliance Model</span>
                               <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_model', $formData['form_part_1']) }}</span>
+                              </div>
+                               <div>
+                                
                               </div>
                               </div>
                           </td>
@@ -186,10 +231,9 @@
           </div>
       </div>
     </div>
-
-
+<pagebreak></pagebreak>
       <!-- Table 3 -->
-      <div class="table-padding" style="padding: 10px;">
+      <div class="table-padding" style="padding: 30px;">
         <div class="table table-1" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
           <!-- <div class="table-heading" style="display: block;  background-color: yellow; ">
               <h3 style="color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</h3>
@@ -288,7 +332,7 @@
           </div>
       </div>
     </div>
-
+    <pagebreak></pagebreak>
    <!-- Table 4 -->
    <div class="table-padding" style="padding: 10px;">
     <div class="table table-1" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
@@ -348,7 +392,6 @@
       </div>
   </div>
 </div>
-
    <!-- Table 5 -->
    <div class="table-padding" style="padding: 10px;">
     <div class="table table-1" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
@@ -458,9 +501,6 @@
 </div>
 
 
-<!-- Table 6 -->
-
-<!-- Table 7 -->
 <div class="table-padding" style="padding: 10px;">
     <div class="table table-2" style=" width: 100%; display: block; margin: auto; ">
       <!-- <div class="table-heading" style="display: block;  background-color: yellow; ">
@@ -481,8 +521,8 @@
                           <p>@Copyright 360 Connect (2023 August)</p>
                           </td>
                           <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px; width: 25%; ">
-                       <p>     Enter a or value in the respective fields, as appropriate</p>
-                            <p>here an item is not applicable insert N/A </p>
+                            <p>Expire At:{{ date('d-m-Y', strtotime($data->expire)) }}</p>
+                      
                           </td>
                     </tr>
                  
@@ -492,6 +532,7 @@
          </div>
       </div>
   </div>
+</div>
 </div>
 </body>
 </html>

@@ -128,7 +128,7 @@ class RegisterController extends Controller
             $categoriesId = $request->categories_id;
             if (empty($licenseNumber) && empty($gasRegisterNumber)) {
                 $user->categories()->attach($categoriesId, [
-                    'electric_board_id' => json_encode([$request->electric_board_id]),
+                    'electric_board_id' => $request->electric_board_id,
                 ]);
 
                 if ($request->hasFile('logo')) {
@@ -150,7 +150,7 @@ class RegisterController extends Controller
                 $user->categories()->attach($categoriesId, [
                     'license_number' => $request->license_number,
                     'gas_register_number' => $request->gas_register_number,
-                    'electric_board_id' => json_encode([$request->electric_board_id]),
+                    'electric_board_id' => $request->electric_board_id,
                 ]);
                 $countryId = $data['country_id'];
                 $countryName = Country::where('id', $countryId)->pluck('iso2')->first();
@@ -172,9 +172,9 @@ class RegisterController extends Controller
             } elseif (!empty($licenseNumber)) {
 
                 // Apply subscription for Electrical categories
-                $user->categories()->attach($categoriesId, [
+                $user->categories()->attach($categoriesId, [ 
                     'license_number' => $licenseNumber,
-                    'electric_board_id' => json_encode([$request->electric_board_id]),
+                    'electric_board_id' => $request->electric_board_id,
                 ]);
                 $subscription = $user->newSubscription('default', $planId)->trialDays($trialDays)
                     //->quantity($limitedCertificateCount)
@@ -196,7 +196,7 @@ class RegisterController extends Controller
                 // Apply subscription for Gas categories
                 $user->categories()->attach($categoriesId, [
                     'gas_register_number' => $gasRegisterNumber,
-                    'electric_board_id' => json_encode([$request->electric_board_id]),
+                    'electric_board_id' => $request->electric_board_id,
                 ]);
 
                 $subscription = $user->newSubscription('default', $planId)->trialDays($trialDays)
@@ -303,6 +303,11 @@ class RegisterController extends Controller
         }
         return responseJson(true, 'success created user', $user->load('categories'));
     }
+    // public function getLicenseDetails(Request $request){
+    //     $user = authUser('sanctum');
+    //     return responseJson(true, 'success created user', $user->load(['categories']));
+
+    // }
     public function getElectricBoardIdForCategory1()
 {
     $user = authUser('sanctum');
@@ -329,9 +334,9 @@ class RegisterController extends Controller
          $category = $user->categories()->find($categoryId);
         if ($category) {
             $category->pivot->electric_board_id = null;
-            $category->pivot->electric_board_id = json_encode([$electricBoardId]);
+            $category->pivot->electric_board_id = $electricBoardId;
             $data = $category->pivot->save();
-            return responseJson(true, 'success created user', $category);
+            return responseJson(true, 'success ', $category);
         }
         return responseJson(false, 'Category not found', null);
       
