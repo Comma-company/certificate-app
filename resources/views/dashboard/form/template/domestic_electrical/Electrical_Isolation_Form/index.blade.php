@@ -8,11 +8,24 @@
 <style>
     @page :first {
                 header: html_formHeader;
+                footer: html_formFooter;
                 margin: 15px;
                 margin-bottom:0px;
                 margin-top:110px;
                 margin-header:20px;
-                size: landscape; /* <length>{1,2} | auto | portrait | landscape */
+                size: landscape;
+                margin-footer:5mm ; /* <length>{1,2} | auto | portrait | landscape */
+               
+            }
+            @page {
+                header: html_formHeader;
+                footer: html_formFooter;
+                margin: 15px;
+                margin-bottom:0px;
+                margin-top:110px;
+                margin-header:20px;
+                size: landscape;
+                margin-footer:5mm ; /* <length>{1,2} | auto | portrait | landscape */
                
             }
             .table-container {
@@ -422,10 +435,31 @@ border-color: #00935f;
       </table>
       </div>
   </div>
-  <div>
-    <p>Expire At:{{ date('d-m-Y', strtotime($data->expire)) }} </p>
+  
   </div>
-  </div>
+  
+  <htmlpagefooter name="formFooter">
+    <table style="width: 100%; margin-left: 24px;">
+    <tr>
+        <td style="float: left; width:34%;">
+          <p>Produced Using 360 Connect @</p>
+        </td>
+        <td style="float: left; width:34%;">
+            <p>Expire At:{{ date('d-m-Y', strtotime($data->expire)) }}</p>
+          </td>
+
+        <td style="width: 25px; height: 25px; border: 1px solid; float: left; margin-left: 10px;margin-right:10px; text-align: center; padding-top: 5px;">
+            {PAGENO}
+        </td>
+
+        <td style="float:left; margin-top: 10px; width:70px;margin-left:10px;">
+          Page  Of {nbpg}
+        </td>
+
+    </tr>
+    </table>
+</htmlpagefooter>
+
 </div>
 </body>
 </html>

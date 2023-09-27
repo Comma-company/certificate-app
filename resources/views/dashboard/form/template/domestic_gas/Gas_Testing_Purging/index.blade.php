@@ -6,22 +6,75 @@
     <title>pdf</title>
 </head>
 <style>
-    body{
+    @page{
+                header: html_formHeader;
+                footer: html_formFooter;
+                margin: 15px;
+                margin-bottom:20px;
+                margin-top:110px;
+                margin-header:20px;
+                size: landscape; /* <length>{1,2} | auto | portrait | landscape */
+                margin-footer: 5mm ;
+            }
+
+            @font-face {
+            font-family:Arial;
+            src:'./Ayar/Arial.ttf';
+          }
+          body {
+        box-sizing: border-box;
         margin: 0;
         padding: 0;
-        box-sizing: border-box;
-    }
+        font-size: 12px;
+
+
+
+      }
+      .table-container {
+
+        text-align: left;
+      }
 </style>
-<body>
-    <!-- Heading of PDF -->
-    <div class="pdf-headings" style="padding: 10px; text-align: end;">
-        <div class="pdf-headings" style="padding: 10px 0; justify-content: end; display: flex;align-items: baseline;">
-            <p style=" font-size: 16px;margin: 0; color: #000;font-weight: 400;padding: 12px 8px; line-height: 0;background-color: white; border: 3px solid yellow;">{{ $data->id }}</h2>
-            <p style="font-size: 16px;margin: 0; color: #000; font-weight: 400;padding: 5px; background-color: yellow; border: 1px solid yellow;" >NO</p>
+<body style="width: 100%; margin: 0; overflow-x: hidden;">
+    <div
+      class="table-container"
+      style="
+
+        font-family:'FreeSans';
+      ">
+
+<htmlpageheader name="formHeader">
+    <div style="margin: 10px 25px;  width: 100%;">
+        <div style="float: left;width:40%;">
+            <img src="{{ asset('certificate/image/gas_safe_logo.png') }}"  height="80px">
+            @if ($data->user->logo)
+            <img src="{{ $data->user->logo->url }}" style="margin-left:35px" width="160px">
+            @endif
         </div>
-        <h2 style=" font-size: 24px; font-weight: 700; line-height: 0;">Gas Test & Purge INSTALLATION WORKS CERTIFICATE</h2>
-        <p style="font-size: 16px; color: #000; font-weight: 400;" >ssued in accordance with BS 7671: 2018+A2:2022 – Requirements for Electrical Installations</p>
-    </div>
+        <div style="float: left; margin-right: 46px; height: 70px;width: 60%;">
+            <table style="border: 1px solid #FFF200;padding: 10px;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #FFF200;">
+                <tr style="padding: 10px;">
+                    <th style="padding: 10px;">
+                        <div style="padding: 0 120px 0 0"><h3>{{$data->id ?? 0}}</h3></div>
+                    </th>
+                    <th bgcolor="#FFF200" style="color: #000000; padding: 10px">
+                        <div style="padding: 0 140px 0 10px"><h3>NO</h3></div>
+                    </th>
+                </tr>
+            </table>
+            <h2 style="color: #000; padding: 0; margin: 0; font-weight: 900;text-align: right">
+                Gas Test & Purge INSTALLATION WORKS CERTIFICATE
+            </h2>
+            {{-- <p style="font-size: 10px; padding: 0; margin: 0; font-style: italic;text-align: right">
+                Issued in accordance with BS 7671: 2018 – Requirements for Electrical
+                Installations
+            </p> --}}
+        </div>
+        <div style="clear: both;"></div>
+      </div>
+</htmlpageheader>
+<div style="clear: both;"></div>
+    
     
     <!-- Table 1 -->
   <div class="table-padding" style="padding: 10px;">
@@ -129,7 +182,7 @@
         </div>
     </div>
   </div>
-
+<pagebreak></pagebreak>
 <!-- Table 2 -->
   <div class="table-padding" style="padding: 10px;">
       <div class="table table-2" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
@@ -282,8 +335,7 @@
         </div>
     </div>
   </div>
-
-  <!-- Table 3 -->
+  <pagebrak></pagebrak>
   
   <div class="table-padding" style="padding: 10px;">
     <div class="table table-2" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
@@ -565,7 +617,7 @@
       </div>
   </div>
 </div>
-
+<pagebreak></pagebreak>
 <!-- Table 4 -->
 <div class="table-padding" style="padding: 10px;">
     <div class="table table-2" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
@@ -768,7 +820,7 @@
       </div>
   </div>
 </div>
-
+<pagebreak></pagebreak>
 <!-- table 5 -->
 <div class="table-padding" style="padding: 10px;">
     <div class="table table-2" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
@@ -893,13 +945,14 @@
       <!-- <div class="table-heading" style="display: block;  background-color: yellow; ">
           <h3 style="color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</h3>
       </div> -->
+      
       <div class="table-content" style="padding: 0px;">
          <div class="pdf-table" style="display: block; ">
               <table style="width: 100%;">
                   <thead>
                       <tr style="background-color: yellow;">
                           <th  style=" width: 50%; text-transform: uppercase; text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">Notification of unsafe gas installation</th>
-                          <th  style=" width: 50%; text-transform: uppercase; text-align: right; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">DATE : 27/8/2023</th>
+                          <th  style=" width: 50%; text-transform: uppercase; text-align: right; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">DATE :{{ getvalue('engineer_date', $formData['part_declaration']) }} </th>
                   
                         </tr>
                     
@@ -937,12 +990,28 @@
                     </tr>
                   </tbody>
               </table>
-              <div>
-                <p>Expire At:{{ date('d-m-Y', strtotime($data->expire)) }}</p>
-              </div>
+              
          </div>
       </div>
+
   </div>
+  
 </div>
+<htmlpagefooter name="formFooter">
+    <table style="width: 100%;">
+      <tr>
+        <td style="width: 33%;">Produced Using 360 Connect @</td>
+        <td style="text-align: center; width: 34%;">Expire At: {{ date('d-m-Y', strtotime($data->expire)) }}</td>
+        <td style="text-align: center; width: 33%;">
+            Page {PAGENO} of {nbpg}
+        </td>
+    </tr>
+           
+
+    </table>
+    <div style="clear: both;"></div>
+</htmlpagefooter>
+</div>
+
 </body>
 </html>

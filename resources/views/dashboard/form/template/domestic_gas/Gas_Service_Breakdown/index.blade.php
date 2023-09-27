@@ -527,6 +527,7 @@
       </div>
   </div>
 </div>
+<p style="text-align: center; font-size: 9px; font-style: italic; margin: 0 0 10px 0; padding:0px"> Expire At:{{ date('d-m-Y', strtotime($data->expire)) }}</p>
 <div style="clear: both;"></div>
 <!-- Table 9 -->
 <div class="table-padding" style="padding: 10px;">
@@ -552,10 +553,6 @@
                        <p>     Enter a or value in the respective fields, as appropriate</p>
                             <p>here an item is not applicable insert N/A </p>
                           </td>
-                          <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px; width: 25%; ">
-                            
-                                 <p>Expire At:{{ date('d-m-Y', strtotime($data->expire)) }} </p>
-                               </td>
                     </tr>
                  
                   </tbody>

@@ -564,12 +564,16 @@
                     </tr>
                 </table>
             </div>
+            <p style="text-align: center; font-size: 9px; font-style: italic; margin: 0 0 10px 0; padding:0px"> Expire At:{{ date('d-m-Y', strtotime($data->expire)) }}</p>
 
             <htmlpagefooter name="formFooter">
                 <table style="width: 100%; margin-left: 24px;">
                 <tr>
-                    <td style="float: left; width:80%;">
+                    <td style="float: left; width:34%;">
                       <p>Produced Using 360 Connect @</p>
+                    </td>
+                    <td style="float: left; width:34%;">
+                      <p>Expire At:{{ date('d-m-Y', strtotime($data->expire)) }}</p>
                     </td>
 
                     <td style="width: 25px; height: 25px; border: 1px solid; float: left; margin-left: 10px;margin-right:10px; text-align: center; padding-top: 5px;">
@@ -579,9 +583,7 @@
                     <td style="float:left; margin-top: 10px; width:70px;margin-left:10px;">
                       Page  Of {nbpg}
                     </td>
-                    <td style="float:left; margin-top: 10px; width:70px;margin-left:10px;">
-                      Expire At:{{ date('d-m-Y', strtotime($data->expire)) }}
-                    </td>
+                    
 
                 </tr>
                 </table>

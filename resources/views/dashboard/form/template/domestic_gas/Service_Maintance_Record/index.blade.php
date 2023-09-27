@@ -6,17 +6,10 @@
     <title>pdf</title>
 </head>
 <style>
-  @page :first {
-                header: html_formHeader;
-                margin: 15px;
-                margin-bottom:20px;
-                margin-top:80px;
-                margin-header:4mm;
-                size: landscape; /* <length>{1,2} | auto | portrait | landscape */
-                margin-footer:5mm ;
-            }
+  
             @page{
-                header: html_formHeader;
+                header: formHeader;
+                footer: formFooter;
                 margin: 15px;
                 margin-bottom:20px;
                 margin-top:80px;
@@ -499,40 +492,22 @@
       </div>
   </div>
 </div>
-
-
-<div class="table-padding" style="padding: 10px;">
-    <div class="table table-2" style=" width: 100%; display: block; margin: auto; ">
-      <!-- <div class="table-heading" style="display: block;  background-color: yellow; ">
-          <h3 style="color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</h3>
-      </div> -->
-      <div class="table-content" style="padding: 0px;">
-         <div class="pdf-table" style="display: block; ">
-              <table style="width: 100%;">
-                 
-                  <tbody style="vertical-align: middle;">
-                    <tr>
-                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px; width: 25%; ">
-                            @Copyright 360 Connect (2023 August)  
-                        </td>
-                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px; width: 50%; ">
-                          <p> **where relevant and practicable</p> 
-                          <p>his certificate is based on the model forms shown in Appendix 6 of BS 7671: 2018+A2:2022</p> 
-                          <p>@Copyright 360 Connect (2023 August)</p>
-                          </td>
-                          <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px; width: 25%; ">
-                            <p>Expire At:{{ date('d-m-Y', strtotime($data->expire)) }}</p>
-                      
-                          </td>
-                    </tr>
-                 
-                  </tbody>
-                 
-              </table>
-         </div>
-      </div>
-  </div>
+<div>
+  
 </div>
+<htmlpagefooter name="formFooter">
+  <table style="width: 100%;">
+    <tr>
+      <td style="width: 33%;">Produced Using 360 Connect @</td>
+      <td style="text-align: center; width: 34%;">Expire At: {{ date('d-m-Y', strtotime($data->expire)) }}</td>
+      <td style="text-align: center; width: 33%;">
+          Page {PAGENO} of {nbpg}
+      </td>
+  </tr>
+          
+  </table>
+  
+</htmlpagefooter>
 </div>
 </body>
 </html>

@@ -88,6 +88,7 @@ class RegisterController extends Controller
      * */
     public function completeRegister(Request $request)
     {
+       
         $validated = Validator::make($request->all(), [
 
             /* 'first_name' => ['required', 'string', 'max:255'],
@@ -96,8 +97,8 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8'],
             'business_type_id' => ['required', 'array'],
             'phone' => ['required'], */
-            'gas_register_number' => ['nullable', 'unique:categories_users'],
-            'license_number' => ['nullable', 'unique:categories_users'],
+            'gas_register_number' => ['nullable'],
+            'license_number' => ['nullable'],
         ]);
 
         if ($validated->fails()) {
@@ -165,7 +166,7 @@ class RegisterController extends Controller
                 $user->createOrGetStripeCustomer([
                     'address' => $address,
                 ]);
-
+                //dd($planId);
                 $subscription = $user->newSubscription('default', $planId)->trialDays($trialDays)
                     //->quantity($limitedCertificateCount)
                     ->create();
@@ -250,8 +251,8 @@ class RegisterController extends Controller
     public function completeInfoRegister(Request $request)
     {
         $validated = Validator::make($request->all(), [
-            'license_number' => ['required_without_all:gas_register_number', 'nullable', 'unique:categories_users'], // License number is required if gas register number is not provided
-            'gas_register_number' => ['required_without_all:license_number', 'nullable', 'unique:categories_users'], // Gas register number is required if license number is not provided
+            'license_number' => ['required_without_all:gas_register_number', 'nullable'], // License number is required if gas register number is not provided
+            'gas_register_number' => ['required_without_all:license_number', 'nullable'], // Gas register number is required if license number is not provided
 
         ]);
 
@@ -331,7 +332,7 @@ class RegisterController extends Controller
     public function updateElectricBoardId($electricBoardId){
         $user = authUser('sanctum');
         $categoryId = 1;
-         $category = $user->categories()->find($categoryId);
+       $category = $user->categories()->find($categoryId);
         if ($category) {
             $category->pivot->electric_board_id = null;
             $category->pivot->electric_board_id = $electricBoardId;

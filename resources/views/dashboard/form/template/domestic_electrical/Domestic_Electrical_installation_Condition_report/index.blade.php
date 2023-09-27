@@ -400,6 +400,7 @@
         potentially dangerous (CODE C2) conditions have been identified in PART
         6, or that Further Investigation (CODE FI) without delay is required.
       </p>
+    
       <htmlpagefooter name="formFooter">
         <table style="">
             <tr>
@@ -420,6 +421,7 @@
                     Please see the ‘Notes for Recipient’
                 </div>
             </td>
+            <td style="text-align: center; width: 34%;">Expire At: {{ date('d-m-Y', strtotime($data->expire)) }}</td>
 
             <td style="width:5%;margin-right: 10px;text-align: right">
                 <p>Page {PAGENO} of</p>
@@ -450,8 +452,7 @@
             </p>
 
             </div>
-
-
+            
             <div style="float: left;width: 8%;margin-right: 10px;">
             <p>Page {PAGENO} of</p>
             </div>

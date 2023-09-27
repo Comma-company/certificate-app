@@ -850,6 +850,9 @@
             <td style="float: left; width:80%;">
               <p>Produced Using 360 Connect @</p>
             </td>
+            <td style="float: left; width:34%;">
+              <p>Expire At:{{ date('d-m-Y', strtotime($data->expire)) }}</p>
+            </td>
 
             <td style="width: 25px; height: 25px; border: 1px solid; float: left; margin-left: 10px;margin-right:10px; text-align: center; padding-top: 5px;">
                 {PAGENO}
@@ -858,10 +861,6 @@
             <td style="float:left; margin-top: 10px; width:70px;margin-left:10px;">
               Page  Of {nbpg}
             </td>
-            <td style="float:left; margin-top: 10px; width:70px;margin-left:10px;">
-             Expire At:{{ date('d-m-Y', strtotime($data->expire)) }}
-            </td>
-
         </tr>
         </table>
     </htmlpagefooter>

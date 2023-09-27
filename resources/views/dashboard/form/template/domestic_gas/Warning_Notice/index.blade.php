@@ -433,18 +433,17 @@
             </div>
         </div>
 
-
+        
 
         <htmlpagefooter name="formFooter">
             <table style="width: 100%;">
-                <tr>
-                    <td style="width:85%;">Produced Using 360 Connect @</td>
-                    <td>  Page {PAGENO} Of</td>
-                    <td style="width: 25px;
-                    height: 25px;
-                    border: 1px solid;"> {nbpg} </td>
-                    <td>Expire At : {{ date('d-m-Y', strtotime($data->expire)) }}</td>
-                </tr>
+              <tr>
+                <td style="width: 33%;">Produced Using 360 Connect @</td>
+                <td style="text-align: center; width: 34%;">Expire At: {{ date('d-m-Y', strtotime($data->expire)) }}</td>
+                <td style="text-align: center; width: 33%;">
+                    Page {PAGENO} of {nbpg}
+                </td>
+            </tr>
                     {{--
                      <div style=" width: 25px; height: 25px;  border: 1px solid; margin-left: 10px; text-align: center; padding-top: 5px;">
                         2
