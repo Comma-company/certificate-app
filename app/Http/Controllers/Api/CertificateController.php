@@ -106,6 +106,7 @@ class CertificateController extends Controller
             'form_id' => ['required', 'exists:forms,id'],
             'data' => ['required'],
             'site_id'=>['required', 'exists:sites,id'],
+            'num_cert'=>'unique',
         ]);
         $check = FormValid::where('form_id',$request->form_id)->first();
         if($check == null){
@@ -125,6 +126,7 @@ class CertificateController extends Controller
         $data->site_id=$request->site_id;
         $data->data = $request->data;
         $data->expire = $targetDate;
+        $data->num_cert = $this->generateRandomNumber();
         $data->save();
         if ($request->form_images) {
             $images = $request->form_images;
@@ -310,6 +312,13 @@ class CertificateController extends Controller
             throw $th;
         }
     }
+    private function generateRandomNumber()
+{
+    
+    $min = 10000000; 
+    $max = 999999999999; 
+    return mt_rand($min, $max);
+}
 
     /* public function deleteFileNote($id, $file_id)
     {

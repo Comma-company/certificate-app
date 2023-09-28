@@ -151,7 +151,7 @@
                 <table style="border: 1px solid #00935f;padding: 10px;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #00935f;">
                     <tr style="padding: 10px;">
                         <th style="padding: 10px;">
-                            <div style="padding: 0 120px 0 0"><h3>{{$data->id}}</h3></div>
+                            <div style="padding: 0 120px 0 0"><h3>{{$data->num_cert}}</h3></div>
                         </th>
                         <th bgcolor="#00935f" style="color: #fff; padding: 10px">
                             <div style="padding: 0 140px 0 10px"><h3>NO</h3></div>
@@ -819,7 +819,7 @@
         </tr>
       </table>
 
-      <table>
+      {{-- <table>
         <tr>
           <th>
             <table>
@@ -842,12 +842,12 @@
             item is not applicable insert N/A
           </th>
         </tr>
-      </table>
+      </table> --}}
 
       <htmlpagefooter name="formFooter">
         <table style="width: 100%; margin-left: 24px;">
         <tr>
-            <td style="float: left; width:80%;">
+            <td style="float: left; width:34%;">
               <p>Produced Using 360 Connect @</p>
             </td>
             <td style="float: left; width:34%;">

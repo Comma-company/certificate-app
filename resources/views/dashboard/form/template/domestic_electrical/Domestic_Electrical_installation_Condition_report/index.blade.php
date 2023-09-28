@@ -79,7 +79,7 @@
                     <table style="border: 1px solid #00935f;padding: 10px;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #00935f;">
                         <tr style="padding: 10px;">
                             <th style="padding: 10px;">
-                                <div style="padding: 0 120px 0 0"><h3>{{$data->id ?? 0}}</h3></div>
+                                <div style="padding: 0 120px 0 0"><h3>{{$data->cert_num ?? 0}}</h3></div>
                             </th>
                             <th bgcolor="#00935f" style="color: #fff; padding: 10px">
                                 <div style="padding: 0 140px 0 10px"><h3>NO</h3></div>
@@ -431,9 +431,7 @@
             <td style="float: left;width: 30px;text-align: left;padding: 0px 5px;margin-left:5px;border: 1px solid #00935f;">
                 <p style="text-align: left;">{nbpg}</p>
             </td>
-            <td style="float: left;width: 30px;text-align: left;padding: 0px 5px;margin-left:5px;border: 1px solid #00935f;">
-              <p style="text-align: center;"> Expire At:{{ date('d-m-Y', strtotime($data->expire)) }}</p>
-          </td>
+           
         </tr>
         </table>
 
@@ -441,7 +439,7 @@
       <htmlpagefooter name="formFooter2">
         <div style="margin-top: 10px; overflow: hidden;">
 
-            <div style="text-align: left; width: 85%; float: left;">
+            <div style="text-align: left; width: 34%; float: left;">
             <p style="margin: 0; font-size: 10px">
                 This report is based on the model forms shown in Appendix 6 of BS
                 7671
@@ -453,7 +451,14 @@
 
             </div>
             
-            <div style="float: left;width: 8%;margin-right: 10px;">
+            <div  style="text-align: center; width: 34%; float:left;">
+              <p style="margin: 0; font-size: 10px">
+                Expire At: {{ date('d-m-Y', strtotime($data->expire)) }}
+                
+            </p>
+
+            </div>
+            <div style="float: left;width: 32%;margin-right: 10px;">
             <p>Page {PAGENO} of</p>
             </div>
 
