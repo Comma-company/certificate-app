@@ -41,7 +41,7 @@ class CertificateController extends Controller
             'user_id' => authUser('sanctum')->id,
 
         ])
-            ->select('id', 'customer_id', 'form_id', 'created_at', 'status_id')
+            ->select('id', 'customer_id', 'form_id', 'num_cert','created_at', 'status_id')
             ->with(['status', 'customer', 'notes', 'form'])
             ->latest()
             ->paginate($request->perPage);
@@ -54,7 +54,7 @@ class CertificateController extends Controller
         $data =  Certificate::where([
             'user_id' => authUser('sanctum')->id,
         ])
-            ->select('id', 'customer_id', 'status_id', 'form_id', 'created_at')
+            ->select('id', 'customer_id', 'status_id','num_cert' ,'form_id', 'created_at')
             ->where('status_id', 3)
             ->with(['status', 'customer', 'notes', 'form'])
             ->latest()
@@ -67,7 +67,7 @@ class CertificateController extends Controller
     public function uncompletedCertificate()
     {
         $data =  Certificate::where('user_id', authUser('sanctum')->id)
-            ->select('id', 'customer_id', 'form_id', 'status_id', 'created_at')
+            ->select('id', 'customer_id','num_cert' ,'form_id', 'status_id', 'created_at')
             ->where('status_id', '!=', 3)
             ->with(['status', 'customer', 'form'])
             ->latest()
@@ -81,12 +81,12 @@ class CertificateController extends Controller
     {
 
         $count_complete_cert = Certificate::where('user_id', authUser('sanctum')->id)
-            ->select('id', 'customer_id', 'status_id', 'form_id', 'created_at')
+            ->select('id', 'customer_id', 'status_id','num_cert' ,'form_id', 'created_at')
             ->where('status_id', 3)
             ->count();
 
         $count_uncompleted_cert =  Certificate::where('user_id', authUser('sanctum')->id)
-            ->select('id', 'customer_id', 'form_id', 'status_id', 'created_at')
+            ->select('id', 'customer_id', 'num_cert','form_id', 'status_id', 'created_at')
             ->where('status_id', '!=', 3)
             ->count();
 
@@ -106,15 +106,18 @@ class CertificateController extends Controller
             'form_id' => ['required', 'exists:forms,id'],
             'data' => ['required'],
             'site_id'=>['required', 'exists:sites,id'],
-            'num_cert'=>'unique',
+            'num_cert' => 'unique',
         ]);
         $check = FormValid::where('form_id',$request->form_id)->first();
-        if($check == null){
+       if ($check === null) {
+        if ($request->form_id === '5') {
+            $years = 5;
+        } else {
             $years = 1;
-        }else{
-        $years = (int)$check->years;
         }
-        
+    } else {
+        $years = (int)$check->years;
+    }
         $currentDate = date('Y-m-d'); 
         $daysToAdd = $years * 365;
         $targetDate = date('Y-m-d', strtotime($currentDate . ' + ' . $daysToAdd . ' days'));
@@ -193,6 +196,13 @@ class CertificateController extends Controller
             return responseJson(false, 'page not found', '', 404);
         }
     }
+    private function generateRandomNumber()
+{
+    
+    $min = 10000000; 
+    $max = 999999999999; 
+    return mt_rand($min, $max);
+}
 
 
     public function storeNote($id, Request $request)
@@ -312,13 +322,6 @@ class CertificateController extends Controller
             throw $th;
         }
     }
-    private function generateRandomNumber()
-{
-    
-    $min = 10000000; 
-    $max = 999999999999; 
-    return mt_rand($min, $max);
-}
 
     /* public function deleteFileNote($id, $file_id)
     {
@@ -426,7 +429,7 @@ class CertificateController extends Controller
         $data =  Certificate::where([
             'user_id' => $user_id,
             'id' => $id,
-        ])
+        ]) ->select('id', 'customer_id', 'status_id','num_cert' ,'form_id', 'created_at')
             ->with(['status', 'notes.files', 'form', 'customer', 'site.country' ,
              'customer.contacts', 'customer.country', 'certificateAttachments.image','customer.billing.paymentTerm'])
             ->first();
