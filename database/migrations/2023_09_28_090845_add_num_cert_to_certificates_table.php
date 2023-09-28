@@ -14,7 +14,7 @@ class AddNumCertToCertificatesTable extends Migration
     public function up()
     {
         Schema::table('certificates', function (Blueprint $table) {
-            $table->bigInteger('num_cert')->unique();
+            $table->bigInteger('num_cert')->nullable()->unique();
         });
         
     }
