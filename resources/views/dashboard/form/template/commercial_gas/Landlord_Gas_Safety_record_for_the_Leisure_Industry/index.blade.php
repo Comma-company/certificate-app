@@ -11,20 +11,45 @@
         padding: 0;
         box-sizing: border-box;
     }
+    @page{
+                header: formHeader;
+                footer: formFooter;
+                margin: 15px;
+                margin-bottom:20px;
+                margin-top:80px;
+                margin-header:4mm;
+                size: landscape; /* <length>{1,2} | auto | portrait | landscape */
+                margin-footer:5mm ;
+            }
 </style>
-<body>
-    <!-- Heading of PDF -->
+<body style="width: 100%; margin: 0; overflow-y: hidden;">
+  <div class="table-container" style="font-family: 'FreeSans';">
     @php
         $firstCategory = $data->user->categories->firstWhere('pivot.category_id', 2);
     @endphp
-    <div class="pdf-headings" style="padding: 10px; text-align: end;">
-        <div class="pdf-headings" style="padding: 10px 0; justify-content: end; display: flex;align-items: baseline;">
-            <p style=" font-size: 16px;margin: 0; color: #000;font-weight: 400;padding: 12px 8px; line-height: 0;background-color: white; border: 3px solid yellow;">{{$data->num_cert ?? $data->id}}</h2>
-            <p style="font-size: 16px;margin: 0; color: #000; font-weight: 400;padding: 5px; background-color: yellow; border: 1px solid yellow;" >NO</p>
+   <htmlpageheader name="formHeader">
+    <div style="margin: 10px 25px;  width: 100%;">
+        <div style="float: right; margin-right: 46px; height: 70px;width: 60%;">
+            <table style="border: 1px solid #FFF200;padding: 10px;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #FFF200;">
+                <tr style="padding: 10px;">
+                    <th style="padding: 10px;">
+                        <div style="padding: 0 120px 0 0"><h3>{{$data->num_cert ?? $data->id}}</h3></div>
+                    </th>
+                    <th bgcolor="#FFF200" style="color:#000 ; padding: 10px">
+                        <div style="padding: 0 140px 0 10px"><h3>NO</h3></div>
+                    </th>
+                </tr>
+            </table>
+            <h2 style="color: #000; padding: 0; margin: 0; font-weight: 700;text-align: right">
+                Service/Maintenace Record INSTALLATION WORKS CERTIFICATE
+            </h2>
+             <p style="font-size: 10px; padding: 0; margin: 0; font-style: italic;text-align: right">
+                Issued in accordance with BS 7671: {{ getvalue('date_inspection_by', $formData['part_declaration']) }} – Requirements for Gas Installations
+            </p>
         </div>
-        <h2 style=" font-size: 24px; font-weight: 700; line-height: 0;">Leisure Industry Gas Safety Record INSTALLATION WORKS CERTIFICATE</h2>
-        <p style="font-size: 16px; color: #000; font-weight: 400;" >ssued in accordance with BS 7671: 2018+A2:2022 – Requirements for Electrical Installations</p>
-    </div>
+        
+     </div>
+</htmlpageheader>
     
        <!-- Table 1 -->
   <div class="table-padding" style="padding: 10px;">
@@ -152,7 +177,7 @@
                       </thead>
                       <tbody style="vertical-align: middle;"  >
                       <tr>
-                        <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">Gas Pipework vishual inspection :</td>
+                        <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">Gas Pipework vishual inspection :{{ getvalue('pipework_visual_p2', $formData['form_part_1']) }}</td>
                         <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
                           <span style="font-weight: 700;">Appliance 1</span>
                           <span style="border-bottom: 1px dashed #000;">{{ getvalue('defects_identified_1', $formData['form_part_2']) }}</span>
@@ -164,7 +189,7 @@
                     <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">Numbers should correspond to defects</td>
                       </tr>
                       <tr>
-                        <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">Outcome of gas supply pipework visual inspection :</td>
+                        <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">Outcome of gas supply pipework visual inspection : {{ getvalue('pipework_outcome_supply_p2', $formData['form_part_1']) }}</td>
                         <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
                           <span style="font-weight: 700;">Appliance 2</span>
                           <span style="border-bottom: 1px dashed #000;">{{ getvalue('defects_identified_2', $formData['form_part_2']) }}</span>
@@ -176,7 +201,7 @@
                     <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;"></td>
                       </tr>
                       <tr>
-                        <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">Is the emergency control valve acess satisfactory :</td>
+                        <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">Is the emergency control valve acess satisfactory :{{ getvalue('pipework_emergency_p2', $formData['form_part_1']) }}</td>
                         <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
                           <span style="font-weight: 700;">Appliance 3</span>
                           <span style="border-bottom: 1px dashed #000;">{{ getvalue('defects_identified_3', $formData['form_part_2']) }}</span>
@@ -188,7 +213,7 @@
                     <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">{{ getvalue('warning_notice_3', $formData['form_part_2']) }}</td>
                       </tr>
                       <tr>
-                        <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">Outcome of gas tightness test? :</td>
+                        <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">Outcome of gas tightness test? : {{ getvalue('pipework_outcome_tightness_p2', $formData['form_part_1']) }}</td>
                         <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
                           <span style="font-weight: 700;">Appliance 4</span>
                           <span style="border-bottom: 1px dashed #000;">{{ getvalue('defects_identified_4', $formData['form_part_2']) }}</span>
@@ -200,7 +225,7 @@
                     <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">{{ getvalue('record_remedial_action', $formData['form_part_3']) }}</td>
                       </tr>
                       <tr>
-                        <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">Is protective equipotential bonding satisfactory? :</td>
+                        <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">Is protective equipotential bonding satisfactory? : {{ getvalue('pipework_protective_p2', $formData['form_part_1']) }}</td>
                         <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
                           <span style="font-weight: 700;">Appliance 5</span>
                           <span style="border-bottom: 1px dashed #000;">{{ getvalue('defects_identified_5', $formData['form_part_2']) }}</span>
@@ -326,8 +351,8 @@
         <table style="width: 100%; border: 1px solid black; min-height: 130px;">
         <thead>
           <tr style="background-color: yellow;">
-            <th  style="width: 48%; text-align: left; color: black; font-weight: 700; font-size: 15px; margin: 0; padding: 10px; ">Record issued by:</th>
-            <th  style="width: 48%; text-align: left; color: black; font-weight: 700; font-size: 15px; margin: 0; padding: 10px; ">Record recived by: (tennant/landlord/homeowner/agent)</th>
+            <th  style="width: 48%; text-align: left; color: black; font-weight: 700; font-size: 15px; margin: 0; padding: 10px; ">Record issued by: {{ getvalue('record_issue_by', $formData['part_declaration']) }}</th>
+            <th  style="width: 48%; text-align: left; color: black; font-weight: 700; font-size: 15px; margin: 0; padding: 10px; ">Record recived by:{{ getvalue('received_by', $formData['part_declaration']) }}</th>
              </tr>
         </thead>
         <tbody>
@@ -351,7 +376,7 @@
           <tbody>
              
               <tr style="text-align: center;">
-                  <td><h3 style="margin-top: 10px; margin-bottom: 0px;">Attention</h3><p style="margin-bottom: 0px;">Next Safety Check Due Within</p><p style="color: red;">12 Months</p></td>
+                  <td><h3 style="margin-top: 10px; margin-bottom: 0px;">Attention</h3><p style="margin-bottom: 0px;">Next Safety Check Due Within</p><p style="color: red;"> {{ getvalue('next_safety_check_by', $formData['form_part_4']) }}</p></td>
               </tr>
               
           </tbody>
@@ -396,52 +421,53 @@
                       <tbody style="vertical-align: middle;"  >
                    <tr>
                     <td style=" border: 1px solid black; padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-                      <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_number', $formData['appliance_data']) }}</span>
+                      
+                      <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_number', $formData['appliance_data'][0]) }}</span>
                   </td>
                   <td style=" border: 1px solid black; padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-                    <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_designation', $formData['appliance_data']) }}</span>
+                    <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_designation', $formData['appliance_data'][0]) }}</span>
                 </td>
                 <td style=" border: 1px solid black; padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-                  <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_type', $formData['appliance_data']) }}</span>
+                  <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_type', $formData['appliance_data'][0]) }}</span>
               </td>
               <td style=" border: 1px solid black; padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-                <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_model', $formData['appliance_data']) }}</span>
+                <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_model', $formData['appliance_data'][0]) }}</span>
             </td>
             <td style=" border: 1px solid black; padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-              <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_make', $formData['appliance_data']) }}</span>
+              <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_make', $formData['appliance_data'][0]) }}</span>
           </td>
           <td style=" border: 1px solid black; padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-            <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_owned_by', $formData['appliance_data']) }}</span>
+            <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_owned_by', $formData['appliance_data'][0]) }}</span>
         </td>
         <td style=" border: 1px solid black; padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-          <span style="border-bottom: 1px dashed #000;">{{ getvalue('inspected_make', $formData['appliance_data']) }}</span>
+          <span style="border-bottom: 1px dashed #000;">{{ getvalue('inspected_make', $formData['appliance_data'][0]) }}</span>
       </td>
       <td style=" border: 1px solid black; padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-        <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_flue_type', $formData['appliance_data']) }}</span>
+        <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_flue_type', $formData['appliance_data'][0]) }}</span>
     </td>
     <td style=" border: 1px solid black; padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-      <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_operating_pressure', $formData['appliance_data']) }}</span>
+      <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_operating_pressure', $formData['appliance_data'][0]) }}</span>
   </td>
   <td style=" border: 1px solid black; padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-    <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_operating_of_safety', $formData['appliance_data']) }}</span>
+    <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_operating_of_safety', $formData['appliance_data'][0]) }}</span>
   </td>
   <td style=" border: 1px solid black; padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-    <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_ventilation_satisfactory', $formData['appliance_data']) }}</span>
+    <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_ventilation_satisfactory', $formData['appliance_data'][0]) }}</span>
   </td>
   <td style=" border: 1px solid black; padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-    <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_visual_condition', $formData['appliance_data']) }}</span>
+    <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_visual_condition', $formData['appliance_data'][0]) }}</span>
   </td>
   <td style=" border: 1px solid black; padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-    <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_flue_operation', $formData['appliance_data']) }}</span>
+    <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_flue_operation', $formData['appliance_data'][0]) }}</span>
   </td>
   <td style=" border: 1px solid black; padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-    <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_combustion_analyses', $formData['appliance_data']) }}</span>
+    <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_combustion_analyses', $formData['appliance_data'][0]) }}</span>
   </td>
   <td style=" border: 1px solid black; padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-    <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_serviced', $formData['appliance_data']) }}</span>
+    <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_serviced', $formData['appliance_data'][0]) }}</span>
   </td>
   <td style=" border: 1px solid black; padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-    <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_safe_to_use', $formData['appliance_data']) }}</span>
+    <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_safe_to_use', $formData['appliance_data'][0]) }}</span>
   </td>
                    </tr>
                         
@@ -479,16 +505,16 @@
                  <tr>
                
   <td style=" border: 1px solid black; padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-    {{ getvalue('id', $formData['appliance_data']) }}
+    {{ getvalue('id', $formData['appliance_data'][0]) }}
   </td>
   <td style=" border: 1px solid black; padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-    <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_approved_co', $formData['appliance_data']) }}</span>
+    <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_approved_co', $formData['appliance_data'][0]) }}</span>
     </td>
   <td style=" border: 1px solid black; padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-  <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_is_co_alarm', $formData['appliance_data']) }}</span>
+  <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_is_co_alarm', $formData['appliance_data'][0]) }}</span>
   </td>
   <td style=" border: 1px solid black; padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-  <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_co_alarm_test', $formData['appliance_data']) }}</span>
+  <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_co_alarm_test', $formData['appliance_data'][0]) }}</span>
   </td>
                  </tr>
                       
@@ -518,7 +544,6 @@
                           <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px; width: 50%; ">
                             <p> **where relevant and practicable</p> 
                             <p>His certificate is based on the model forms shown in Appendix 6 of BS 7671: 2018+A2:2022</p> 
-                           <p>Expire At: {{ date('d-m-Y', strtotime($data->expire)) }} </p>
                             </td>
                             <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px; width: 25%; ">
                          <p>     Enter a or value in the respective fields, as appropriate</p>
@@ -532,6 +557,19 @@
         </div>
     </div>
   </div>
-
+  <htmlpagefooter name="formFooter">
+    <table style="width: 100%;">
+      <tr>
+        <td style="width: 33%;">Produced Using 360 Connect @</td>
+        <td style="text-align: center; width: 34%;">Expire At: {{ date('d-m-Y', strtotime($data->expire)) }}</td>
+        <td style="text-align: center; width: 33%;">
+            Page {PAGENO} of {nbpg}
+        </td>
+    </tr>
+            
+    </table>
+    
+  </htmlpagefooter>
+</div>
 </body>
 </html>
