@@ -429,7 +429,7 @@ class CertificateController extends Controller
         $data =  Certificate::where([
             'user_id' => $user_id,
             'id' => $id,
-        ]) ->select('id', 'customer_id', 'status_id','num_cert' ,'form_id', 'site_id','created_at')
+        ]) ->select('id', 'customer_id', 'status_id','num_cert' ,'form_id','data','site_id','created_at')
             ->with(['status', 'notes.files', 'form', 'customer', 'site.country' ,
              'customer.contacts', 'customer.country', 'certificateAttachments.image','customer.billing.paymentTerm'])
             ->first();
