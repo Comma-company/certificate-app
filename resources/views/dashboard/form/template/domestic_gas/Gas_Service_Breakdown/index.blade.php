@@ -59,12 +59,13 @@
      <htmlpageheader name="formHeader">
         <div style="margin: 10px 25px;  width: 100%;">
             <div style="float: right; margin-right: 46px; height: 70px;width: 60%;">
-                <table style="border: 1px solid #FFF200;padding: 10px;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #FFF200;">
+                <table style="border: 1px solid #fbfbfb;padding: 10px;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #fbfbfb;">
                     <tr style="padding: 10px;">
                         <th style="padding: 10px;">
-                            <div style="padding: 0 120px 0 0"><h3>{{$data->num_cert}}</h3></div>
+                            
+                            <div style="padding: 0 120px 0 0"><h3>{{$data->num_cert ?? $data->id}}</h3></div>
                         </th>
-                        <th bgcolor="#FFF200" style="color:#000 ; padding: 10px">
+                        <th bgcolor="#fbfbfb" style="color:#000 ; padding: 10px">
                             <div style="padding: 0 140px 0 10px"><h3>NO</h3></div>
                         </th>
                     </tr>
@@ -85,14 +86,14 @@
     <!-- Table 1 -->
   <div class="table-padding" style="padding:10px;">
       <div class="table table-1" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
-        <!-- <div class="table-heading" style="display: block;  background-color: #FFF200; ">
+        <!-- <div class="table-heading" style="display: block;  background-color: #fbfbfb; ">
             <h3 style="color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</h3>
         </div> -->
         <div class="table-content" style="padding: 0px;">
            <div class="pdf-table" style="display: block; vertical-align: middle; ">
                 <table style="width: 100%;">
                     <thead style="vertical-align: middle;">
-                        <tr style="background-color: #FFF200;">
+                        <tr style="background-color: #fbfbfb;">
                             <th colspan="3" style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</th>
                         </tr>
                         <tr style="width: 100%;">
@@ -209,7 +210,7 @@
            <div class="pdf-table" style="display: block; ">
                 <table style="width: 100%;">
                     <thead>
-                        <tr style="background-color: #FFF200;">
+                        <tr style="background-color: #fbfbfb;">
                             <th colspan="3" style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">Appliance Details</th>
                         </tr>
                       
@@ -279,7 +280,7 @@
     <div style="display: inline-block; width: 100%;">
     <table style="width: 100%; border: 1px solid black;">
     <thead>
-        <tr style="background-color: #FFF200;">
+        <tr style="background-color: #fbfbfb;">
              <th  style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">Notes</th>
         </tr>
     </thead>
@@ -293,7 +294,7 @@
     <div style="display: inline-block; width: 100%;">
       <table style="width: 100%; border: 1px solid black;">
     <thead>
-        <tr style="background-color: #FFF200;">
+        <tr style="background-color: #fbfbfb;">
              <th  style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">Parts/Spares Required</th>
                  
         </tr>
@@ -311,14 +312,14 @@
 <!-- Table 5 -->
 <div class="table-padding" style="padding: 10px;">
     <div class="table table-2" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
-      <!-- <div class="table-heading" style="display: block;  background-color: #FFF200; ">
+      <!-- <div class="table-heading" style="display: block;  background-color: #fbfbfb; ">
           <h3 style="color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</h3>
       </div> -->
       <div class="table-content" style="padding: 0px;">
          <div class="pdf-table" style="display: block; ">
               <table style="width: 100%;">
                   <thead>
-                      <tr style="background-color: #FFF200;">
+                      <tr style="background-color: #fbfbfb;">
                           <th  style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">Installation Satisfactorty?</th>
                           <th  style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">Service Checks Satisfactory?</th>
                           <th  style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">Appliance Details</th>
@@ -433,7 +434,7 @@
               <table style="width: 100%;">
                   <thead>
                       <tr >
-                          <th  style="background-color: #FFF200; text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; width: 100px;">TIME</th>
+                          <th  style="background-color: #fbfbfb; text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; width: 100px;">TIME</th>
                           <th  style=" text-align: left; color: black; font-size: 20px; margin: 0; padding: 10px; ">
                             <span style="font-weight: 700;">Arrival Time:</span>
                             <span style="border-bottom: 1px dashed #000; font-weight: 400;">{{ getvalue('time_of_arrival', $formData['form_part_6']) }}</span>
@@ -455,7 +456,7 @@
 <!-- Table 7 -->
 <div class="table-padding" style="padding: 10px;">
     <div class="table table-2" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
-      <!-- <div class="table-heading" style="display: block;  background-color: #FFF200; ">
+      <!-- <div class="table-heading" style="display: block;  background-color: #fbfbfb; ">
           <h3 style="color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</h3>
       </div> -->
       <div class="table-content" style="padding: 0px;">
@@ -463,7 +464,7 @@
               <table style="width: 100%;">
                   <thead>
                       <tr >
-                          <th colspan="3"  style="background-color: #FFF200; text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px;">Issued By</th>
+                          <th colspan="3"  style="background-color: #fbfbfb; text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px;">Issued By</th>
                          
                       </tr>
                     
@@ -532,7 +533,7 @@
 <!-- Table 9 -->
 <div class="table-padding" style="padding: 10px;">
     <div class="table table-2" style=" width: 100%; display: block; margin: auto; ">
-      <!-- <div class="table-heading" style="display: block;  background-color: #FFF200; ">
+      <!-- <div class="table-heading" style="display: block;  background-color: #fbfbfb; ">
           <h3 style="color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</h3>
       </div> -->
       <div class="table-content" style="padding: 0px;">

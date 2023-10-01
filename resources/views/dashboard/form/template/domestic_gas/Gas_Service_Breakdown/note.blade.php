@@ -36,7 +36,7 @@ body {
   margin: 0;
   padding: 0;
   font-size: 12px;
-  /* background-color: #EAEAEA; */
+  /* background-color: #fbfbfb; */
 }
 table {
   border-collapse: collapse;
@@ -57,7 +57,7 @@ table {
   width: 50%;
 }
 .number-table {
-  border: solid 2px yellow;
+  border: solid 2px #fbfbfb;
   padding: 0 !important;
   width: 100px;
   height: 40px;
@@ -72,7 +72,7 @@ h4 {
   padding: 0;
 }
 .green-table-headers {
-  background-color: yellow;
+  background-color: #fbfbfb;
   text-align: left;
   color: #fff;
   font-weight: bold;
@@ -80,7 +80,7 @@ h4 {
   padding: 12px 15px;
 }
 .border-table {
-  border: solid 1px yellow;
+  border: solid 1px #fbfbfb;
 }
 
 .sub-title-text {
@@ -137,7 +137,7 @@ h4 {
             {{ $attachment->note_title ? $attachment->note_title : ' ' }}
           </th>
         </tr>
-        <tr style=" border: solid 1px yellow;">
+        <tr style=" border: solid 1px #fbfbfb;">
           <th style="width: 50%; padding: 5px 20px; line-height: 30px; padding-bottom: 5px;" class="main-text">
             {{ $attachment->note_body ? $attachment->note_body : ' ' }}
           </th>

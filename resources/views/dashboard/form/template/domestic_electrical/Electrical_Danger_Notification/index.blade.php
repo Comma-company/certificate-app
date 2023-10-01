@@ -94,7 +94,7 @@
                         <table style="border: 1px solid #00935f;padding: 10px;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #00935f;">
                             <tr style="padding: 10px;">
                                 <th style="padding: 10px;">
-                                    <div style="padding: 0 120px 0 0"><h3>{{$data->num_cert}}</h3></div>
+                                    <div style="padding: 0 120px 0 0"><h3>{{$data->num_cert ?? $data->id}}</h3></div>
                                 </th>
                                 <th bgcolor="#00935f" style="color: #fff; padding: 10px">
                                     <div style="padding: 0 140px 0 10px"><h3>NO</h3></div>
@@ -353,9 +353,10 @@
                               </tr>
                               <tr>
                                 <td>Signature :
-                                    @if ($data->customerSignature)
-                                    <img width="120px" src="{{ asset('uploads/'.$data->customerSignature->file_url) }}" alt="">
-                                    @endif
+                                  @if($data->user->signature)
+                                  <span style="border-bottom: 1px dashed #000;"> <img width="120px" src="{{ asset('uploads/'.$data->user->signature->signature) }}" alt="">
+                                  </span>
+                                  @endif
                                 </td>
                                 <td>Date : {{ getvalue('received_date', $formData['part_declaration']) }}</td>
 
