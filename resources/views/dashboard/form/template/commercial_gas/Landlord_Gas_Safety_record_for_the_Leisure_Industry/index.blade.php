@@ -10,6 +10,8 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        font-size: 12px;
+        font-family: 'FreeSans';
     }
     @page{
                 header: formHeader;
@@ -19,8 +21,16 @@
                 margin-top:80px;
                 margin-header:4mm;
                 size: landscape; /* <length>{1,2} | auto | portrait | landscape */
-                margin-footer:5mm ;
+                margin-footer:2mm ;
             }
+            @font-face {
+        font-family:fontawesome;
+        src: url("{{ asset('admin/fonts/gnu-free-font/fa-solid-900.ttf') }}");
+      }
+      .table-container {
+        padding: 10px;
+        text-align: right;
+      }
 </style>
 <body style="width: 100%; margin: 0; overflow-y: hidden;">
   <div class="table-container" style="font-family: 'FreeSans';">
@@ -41,7 +51,7 @@
                 </tr>
             </table>
             <h2 style="color: #000; padding: 0; margin: 0; font-weight: 700;text-align: right">
-                Service/Maintenace Record INSTALLATION WORKS CERTIFICATE
+                Lisure Industry Record INSTALLATION WORKS CERTIFICATE
             </h2>
              <p style="font-size: 10px; padding: 0; margin: 0; font-style: italic;text-align: right">
                 Issued in accordance with BS 7671: {{ getvalue('date_inspection_by', $formData['part_declaration']) }} – Requirements for Gas Installations
@@ -49,114 +59,114 @@
         </div>
         
      </div>
-</htmlpageheader>
+   </htmlpageheader>
     
        <!-- Table 1 -->
-  <div class="table-padding" style="padding: 10px;">
-    <div class="table table-1" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
-      <!-- <div class="table-heading" style="display: block;  background-color: yellow; ">
-          <h3 style="color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</h3>
-      </div> -->
-      <div class="table-content" style="padding: 0px;">
-         <div class="pdf-table" style="display: block; vertical-align: middle; ">
-              <table style="width: 100%;">
-                  <thead style="vertical-align: middle;">
-                      <tr style="background-color: yellow;">
-                          <th colspan="3" style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</th>
-                      </tr>
-                      <tr style="width: 100%;">
-                          <td style="text-align: left; padding-left: 6px; padding-top: 15px; padding-bottom:15px; font-weight: 700;">DETAILS OF THE CONTRACTOR</th>
-                          <td style="text-align: left; padding-top: 15px; padding-bottom:15px; font-weight: 700;">DETAILS OF THE CLIENT</th>
-                          <td style="text-align: left; padding-top: 15px; padding-bottom:15px; font-weight: 700;">DETAILS OF THE INSTALLATION</th>
-                      </tr>
-                  </thead>
-                  <tbody style="vertical-align: middle;"  >
-                      <tr>
-                        @if ($firstCategory)
-                          <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-                              <span style="font-weight: 700;">Gaz Safe Number:</span>
-                              <span style="border-bottom: 1px dashed #000;">{{ $firstCategory->pivot->gas_register_number }}</span>
-                          </td>
-                          @endif
-                          <td style="padding-top:6px; padding-bottom:6px;">
-                              <span style="font-weight: 700;">Name:</span>
-                              <span style="border-bottom: 1px dashed #000;">{{ $data->site->siteContact->f_name }}</span>
-                          </td>
-                          <td style="padding-top:6px; padding-bottom:6px;">
-                              <span style="font-weight: 700;">Tenant Name:</span>
-                              <span style="border-bottom: 1px dashed #000;">{{ $data->customer->name }}</span>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-                              <span style="font-weight: 700;">Company Name:</span>
-                              <span style="border-bottom: 1px dashed #000;">{{ $data->user->company_name }}</span>
-                          </td>
-                          <td style="padding-top:6px; padding-bottom:6px; line-height: 1.5;">
-                              <span style="font-weight: 700;">Address:</span>
-                              <span style="border-bottom: 1px dashed #000;">{{$data->user->number_street_name.', '.$data->user->city}}</span>
-                          </td>
-                          <td style="padding-top:6px; padding-bottom:6px; line-height: 1.5;">
-                              <span style="font-weight: 700;">Address:</span>
-                              <span style="border-bottom: 1px dashed #000;">{{$data->site->street_num.', '.$data->site->city}}</span>
-                          </td>
-                      </tr>
-                      <tr>
-                           <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px; line-height: 1.5;">
-                              <span style="font-weight: 700;">Address:</span>
-                              <span style="border-bottom: 1px dashed #000;">{{$data->customer->street_num.', '.$data->customer->city}} </span>
-                          </td>
-                          <td style="padding-top:6px; padding-bottom:6px;">
-                              <div style="width: 100%; display: block;">
-                              <div style="width: 48%; display: inline-block;">
-                              <span style="font-weight: 700;">Postcode:</span>
-                              <span style="border-bottom: 1px dashed #000;">{{ $data->user->postal_code }}</span>
-                              </div>
-                              <div style="width: 48%; display: inline-block;">
-                               <span style="font-weight: 700;">TEL No:</span>
-                              <span style="border-bottom: 1px dashed #000;">{{ $data->user->phone }}</span>
-                              </div>
-                              </div>
-                          </td>
-                            <td style="padding-top:6px; padding-bottom:6px;">
-                              <div style="width: 100%; display: block;">
-                              <div style="width: 48%; display: inline-block;">
-                              <span style="font-weight: 700;">Postcode:</span>
-                              <span style="border-bottom: 1px dashed #000;">{{ $data->site->postal_code }}</span>
-                              </div>
-                              <div style="width: 48%; display: inline-block;">
-                               <span style="font-weight: 700;">TEL No:</span>
-                              <span style="border-bottom: 1px dashed #000;">{{ $data->site->siteContact->phone }}</span>
-                              </div>
-                              </div>
-                          </td>
-                      </tr>
-                      <tr>
-                            <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-                              <div style="width: 100%; display: block;">
-                              <div style="width: 48%; display: inline-block;">
-                              <span style="font-weight: 700;">Postcode:</span>
-                              <span style="border-bottom: 1px dashed #000;">{{ $data->customer->postal_code }}</span>
-                              </div>
-                              <div style="width: 48%; display: inline-block;">
-                               <span style="font-weight: 700;">TEL No:</span>
-                              <span style="border-bottom: 1px dashed #000;">{{ $data->customer->contacts->first()->phone }}</span>
-                              </div>
-                              </div>
-                          </td>
-                      </tr>
-                    
-                  </tbody>
-              </table>
-         </div>
-      </div>
-  </div>
-</div>
+       <table
+       width="100%"
+       style="border: 1px solid black; padding: 0; border-collapse: collapse; margin-bottom: 10px;"
+     >
+       <tr>
+         <th bgcolor="yellow" style="padding-top: 5px; padding-bottom: 5px;text-align:left" colspan="3">
+           <div style="text-align: left; padding: 0 5px;">
+             <h3
+               style="color: black; font-weight: bold; padding-top: 5px; padding-bottom: 5px; margin: 0;"
+             >
+             PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION
+             </h3>
+           </div>
+         </th>
+       </tr>
+       <tr>
+         <td style="vertical-align: top;">
+           <div style="text-align: left; padding: 0 5px">
+             <h5 style="color: black;font-weight: bold;padding: 0 5px;margin: 0;">
+               DETAILS OF THE CONTRACTOR
+             </h5>
+             @if ($data->user->categories->isNotEmpty())
+    @php
+       $firstCategory = $data->user->categories->firstWhere('pivot.category_id', 1);
+   @endphp
+   @if ($firstCategory)
+   <p style="margin: 15px">
+           Registration No:
+           <span style="font-weight: bold; padding: 3px 20px">
+                   {{ $firstCategory->pivot->license_number }}
+           </span>
+         </p>
+   @endif
+   @endif
 
+             <p style="margin: 15px">
+               Company Name:
+               <span style="font-weight: bold;padding:3px 20px">{{ $data->user->company_name }}</span>
+             </p>
+             <p style="margin: 15px">
+               Address:
+             <span style="font-weight: bold;padding:3px 20px">{{$data->user->number_street_name.', '.$data->user->city}}</span>
+             </p>
+             <p style="margin: 15px">
+               Postcode:<span style="font-weight: bold;padding:3px 20px">{{ $data->user->postal_code }}</span>
+               <span>Tel No:<span style="font-weight: bold;padding:3px 20px">{{ $data->user->phone }}</span></span>
+             </p>
+           </div>
+         </td>
+         <td style="vertical-align: top;">
+           <div style="text-align: left">
+             <h5
+               style="
+                 color: black;
+                 font-weight: bold;
+                 padding: 0 5px;
+                 margin: 0;
+               "
+             >
+               DETAILS OF THE CLIENT
+             </h5>
+             {{-- <p style="margin: 10px">
+               Contractor Reference Number
+               (CRN):
+             </p> --}}
+             <p style="margin: 10px">
+               Name:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->name }}</span>
+             </p>
+             <p style="margin: 10px">
+               Address:<span style="font-weight: bold;padding:3px 20px">{{$data->customer->street_num.', '.$data->customer->city}}</span>
 
-     
+             </p>
+             <p style="margin: 10px">
+               Postcode:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->postal_code }}</span>
+               <span>Tel No:.<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->contacts->first()->phone }}</span>.</span>
+             </p>
+           </div>
+         </td>
+         <td style="vertical-align: top;">
+           <div style="text-align: left">
+             <h5
+               style="
+                 color: black;
+                 font-weight: bold;
+                 padding: 0 5px;
+                 margin: 0;
+               "
+             >
+             DETAILS OF THE INSTALLATION
+             </h5>
+             <p style="margin: 15px">
+               Tenant Name:<span style="font-weight: bold;padding:3px 20px">{{ $data->site->siteContact->f_name }}</span>
+             </p>
+             <p style="margin: 15px">
+               Address:<span style="font-weight: bold;padding:3px 20px">{{$data->site->street_num.', '.$data->site->city}}</span>
 
-
+             </p>
+             <p style="margin: 15px">
+               Postcode:<span style="font-weight: bold;padding:3px 20px">{{ $data->site->postal_code }}</span>
+               <span>Tel No:<span style="font-weight: bold;padding:3px 20px">{{ $data->site->siteContact->phone }}</span></span>
+             </p>
+           </div>
+         </td>
+       </tr>
+     </table>
       <!-- Table 2 -->
       <div class="table-padding" style="padding: 10px;">
         <div class="table table-1" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
@@ -168,73 +178,73 @@
                   <table style="width: 100%;">
                       <thead style="vertical-align: middle;">
                           <tr style="background-color: yellow;">
-                              <th  style="width: 25%; text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">Pipework Inspection Details</th>
-                              <th  style="width: 25%; text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">Defects Identified</th>
-                              <th  style="width: 25%; text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">Warning Notice Issued?</th>
-                              <th  style="width: 25%; text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">ANy Remedial Action Taken</th>
+                              <th  style="width: 25%; text-align: left; color: black; font-weight: 700; font-size: 10px; margin: 0; padding: 5px; ">Pipework Inspection Details</th>
+                              <th  style="width: 25%; text-align: left; color: black; font-weight: 700; font-size: 10px; margin: 0; padding: 5px; ">Defects Identified</th>
+                              <th  style="width: 25%; text-align: left; color: black; font-weight: 700; font-size: 10px; margin: 0; padding: 5px; ">Warning Notice Issued?</th>
+                              <th  style="width: 25%; text-align: left; color: black; font-weight: 700; font-size: 10px; margin: 0; padding: 5px; ">ANy Remedial Action Taken</th>
                           </tr>
                         
                       </thead>
                       <tbody style="vertical-align: middle;"  >
                       <tr>
-                        <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">Gas Pipework vishual inspection :{{ getvalue('pipework_visual_p2', $formData['form_part_1']) }}</td>
-                        <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
+                        <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;">Gas Pipework vishual inspection :{{ getvalue('pipework_visual_p2', $formData['form_part_1']) }}</td>
+                        <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;">
                           <span style="font-weight: 700;">Appliance 1</span>
                           <span style="border-bottom: 1px dashed #000;">{{ getvalue('defects_identified_1', $formData['form_part_2']) }}</span>
                       </td>
-                      <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
+                      <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;">
                        
                         <span style="border-bottom: 1px dashed #000;">{{ getvalue('warning_notice_1', $formData['form_part_2']) }}</span>
                     </td>
-                    <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">Numbers should correspond to defects</td>
+                    <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;">Numbers should correspond to defects</td>
                       </tr>
                       <tr>
-                        <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">Outcome of gas supply pipework visual inspection : {{ getvalue('pipework_outcome_supply_p2', $formData['form_part_1']) }}</td>
-                        <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
+                        <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;">Outcome of gas supply pipework visual inspection : {{ getvalue('pipework_outcome_supply_p2', $formData['form_part_1']) }}</td>
+                        <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;">
                           <span style="font-weight: 700;">Appliance 2</span>
                           <span style="border-bottom: 1px dashed #000;">{{ getvalue('defects_identified_2', $formData['form_part_2']) }}</span>
                       </td>
-                      <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
+                      <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;">
                        
                         <span style="border-bottom: 1px dashed #000;">{{ getvalue('warning_notice_2', $formData['form_part_2']) }}</span>
                     </td>
-                    <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;"></td>
+                    <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;"></td>
                       </tr>
                       <tr>
-                        <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">Is the emergency control valve acess satisfactory :{{ getvalue('pipework_emergency_p2', $formData['form_part_1']) }}</td>
-                        <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
+                        <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;">Is the emergency control valve acess satisfactory :{{ getvalue('pipework_emergency_p2', $formData['form_part_1']) }}</td>
+                        <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;">
                           <span style="font-weight: 700;">Appliance 3</span>
                           <span style="border-bottom: 1px dashed #000;">{{ getvalue('defects_identified_3', $formData['form_part_2']) }}</span>
                       </td>
-                      <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
+                      <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;">
                        
                         <span style="border-bottom: 1px dashed #000;"></span>
                     </td>
-                    <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">{{ getvalue('warning_notice_3', $formData['form_part_2']) }}</td>
+                    <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;">{{ getvalue('warning_notice_3', $formData['form_part_2']) }}</td>
                       </tr>
                       <tr>
-                        <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">Outcome of gas tightness test? : {{ getvalue('pipework_outcome_tightness_p2', $formData['form_part_1']) }}</td>
-                        <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
+                        <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;">Outcome of gas tightness test? : {{ getvalue('pipework_outcome_tightness_p2', $formData['form_part_1']) }}</td>
+                        <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;">
                           <span style="font-weight: 700;">Appliance 4</span>
                           <span style="border-bottom: 1px dashed #000;">{{ getvalue('defects_identified_4', $formData['form_part_2']) }}</span>
                       </td>
-                      <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
+                      <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;">
                        
                         <span style="border-bottom: 1px dashed #000;">{{ getvalue('warning_notice_4', $formData['form_part_2']) }}</span>
                     </td>
-                    <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">{{ getvalue('record_remedial_action', $formData['form_part_3']) }}</td>
+                    <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;">{{ getvalue('record_remedial_action', $formData['form_part_3']) }}</td>
                       </tr>
                       <tr>
-                        <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">Is protective equipotential bonding satisfactory? : {{ getvalue('pipework_protective_p2', $formData['form_part_1']) }}</td>
-                        <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
+                        <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;">Is protective equipotential bonding satisfactory? : {{ getvalue('pipework_protective_p2', $formData['form_part_1']) }}</td>
+                        <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;">
                           <span style="font-weight: 700;">Appliance 5</span>
                           <span style="border-bottom: 1px dashed #000;">{{ getvalue('defects_identified_5', $formData['form_part_2']) }}</span>
                       </td>
-                      <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
+                      <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;">
                        
                         <span style="border-bottom: 1px dashed #000;">{{ getvalue('warning_notice_5', $formData['form_part_2']) }}</span>
                     </td>
-                    <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;"></td>
+                    <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;"></td>
                       </tr>
                      
                         
@@ -244,32 +254,31 @@
           </div>
       </div>
     </div>
-
+  
     <!-- Table 3 & 4 -->
     <div style=" padding: 10px;">
       <div style="display: block; width: 100%; margin: auto;">
-        <div style="display: inline-block; width: 49.8%;">
+        <div style="display: inline-block; width: 100%;">
         <table style="width: 100%; border: 1px solid black;">
         <thead>
           <tr style="background-color: yellow;">
-            <th  style="width: 24%; text-align: left; color: black; font-weight: 700; font-size: 15px; margin: 0; padding: 10px; ">Audible CO ALARM</th>
-            <th  style="width: 24%; text-align: left; color: black; font-weight: 700; font-size: 15px; margin: 0; padding: 10px; ">Approved CO alarm fitted</th>
-            <th  style="width: 24%; text-align: left; color: black; font-weight: 700; font-size: 15px; margin: 0; padding: 10px; ">Is CO alarm in date</th>
-            <th  style="width: 24%; text-align: left; color: black; font-weight: 700; font-size: 15px; margin: 0; padding: 10px; ">CO alarm tetsing satisfactory</th>
+            <th  style="width: 25%; text-align: left; color: black; font-weight: 700; font-size: 15px; margin: 0; padding: 5px; ">Audible CO ALARM</th>
+            <th  style="width: 25%; text-align: left; color: black; font-weight: 700; font-size: 15px; margin: 0; padding: 5px; ">Approved CO alarm fitted</th>
+            <th  style="width: 25%; text-align: left; color: black; font-weight: 700; font-size: 15px; margin: 0; padding: 5px; ">Is CO alarm in date</th>
+            <th  style="width: 25%; text-align: left; color: black; font-weight: 700; font-size: 15px; margin: 0; padding: 5px; ">CO alarm tetsing satisfactory</th>
         </tr>
         </thead>
         <tbody>
             <tr>
-              <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
+              <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;">
                 <span style="font-weight: 700;">Appliance 1:</span>
-                
             </td>
             <td><span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_approved1', $formData['form_part_5']) }}</span></td>
             <td><span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_is_co1', $formData['form_part_5']) }}</span></td>
             <td><span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_test_co1', $formData['form_part_5']) }}</span></td>
             </tr>
             <tr>
-              <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
+              <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;">
                 <span style="font-weight: 700;">Appliance 2:</span>
                 
             </td>
@@ -278,7 +287,7 @@
             <td><span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_test_co2', $formData['form_part_5']) }}</span></td>
             </tr>
             <tr>
-              <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
+              <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;">
                 <span style="font-weight: 700;">Appliance 3:</span>
                 
             </td>
@@ -287,7 +296,7 @@
             <td><span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_test_co3', $formData['form_part_5']) }}</span></td>
             </tr>
             <tr>
-              <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
+              <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;">
                 <span style="font-weight: 700;">Appliance 4:</span>
                 
             </td>
@@ -296,7 +305,7 @@
             <td><span style="border-bottom: 1px dashed #000;">{{ getvalue('appliance_test_co4', $formData['form_part_5']) }}</span></td>
             </tr>
             <tr>
-              <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
+              <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;">
                 <span style="font-weight: 700;">Appliance 5:</span>
                 
             </td>
@@ -307,34 +316,34 @@
         </tbody>
         </table>
         </div>
-        <div style="display: inline-block; width: 49.8%;">
+        <div style="display: inline-block; width: 100%;">
           <table style="width: 100%; border: 1px solid black;">
           <thead>
            
           </thead>
           <tbody>
               <tr>
-                <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;"><span style="font-weight: 700;">Cylinder/final connection hoses to LAV/boat satisfactory (Yes/No)</span></td>
+                <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;"><span style="font-weight: 700;">Cylinder/final connection hoses to LAV/boat satisfactory (Yes/No)</span></td>
               <td><span style="border-bottom: 1px dashed #000;">{{ getvalue('cylinder', $formData['form_part_5']) }}</span></td>
               </tr>
               <tr>
-                <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;"><span style="font-weight: 700;">Gas installation pipework (visual inspection) satisfactory (Yes/No)</span></td>
+                <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;"><span style="font-weight: 700;">Gas installation pipework (visual inspection) satisfactory (Yes/No)</span></td>
               <td><span style="border-bottom: 1px dashed #000;">{{ getvalue('gas_installation_pipework', $formData['form_part_5']) }}</span></td>
               </tr>
               <tr>
-                <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;"><span style="font-weight: 700;">Gas tightness test satisfactory (Yes/No/NA)</span></td>
+                <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;"><span style="font-weight: 700;">Gas tightness test satisfactory (Yes/No/NA)</span></td>
               <td><span style="border-bottom: 1px dashed #000;">{{ getvalue('gas_tightness_satisfactory', $formData['form_part_5']) }}</span></td>
               </tr>
               <tr>
-                <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;"><span style="font-weight: 700;">Emergency Control Valve (ECV) accessible and operable (Yes/No)</span></td>
+                <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;"><span style="font-weight: 700;">Emergency Control Valve (ECV) accessible and operable (Yes/No)</span></td>
               <td><span style="border-bottom: 1px dashed #000;">{{ getvalue('emergency_control', $formData['form_part_5']) }}</span></td>
               </tr>
               <tr>
-                <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;"><span style="font-weight: 700;">LPG regulator operating pressure (mbar)</span></td>
+                <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;"><span style="font-weight: 700;">LPG regulator operating pressure (mbar)</span></td>
               <td><span style="border-bottom: 1px dashed #000;">{{ getvalue('lpg_operating', $formData['form_part_5']) }}</span></td>
               </tr>
               <tr>
-                <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;"><span style="font-weight: 700;">LPG regulator lock-up pressure (mbar)</span></td>
+                <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px;"><span style="font-weight: 700;">LPG regulator lock-up pressure (mbar)</span></td>
               <td><span style="border-bottom: 1px dashed #000;">{{ getvalue('lpg_lockup', $formData['form_part_5']) }}</span></td>
               </tr>
               
@@ -347,17 +356,17 @@
      <!-- Table 5 & 6 -->
      <div style=" padding: 10px;">
       <div style="display: block; width: 100%; margin: auto;">
-        <div style="display: inline-block; width: 79.8%;">
+        <div style="display: inline-block; width: 100%;">
         <table style="width: 100%; border: 1px solid black; min-height: 130px;">
         <thead>
           <tr style="background-color: yellow;">
-            <th  style="width: 48%; text-align: left; color: black; font-weight: 700; font-size: 15px; margin: 0; padding: 10px; ">Record issued by: {{ getvalue('record_issue_by', $formData['part_declaration']) }}</th>
-            <th  style="width: 48%; text-align: left; color: black; font-weight: 700; font-size: 15px; margin: 0; padding: 10px; ">Record recived by:{{ getvalue('received_by', $formData['part_declaration']) }}</th>
+            <th  style="width: 50%; text-align: left; color: black; font-weight: 700; font-size: 15px; margin: 0; padding: 5px; ">Record issued by: {{ getvalue('record_issue_by', $formData['part_declaration']) }}</th>
+            <th  style="width: 50%; text-align: left; color: black; font-weight: 700; font-size: 15px; margin: 0; padding: 5px; ">Record recived by:{{ getvalue('received_by', $formData['part_declaration']) }}</th>
              </tr>
         </thead>
         <tbody>
             <tr>
-              <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px; ">
+              <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px; ">
                
                
             </td>
@@ -368,8 +377,8 @@
         </tbody>
         </table>
         </div>
-        <div style="display: inline-block; width: 19.8%;">
-          <table style="width: 100%; border: 1px solid black;">
+        <div style="display: inline-block; width: 100%;">
+          <table style="width: 50%; border: 1px solid black;">
           <thead>
            
           </thead>
@@ -396,9 +405,11 @@
                   <table style="width: 100%; border-collapse: collapse;">
                       <thead style="vertical-align: middle;">
                           <tr style="background-color: yellow;">
-                              <th colspan="16"  style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">Appliance Details</th>
+                              <th colspan="16"  style="text-align: left; color: black; font-weight: bold; font-size: 20px; margin: 0px; padding-top:10px; padding-bottom:5px; padding-left:10px">
+                                Appliance Details
+                              </th>
                               </tr>
-                              <tr style="">
+                              <tr>
                                 <th  style="font-size: 13px; border: 1px solid black; text-align: left; color: black; font-weight: 700;  margin: 0; padding: 10px; ">Appliance Number</th>
                                 <th  style="font-size: 13px; border: 1px solid black; text-align: left; color: black; font-weight: 700;  margin: 0; padding: 10px; ">Location</th>
                                 <th  style="font-size: 13px; border: 1px solid black; text-align: left; color: black; font-weight: 700;  margin: 0; padding: 10px; ">Type</th>
@@ -418,7 +429,7 @@
                                 </tr>
                         
                       </thead>
-                      <tbody style="vertical-align: middle;"  >
+                      <tbody style="vertical-align: middle;">
                    <tr>
                     <td style=" border: 1px solid black; padding-left: 6px; padding-top:6px; padding-bottom:6px;">
                       
@@ -501,7 +512,7 @@
                                </tr>
                       
                     </thead>
-                    <tbody style="vertical-align: middle;"  >
+                    <tbody style="vertical-align: middle;">
                  <tr>
                
   <td style=" border: 1px solid black; padding-left: 6px; padding-top:6px; padding-bottom:6px;">
@@ -524,8 +535,81 @@
         </div>
     </div>
   </div>
-  
- 
+
+  <div style=" padding: 10px;">
+    <div style="display: block; width: 100%; margin: auto;">
+      <div style="display: inline-block; width: 100%;">
+        <table style="width: 100%; border: 1px solid black;">
+        <thead>
+          <tr style="background-color: yellow;">
+            <th   style="width: 100%; text-align: left; color: black; font-weight: 700; font-size: 15px; margin: 0; padding: 5px; ">Audible CO ALARM</th>
+           </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td  style=" padding-left: 2px; padding-top:2px; padding-bottom:2px; ">
+                <span style="font-weight: 400; ">I confirm that all above work described on this from has been satisfactorily completed in accordance with the current Gas Safety (installation and Use) Regulations, industry standards and produres.</span>
+               
+            </td>
+            
+           <tr>
+            <td  style=" padding-left: 2px; padding-top:2px; padding-bottom:2px; padding-top: 4px; ">
+              <span style="font-weight: 400; ">I confirm that all above work described on this from has been satisfactorily completed in accordance with the current Gas Safety (installation and Use) Regulations, industry standards and produres.</span>
+             
+          </td>
+           </tr>
+           <tr>
+            <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px; width: 50%;">
+                <span style="font-weight: 700; display: block; margin-bottom: 50px; ">Gas Operative’s signature:</span>
+                <span style="border-bottom: 1px dashed #000; "> @if ($data->customerSignature)
+                  <img width="120px" src="{{ asset('uploads/'.$data->customerSignature->file_url) }}" alt="">
+                  @endif </span>
+               
+            </td>
+           
+            
+        </tr>
+         
+        </tbody>
+        </table>
+        </div>
+      <div style="display: inline-block; width: 100%;">
+        <table style="width: 100%; border: 1px solid black;">
+        <thead>
+          <tr style="background-color: yellow;">
+            <th   style="width: 100%; text-align: left; color: black; font-weight: 700; font-size: 15px; margin: 0; padding: 5px; ">Audible CO ALARM</th>
+           </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td  style=" padding-left: 2px; padding-top:2px; padding-bottom:2px; ">
+                <span style="font-weight: 400; ">I confirm that all above work described on this from has been satisfactorily completed in accordance with the current Gas Safety (installation and Use) Regulations, industry standards and produres.</span>
+               
+            </td>
+            
+           <tr>
+            <td  style=" padding-left: 2px; padding-top:2px; padding-bottom:2px; padding-top: 4px; ">
+              <span style="font-weight: 400; ">I confirm that all above work described on this from has been satisfactorily completed in accordance with the current Gas Safety (installation and Use) Regulations, industry standards and produres.</span>
+             
+          </td>
+           </tr>
+           <tr>
+            <td style=" padding-left: 2px; padding-top:2px; padding-bottom:2px; width: 50%;">
+                <span style="font-weight: 700; display: block; margin-bottom: 50px; ">Gas Operative’s signature:</span>
+                <span style="border-bottom: 1px dashed #000; "> @if ($data->user->signature)
+                  <img width="120px" src="{{ $data->user->signature->file_url }}" alt="">
+                  @endif </span>
+               
+            </td>
+           
+            
+        </tr>
+         
+        </tbody>
+        </table>
+        </div>
+  </div>
+  </div>
   <!-- Table 7 -->
   <div class="table-padding" style="padding: 10px;">
       <div class="table table-2" style=" width: 100%; display: block; margin: auto; ">
@@ -546,7 +630,7 @@
                             <p>His certificate is based on the model forms shown in Appendix 6 of BS 7671: 2018+A2:2022</p> 
                             </td>
                             <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px; width: 25%; ">
-                         <p>     Enter a or value in the respective fields, as appropriate</p>
+                         <p> Enter a or value in the respective fields, as appropriate</p>
                               <p>here an item is not applicable insert N/A </p>
                             </td>
                       </tr>
@@ -557,6 +641,8 @@
         </div>
     </div>
   </div>
+  
+  
   <htmlpagefooter name="formFooter">
     <table style="width: 100%;">
       <tr>
