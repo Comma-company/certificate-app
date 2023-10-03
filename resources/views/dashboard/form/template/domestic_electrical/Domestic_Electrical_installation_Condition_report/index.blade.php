@@ -14,7 +14,7 @@
                 margin-top:80px;
                 margin-header:4mm;
                 size: landscape; /* <length>{1,2} | auto | portrait | landscape */
-                margin-footer:5mm ;
+                margin-footer:2mm ;
             }
             @page{
                 header: html_formHeader;
@@ -24,7 +24,7 @@
                 margin-top:80px;
                 margin-header:4mm;
                 size: landscape; /* <length>{1,2} | auto | portrait | landscape */
-                margin-footer:5mm ;
+                margin-footer:2mm ;
             }
         @font-face {
         font-family:fontawesome;
@@ -421,11 +421,9 @@
                     Please see the ‘Notes for Recipient’
                 </div>
             </td>
-            <td style="text-align: center; width: 34%;">Expire At: {{ date('d-m-Y', strtotime($data->expire)) }}</td>
 
             <td style="width:5%;margin-right: 10px;text-align: right">
                 <p>Page {PAGENO} of</p>
-
             </td>
 
             <td style="float: left;width: 30px;text-align: left;padding: 0px 5px;margin-left:5px;border: 1px solid #00935f;">

@@ -6,35 +6,28 @@
     <title>pdf</title>
 </head>
 <style>
-     @page :first {
-                header: html_formHeader;
-                margin: 15px;
-                margin-bottom:20px;
-                margin-top:80px;
-                margin-header:4mm;
-                size: portrait; /* <length>{1,2} | auto | portrait | landscape */
-                margin-footer:5mm ;
-            }
-            @page{
-                header: html_formHeader;
-                margin: 15px;
-                margin-bottom:20px;
-                margin-top:80px;
-                margin-header:4mm;
-                size: portrait; /* <length>{1,2} | auto | portrait | landscape */
-                margin-footer:5mm ;
-            }
-        @font-face {
-        font-family:fontawesome;
-        src: url("{{ asset('admin/fonts/gnu-free-font/fa-solid-900.ttf') }}");
-      }
-
     body{
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        font-size: 12px;
+        font-family: 'FreeSans';
     }
-    .table-container {
+    @page{
+                header: formHeader;
+                footer: formFooter;
+                margin: 15px;
+                margin-bottom:20px;
+                margin-top:80px;
+                margin-header:4mm;
+                size: landscape; /* <length>{1,2} | auto | portrait | landscape */
+                margin-footer:2mm ;
+            }
+            @font-face {
+        font-family:fontawesome;
+        src: url("{{ asset('admin/fonts/gnu-free-font/fa-solid-900.ttf') }}");
+      }
+      .table-container {
         padding: 10px;
         text-align: right;
       }
@@ -59,13 +52,13 @@
      <htmlpageheader name="formHeader">
         <div style="margin: 10px 25px;  width: 100%;">
             <div style="float: right; margin-right: 46px; height: 70px;width: 60%;">
-                <table style="border: 1px solid #fbfbfb;padding: 10px;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #fbfbfb;">
+                <table style="border: 1px solid yellow;padding: 10px;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid yellow;">
                     <tr style="padding: 10px;">
                         <th style="padding: 10px;">
                             
                             <div style="padding: 0 120px 0 0"><h3>{{$data->num_cert ?? $data->id}}</h3></div>
                         </th>
-                        <th bgcolor="#fbfbfb" style="color:#000 ; padding: 10px">
+                        <th bgcolor="yellow" style="color:#000 ; padding: 10px">
                             <div style="padding: 0 140px 0 10px"><h3>NO</h3></div>
                         </th>
                     </tr>
@@ -73,136 +66,118 @@
                 <h2 style="color: #000; padding: 0; margin: 0; font-weight: 700;text-align: right">
                     Breakdown/Service Record INSTALLATION WORKS CERTIFICATE
                 </h2>
-                {{-- <p style="font-size: 10px; padding: 0; margin: 0; font-style: italic;text-align: right">
+                <p style="font-size: 10px; padding: 0; margin: 0; font-style: italic;text-align: right">
                     Issued in accordance with BS 7671: 2018+A2:2022 – Requirements for Gas Installations
-                </p> --}}
+                </p>
             </div>
             
          </div>
     </htmlpageheader>
-      <div style="padding:10px;" >
-
-     </div>
-    <!-- Table 1 -->
-  <div class="table-padding" style="padding:10px;">
-      <div class="table table-1" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
-        <!-- <div class="table-heading" style="display: block;  background-color: #fbfbfb; ">
-            <h3 style="color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</h3>
-        </div> -->
-        <div class="table-content" style="padding: 0px;">
-           <div class="pdf-table" style="display: block; vertical-align: middle; ">
-                <table style="width: 100%;">
-                    <thead style="vertical-align: middle;">
-                        <tr style="background-color: #fbfbfb;">
-                            <th colspan="3" style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</th>
-                        </tr>
-                        <tr style="width: 100%;">
-                            <td style="text-align: left; padding-left: 6px; padding-top: 15px; padding-bottom:15px; font-weight: 700;">DETAILS OF THE CONTRACTOR</th>
-                            <td style="text-align: left; padding-top: 15px; padding-bottom:15px; font-weight: 700;">DETAILS OF THE CLIENT</th>
-                            <td style="text-align: left; padding-top: 15px; padding-bottom:15px; font-weight: 700;">DETAILS OF THE INSTALLATION</th>
-                        </tr>
-                    </thead>
-                    <tbody style="vertical-align: middle;"  >
-                        <tr>
-                 @if ($data->user->categories->isNotEmpty())
-                            @php
-                               $firstCategory = $data->user->categories->firstWhere('pivot.category_id', 2);
-                             @endphp
-                       @if ($firstCategory)
-                            <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-                                <span style="font-weight: 700;">Gas Safe Number:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{ $firstCategory->pivot->gas_register_number }}</span>
-                            </td>
-                            @endif
-                 @endif
-
-
-                            <td style="padding-top:6px; padding-bottom:6px;">
-                                <span style="font-weight: 700;">Name:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{ $data->site->siteContact->f_name }}</span>
-                            </td>
-                            <td style="padding-top:6px; padding-bottom:6px;">
-                                <span style="font-weight: 700;">Tenant Name:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{ $data->customer->name }}</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-                                <span style="font-weight: 700;">Company Name:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{ $data->user->company_name }}</span>
-                            </td>
-                            <td style="padding-top:6px; padding-bottom:6px; line-height: 1.5;">
-                                <span style="font-weight: 700;">Address:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{$data->user->number_street_name.', '.$data->user->city}} </span>
-                            </td>
-                            <td style="padding-top:6px; padding-bottom:6px; line-height: 1.5;">
-                                <span style="font-weight: 700;">Address:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{$data->site->street_num.', '.$data->site->city}} </span>
-                            </td>
-                        </tr>
-                        <tr>
-                             <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px; line-height: 1.5;">
-                                <span style="font-weight: 700;">Address:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{$data->customer->street_num.', '.$data->customer->city}}</span>
-                            </td>
-                            <td style="padding-top:6px; padding-bottom:6px;">
-                                <div style="width: 100%; display: block;">
-                                <div style="width: 48%; display: inline-block;">
-                                <span style="font-weight: 700;">Postcode:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{ $data->user->postal_code }}</span>
-                                </div>
-                                <div style="width: 48%; display: inline-block;">
-                                 <span style="font-weight: 700;">TEL No:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{ $data->user->phone }}</span>
-                                </div>
-                                </div>
-                            </td>
-                              <td style="padding-top:6px; padding-bottom:6px;">
-                                <div style="width: 100%; display: block;">
-                                <div style="width: 48%; display: inline-block;">
-                                <span style="font-weight: 700;">Postcode:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{ $data->site->postal_code }}</span>
-                                </div>
-                                <div style="width: 48%; display: inline-block;">
-                                 <span style="font-weight: 700;">TEL No:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{ $data->site->siteContact->phone }}</span>
-                                </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                              <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-                                <div style="width: 100%; display: block;">
-                                <div style="width: 48%; display: inline-block;">
-                                <span style="font-weight: 700;">Postcode:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{ $data->customer->postal_code }}</span>
-                                </div>
-                                <div style="width: 48%; display: inline-block;">
-                                 <span style="font-weight: 700;">TEL No:</span>
-                                <span style="border-bottom: 1px dashed #000;">{{ $data->customer->contacts->first()->phone }}</span>
-                                </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                              <!-- <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
-                               
-                                <span style="font-weight: 700;">Description of work: </span>
-                                 <label>
-                 <input type="checkbox" class="radio" value="1" name="foobye" />Service</label>
-                                 <label>
-                                      <input type="checkbox" class="radio" value="1" name="fooby" />Breakdown</label>
-  <label>
-                               
-                            </td> -->
-                        </tr>
-                    </tbody>
-                </table>
+    <table
+       width="100%"
+       style="border: 1px solid black; padding: 0; border-collapse: collapse; margin-bottom: 10px;"
+     >
+       <tr>
+         <th bgcolor="yellow" style="padding-top: 5px; padding-bottom: 5px;text-align:left" colspan="3">
+           <div style="text-align: left; padding: 0 5px;">
+             <h3
+               style="color: black; font-weight: bold; padding-top: 5px; padding-bottom: 5px; margin: 0;"
+             >
+             PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION
+             </h3>
            </div>
-        </div>
-    </div>
-  </div>
-  <div style="clear: both;"></div>
+         </th>
+       </tr>
+       <tr>
+         <td style="vertical-align: top;">
+           <div style="text-align: left; padding: 0 5px">
+             <h5 style="color: black;font-weight: bold;padding: 0 5px;margin: 0;">
+               DETAILS OF THE CONTRACTOR
+             </h5>
+             @if ($data->user->categories->isNotEmpty())
+    @php
+       $firstCategory = $data->user->categories->firstWhere('pivot.category_id', 2);
+   @endphp
+   @if ($firstCategory)
+   <p style="margin: 15px">
+           Registration No:
+           <span style="font-weight: bold; padding: 3px 20px">
+                   {{ $firstCategory->pivot->gas_register_number }}
+           </span>
+         </p>
+   @endif
+   @endif
+
+             <p style="margin: 15px">
+               Company Name:
+               <span style="font-weight: bold;padding:3px 20px">{{ $data->user->company_name }}</span>
+             </p>
+             <p style="margin: 15px">
+               Address:
+             <span style="font-weight: bold;padding:3px 20px">{{$data->user->number_street_name.', '.$data->user->city}}</span>
+             </p>
+             <p style="margin: 15px">
+               Postcode:<span style="font-weight: bold;padding:3px 20px">{{ $data->user->postal_code }}</span>
+               <span>Tel No:<span style="font-weight: bold;padding:3px 20px">{{ $data->user->phone }}</span></span>
+             </p>
+           </div>
+         </td>
+         <td style="vertical-align: top;">
+           <div style="text-align: left">
+             <h5
+               style="
+                 color: black;
+                 font-weight: bold;
+                 padding: 0 5px;
+                 margin: 0;
+               "
+             >
+               DETAILS OF THE CLIENT
+             </h5>
+             {{-- <p style="margin: 10px">
+               Contractor Reference Number
+               (CRN):
+             </p> --}}
+             <p style="margin: 10px">
+               Name:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->name }}</span>
+             </p>
+             <p style="margin: 10px">
+               Address:<span style="font-weight: bold;padding:3px 20px">{{$data->customer->street_num.', '.$data->customer->city}}</span>
+
+             </p>
+             <p style="margin: 10px">
+               Postcode:<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->postal_code }}</span>
+               <span>Tel No:.<span style="font-weight: bold;padding:3px 20px">{{ $data->customer->contacts->first()->phone }}</span>.</span>
+             </p>
+           </div>
+         </td>
+         <td style="vertical-align: top;">
+           <div style="text-align: left">
+             <h5
+               style="
+                 color: black;
+                 font-weight: bold;
+                 padding: 0 5px;
+                 margin: 0;
+               "
+             >
+             DETAILS OF THE INSTALLATION
+             </h5>
+             <p style="margin: 15px">
+               Tenant Name:<span style="font-weight: bold;padding:3px 20px">{{ $data->site->siteContact->f_name }}</span>
+             </p>
+             <p style="margin: 15px">
+               Address:<span style="font-weight: bold;padding:3px 20px">{{$data->site->street_num.', '.$data->site->city}}</span>
+
+             </p>
+             <p style="margin: 15px">
+               Postcode:<span style="font-weight: bold;padding:3px 20px">{{ $data->site->postal_code }}</span>
+               <span>Tel No:<span style="font-weight: bold;padding:3px 20px">{{ $data->site->siteContact->phone }}</span></span>
+             </p>
+           </div>
+         </td>
+       </tr>
+     </table>
 <!-- Table 2 -->
   <div class="table-padding" style="padding:10px;">
       <div class="table table-2" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
@@ -210,14 +185,14 @@
            <div class="pdf-table" style="display: block; ">
                 <table style="width: 100%;">
                     <thead>
-                        <tr style="background-color: #fbfbfb;">
-                            <th colspan="3" style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">Appliance Details</th>
+                        <tr style="background-color: yellow;">
+                            <th colspan="3" style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 5px; ">Appliance Details</th>
                         </tr>
                       
                     </thead>
                     <tbody  >
                         <tr>
-                            <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
+                            <td style=" padding-left: 1px; padding-top:1px; padding-bottom:1px;">
                                 <span style="font-weight: 700;">Description of work: </span>
                                 @if(getvalue('service', $formData['form_part_1']) == "True")<label>  <img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Service</label> @else <label><input type="checkbox" class="radio" value="{{ getvalue('service', $formData['form_part_1']) }}" name="one" />Service</label>@endif
                                 @if(getvalue('Breakdown', $formData['form_part_1']) == "True")<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display: inline; margin: auto;width:14px;" >Breakdown</label>@else<label><input type="checkbox" class="radio" value="{{ getvalue('Breakdown', $formData['form_part_1']) }}" name="two"/>Breakdown</label>@endif
@@ -225,41 +200,41 @@
                             
                                
                             </td>
-                            <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
+                            <td style=" padding-left: 1px; padding-top:1px; padding-bottom:1px;">
                                 <span style="font-weight: 700;">CO/CO2 Ratio</span>
                                 <span style="border-bottom: 1px dashed #000;">{{ getvalue('co_co2_ratio', $formData['form_part_1']) }}</span>
                             </td>
-                            <td style="padding-top:6px; padding-bottom:6px;">
+                            <td style="padding-top:1px; padding-bottom:1px;">
                                 
                             </td>
-                            <td style="padding-top:6px; padding-bottom:6px;">
+                            <td style="padding-top:1px; padding-bottom:1px;">
                                
                             </td>
                         </tr>
                         <tr>
-                            <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
+                            <td style=" padding-left: 1px; padding-top:1px; padding-bottom:1px;">
                                 <span style="font-weight: 700;">Boiler Make:</span>
                                 <span style="border-bottom: 1px dashed #000;">{{ getvalue('boiler_make', $formData['form_part_1']) }}</span>
                             </td>
-                            <td style="padding-top:6px; padding-bottom:6px;">
+                            <td style="padding-top:1px; padding-bottom:1px;">
                                 <span style="font-weight: 700;">Boiler Model:</span>
                                 <span style="border-bottom: 1px dashed #000;">{{ getvalue('boiler_model', $formData['form_part_1']) }}</span>
                             </td>
-                            <td style="padding-top:6px; padding-bottom:6px;">
+                            <td style="padding-top:1px; padding-bottom:1px;">
                                 <span style="font-weight: 700;">Boiler Serial Number:</span>
                                 <span style="border-bottom: 1px dashed #000;">{{ getvalue('boiler_serial_num', $formData['form_part_1']) }}</span>
                             </td>
                         </tr>
                         <tr>
-                             <td style=" padding-left: 6px; padding-top:6px; padding-bottom:6px;">
+                             <td style=" padding-left: 1px; padding-top:1px; padding-bottom:1px;">
                                 <span style="font-weight: 700;">Appliance Make:</span>
                                 <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliances_make', $formData['form_part_1']) }}</span>
                             </td>
-                             <td style="padding-top:6px; padding-bottom:6px;">
+                             <td style="padding-top:1px; padding-bottom:1px;">
                                 <span style="font-weight: 700;">Appliance Model:</span>
                                 <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliances_model', $formData['form_part_1']) }}</span>
                             </td>
-                             <td style="padding-top:6px; padding-bottom:6px;">
+                             <td style="padding-top:1px; padding-bottom:1px;">
                                 <span style="font-weight: 700;">Appliance Serial Number:</span>
                                 <span style="border-bottom: 1px dashed #000;">{{ getvalue('appliances_serial_num', $formData['form_part_1']) }}</span>
                             </td>
@@ -280,8 +255,8 @@
     <div style="display: inline-block; width: 100%;">
     <table style="width: 100%; border: 1px solid black;">
     <thead>
-        <tr style="background-color: #fbfbfb;">
-             <th  style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">Notes</th>
+        <tr style="background-color: yellow;">
+             <th  style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 5px; ">Notes</th>
         </tr>
     </thead>
     <tbody>
@@ -294,8 +269,8 @@
     <div style="display: inline-block; width: 100%;">
       <table style="width: 100%; border: 1px solid black;">
     <thead>
-        <tr style="background-color: #fbfbfb;">
-             <th  style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">Parts/Spares Required</th>
+        <tr style="background-color: yellow;">
+             <th  style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 5px; ">Parts/Spares Required</th>
                  
         </tr>
     </thead>
@@ -312,106 +287,106 @@
 <!-- Table 5 -->
 <div class="table-padding" style="padding: 10px;">
     <div class="table table-2" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
-      <!-- <div class="table-heading" style="display: block;  background-color: #fbfbfb; ">
+      <!-- <div class="table-heading" style="display: block;  background-color: yellow; ">
           <h3 style="color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</h3>
       </div> -->
       <div class="table-content" style="padding: 0px;">
          <div class="pdf-table" style="display: block; ">
               <table style="width: 100%;">
                   <thead>
-                      <tr style="background-color: #fbfbfb;">
-                          <th  style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">Installation Satisfactorty?</th>
-                          <th  style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">Service Checks Satisfactory?</th>
-                          <th  style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">Appliance Details</th>
+                      <tr style="background-color: yellow;">
+                          <th  style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 5px; ">Installation Satisfactorty?</th>
+                          <th  style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 5px; ">Service Checks Satisfactory?</th>
+                          <th  style=" text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 5px; ">Appliance Details</th>
                       </tr>
                     
                   </thead>
                   <tbody style="vertical-align: middle;" >
                      <tr>
-                        <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
+                        <td style="padding-top: 1px; padding-bottom: 1px; padding-left: 1px;">
                             @if(getvalue('water_fuel_satisfactory', $formData['form_part_4']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}" alt="check-img" style="display:inline; margin: auto;width:14px;" >Water/Fuel-Satisfactory</label> @else<label><input type="checkbox" class="radio" id="flue" value="{{ getvalue('water_fuel_satisfactory', $formData['form_part_4']) }}" name="" />Water/Fuel-Satisfactory </label>@endif
                         </td>
-                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                        <td style="padding-top: 1px; padding-bottom: 1px;">
                             @if(getvalue('heat_exchanger', $formData['form_part_5']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px" >Heat Exchanger</label>@else<label><input type="checkbox" class="radio" value="{{ getvalue('heat_exchanger', $formData['form_part_5']) }}" name=""/>Heat Exchanger</label>@endif
                         </td>
-                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                        <td style="padding-top: 1px; padding-bottom: 1px;">
                             @if(getvalue('burn_washer_cleaned', $formData['form_part_6']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Burner Washed & Cleaned</label>@else<label><input type="checkbox" class="radio" value="{{ getvalue('burn_washer_cleaned', $formData['form_part_6']) }}" name=""/>Burner Washed & Cleaned</label> @endif 
                         </td>
                      </tr>
                      <tr>
-                        <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
+                        <td style="padding-top: 1px; padding-bottom: 1px; padding-left: 1px;">
                             @if(getvalue('ventilation_size', $formData['form_part_4']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Ventilation Size H-L</label>@else<label> <input type="checkbox" class="radio" value="{{ getvalue('ventilation_size', $formData['form_part_4']) }}" name=""/>Ventilation Size H-L </label>@endif
                         </td>
-                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                        <td style="padding-top: 1px; padding-bottom: 1px;">
                             @if(getvalue('ignition', $formData['form_part_5']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Ignition</label> @else<label><input type="checkbox" class="radio" value="{{ getvalue('ignition', $formData['form_part_5']) }}" name=""/>Ignition</label>@endif
                         </td>
-                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                        <td style="padding-top: 1px; padding-bottom: 1px;">
                             @if(getvalue('pilot_assembly', $formData['form_part_6']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Pilot Assembly Cleaned & Adjusted</label>@else<label><input type="checkbox" class="radio" value="{{ getvalue('pilot_assembly', $formData['form_part_6']) }}" name="" />Pilot Assembly Cleaned & Adjusted</label>@endif
                         </td>
                      </tr>
                      <tr>
-                        <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
+                        <td style="padding-top: 1px; padding-bottom: 1px; padding-left: 1px;">
                             @if(getvalue('electrically_fused', $formData['form_part_4']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Electrically Fused</label> @else<label> <input type="checkbox" class="radio" value="{{ getvalue('electrically_fused', $formData['form_part_4']) }}" name="" />Electrically Fused </label>@endif
                         </td>
-                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                        <td style="padding-top: 1px; padding-bottom: 1px;">
                             @if(getvalue('gas_valve', $formData['form_part_5']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Gas Value</label> @else<label><input type="checkbox" class="radio" value="{{ getvalue('gas_valve', $formData['form_part_5']) }}" name=""/>Gas Value</label>@endif
                         </td>
-                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                        <td style="padding-top: 1px; padding-bottom: 1px;">
                             @if(getvalue('ignition_system', $formData['form_part_6']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px" >lgnition system Cleaned & Adjusted</label>@else<label> <input type="checkbox" class="radio" value="{{ getvalue('ignition_system', $formData['form_part_6']) }}" name=""  />lgnition system Cleaned & Adjusted</label> @endif
                         </td>
                      </tr>
                      <tr>
-                        <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
+                        <td style="padding-top: 1px; padding-bottom: 1px; padding-left: 1px;">
                             @if(getvalue('correct_valving', $formData['form_part_4']) == true)<label> <img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Correct Valving Arrangements</label>@else<label> <input type="checkbox" class="radio" value="{{ getvalue('correct_valving', $formData['form_part_4']) }}" name="" />Correct Valving Arrangements </label>@endif
                         </td>
-                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                        <td style="padding-top: 1px; padding-bottom: 1px;">
                             @if(getvalue('fan', $formData['form_part_5']) == true)<label> <img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Fan</label>@else<label> <input type="checkbox" class="radio" value="{{ getvalue('fan', $formData['form_part_5']) }}" name="" />Fan</label>@endif
                         </td>
-                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                        <td style="padding-top: 1px; padding-bottom: 1px;">
                             @if(getvalue('burner_fas', $formData['form_part_6']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Burner Fan & Airways Cleaned</label>@else<label> <input type="checkbox" class="radio" value="{{ getvalue('burner_fas', $formData['form_part_6']) }}" name=""  />Burner Fan & Airways Cleaned</label> @endif
                         </td>
                      </tr>
                      <tr>
-                        <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
+                        <td style="padding-top: 1px; padding-bottom: 1px; padding-left: 1px;">
                             @if(getvalue('isolation_available', $formData['form_part_4']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Isolation Available-Electrical/Fuel (within 1mtr)</label>@else<label> <input type="checkbox" class="radio" value="{{ getvalue('isolation_available', $formData['form_part_4']) }}" name=""/>Isolation Available-Electrical/Fuel (within 1mtr) </label>@endif
                         </td>
-                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                        <td style="padding-top: 1px; padding-bottom: 1px;">
                             @if(getvalue('safety_device', $formData['form_part_5']) == true)<label> <img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Safety Device</label>@else<label> <input type="checkbox" class="radio" value="{{ getvalue('safety_device', $formData['form_part_5']) }}" name="" />Safety Device</label>@endif
                         </td>
-                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                        <td style="padding-top: 1px; padding-bottom: 1px;">
                             @if(getvalue('service_heat_exchanger', $formData['form_part_6']) == true)<label> <img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;">Heat Exchanger/Flueways Clean & Clear</label>@else<label> <input type="checkbox" class="radio" value="{{ getvalue('service_heat_exchanger', $formData['form_part_6']) }}" name="" />Heat Exchanger/Flueways Clean & Clear</label>@endif
                         </td>
                      </tr>
                      <tr>
-                        <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
+                        <td style="padding-top: 1px; padding-bottom: 1px; padding-left: 1px;">
                             @if(getvalue('boiler_plant_room', $formData['form_part_4']) == true)<label><img id="checkImage"  src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Boiler/Plantroom Cleaner</label>@else<label><input type="checkbox" class="radio" value="{{ getvalue('boiler_plant_room', $formData['form_part_4']) }}" name="" />Boiler/Plantroom Cleaner</label>@endif
                        
                         </td>
-                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                        <td style="padding-top: 1px; padding-bottom: 1px;">
                             @if(getvalue('control_box', $formData['form_part_5']) == true)<label><img id="checkImage"  src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Control Box</label>@else<label> <input type="checkbox" class="radio" value="{{ getvalue('control_box', $formData['form_part_5']) }}" name=""/>Control Box</label>@endif
                         </td>
-                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                        <td style="padding-top: 1px; padding-bottom: 1px;">
                             @if(getvalue('fuel_electrical', $formData['form_part_6']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;">Fuel & Electrical Supply Connected Correctly</label>@else<label><input type="checkbox" class="radio" value="{{ getvalue('fuel_electrical', $formData['form_part_6']) }}" name="" />Fuel & Electrical Supply Connected Correctly</label>@endif
                         </td>
                      </tr>
                      <tr>
-                        <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
+                        <td style="padding-top: 1px; padding-bottom: 1px; padding-left: 1px;">
                             
                         </td>
-                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                        <td style="padding-top: 1px; padding-bottom: 1px;">
                             @if(getvalue('burners_pilot', $formData['form_part_5']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Burners & Pilot</label>@else<label><input type="checkbox" class="radio" value="{{ getvalue('burners_pilot', $formData['form_part_5']) }}" name=""/>Burners & Pilot</label>@endif
                         </td>
-                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                        <td style="padding-top: 1px; padding-bottom: 1px;">
                             @if(getvalue('interlocks_noted', $formData['form_part_6']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Interlocks Noted & in Place</label>@else<label><input type="checkbox" class="radio" value="{{ getvalue('interlocks_noted', $formData['form_part_6']) }}" name=""/>Interlocks Noted & in Place</label>@endif
                         </td>
                      </tr>
                      <tr>
-                        <td style="padding-top: 6px; padding-bottom: 6px; padding-left: 6px;">
+                        <td style="padding-top: 1px; padding-bottom: 1px; padding-left: 1px;">
                         </td>
-                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                        <td style="padding-top: 1px; padding-bottom: 1px;">
                             @if(getvalue('fuel', $formData['form_part_5']) == true)<label><img id="checkImage" src="{{ asset('certificate/image/check.png') }}"  alt="check-img" style="display:inline; margin: auto;width:14px;" >Fuel Pressure & Type</label>@else<label><input type="checkbox" class="radio" value="{{ getvalue('fuel', $formData['form_part_5']) }}" name=""/>Fuel Pressure & Type</label>@endif
                         </td>
-                        <td style="padding-top: 6px; padding-bottom: 6px;">
+                        <td style="padding-top: 1px; padding-bottom: 1px;">
                         </td>
                      </tr>
                     
@@ -422,7 +397,7 @@
   </div>
 </div>
 <!-- Table 6 -->
-<pagebreak></pagebreak>
+
 <div style="padding:10px;" >
 
 </div>
@@ -434,12 +409,12 @@
               <table style="width: 100%;">
                   <thead>
                       <tr >
-                          <th  style="background-color: #fbfbfb; text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; width: 100px;">TIME</th>
-                          <th  style=" text-align: left; color: black; font-size: 20px; margin: 0; padding: 10px; ">
+                          <th  style="background-color: yellow; text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 5px; width: 100px;">TIME</th>
+                          <th  style=" text-align: left; color: black; font-size: 20px; margin: 0; padding: 5px; ">
                             <span style="font-weight: 700;">Arrival Time:</span>
                             <span style="border-bottom: 1px dashed #000; font-weight: 400;">{{ getvalue('time_of_arrival', $formData['form_part_6']) }}</span>
                         </th>
-                          <th  style=" text-align: left; color: black;  font-size: 20px; margin: 0; padding: 10px; ">
+                          <th  style=" text-align: left; color: black;  font-size: 20px; margin: 0; padding: 5px; ">
                             <span style="font-weight: 700;">Departure Time:</span>
                             <span style="border-bottom: 1px dashed #000; font-weight: 400;">{{ getvalue('time_of_departure', $formData['form_part_6']) }}</span>
                         </th>
@@ -456,7 +431,7 @@
 <!-- Table 7 -->
 <div class="table-padding" style="padding: 10px;">
     <div class="table table-2" style="border:1px solid #000; width: 100%; display: block; margin: auto; ">
-      <!-- <div class="table-heading" style="display: block;  background-color: #fbfbfb; ">
+      <!-- <div class="table-heading" style="display: block;  background-color: yellow; ">
           <h3 style="color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</h3>
       </div> -->
       <div class="table-content" style="padding: 0px;">
@@ -464,39 +439,39 @@
               <table style="width: 100%;">
                   <thead>
                       <tr >
-                          <th colspan="3"  style="background-color: #fbfbfb; text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px;">Issued By</th>
+                          <th colspan="3"  style="background-color: yellow; text-align: left; color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 5px;">Issued By</th>
                          
                       </tr>
                     
                   </thead>
                   <tbody>
                     <tr>
-                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;">
+                        <td style="padding-left: 1px; padding-top: 1px; padding-bottom: 1px;">
                             <span style="font-weight: 700;">Name(CAPITALS)</span>
                             <span style="border-bottom: 1px dashed #000;">{{ getvalue('engineer_name', $formData['part_declaration']) }}</span></td>
-                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;">
+                        <td style="padding-left: 1px; padding-top: 1px; padding-bottom: 1px;">
                             <span style="font-weight: 700;">Contractor</span>
                             <span style="border-bottom: 1px dashed #000;">{{ getvalue('engineer_name', $formData['part_declaration']) }}</span></td>
                     </tr>
                     <tr>
-                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;">
+                        <td style="padding-left: 1px; padding-top: 1px; padding-bottom: 1px;">
                             <span style="font-weight: 700;">Signture</span>
                             @if($data->user->signature)
                             <span style="border-bottom: 1px dashed #000;"> <img width="120px" src="{{ asset('uploads/'.$data->user->signature->signature) }}" alt="">
                             </span>
                             @endif</td>
-                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;  line-height: 1.5;">
+                        <td style="padding-left: 1px; padding-top: 1px; padding-bottom: 1px;  line-height: 1.5;">
                             <span style="font-weight: 700;">Address</span>
                             <span style="border-bottom: 1px dashed #000;"></span>{{$data->user->number_street_name.', '.$data->user->city}}</td>
                     </tr>
                     <tr>
-                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;">
+                        <td style="padding-left: 1px; padding-top: 1px; padding-bottom: 1px;">
                             <span style="font-weight: 700;">Position</span>
                             <span style="border-bottom: 1px dashed #000;">{{ getvalue('engineer_position', $formData['part_declaration']) }}</span></td>
-                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;">
+                        <td style="padding-left: 1px; padding-top: 1px; padding-bottom: 1px;">
                             <span style="font-weight: 700;">Date</span>
                             <span style="border-bottom: 1px dashed #000;">{{ getvalue('engineer_date', $formData['part_declaration']) }}</span></td>
-                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;">
+                        <td style="padding-left: 1px; padding-top: 1px; padding-bottom: 1px;">
                             <span style="font-weight: 700;">Gas Safe No</span>
                             @php
                             $firstCategory = $data->user->categories->firstWhere('pivot.category_id', 2);
@@ -506,16 +481,16 @@
                         @endif</td>
                     </tr>
                     <tr>
-                        <td  style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px; font-weight: 700;">RECIVED BY:</td>
+                        <td  style="padding-left: 1px; padding-top: 1px; padding-bottom: 1px; font-weight: 700;">RECIVED BY:</td>
                     </tr>
                     <tr>
-                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;">
+                        <td style="padding-left: 1px; padding-top: 1px; padding-bottom: 1px;">
                             <span style="font-weight: 700;">Name</span>
                             <span style="border-bottom: 1px dashed #000;">{{ getvalue('customer_name', $formData['part_declaration']) }}</span></td>
-                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;">
+                        <td style="padding-left: 1px; padding-top: 1px; padding-bottom: 1px;">
                             <span style="font-weight: 700;">Date</span>
                             <span style="border-bottom: 1px dashed #000;">{{ getvalue('customer_date', $formData['part_declaration']) }}</span></td>
-                        <td style="padding-left: 6px; padding-top: 6px; padding-bottom: 6px;">
+                        <td style="padding-left: 1px; padding-top: 1px; padding-bottom: 1px;">
                             <span style="font-weight: 700;">Signture</span>
                             @if ($data->customerSignature)
                              <span style="border-bottom: 1px dashed #000;"><img width="120px" src="{{ asset('uploads/'.$data->customerSignature->file_url) }}" alt=""></span>
@@ -528,12 +503,12 @@
       </div>
   </div>
 </div>
-<p style="text-align: center; font-size: 9px; font-style: italic; margin: 0 0 10px 0; padding:0px"> Expire At:{{ date('d-m-Y', strtotime($data->expire)) }}</p>
+
 <div style="clear: both;"></div>
 <!-- Table 9 -->
 <div class="table-padding" style="padding: 10px;">
     <div class="table table-2" style=" width: 100%; display: block; margin: auto; ">
-      <!-- <div class="table-heading" style="display: block;  background-color: #fbfbfb; ">
+      <!-- <div class="table-heading" style="display: block;  background-color: yellow; ">
           <h3 style="color: black; font-weight: 700; font-size: 20px; margin: 0; padding: 10px; ">PART 1 : DETAILS OF THE CONTRACTOR, CLIENT AND INSTALLATION</h3>
       </div> -->
       <div class="table-content" style="padding: 0px;">
@@ -563,6 +538,19 @@
       </div>
   </div>
 </div>
+<htmlpagefooter name="formFooter">
+    <table style="width: 100%;">
+      <tr>
+        <td style="width: 33%;">Produced Using 360 Connect @</td>
+        <td style="text-align: center; width: 34%;">Expire At: {{ date('d-m-Y', strtotime($data->expire)) }}</td>
+        <td style="text-align: center; width: 33%;">
+            Page {PAGENO} of {nbpg}
+        </td>
+    </tr>
+            
+    </table>
+    
+  </htmlpagefooter>
     </div>
 </body>
 </html>
