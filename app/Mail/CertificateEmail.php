@@ -67,7 +67,7 @@ class CertificateEmail extends Mailable
         }elseif ($file_name == 'Service_Maintance_Record') {
             $file = ServiceMaintanceRecord::stringCode($certificate);
         }elseif ($file_name == 'Gas_Testing_Purging') {
-            $form =GasTestingPurging::stringCode($certificate);
+            $file =GasTestingPurging::stringCode($certificate);
         }elseif ($file_name == 'Landlord_Gas_Safety_record_for_the_Leisure_Industry') {
             $file = LeisureIndustryGasSafetyRecord::stringCode($certificate);
         }elseif ($file_name == 'Electrical_Isolation_Form') {
