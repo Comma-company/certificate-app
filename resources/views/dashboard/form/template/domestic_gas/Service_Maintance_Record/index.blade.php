@@ -35,29 +35,36 @@
 </style>
 <body style="width: 100%; margin: 0; overflow-y: hidden;">
   <div class="table-container" style="font-family: 'FreeSans';">
-   <htmlpageheader name="formHeader">
+    <htmlpageheader name="formHeader">
       <div style="margin: 10px 25px;  width: 100%;">
-          <div style="float: right; margin-right: 41px; height: 70px;width: 60%;">
+          <div style="float: left;width:40%;">
+              <img src="{{ asset('certificate/image/gas_safe_logo.png') }}"  height="80px">
+              @if ($data->user->logo)
+              <img src="{{ $data->user->logo->url }}" style="margin-left:35px" width="160px">
+              @endif
+          </div>
+          <div style="float: left; margin-right: 43px; height: 70px;width: 60%;">
               <table style="border: 1px solid #FFF200;padding: 10px;border-collapse: collapse;margin: 10px 0;margin: 0 0 0 auto;border: 1px solid #FFF200;">
                   <tr style="padding: 10px;">
                       <th style="padding: 10px;">
                           <div style="padding: 0 120px 0 0"><h3>{{$data->num_cert ?? $data->id}}</h3></div>
                       </th>
-                      <th bgcolor="#FFF200" style="color:#000 ; padding: 10px">
+                      <th bgcolor="#FFF200" style="color: #000000; padding: 10px">
                           <div style="padding: 0 140px 0 10px"><h3>NO</h3></div>
                       </th>
                   </tr>
               </table>
-              <h2 style="color: #000; padding: 0; margin: 0; font-weight: 700;text-align: right">
-                  Service/Maintenace Record INSTALLATION WORKS CERTIFICATE
+              <h2 style="color: #000; padding: 0; margin: 0; font-weight: 900;text-align: right">
+                Service/Maintenace Record INSTALLATION WORKS CERTIFICATE
               </h2>
-               <p style="font-size: 10px; padding: 0; margin: 0; font-style: italic;text-align: right">
-                  Issued in accordance with BS 7671: 2018+A2:2022 – Requirements for Gas Installations
+              <p style="font-size: 10px; padding: 0; margin: 0; font-style: italic;text-align: right">
+                Issued in accordance with BS 7671: 2018+A2:2022 – Requirements for Gas Installations
               </p>
           </div>
-          
-       </div>
+          <div style="clear: both;"></div>
+        </div>
   </htmlpageheader>
+  <div style="clear: both;"></div>
        <!-- Table 1 -->
        <table
        width="100%"
