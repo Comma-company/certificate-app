@@ -51,10 +51,12 @@ class HomeController extends Controller
                 $remainingDays = max(0,Carbon::now()->diffInDays($trialEnd->endOfDay(), false));
                 //$remainingCertificates = $subscription->quantity - $user->certificate()->count();
                 $remainingCertificates = 20 - $user->certificate()->count();
+                $remainingTrialDays = max(0, Carbon::now()->diffInDays($trialEnd, false));
 
                 $data = [
                     'remaining_days' => $remainingDays,
                     'remaining_certificates' => $remainingCertificates,
+                    '$remainingTrialDays' =>$remainingTrialDays,
                 ];
                 return responseJson(true, 'Trial details data', $data);
             } else {
@@ -80,6 +82,7 @@ class HomeController extends Controller
             $data = [
                 'remaining_days' => 0,
                 'remaining_certificates' => 0,
+               ' remainingTrialDays'=>0,
 
             ];
             return responseJson(false, 'User is not subscribed to a plan', $data);
