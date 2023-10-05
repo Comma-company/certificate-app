@@ -65,6 +65,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('payment-terms', [PaymentTermController::class, 'index'])->middleware('auth:sanctum');
 
     Route::get('search', [HomeController::class, 'search'])->middleware('auth:sanctum');
+    Route::get('/return-app',[HomeController::class,'closeApp'])->middleware('auth:sanctum');
     // customer routes
     Route::middleware('auth')->group(function () {
 

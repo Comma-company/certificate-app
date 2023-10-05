@@ -48,7 +48,7 @@ class HomeController extends Controller
             if ($user->subscribedToPrice($free_plan_id, 'default')) {
 
                 $trialEnd = $subscription->trial_ends_at;
-                $remainingDays = Carbon::now()->diffInDays($trialEnd->endOfDay(), false);
+                $remainingDays = max(0,Carbon::now()->diffInDays($trialEnd->endOfDay(), false));
                 //$remainingCertificates = $subscription->quantity - $user->certificate()->count();
                 $remainingCertificates = 20 - $user->certificate()->count();
 
@@ -62,12 +62,12 @@ class HomeController extends Controller
                 /* ********* */
                 $current_period_end = $stripeSubscription->current_period_end;
                 $end_at = Carbon::createFromTimestamp($current_period_end);
-                $remainingDays = Carbon::now()->diffInDays($end_at, false);
+                $remainingDays = max(0,Carbon::now()->diffInDays($end_at, false));
                 /* ******** */
                 $remainingCertificates = 'Unlimited';
                 /* ***** */
                 $trialEnd = $subscription->trial_ends_at;
-                $remainingTrialDays = Carbon::now()->diffInDays($trialEnd, false);
+                $remainingTrialDays = max(0,Carbon::now()->diffInDays($trialEnd, false));
 
                 $data = [
                     'remaining_days' => $remainingDays,
@@ -85,4 +85,17 @@ class HomeController extends Controller
             return responseJson(false, 'User is not subscribed to a plan', $data);
         }
     }
+    public function closeApp(Request $request){
+        $user = Auth::guard('sanctum')->user();
+        $key = config('services.stripe.Secret_key');
+        \Stripe\Stripe::setApiKey($key);
+        $session = \Stripe\BillingPortal\Session::create([
+            'customer' => $user->stripe_id,
+        ]);
+        $customer_portal_link =  $session->url;
+        $subscription = $user->subscription('default');
+        if ( !$user->subscription('default') || $user->subscription('default')->ended() || $user->subscription('default')->canceled() || !$user->subscribedToPrice($free_plan_id, 'default') || !$user->subscribed() || $user->subscription()->ended() ){
+            return responsejson(true, 'plans', $customer_portal_link);
+
+        }
 }
